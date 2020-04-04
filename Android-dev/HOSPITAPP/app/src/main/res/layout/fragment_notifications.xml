@@ -1,177 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".ui.notifications.NotificationsFragment">
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/welcome_text"
-        android:layout_width="wrap_content"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Introduzca sus datos de contacto para poder recibir los envíos."
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:padding="16dp"
+        tools:context=".ui.notifications.NotificationsFragment">
 
-    </TextView>
+        <TextView
+            android:id="@+id/welcome_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Introduzca sus datos de contacto para poder recibir los envíos."
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/name_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
-        android:text="Nombre:"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        </TextView>
 
-    </TextView>
+        <TextView
+            android:id="@+id/name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:text="Nombre:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-
-    <TextView
-        android:id="@+id/edit_nameAdded"
-        android:layout_width="260dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="84dp"
-        android:text="@string/nombre"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </TextView>
+        </TextView>
 
 
-    <TextView
-        android:id="@+id/direction_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
-        android:text="Dirección:"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/edit_nameAdded"
+            android:layout_width="260dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="92dp"
+            android:layout_marginTop="84dp"
+            android:text="@string/nombre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </TextView>
-
-    <TextView
-        android:id="@+id/edit_nameHospitalAdded"
-        android:layout_width="256dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="148dp"
-        android:text="Dirección"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        </TextView>
 
 
-    <EditText
-        android:id="@+id/edit_nameStreetAdded"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
+        <TextView
+            android:id="@+id/direction_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="148dp"
+            android:text="Dirección:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        android:layout_marginTop="204dp"
-        android:hint="Introduzca la calle del hospital"
-        app:layout_constraintStart_toStartOf="parent"
+        </TextView>
 
-        app:layout_constraintTop_toTopOf="parent"></EditText>
+        <TextView
+            android:id="@+id/direction_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="212dp"
+            android:text="Calle Hospital:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/edit_NumberAdded"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="256dp"
-        android:hint="Número"
-        app:layout_constraintStart_toStartOf="parent"
+        </TextView>
 
-        app:layout_constraintTop_toTopOf="parent"></EditText>
+        <TextView
+            android:id="@+id/edit_nameHospitalAdded"
+            android:layout_width="256dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="96dp"
+            android:layout_marginTop="148dp"
+            android:text="Dirección"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></TextView>
 
-    <EditText
-        android:id="@+id/edit_CPAdded"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
+        <EditText
+            android:id="@+id/edit_nameStreetAdded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="92dp"
 
-        android:layout_marginTop="308dp"
-        android:hint="Código postal"
-        app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="204dp"
+            android:hint="Introduzca la calle del hospital"
+            app:layout_constraintStart_toStartOf="parent"
 
-        app:layout_constraintTop_toTopOf="parent"></EditText>
-
-    <EditText
-        android:id="@+id/edit_CityAdded"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-
-        android:layout_marginTop="364dp"
-        android:hint="Ciudad o provincia"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toTopOf="parent"></EditText>
-
-    <EditText
-        android:id="@+id/edit_emailAdded"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="424dp"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toTopOf="parent"></EditText>
-
-    <TextView
-        android:id="@+id/email_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="440dp"
-        android:text="Email:"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </TextView>
-
-    <EditText
-        android:id="@+id/edit_telephoneAdded"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="484dp"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toTopOf="parent"></EditText>
-
-    <TextView
-        android:id="@+id/telephone_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="500dp"
-        android:text="Teléfono:"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </TextView>
-
-    <Button
-        android:id="@+id/saveUserBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
-        android:text="Editar Perfil "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_telephoneAdded"
-        app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toTopOf="parent"></EditText>
 
 
-</android.support.constraint.ConstraintLayout>
+        <EditText
+            android:id="@+id/edit_NumberAdded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="92dp"
+            android:layout_marginTop="304dp"
+            android:hint="Número"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"></EditText>
+
+        <EditText
+            android:id="@+id/edit_CPAdded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="92dp"
+
+            android:layout_marginTop="252dp"
+            android:hint="Código postal"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"></EditText>
+
+        <EditText
+            android:id="@+id/edit_CityAdded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="92dp"
+
+            android:layout_marginTop="356dp"
+            android:hint="Ciudad o provincia"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"></EditText>
+
+        <EditText
+            android:id="@+id/edit_emailAdded"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="424dp"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"></EditText>
+
+        <TextView
+            android:id="@+id/email_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="440dp"
+            android:text="Email:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/edit_telephoneAdded"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="108dp"
+            android:layout_marginTop="588dp"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"></EditText>
+
+        <TextView
+            android:id="@+id/telephone_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="596dp"
+            android:text="Teléfono:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
+
+        <Button
+            android:id="@+id/saveUserBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Editar Perfil "
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
