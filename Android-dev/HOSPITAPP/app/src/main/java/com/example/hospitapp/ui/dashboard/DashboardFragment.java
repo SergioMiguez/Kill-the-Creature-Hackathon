@@ -12,6 +12,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.widget.Toast;
 
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
@@ -38,6 +39,14 @@ public class DashboardFragment extends Fragment {
         fillList();
 
         ListClassAdapter adapter = new ListClassAdapter(listOfOrders);
+
+        adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
+
         recyclerView.setAdapter(adapter);
 
         return view;
