@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void openAdd() {
 
+        loginDialogOpener();
+
         fabAdd = findViewById(R.id.addFabButton);
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +49,13 @@ public class MainActivity extends AppCompatActivity {
         AddDialog addDialog = new AddDialog();
         addDialog.show(getSupportFragmentManager(), "Add Dialog");
     }
+
+    public void loginDialogOpener() {
+
+
+
+    }
+
 
 
 }
