@@ -10,6 +10,7 @@ import android.widget.ListAdapter;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
+import com.example.hospitapp.InfoPedidosDialog;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
 import com.example.hospitapp.ui.ListClassAdapter;
@@ -36,9 +37,22 @@ public class HomeFragment extends Fragment {
         fillList();
 
         ListClassAdapter adapter = new ListClassAdapter(listOfOrders);
+
+        adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openInformationPedidoDialog();
+            }
+        });
+
         recyclerView.setAdapter(adapter);
 
         return view;
+    }
+
+    private void openInformationPedidoDialog(){
+        InfoPedidosDialog info = new InfoPedidosDialog();
+        info.show(getActivity().getSupportFragmentManager(), "Add Dialog");
     }
 
     private void fillList() {
