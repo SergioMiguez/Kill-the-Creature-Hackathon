@@ -12,8 +12,6 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.hospitapp.ui.login.LoginActivity;
-
 public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton fabAdd;
