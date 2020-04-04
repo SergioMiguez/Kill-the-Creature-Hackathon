@@ -26,8 +26,11 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:hint="@string/material"
             android:inputType="text"
-            android:importantForAutofill="no">
+            android:importantForAutofill="no"
+            android:gravity="center_horizontal"
+            >
 
         </EditText>
 
@@ -55,7 +58,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:inputType="number"
-            android:autofillHints="" />
+            android:hint="@string/numero"
+            android:autofillHints=""
+            android:gravity="center_horizontal"
+            />
 
     </LinearLayout>
 
@@ -77,10 +83,10 @@
 
         <Switch
             android:id="@+id/switch1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginLeft="70dp"
+            android:layout_marginStart="70dp"
             />
 
     </LinearLayout>
@@ -99,9 +105,10 @@
             android:id="@+id/changeAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Si eligiste no indica la nueva:"
+            android:hint="@string/si_eligiste_no_indica_la_nueva"
             android:textSize="16sp"
-            />
+            android:importantForAutofill="no"
+            android:inputType="text" />
 
     </LinearLayout>
 

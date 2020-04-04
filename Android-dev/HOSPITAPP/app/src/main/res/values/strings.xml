@@ -13,4 +13,7 @@
     <string name="referenceid">ReferenceId</string>
     <string name="num_unidades">Número de unidades:</string>
     <string name="mantener_direccion_de_envio">¿Mantener direccion de envio?</string>
+    <string name="si_eligiste_no_indica_la_nueva">Si eligiste no indica la nueva:</string>
+    <string name="material">Material</string>
+    <string name="numero">nº</string>
 </resources>
