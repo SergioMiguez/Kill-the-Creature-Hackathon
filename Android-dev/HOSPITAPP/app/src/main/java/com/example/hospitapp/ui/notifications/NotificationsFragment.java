@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.arch.lifecycle.ViewModelProviders;
+import android.widget.TextView;
 
 import com.example.hospitapp.R;
 
@@ -31,7 +32,7 @@ public class NotificationsFragment extends Fragment {
 
          */
 
-        Button editUserBtn = root.findViewById(R.id.saveUserBtn);
+        Button editUserBtn = root.findViewById(R.id.editUserBtn);
         editUserBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,6 +40,53 @@ public class NotificationsFragment extends Fragment {
                 startActivity(userInfo);
             }
         });
+
+        TextView nameAdded = root.findViewById(R.id.nameAdded);
+        TextView nameHospitalAdded = root.findViewById(R.id.nameHospitalAdded);
+        TextView nameStreetAdded = root.findViewById(R.id.nameStreetAdded);
+        TextView streetNumberAdded = root.findViewById(R.id.streetNumberAdded);
+        TextView CPAdded = root.findViewById(R.id.CPAdded);
+        TextView cityAdded = root.findViewById(R.id.cityAdded);
+        TextView emailAdded = root.findViewById(R.id.emailAdded);
+        TextView telephoneAdded = root.findViewById(R.id.telephoneAdded);
+
+
+        if (getActivity().getIntent().hasExtra("key.name.edited")) {
+            String nameAddedStr = getActivity().getIntent().getExtras().getString("key.name.edited");
+            nameAdded.setText(nameAddedStr);
+        }
+        else if (getActivity().getIntent().hasExtra("key.name.hospital.edited")) {
+            String nameHospitalAddedStr = getActivity().getIntent().getExtras().getString("key.name.hospital.edited");
+            nameHospitalAdded.setText(nameHospitalAddedStr);
+        }
+        else if (getActivity().getIntent().hasExtra("key.name.street.edited")) {
+            String nameStreetAddedStr = getActivity().getIntent().getExtras().getString("key.name.street.edited");
+            nameStreetAdded.setText(nameStreetAddedStr);
+        }
+        else if (getActivity().getIntent().hasExtra("key.street.number.edited")) {
+            String streetNumberStr = getActivity().getIntent().getExtras().getString("key.street.number.edited");
+            streetNumberAdded.setText(streetNumberStr);
+        }
+        else if (getActivity().getIntent().hasExtra("key.CP.edited")) {
+            String CPAddedStr = getActivity().getIntent().getExtras().getString("key.CP.edited");
+            CPAdded.setText(CPAddedStr);
+        }
+        else if (getActivity().getIntent().hasExtra("key.city.edited")) {
+            String cityAddedStr = getActivity().getIntent().getExtras().getString("key.city.edited");
+            cityAdded.setText(cityAddedStr);
+        }
+        else if (getActivity().getIntent().hasExtra("key.email.edited")) {
+            String emailAddedStr = getActivity().getIntent().getExtras().getString("key.email.edited");
+            emailAdded.setText(emailAddedStr);
+        }
+        else if (getActivity().getIntent().hasExtra("key.telephone.edited")) {
+            String telephoneAddedStr = getActivity().getIntent().getExtras().getString("key.telephone.edited");
+            telephoneAdded.setText(telephoneAddedStr);
+        }
+
+
+
+
 
         return root;
     }

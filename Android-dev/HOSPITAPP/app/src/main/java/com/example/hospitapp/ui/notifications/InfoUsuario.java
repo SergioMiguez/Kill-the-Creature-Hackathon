@@ -40,15 +40,6 @@ public class InfoUsuario extends AppCompatActivity {
                 String emailEditedStr = emailEdited.getText().toString();
                 String telephoneEditedStr = telephoneEdited.getText().toString();
 
-                TextView nameAdded = findViewById(R.id.nameAdded);
-                TextView nameHospitalAdded = findViewById(R.id.nameHospitalAdded);
-                TextView nameStreetAdded = findViewById(R.id.nameStreetAdded);
-                TextView streetNumberAdded = findViewById(R.id.streetNumberAdded);
-                TextView CPAdded = findViewById(R.id.CPAdded);
-                TextView cityAdded = findViewById(R.id.cityAdded);
-                TextView emailAdded = findViewById(R.id.emailAdded);
-                TextView telephoneAdded = findViewById(R.id.telephoneAdded);
-
                 Intent updateUserInfo = new Intent(InfoUsuario.this, NotificationsFragment.class);
                 updateUserInfo.putExtra("key.name.edited", nameEditedStr);
                 updateUserInfo.putExtra("key.name.hospital.edited", nameHospitalEditedStr);
@@ -58,8 +49,7 @@ public class InfoUsuario extends AppCompatActivity {
                 updateUserInfo.putExtra("key.city.edited", cityEditedStr);
                 updateUserInfo.putExtra("key.email.edited", emailEditedStr);
                 updateUserInfo.putExtra("key.telephone.edited", streetNumberEditedStr);
-
-
+                startActivity(updateUserInfo);
 
             }
         });
