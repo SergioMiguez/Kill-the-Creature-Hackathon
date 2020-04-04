@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:gravity="center_horizontal"
+
+    >
+
+    <LinearLayout
+        android:id="@+id/textIniciarSesionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+        >
+
+        <TextView
+            android:id="@+id/iniciar_sesion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/iniciar_sesion"
+            android:textSize="24sp"
+            android:textColor="@color/colorPrimary"
+            >
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/UserNameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textIniciarSesionLayout"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        >
+
+        <TextView
+            android:id="@+id/usernametext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:textSize="18sp"
+            android:layout_marginStart="40dp">
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/inputEmail"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:inputType="textEmailAddress"
+            android:hint="@string/email"
+            android:importantForAutofill="no">
+
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/PasswordLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/UserNameLayout"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        >
+
+        <TextView
+            android:id="@+id/passwordtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/password"
+            android:textSize="18sp">
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/inputPassword"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:inputType="textPassword"
+            android:importantForAutofill="no"
+            android:hint="@string/pass"
+            >
+
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttosLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/PasswordLayout"
+        >
+
+        <Button
+            android:id="@+id/singInButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/action_sign_in"
+            >
+
+        </Button>
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="registrarse"
+            android:layout_marginStart="5dp"
+
+            >
+
+        </Button>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
