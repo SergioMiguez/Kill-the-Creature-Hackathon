@@ -106,9 +106,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/si_eligiste_no_indica_la_nueva"
-            android:textSize="16sp"
             android:importantForAutofill="no"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
