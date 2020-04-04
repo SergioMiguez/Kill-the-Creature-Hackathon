@@ -70,7 +70,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     private boolean makeLoginCall(String email, String password) {
