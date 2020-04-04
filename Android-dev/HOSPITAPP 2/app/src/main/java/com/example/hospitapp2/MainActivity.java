@@ -1,17 +1,17 @@
-package com.example.hospitapp;
+package com.example.hospitapp2;
 
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.example.hospitapp2.ui.home.AddDialog;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
-import com.example.hospitapp.ui.home.AddDialog;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
         pressAddFab();
-
     }
 
     public void pressAddFab() {
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openDialogAdd(){
         AddDialog addDialog = new AddDialog();
-        addDialog.show(getSupportFragmentManager(), "Add Dialog");
+        //addDialog.show(getSupportFragmentManager(), "Add Dialog");
     }
 
 }
