@@ -12,9 +12,10 @@ import com.example.hospitapp.R;
 
 import java.util.ArrayList;
 
-public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.OrderViewHolder>{
+public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.OrderViewHolder> implements View.OnClickListener{
 
     ArrayList<Order> listOfOrders;
+    private View.OnClickListener listener;
 
     public ListClassAdapter(ArrayList<Order> listsOfOrders) {
         this.listOfOrders = listsOfOrders;
@@ -40,6 +41,9 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
     @Override
     public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list,null,false);
+
+        view.setOnClickListener(this);
+
         return new OrderViewHolder(view);
     }
 
@@ -54,6 +58,17 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
     @Override
     public int getItemCount() {
         return listOfOrders.size();
+    }
+
+    public void setOnClickListener (View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (listener != null){
+            listener.onClick(view);
+        }
     }
 
 
