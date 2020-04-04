@@ -1,5 +1,6 @@
 package com.example.hospitapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
@@ -10,6 +11,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.example.hospitapp.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void openAdd() {
 
-        loginDialogOpener();
-
         fabAdd = findViewById(R.id.addFabButton);
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,13 +50,6 @@ public class MainActivity extends AppCompatActivity {
         AddDialog addDialog = new AddDialog();
         addDialog.show(getSupportFragmentManager(), "Add Dialog");
     }
-
-    public void loginDialogOpener() {
-
-
-
-    }
-
 
 
 }
