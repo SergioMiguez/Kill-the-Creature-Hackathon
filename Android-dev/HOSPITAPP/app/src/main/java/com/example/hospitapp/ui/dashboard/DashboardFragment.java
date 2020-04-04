@@ -1,6 +1,8 @@
 package com.example.hospitapp.ui.dashboard;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,24 +13,40 @@ import android.support.v4.app.Fragment;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 
+import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
+import com.example.hospitapp.ui.ListClassAdapter;
+
+import java.util.ArrayList;
 
 public class DashboardFragment extends Fragment {
 
     private DashboardViewModel dashboardViewModel;
+    private ArrayList<Order> listOfOrders;
+    private RecyclerView recyclerView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(DashboardViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        final TextView textView = root.findViewById(R.id.text_dashboard);
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
+
+        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
+
+        listOfOrders = new ArrayList<>();
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerDashboard);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        fillList();
+
+        ListClassAdapter adapter = new ListClassAdapter(listOfOrders);
+        recyclerView.setAdapter(adapter);
+
+        return view;
+    }
+
+    private void fillList() {
+        listOfOrders.add(new Order("Object","VN","Pending","Reference"));
+        listOfOrders.add(new Order("Object","VN","Pending","Reference"));
+      
+
     }
 }
