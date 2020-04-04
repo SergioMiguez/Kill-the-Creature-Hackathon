@@ -30,18 +30,17 @@
 
     </TextView>
 
-
     <EditText
-        android:id="@+id/edit_nameAdded"
+        android:id="@+id/nameEdited"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="85dp"
         android:layout_marginTop="76dp"
         android:hint="Introduzca su nombre completo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        ></EditText>
+    </EditText>
 
     <TextView
         android:id="@+id/direction_text"
@@ -57,66 +56,63 @@
 
 
     <EditText
-        android:id="@+id/edit_nameHospitalAdded"
+        android:id="@+id/nameHospitalEdited"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="85dp"
         android:layout_marginTop="146dp"
         android:hint="Introduzca el nombre del hospital"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        ></EditText>
+    </EditText>
 
 
     <EditText
-        android:id="@+id/edit_nameStreetAdded"
+        android:id="@+id/nameStreetEdited"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="196dp"
-
         android:hint="Introduzca la calle del hospital"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        ></EditText>
+    </EditText>
 
     <EditText
-        android:id="@+id/streetNumberAdded"
+        android:id="@+id/streetNumberEdited"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="285dp"
         android:layout_marginTop="196dp"
         android:hint="Número"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        ></EditText>
+    </EditText>
 
     <EditText
-        android:id="@+id/CPAdded"
+        android:id="@+id/CPEdited"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="246dp"
-
         android:hint="Código postal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        ></EditText>
+    </EditText>
 
     <EditText
-        android:id="@+id/cityAdded"
+        android:id="@+id/cityEdited"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="202dp"
         android:layout_marginTop="246dp"
-
         android:hint="Ciudad o provincia"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        ></EditText>
+    </EditText>
 
     <TextView
         android:id="@+id/email_text"
@@ -132,15 +128,15 @@
 
 
     <EditText
-        android:id="@+id/edit_emailAdded"
+        android:id="@+id/emailEdited"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="85dp"
         android:layout_marginTop="316dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        ></EditText>
+    </EditText>
 
     <TextView
         android:id="@+id/telephone_text"
@@ -156,18 +152,18 @@
 
 
     <EditText
-        android:id="@+id/edit_telephoneAdded"
+        android:id="@+id/telephoneEdited"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="85dp"
         android:layout_marginTop="386dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        ></EditText>
+    </EditText>
 
     <Button
-        android:id="@+id/registerUserBtn"
+        android:id="@+id/saveUserBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="80dp"

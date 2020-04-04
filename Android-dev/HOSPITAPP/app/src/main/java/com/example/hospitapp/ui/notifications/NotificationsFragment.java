@@ -31,7 +31,7 @@ public class NotificationsFragment extends Fragment {
 
          */
 
-        Button editUserBtn = root.findViewById(R.id.registerUserBtn);
+        Button editUserBtn = root.findViewById(R.id.saveUserBtn);
         editUserBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

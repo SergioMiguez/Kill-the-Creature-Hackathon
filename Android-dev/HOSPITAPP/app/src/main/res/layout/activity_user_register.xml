@@ -205,7 +205,7 @@
     </EditText>
 
     <Button
-        android:id="@+id/registerUserBtn"
+        android:id="@+id/saveUserBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
