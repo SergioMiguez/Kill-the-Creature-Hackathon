@@ -55,6 +55,7 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/layout_numero_de_unidades"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/botones_pedidos"
@@ -64,12 +65,40 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/numero_de_unidades" />
-
-
-
+            android:hint="@string/numero_de_unidades"
+            />
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/layout_numero_de_unidades"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        >
+
+        <TextView
+            android:id="@+id/selectedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginEnd="50dp"
+            android:text="@string/seleccionar_un_dia"
+            >
+
+        </TextView>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/abrir_calendario"
+            >
+
+        </Button>
+
+    </LinearLayout>
 
 
 
