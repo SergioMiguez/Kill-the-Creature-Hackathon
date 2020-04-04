@@ -46,7 +46,7 @@ public class DashboardFragment extends Fragment {
     private void fillList() {
         listOfOrders.add(new Order("Object","VN","Pending","Reference"));
         listOfOrders.add(new Order("Object","VN","Pending","Reference"));
-      
+
 
     }
 }

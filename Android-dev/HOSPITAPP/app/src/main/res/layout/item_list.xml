@@ -17,7 +17,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/nombre"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="40dp"
             android:textSize="20sp"
             >
@@ -30,7 +29,7 @@
             android:layout_height="wrap_content"
             android:text="Estado"
             android:textSize="16sp"
-            android:layout_marginTop="20dp"
+
             android:layout_marginLeft="50dp"
             >
 
@@ -80,12 +79,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/VolumeNumberLayout"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="10dp"
         >
         <TextView
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:background="@color/colorPrimary"
+            android:layout_marginBottom="20dp"
             >
 
         </TextView>
