@@ -3,6 +3,7 @@ package com.example.hospitapp.ui.login;
 import android.app.Activity;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
@@ -18,6 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hospitapp.MainActivity;
 import com.example.hospitapp.R;
 import com.example.hospitapp.ui.login.LoginViewModel;
 import com.example.hospitapp.ui.login.LoginViewModelFactory;
@@ -119,6 +121,8 @@ public class LoginActivity extends AppCompatActivity {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+        Intent startMain = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(startMain);
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {
