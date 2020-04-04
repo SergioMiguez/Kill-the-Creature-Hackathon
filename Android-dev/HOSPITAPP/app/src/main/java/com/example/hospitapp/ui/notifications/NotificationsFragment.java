@@ -1,9 +1,12 @@
 package com.example.hospitapp.ui.notifications;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -31,6 +34,20 @@ public class NotificationsFragment extends Fragment {
         });
 
          */
+
+        Button editUserBtn = root.findViewById(R.id.editUserBtn);
+        editUserBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent userInfo = new Intent(getContext(), InfoUsuario.class);
+                startActivity(userInfo);
+            }
+        });
+
         return root;
     }
+
+
+
+
 }
