@@ -3,4 +3,8 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="respiradores">RESPIRADORES</string>
+    <string name="mascarillas">MASCARILLAS</string>
+    <string name="numero_de_unidades">Numero de unidades</string>
+    <string name="selecione_su_pedido">Selecione su pedido</string>
 </resources>

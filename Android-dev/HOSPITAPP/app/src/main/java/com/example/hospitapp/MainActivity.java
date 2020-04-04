@@ -29,9 +29,24 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-
+        openAdd();
     }
 
+    public void openAdd() {
+
+        fabAdd = findViewById(R.id.addFabButton);
+        fabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onDialogAdd();
+            }
+        });
+    }
+
+    public void onDialogAdd() {
+        AddDialog addDialog = new AddDialog();
+        addDialog.show(getSupportFragmentManager(), "Add Dialog");
+    }
 
 
 }
