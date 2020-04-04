@@ -5,7 +5,7 @@
 
     >
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/select_text_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,87 +21,89 @@
             android:textSize="16sp"
             />
 
-    </RelativeLayout>
+        <EditText
+            android:id="@+id/objectInput"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:inputType="text"
+            android:importantForAutofill="no">
 
+        </EditText>
 
-    <LinearLayout
-
-        android:id="@+id/botones_pedidos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/select_text_layout"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        >
-
-        <Button
-            android:id="@+id/mascarillas_button"
-            android:layout_width="130dp"
-            android:layout_height="36dp"
-            android:text="@string/mascarillas"
-            >
-
-        </Button>
-
-        <Button
-            android:id="@+id/respiradores_button"
-            android:layout_width="130dp"
-            android:layout_height="36dp"
-            android:layout_marginLeft="20dp"
-            android:text="@string/respiradores">
-
-        </Button>
     </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/layout_numero_de_unidades"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/botones_pedidos"
+        android:layout_below="@+id/select_text_layout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp">
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/numero_de_unidades"
-            />
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/layout_numero_de_unidades"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        >
+        android:layout_marginTop="10dp">
 
         <TextView
-            android:id="@+id/selectedDate"
+            android:id="@+id/VolumeNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/num_unidades"
             android:textSize="16sp"
-            android:layout_marginEnd="50dp"
-            android:text="@string/seleccionar_un_dia"
-            >
+            />
 
-        </TextView>
-
-        <Button
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/inputVN"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="@string/abrir_calendario"
-            >
-
-        </Button>
+            android:layout_marginStart="20dp"
+            android:inputType="number"
+            android:autofillHints="" />
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/layout_envio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_numero_de_unidades"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp">
 
+        <TextView
+            android:id="@+id/Direccion_de_envio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mantener_direccion_de_envio"
+            android:textSize="16sp"
+            />
 
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="70dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Address_change_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_envio"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+    >
+
+        <EditText
+            android:id="@+id/changeAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Si eligiste no indica la nueva:"
+            android:textSize="16sp"
+            />
+
+    </LinearLayout>
 
 
 </RelativeLayout>
