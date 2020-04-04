@@ -11,8 +11,6 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.hospitapp.ui.home.AddDialog;
-
 public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton fabAdd;
@@ -31,25 +29,9 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-        pressAddFab();
 
     }
 
-    public void pressAddFab() {
-        View view = getLayoutInflater().inflate(R.layout.fragment_home, null);
-        fabAdd = view.findViewById(R.id.addFabButton);
-        fabAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDialogAdd();
-            }
-        });
 
-    }
-
-    public void openDialogAdd(){
-        AddDialog addDialog = new AddDialog();
-        addDialog.show(getSupportFragmentManager(), "Add Dialog");
-    }
 
 }
