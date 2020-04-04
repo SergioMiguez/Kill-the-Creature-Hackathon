@@ -35,14 +35,13 @@
         android:id="@+id/edit_nameAdded"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
         android:layout_marginLeft="85dp"
+        android:layout_marginTop="76dp"
         android:hint="Introduzca su nombre completo"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
 
-        >
-    </EditText>
+        ></EditText>
 
     <TextView
         android:id="@+id/direction_text"
@@ -61,14 +60,13 @@
         android:id="@+id/edit_nameHospitalAdded"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="146dp"
         android:layout_marginLeft="85dp"
+        android:layout_marginTop="146dp"
         android:hint="Introduzca el nombre del hospital"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
 
-        >
-    </EditText>
+        ></EditText>
 
 
     <EditText
@@ -78,24 +76,22 @@
         android:layout_marginTop="196dp"
 
         android:hint="Introduzca la calle del hospital"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
 
-        >
-    </EditText>
+        ></EditText>
 
     <EditText
         android:id="@+id/edit_NumberAdded"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="196dp"
         android:layout_marginLeft="285dp"
+        android:layout_marginTop="196dp"
         android:hint="Número"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
 
-        >
-    </EditText>
+        ></EditText>
 
     <EditText
         android:id="@+id/edit_CPAdded"
@@ -104,25 +100,23 @@
         android:layout_marginTop="246dp"
 
         android:hint="Código postal"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
 
-        >
-    </EditText>
+        ></EditText>
 
     <EditText
         android:id="@+id/edit_CityAdded"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="246dp"
         android:layout_marginLeft="202dp"
+        android:layout_marginTop="246dp"
 
         android:hint="Ciudad o provincia"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
 
-        >
-    </EditText>
+        ></EditText>
 
     <TextView
         android:id="@+id/email_text"
@@ -141,13 +135,12 @@
         android:id="@+id/edit_emailAdded"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="316dp"
         android:layout_marginLeft="85dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="316dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
 
-        >
-    </EditText>
+        ></EditText>
 
     <TextView
         android:id="@+id/telephone_text"
@@ -166,12 +159,24 @@
         android:id="@+id/edit_telephoneAdded"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="386dp"
         android:layout_marginLeft="85dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="386dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
 
-        >
-    </EditText>
+        ></EditText>
+
+    <Button
+        android:id="@+id/saveUserBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:text="Guardar Perfil "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_telephoneAdded"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>
