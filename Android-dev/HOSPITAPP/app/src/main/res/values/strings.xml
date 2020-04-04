@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">HOSPITAPP</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">EN PROCESO</string>
+    <string name="title_dashboard">COMPLETADO</string>
+    <string name="title_notifications">PERFIL</string>
     <string name="respiradores">RESPIRADORES</string>
     <string name="mascarillas">MASCARILLAS</string>
     <string name="numero_de_unidades">NUs</string>
