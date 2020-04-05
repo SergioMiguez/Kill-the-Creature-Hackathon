@@ -21,7 +21,7 @@
             android:id="@+id/welcome_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Registrese"
+            android:text="Regístrese"
             android:textSize="24sp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="32dp"
@@ -43,7 +43,7 @@
             android:id="@+id/name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Usuario"
+            android:text="Usuario:"
             android:textSize="18sp"
             >
 
@@ -284,7 +284,7 @@
             android:id="@+id/singInButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sing in"
+            android:text="Singin"
             android:layout_marginLeft="50dp"
             >
 
