@@ -163,7 +163,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     private String toStringAddress(String addressName, String numAddress, String zipCode, String city) {
-        return addressName.toUpperCase() + " " + numAddress + " " + zipCode + " " + city.toUpperCase();
+        return addressName.toUpperCase() + "$" + numAddress + "$" + zipCode + "$" + city.toUpperCase();
     }
 
 }
