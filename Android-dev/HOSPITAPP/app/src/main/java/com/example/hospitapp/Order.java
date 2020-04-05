@@ -9,8 +9,9 @@ public class Order {
     private int id_hospital;
     private String fecha;
     private String direccion_envio;
+    private String nombre_objeto;
 
-    public Order(int id, int id_objeto, int cantidad, int id_proveedor, int id_hospital, String fecha, String direccion_envio) {
+    public Order(int id, int id_objeto, int cantidad, int id_proveedor, int id_hospital, String fecha, String direccion_envio, String nombre_objeto) {
         this.id = id;
         this.id_objeto = id_objeto;
         this.cantidad = cantidad;
@@ -18,6 +19,7 @@ public class Order {
         this.id_hospital = id_hospital;
         this.fecha = fecha;
         this.direccion_envio = direccion_envio;
+        this.nombre_objeto = nombre_objeto;
     }
 
     /** _______________ GETTER FUNCTIONS _______________ */
@@ -49,7 +51,9 @@ public class Order {
         return direccion_envio;
     }
 
-/** _______________ SETTER FUNCTIONS _______________ */
+    public String getNombre_objeto() {return nombre_objeto;}
+
+    /** _______________ SETTER FUNCTIONS _______________ */
 
     public void setId(int id) {
         this.id = id;
@@ -77,5 +81,9 @@ public class Order {
 
     public void setDireccion_envio(String direccion_envio) {
         this.direccion_envio = direccion_envio;
+    }
+
+    public void setNombre_objeto(String nombre_objeto) {
+        this.nombre_objeto = nombre_objeto;
     }
 }

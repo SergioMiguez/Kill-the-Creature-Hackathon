@@ -16,12 +16,14 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hospitapp.AddDialog;
+import com.example.hospitapp.LoginActivity;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
 import com.example.hospitapp.ui.ListClassAdapter;
@@ -32,6 +34,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DashboardFragment extends Fragment {
 
@@ -64,12 +68,6 @@ public class DashboardFragment extends Fragment {
 
 
 
-    private void fillList() {
-        listOfOrders.add(new Order(0,0,1000,20, 0,"5/04/2020", "mi casa"));
-        listOfOrders.add(new Order(1,1,20,15, 1, "5/04/2020", "tu casa"));
-
-        makeListRequest("HTTP://URLDELISTADECOMPLETADOS");
-    }
 
     @Override
     public void onAttach(Context context) {
@@ -83,8 +81,13 @@ public class DashboardFragment extends Fragment {
         mContext = null;
     }
 
+    private void fillList() {
+        makeListRequest("http://192.168.1.86/matalbicho/display_pedidos.php");
+    }
+
+
     private void makeListRequest (String URL) {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -100,7 +103,8 @@ public class DashboardFragment extends Fragment {
                                 order.getInt("id_proveedor"),
                                 order.getInt("id_hospital"),
                                 order.getString("fecha"),
-                                order.getString("direccion_envio")
+                                order.getString("direccion_envio"),
+                                order.getString("nombre_objeto")
                         ));
 
                     }
@@ -116,11 +120,18 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (mContext != null) {
-                    Toast.makeText(mContext, "ERROR DASH", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "ERROR HOME", Toast.LENGTH_SHORT).show();
                 }
 
             }
-        });
+        }) {
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("usuario", LoginActivity.userName);
+                return parameters;
+            }
+        };
 
         /*  TODO CHECK IF CONTEXT WORKS  (mContext) */
         if (mContext != null) {
