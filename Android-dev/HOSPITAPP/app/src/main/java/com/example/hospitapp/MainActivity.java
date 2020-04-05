@@ -16,11 +16,6 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.hospitapp.ui.notifications.NotificationsFragment;
-
-import java.util.ArrayList;
-
-
 public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton fabAdd;
@@ -40,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
         openAdd();
-        updateUserProfile();
     }
 
     public void openAdd() {
@@ -59,46 +53,7 @@ public class MainActivity extends AppCompatActivity {
         addDialog.show(getSupportFragmentManager(), "Add Dialog");
     }
 
-    public void updateUserProfile() {
 
-        LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        assert layoutInflater != null;
-        View userEntries = layoutInflater.inflate(R.layout.fragment_notifications, null, false);
-
-        TextView nameAdded = userEntries.findViewById(R.id.nameAdded);
-        TextView nameHospitalAdded = userEntries.findViewById(R.id.nameHospitalAdded);
-        TextView nameStreetAdded = userEntries.findViewById(R.id.nameStreetAdded);
-        TextView streetNumberAdded = userEntries.findViewById(R.id.streetNumberAdded);
-        TextView CPAdded = userEntries.findViewById(R.id.CPAdded);
-        TextView cityAdded = userEntries.findViewById(R.id.cityAdded);
-        TextView emailAdded = userEntries.findViewById(R.id.emailAdded);
-        TextView telephoneAdded = userEntries.findViewById(R.id.telephoneAdded);
-
-        boolean doesItHaveExtra = getIntent().hasExtra("key.hospital.user.edited.data");
-
-        Intent i = getIntent();
-
-
-        if (i.hasExtra("key.hospital.user.edited.data")) {
-
-            ArrayList<String> userInfoList = i.getStringArrayListExtra("key.hospital.user.edited.data");
-
-            NotificationsFragment fragment = (NotificationsFragment) getSupportFragmentManager().findFragmentById(R.id.notification_fragment_id);
-
-            fragment.updateTextView(nameAdded, userInfoList, 0);
-            nameAdded.invalidate();
-
-            //nameAdded.setText(userInfoList.get(0));
-            nameHospitalAdded.setText(userInfoList.get(1));
-            nameStreetAdded.setText(userInfoList.get(2));
-            streetNumberAdded.setText(userInfoList.get(3));
-            CPAdded.setText(userInfoList.get(4));
-            cityAdded.setText(userInfoList.get(5));
-            emailAdded.setText(userInfoList.get(6));
-            telephoneAdded.setText(userInfoList.get(7));
-        }
-
-    }
 
 
 
