@@ -21,7 +21,7 @@
             android:id="@+id/welcome_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Registrese"
+            android:text="Regístrese"
             android:textSize="24sp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="32dp"
@@ -43,7 +43,7 @@
             android:id="@+id/name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Usuario"
+            android:text="Usuario:"
             android:textSize="18sp"
             >
 
@@ -162,7 +162,7 @@
             android:id="@+id/nameHospitalRegistered"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:hint="Nombre de hospital"
+            android:hint="Nombre de empresa"
             >
 
         </EditText>
@@ -182,7 +182,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:hint="Introduzca la calle del hospital"
+            android:hint="Introduzca la calle de la empresa"
             >
 
         </EditText>
@@ -284,7 +284,7 @@
             android:id="@+id/singInButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sing in"
+            android:text="Sign in"
             android:layout_marginLeft="50dp"
             >
 

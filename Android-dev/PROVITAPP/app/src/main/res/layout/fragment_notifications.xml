@@ -57,11 +57,11 @@
 
         <TextView
             android:id="@+id/hospital_name_text"
-            android:layout_width="173dp"
-            android:layout_height="27dp"
+            android:layout_width="182dp"
+            android:layout_height="34dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="104dp"
-            android:text="Nombre de Hospital:"
+            android:text="Nombre de empresa:"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -73,13 +73,12 @@
             android:id="@+id/nameHospitalAdded"
             android:layout_width="256dp"
             android:layout_height="35dp"
-            android:layout_marginStart="192dp"
-            android:layout_marginTop="104dp"
-            android:text="Nombre de Hospital"
+            android:layout_marginStart="208dp"
+            android:layout_marginTop="108dp"
+            android:text="Nombre de empresa"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-        </TextView>
+            app:layout_constraintTop_toTopOf="parent"></TextView>
 
         <TextView
             android:id="@+id/direction_hospital"
@@ -87,7 +86,7 @@
             android:layout_height="25dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="176dp"
-            android:text="Direccíon de Hospital:"
+            android:text="Dirección de empresa:"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -100,7 +99,7 @@
             android:layout_height="29dp"
             android:layout_marginStart="200dp"
             android:layout_marginTop="176dp"
-            android:text="Dirección del Hospital"
+            android:text="Dirección de empresa"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -285,7 +284,7 @@
             android:layout_height="35dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="740dp"
-            android:text="Nombre de Hospital:"
+            android:text="Nombre de empresa:"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -298,7 +297,7 @@
             android:layout_height="44dp"
             android:layout_marginStart="192dp"
             android:layout_marginTop="736dp"
-            android:hint="Introduzca el nombre del hospital"
+            android:hint="Introduzca el nombre de empresa"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
         </EditText>
@@ -309,7 +308,7 @@
             android:layout_height="31dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="812dp"
-            android:text="Direccíon de Hospital:"
+            android:text="Dirección de empresa:"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -322,7 +321,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="208dp"
             android:layout_marginTop="808dp"
-            android:hint="Introduzca la calle del hospital"
+            android:hint="Introduzca la calle de la empresa"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
         </EditText>
