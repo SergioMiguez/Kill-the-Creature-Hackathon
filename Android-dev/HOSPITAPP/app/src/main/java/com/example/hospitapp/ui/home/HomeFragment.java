@@ -61,7 +61,7 @@ public class HomeFragment extends Fragment {
 
         fillList();
 
-        ListClassAdapter adapter = new ListClassAdapter(listOfOrders, state);
+        ListClassAdapter adapter = new ListClassAdapter(listOfOrders, state, mContext);
 
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,7 +108,7 @@ public class HomeFragment extends Fragment {
 
                     }
 
-                    ListClassAdapter adapter = new ListClassAdapter(listOfOrders, state);
+                    ListClassAdapter adapter = new ListClassAdapter(listOfOrders, state, mContext);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {

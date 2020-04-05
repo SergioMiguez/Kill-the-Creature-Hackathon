@@ -58,7 +58,7 @@ public class DashboardFragment extends Fragment {
 
         fillList();
 
-        ListClassAdapter adapter = new ListClassAdapter(listOfOrders, state);
+        ListClassAdapter adapter = new ListClassAdapter(listOfOrders, state, mContext);
 
 
         recyclerView.setAdapter(adapter);
@@ -109,7 +109,7 @@ public class DashboardFragment extends Fragment {
 
                     }
 
-                    ListClassAdapter adapter = new ListClassAdapter(listOfOrders, state);
+                    ListClassAdapter adapter = new ListClassAdapter(listOfOrders, state, mContext);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
