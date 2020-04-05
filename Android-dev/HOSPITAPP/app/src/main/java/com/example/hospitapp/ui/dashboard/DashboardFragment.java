@@ -1,6 +1,7 @@
 package com.example.hospitapp.ui.dashboard;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,9 +15,11 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.widget.Toast;
 
+import com.example.hospitapp.AddDialog;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
 import com.example.hospitapp.ui.ListClassAdapter;
+
 
 import java.util.ArrayList;
 
@@ -40,17 +43,13 @@ public class DashboardFragment extends Fragment {
 
         ListClassAdapter adapter = new ListClassAdapter(listOfOrders);
 
-        adapter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                
-            }
-        });
 
         recyclerView.setAdapter(adapter);
 
         return view;
     }
+
+
 
     private void fillList() {
         listOfOrders.add(new Order("Object","VN","Pending","Reference"));

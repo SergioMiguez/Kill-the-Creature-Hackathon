@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.arch.lifecycle.ViewModelProviders;
+import android.widget.TextView;
 
 import com.example.hospitapp.R;
 
@@ -28,17 +29,22 @@ public class NotificationsFragment extends Fragment {
                 textView.setText(s);
             }
         });
-
          */
 
-        Button editUserBtn = root.findViewById(R.id.saveUserBtn);
+        Button editUserBtn = root.findViewById(R.id.editUserBtn);
         editUserBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent userInfo = new Intent(getContext(), InfoUsuario.class);
                 startActivity(userInfo);
+                try {
+                    finalize();
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                }
             }
         });
+
 
         return root;
     }

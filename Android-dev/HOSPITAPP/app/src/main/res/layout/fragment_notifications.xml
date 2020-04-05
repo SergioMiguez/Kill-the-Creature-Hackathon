@@ -47,7 +47,6 @@
             android:layout_height="29dp"
             android:layout_marginStart="76dp"
             android:layout_marginTop="90dp"
-            android:text="@string/nombre"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -235,7 +234,7 @@
         </TextView>
 
         <Button
-            android:id="@+id/saveUserBtn"
+            android:id="@+id/editUserBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="60dp"

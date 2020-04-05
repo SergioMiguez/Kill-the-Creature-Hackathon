@@ -33,7 +33,7 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        final View view = inflater.inflate(R.layout.add_dialog, null);
+        final View view = inflater.inflate(R.layout.information_pedidos__dialog, null);
 
         objectInput = view.findViewById(R.id.objectInput);
         volumeInput = view.findViewById(R.id.inputVN);

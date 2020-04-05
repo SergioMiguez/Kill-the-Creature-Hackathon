@@ -30,4 +30,8 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="pass">Contraseña</string>
+    <string name="nombre_proveedor">Proveedor</string>
+    <string name="nombre_empresa">Empresa</string>
+
+
 </resources>
