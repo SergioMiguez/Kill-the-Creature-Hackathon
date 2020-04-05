@@ -80,9 +80,10 @@ public class AddDialog extends AppCompatDialogFragment {
 
                             object = objectInput.getText().toString();
                             volumeNumber = volumeInput.getText().toString();
+                            newAdress = addressInput.getText().toString();
 
                             if (!keepAdress.isChecked()) {
-                                makeServerCallDefaultAddress("http://192.168.1.86:80/matalbicho/nuevo_pedido_con_direccion.php");
+                                makeServerCallNewAddress("http://192.168.1.86:80/matalbicho/nuevo_pedido_nueva_direccion.php");
                             } else {
                                 makeServerCallDefaultAddress("http://192.168.1.86:80/matalbicho/nuevo_pedido_con_direccion.php");
                             }
@@ -95,6 +96,50 @@ public class AddDialog extends AppCompatDialogFragment {
     }
 
     public void makeServerCallDefaultAddress(String URL) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    System.out.println("RESPONSE: " + response);
+                    JSONObject jsonResponse = new JSONObject(response);
+                    if (jsonResponse.getBoolean("success")){
+                        Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
+                        orderSuccess = true;
+                    } else {
+                        Toast.makeText(MainActivity.getContext(), "No se pudo procesar el pedido", Toast.LENGTH_SHORT).show();
+                        orderSuccess = false;
+                    }
+
+                } catch (Exception e) {
+                    System.out.println(e);
+                    Toast.makeText(MainActivity.getContext(), "No existe el objeto", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("nombre_del_objeto", object);
+                parameters.put("cantidad", volumeNumber);
+                parameters.put("usuario", LoginActivity.userName);
+                parameters.put("fecha", getDate());
+                return parameters;
+            }
+        };
+        requestQueue= Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+    }
+
+
+    public void makeServerCallNewAddress(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -129,12 +174,14 @@ public class AddDialog extends AppCompatDialogFragment {
                 parameters.put("cantidad", volumeNumber);
                 parameters.put("usuario", LoginActivity.userName);
                 parameters.put("fecha", getDate());
+                parameters.put("direccion", newAdress);
                 return parameters;
             }
         };
         requestQueue= Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
     }
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private String getDate () {
