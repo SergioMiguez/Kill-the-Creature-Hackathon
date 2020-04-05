@@ -11,8 +11,18 @@ public class Proveedor {
     private String nameBusiness;
     private String email;
 
-    public Proveedor(String nombre, String nameBusiness, String email, String usuario, String password, String direccion, String telefono, int id) {
+    public Proveedor(int id, String nombre, String usuario, String nameBusiness, String email, String direccion, String telefono) {
+        this.id = id;
+        this.nombre = nombre;
+        this.nameBusiness = nameBusiness;
+        this.email = email;
+        this.usuario = usuario;
+        this.direccion = direccion;
+        this.telefono = telefono;
+    }
 
+    public Proveedor(int id, String nombre, String usuario, String password, String nameBusiness, String email, String direccion, String telefono) {
+        super();
         this.id = id;
         this.nombre = nombre;
         this.nameBusiness = nameBusiness;

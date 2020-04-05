@@ -133,7 +133,7 @@ public class RegisterActivity extends AppCompatActivity {
                         registerSuccess = false;
                     }
 
-                } catch (Exception e) { // PABLO PLS DON'T KILL ME
+                } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
