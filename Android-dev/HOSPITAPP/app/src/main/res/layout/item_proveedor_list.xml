@@ -13,10 +13,10 @@
         >
 
         <TextView
-            android:id="@+id/ObjectName"
+            android:id="@+id/ParticularName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/nombre"
+            android:text="@string/nombre_proveedor"
             android:layout_marginLeft="40dp"
             android:textSize="20sp"
             >
@@ -24,10 +24,10 @@
         </TextView>
 
         <TextView
-            android:id="@+id/State"
+            android:id="@+id/EnterpriseName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Estado"
+            android:text="@string/nombre_empresa"
             android:textSize="16sp"
 
             android:layout_marginLeft="50dp"
@@ -49,10 +49,10 @@
         >
 
         <TextView
-            android:id="@+id/VolumeNumber"
+            android:id="@+id/ProveedorEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/numero_de_unidades"
+            android:text="@string/email"
             android:layout_marginTop="20dp"
             android:textSize="16sp"
             android:layout_marginRight="50dp"
@@ -60,17 +60,17 @@
 
         </TextView>
 
-        <TextView
-            android:id="@+id/ReferenceId"
+        <Button
+            android:id="@+id/ButtonAccept"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/referenceid"
+            android:text="aceptar"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
             android:textSize="16sp"
             >
 
-        </TextView>
+        </Button>
 
     </LinearLayout>
 
