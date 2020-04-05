@@ -48,7 +48,7 @@ public class ListProveedoresClass extends RecyclerView.Adapter<ListProveedoresCl
     @Override
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
         holder.textName.setText(listOfProveedores.get(position).getUsuario());
-        holder.textBusinessName.setText(listOfProveedores.get(position).getNameBusiness());
+        //holder.textBusinessName.setText(listOfProveedores.get(position).getNameBusiness());
         holder.textEmail.setText(listOfProveedores.get(position).getEmail());
     }
 

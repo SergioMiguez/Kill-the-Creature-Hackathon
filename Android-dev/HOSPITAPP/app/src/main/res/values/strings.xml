@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">HOSPITAPP</string>
-    <string name="title_home">EN PROCESO</string>
+    <string name="title_home">HOME</string>
     <string name="title_dashboard">COMPLETADO</string>
     <string name="title_notifications">PERFIL</string>
     <string name="respiradores">RESPIRADORES</string>
