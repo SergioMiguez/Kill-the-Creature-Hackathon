@@ -34,13 +34,13 @@ public class MainActivity extends AppCompatActivity {
 
         mContext = getApplicationContext();
 
-        openAdd();
+
 
     }
 
     public void openAdd() {
 
-        fabAdd = findViewById(R.id.addFabButton);
+        //fabAdd = findViewById(R.id.addFabButton);
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

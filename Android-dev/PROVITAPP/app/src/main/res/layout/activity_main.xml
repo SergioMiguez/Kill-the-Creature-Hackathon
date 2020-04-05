@@ -30,6 +30,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
 
+    <!--
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -41,8 +42,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="80dp"
+            android:layout_marginEnd="39dp"
+            android:layout_marginBottom="77dp"
             android:background="@color/colorPrimary"
             android:backgroundTint="@color/colorPrimary"
             android:src="@drawable/ic_add_black_24dp"
@@ -52,5 +53,5 @@
         </android.support.design.widget.FloatingActionButton>
 
     </RelativeLayout>
-
+    -->
 </android.support.constraint.ConstraintLayout>
