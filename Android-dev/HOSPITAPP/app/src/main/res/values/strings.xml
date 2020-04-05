@@ -33,6 +33,7 @@
     <string name="nombre_proveedor">Proveedor</string>
     <string name="nombre_empresa">Empresa</string>
     <string name="id">ID</string>
+    <string name="usuario">Usuario</string>
 
 
 </resources>

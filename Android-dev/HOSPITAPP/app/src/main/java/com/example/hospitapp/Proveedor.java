@@ -19,14 +19,14 @@ public class Proveedor {
         this.telefono = telefono;
     }
 
-    public Proveedor(int id, String usuario, String password, String nameBusiness, String email, String direccion, String telefono) {
+    public Proveedor(int id, String usuario,String password, String nameBusiness, String email, String direccion, String telefono) {
         super();
         this.id = id;
         this.nameBusiness = nameBusiness;
         this.email = email;
-        this.usuario = usuario;
         this.password = password;
         this.direccion = direccion;
+        this.usuario = usuario;
         this.telefono = telefono;
     }
 

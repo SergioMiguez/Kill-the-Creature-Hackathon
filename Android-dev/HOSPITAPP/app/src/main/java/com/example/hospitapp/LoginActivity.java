@@ -16,7 +16,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -26,10 +25,10 @@ public class LoginActivity extends AppCompatActivity {
     private Button singInButton;
     private Button registerButton;
 
-    private TextView emailInput;
+    private TextView userNameInput;
     private TextView passwordInput;
 
-    public String email;
+    public String userName;
     private String password;
 
     private boolean loginSuccess;
@@ -43,17 +42,17 @@ public class LoginActivity extends AppCompatActivity {
         singInButton = findViewById(R.id.singInButton);
         registerButton = findViewById(R.id.registerButton);
 
-        emailInput = findViewById(R.id.inputEmail);
+        userNameInput = findViewById(R.id.inputUsuario);
         passwordInput = findViewById(R.id.inputPassword);
 
         singInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Objects.requireNonNull(emailInput.getText().toString());
+                Objects.requireNonNull(userNameInput.getText().toString());
                 Objects.requireNonNull(passwordInput.getText().toString());
 
-                email = emailInput.getText().toString();
+                userName = userNameInput.getText().toString();
                 password = passwordInput.getText().toString();
 
                 makeCall("http://URLOFSERVER");
@@ -99,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
 
                 /**         TODO ELIMINATE AT THE END           */
-                if (email.equals("email") && (password.equals("pass"))) {
+                if (userName.equals("email") && (password.equals("pass"))) {
                     Toast.makeText(getApplicationContext(), "Login Exitoso", Toast.LENGTH_SHORT).show();
                     finish();
                     Intent loadMenu = new Intent(getApplicationContext(), MainActivity.class);
@@ -110,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("usuario", email);
+                parameters.put("usuario", userName);
                 parameters.put("password", password);
                 return parameters;
             }
