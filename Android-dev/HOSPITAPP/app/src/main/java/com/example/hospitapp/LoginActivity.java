@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView userNameInput;
     private TextView passwordInput;
 
-    public String userName;
+    public static String userName;
     private String password;
 
     private boolean loginSuccess;
@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                 userName = userNameInput.getText().toString();
                 password = passwordInput.getText().toString();
 
-                makeCall("http://URLOFSERVER");
+                makeCall("http://192.168.1.86:80/matalbicho/login.php");
 
             }
         });
