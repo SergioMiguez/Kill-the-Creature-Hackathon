@@ -1,6 +1,8 @@
 package com.example.hospitapp.ui.notifications;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,13 +19,29 @@ import com.example.hospitapp.R;
 
 public class NotificationsFragment extends Fragment {
 
+    EditText nameEdited;
+    EditText nameHospitalEdited;
+    EditText nameStreetEdited;
+    EditText streetNumberEdited;
+    EditText CPEdited;
+    EditText cityEdited;
+    EditText emailEdited;
+    EditText telephoneEdited;
+
+    TextView nameAdded;
+    TextView nameHospitalAdded;
+    TextView nameStreetAdded;
+    TextView streetNumberAdded;
+    TextView CPAdded;
+    TextView cityAdded;
+    TextView emailAdded;
+    TextView telephoneAdded;
+
+    SharedPreferences myPrefs;
+
+    String def = "ERROR";
+
     private NotificationsViewModel notificationsViewModel;
-
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -31,64 +49,109 @@ public class NotificationsFragment extends Fragment {
                 ViewModelProviders.of(this).get(NotificationsViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_notifications, container, false);
 
-       // final TextView nameAdded = root.findViewById(R.id.nameAdded);
-        //final TextView nameHospitalAdded = root.findViewById(R.id.nameHospitalAdded);
-        //final TextView nameStreetAdded = root.findViewById(R.id.nameStreetAdded);
-        //final TextView streetNumberAdded = root.findViewById(R.id.streetNumberAdded);
-        //final TextView CPAdded = root.findViewById(R.id.CPAdded);
-        //final TextView cityAdded = root.findViewById(R.id.cityAdded);
-        // final TextView emailAdded = root.findViewById(R.id.emailAdded);
-        //final TextView telephoneAdded = root.findViewById(R.id.telephoneAdded);
+        nameAdded = root.findViewById(R.id.nameAdded);
+        nameHospitalAdded = root.findViewById(R.id.nameHospitalAdded);
+        nameStreetAdded = root.findViewById(R.id.nameStreetAdded);
+        streetNumberAdded = root.findViewById(R.id.streetNumberAdded);
+        CPAdded = root.findViewById(R.id.CPAdded);
+        cityAdded = root.findViewById(R.id.cityAdded);
+        emailAdded = root.findViewById(R.id.emailAdded);
+        telephoneAdded = root.findViewById(R.id.telephoneAdded);
 
-        //final EditText nameEdited = root.findViewById(R.id.nameEdited);
-        //final EditText nameHospitalEdited = root.findViewById(R.id.nameHospitalEdited);
-        //final EditText nameStreetEdited = root.findViewById(R.id.nameStreetEdited);
-        //final EditText streetNumberEdited = root.findViewById(R.id.streetNumberEdited);
-        //final EditText CPEdited = root.findViewById(R.id.CPEdited);
-        //final EditText cityEdited = root.findViewById(R.id.cityEdited);
-        //final EditText emailEdited = root.findViewById(R.id.emailEdited);
-        //final EditText telephoneEdited = root.findViewById(R.id.telephoneEdited);
+        myPrefs = getActivity().getSharedPreferences("prefID", Context.MODE_PRIVATE);
 
-        Button editUserBtn = root.findViewById(R.id.editUserBtn);
-        editUserBtn.setOnClickListener(new View.OnClickListener() {
+        String name = myPrefs.getString("name", def);
+        String hospital = myPrefs.getString("hospital", def);
+        String street = myPrefs.getString("street", def);
+        String street_number = myPrefs.getString("street_number", def);
+        String CP = myPrefs.getString("CP", def);
+        String city = myPrefs.getString("city", def);
+        String email = myPrefs.getString("email", def);
+        String telephone = myPrefs.getString("telephone", def);
+
+        nameAdded.setText(name);
+        nameHospitalAdded.setText(hospital);
+        nameStreetAdded.setText(street);
+        streetNumberAdded.setText(street_number);
+        CPAdded.setText(CP);
+        cityAdded.setText(city);
+        emailAdded.setText(email);
+        telephoneAdded.setText(telephone);
+
+        Button saveUserBtn = root.findViewById(R.id.saveUserBtn);
+        saveUserBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goUserInfo = new Intent(getActivity().getApplicationContext(), InfoUsuario.class);
-                startActivity(goUserInfo);
+
+                nameEdited = root.findViewById(R.id.nameEdited);
+                nameHospitalEdited = root.findViewById(R.id.nameHospitalEdited);
+                nameStreetEdited = root.findViewById(R.id.nameStreetEdited);
+                streetNumberEdited = root.findViewById(R.id.streetNumberEdited);
+                CPEdited = root.findViewById(R.id.CPEdited);
+                cityEdited = root.findViewById(R.id.cityEdited);
+                emailEdited = root.findViewById(R.id.emailEdited);
+                telephoneEdited = root.findViewById(R.id.telephoneEdited);
+
+                String nameEditedStr = nameEdited.getText().toString();
+                String nameHospitalEditedStr = nameHospitalEdited.getText().toString();
+                String nameStreetEditedStr = nameStreetEdited.getText().toString();
+                String streetNumberEditedStr = streetNumberEdited.getText().toString();
+                String CPEditedStr = CPEdited.getText().toString();
+                String cityEditedStr = cityEdited.getText().toString();
+                String emailEditedStr = emailEdited.getText().toString();
+                String telephoneEditedStr = telephoneEdited.getText().toString();
+
+                myPrefs = getActivity().getSharedPreferences("prefID", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = myPrefs.edit();
+
+                editor.putString("name", nameEditedStr);
+                editor.putString("hospital", nameHospitalEditedStr);
+                editor.putString("street", nameStreetEditedStr);
+                editor.putString("street_number", streetNumberEditedStr);
+                editor.putString("CP", CPEditedStr);
+                editor.putString("city", cityEditedStr);
+                editor.putString("email", emailEditedStr);
+                editor.putString("telephone", telephoneEditedStr);
+                editor.apply();
+
+                String name = myPrefs.getString("name", def);
+                String hospital = myPrefs.getString("hospital", def);
+                String street = myPrefs.getString("street", def);
+                String street_number = myPrefs.getString("street_number", def);
+                String CP = myPrefs.getString("CP", def);
+                String city = myPrefs.getString("city", def);
+                String email = myPrefs.getString("email", def);
+                String telephone = myPrefs.getString("telephone", def);
+
+                boolean allFilled = fullEdit(nameEdited) && fullEdit(nameHospitalEdited) && fullEdit(nameStreetEdited) &&
+                        fullEdit(emailEdited) && fullEdit(telephoneEdited);
+
+                if (allFilled) {
+                    nameAdded.setText(name);
+                    nameHospitalAdded.setText(hospital);
+                    nameStreetAdded.setText(street);
+                    streetNumberAdded.setText(street_number);
+                    CPAdded.setText(CP);
+                    cityAdded.setText(city);
+                    emailAdded.setText(email);
+                    telephoneAdded.setText(telephone);
+
+                    nameEdited.getText().clear();
+                    nameHospitalEdited.getText().clear();
+                    nameStreetEdited.getText().clear();
+                    streetNumberEdited.getText().clear();
+                    CPEdited.getText().clear();
+                    cityEdited.getText().clear();
+                    emailEdited.getText().clear();
+                    telephoneEdited.getText().clear();
+                }
+                else {
+                    Toast.makeText(getContext(), "Rellene todos los campos para continuar!", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
-        //final Button saveUserBtn = root.findViewById(R.id.saveUserBtn);
-        //saveUserBtn.setOnClickListener(new View.OnClickListener() {
-           // @Override
-          //  public void onClick(View v) {
-
-            //    boolean allFilled = fullEdit(nameEdited) && fullEdit(nameHospitalEdited) && fullEdit(nameStreetEdited) &&
-             ///7         fullEdit(emailEdited) && fullEdit(telephoneEdited);
-
-                //if (allFilled) {
-                  //  updateTextView(nameAdded, nameEdited);
-                    //updateTextView(nameHospitalAdded, nameHospitalEdited);
-                  //  updateTextView(nameStreetAdded, nameStreetEdited);
-                  //  updateTextView(streetNumberAdded, streetNumberEdited);
-                 //   updateTextView(CPAdded, CPEdited);
-                  //  updateTextView(cityAdded, cityEdited);
-                   // updateTextView(emailAdded, emailEdited);
-                    //updateTextView(telephoneAdded, telephoneEdited);
-                //}
-                //else {
-                  //  Toast.makeText(getContext(), "Rellene todos los campos para continuar!", Toast.LENGTH_LONG).show();
-                //}
-           // }
-        //});
-
         return root;
-    }
-
-
-    private void updateTextView(TextView textView, EditText editText) {
-        textView.setText(editText.getText().toString());
-        editText.getText().clear();
     }
 
     private boolean fullEdit(EditText editText) {
