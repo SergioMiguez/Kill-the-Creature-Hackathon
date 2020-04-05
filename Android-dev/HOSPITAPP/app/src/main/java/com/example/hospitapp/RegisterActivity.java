@@ -1,8 +1,8 @@
 package com.example.hospitapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.SpanWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,9 +28,9 @@ import java.util.Objects;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText nameRegisterInput, hospitalNameInput, adressInput, numberAdressInput, zipCodeInput, cityInput, emailInput, telefoneInput, FpswInput, SpswInput;
-    private Button registerButton;
+    private Button registerButton, singinButton;
 
-    private String userName, hospitalName, adressName, numAdress, zipCode, city, email, telefone, Fpsw, Spsw;
+    private String userName, hospitalName, addressName, numAddress, zipCode, city, email, telefone, Fpsw, Spsw;
 
     RequestQueue requestQueue;
 
@@ -52,11 +52,12 @@ public class RegisterActivity extends AppCompatActivity {
         SpswInput = findViewById(R.id.checkPasswordRegistered);
 
         registerButton = findViewById(R.id.saveUserBtn);
+        singinButton = findViewById(R.id.singInButton);
 
         userName = getInfo(nameRegisterInput);
         hospitalName = getInfo(hospitalNameInput);
-        adressName = getInfo(adressInput);
-        numAdress = getInfo(numberAdressInput);
+        addressName = getInfo(adressInput);
+        numAddress = getInfo(numberAdressInput);
         zipCode = getInfo(zipCodeInput);
         city = getInfo(cityInput);
         email = getInfo(emailInput);
@@ -71,8 +72,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                 Objects.requireNonNull(userName);
                 Objects.requireNonNull(hospitalName);
-                Objects.requireNonNull(adressName);
-                Objects.requireNonNull(numAdress);
+                Objects.requireNonNull(addressName);
+                Objects.requireNonNull(numAddress);
                 Objects.requireNonNull(zipCode);
                 Objects.requireNonNull(city);
                 Objects.requireNonNull(email);
@@ -81,16 +82,24 @@ public class RegisterActivity extends AppCompatActivity {
                 Objects.requireNonNull(Spsw);
 
                 //makeCallCheckUsername(userName);
-                askServerUsername("http://URLTOBECHANGED");
+                //askServerUsername("http://URLTOBECHANGED");
 
                 /** TODO CHECK IF USERNAME EXISTS */
-                if (Fpsw.equals(Spsw) && true /* username !exists in DB */) {
-
+                if (Fpsw.equals(Spsw)) {
+                    makeCallServerAddNewUser("http://URLCOMPLETAR");
                 }
 
             }
         });
 
+        singinButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent backToSingIn = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(backToSingIn);
+            }
+        });
 
     }
 
@@ -98,8 +107,7 @@ public class RegisterActivity extends AppCompatActivity {
         return text.getText().toString();
     }
 
-    /*
-    private void makeCallCheckUsername(String URL) {
+    private void makeCallServerAddNewUser (String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -115,12 +123,15 @@ public class RegisterActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
                 parameters.put("username", userName);
+                parameters.put("password", Fpsw);
+                parameters.put("hospitalName", hospitalName);
+                parameters.put("adressName", toStringAdress(addressName, numAddress,zipCode,city));
                 return parameters;
             }
         };
         requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
-    } */
+    }
 
     private void askServerUsername(String URL) {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
@@ -145,6 +156,10 @@ public class RegisterActivity extends AppCompatActivity {
         );
         requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(jsonArrayRequest);
+    }
+
+    private String toStringAdress( String addressName, String numAddress, String zipCode, String city) {
+        return addressName.toUpperCase() + " " + numAddress + " " + zipCode + " " + city.toUpperCase();
     }
 
 }
