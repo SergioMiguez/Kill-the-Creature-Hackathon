@@ -14,9 +14,27 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.provitapp.Order;
 import com.example.provitapp.R;
+import com.example.provitapp.UsuarioHospital;
+import com.example.provitapp.ui.ListClassAdapter;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class NotificationsFragment extends Fragment {
+
+    private ArrayList<String> userInfoList;
+    private Context mContext;
+
 
     EditText nameEdited;
     EditText nameHospitalEdited;
@@ -156,6 +174,47 @@ public class NotificationsFragment extends Fragment {
     private boolean fullEdit(EditText editText) {
         String empty = "";
         return !editText.getText().toString().trim().equals("");
+    }
+
+    public void makeProfileCall(String URL) {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject userInfo = new JSONObject(response);
+
+                        userInfoList.add(new UsuarioHospital(
+                                userInfo.getInt("id"),
+                                order.getInt("id_objeto"),
+                                order.getInt("cantidad"),
+                                order.getInt("id_proveedor"),
+                                order.getInt("id_hospital"),
+                                order.getString("fecha"),
+                                order.getString("direccion_envio")
+                        ));
+
+                    ListClassAdapter adapter = new ListClassAdapter(listOfOrders, state);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (mContext != null) {
+                    Toast.makeText(mContext, "ERROR HOME", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+        /*  TODO CHECK IF CONTEXT WORKS  (mContext) */
+        if (mContext != null) {
+            Volley.newRequestQueue(mContext).add(stringRequest);
+        }
+
     }
 
 
