@@ -43,7 +43,7 @@
             android:id="@+id/name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre:"
+            android:text="Usuario"
             android:textSize="18sp"
             >
 
@@ -53,7 +53,7 @@
             android:id="@+id/nameRegistered"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:hint="Introduzca su nombre completo"
+            android:hint="Nombre de usuario"
             android:layout_marginLeft="20dp"
             >
 

@@ -3,7 +3,6 @@ package com.example.hospitapp;
 public class Proveedor {
 
     private int id;
-    private String nombre;
     private String usuario;
     private String password;
     private String direccion;
@@ -11,9 +10,8 @@ public class Proveedor {
     private String nameBusiness;
     private String email;
 
-    public Proveedor(int id, String nombre, String usuario, String nameBusiness, String email, String direccion, String telefono) {
+    public Proveedor(int id, String usuario, String nameBusiness, String email, String direccion, String telefono) {
         this.id = id;
-        this.nombre = nombre;
         this.nameBusiness = nameBusiness;
         this.email = email;
         this.usuario = usuario;
@@ -21,10 +19,9 @@ public class Proveedor {
         this.telefono = telefono;
     }
 
-    public Proveedor(int id, String nombre, String usuario, String password, String nameBusiness, String email, String direccion, String telefono) {
+    public Proveedor(int id, String usuario, String password, String nameBusiness, String email, String direccion, String telefono) {
         super();
         this.id = id;
-        this.nombre = nombre;
         this.nameBusiness = nameBusiness;
         this.email = email;
         this.usuario = usuario;
@@ -34,10 +31,6 @@ public class Proveedor {
     }
 
     /** _______________ GETTER FUNCTIONS _______________ */
-    public String getNombre() {
-        return nombre;
-    }
-
     public String getNameBusiness() {
         return nameBusiness;
     }
@@ -67,10 +60,6 @@ public class Proveedor {
     }
 
     /** _______________ SETTER FUNCTIONS _______________ */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public void setNameBusiness(String nameBusiness) {
         this.nameBusiness = nameBusiness;
     }

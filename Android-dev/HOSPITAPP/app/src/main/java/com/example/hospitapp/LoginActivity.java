@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView emailInput;
     private TextView passwordInput;
 
-    private String email;
+    public String email;
     private String password;
 
     private boolean loginSuccess;
