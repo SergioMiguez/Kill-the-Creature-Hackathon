@@ -10,7 +10,7 @@
     <string name="abrir_calendario">Abrir calendario</string>
     <string name="seleccionar_un_dia">Seleccionar un dia</string>
     <string name="nombre">Objeto</string>
-    <string name="referenceid">ReferenceId</string>
+    <string name="referenceid">Referencia:</string>
     <string name="num_unidades">Número de unidades:</string>
     <string name="mantener_direccion_de_envio">¿Mantener direccion de envio?</string>
     <string name="si_eligiste_no_indica_la_nueva">Si eligiste no indica la nueva:</string>
@@ -32,6 +32,8 @@
     <string name="pass">Contraseña</string>
     <string name="nombre_proveedor">Proveedor</string>
     <string name="nombre_empresa">Empresa</string>
+    <string name="id">ID</string>
+    <string name="usuario">Usuario</string>
 
 
 </resources>

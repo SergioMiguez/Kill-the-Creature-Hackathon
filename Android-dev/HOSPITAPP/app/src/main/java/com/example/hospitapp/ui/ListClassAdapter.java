@@ -1,5 +1,6 @@
 package com.example.hospitapp.ui;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.StringRequest;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
 
@@ -16,22 +18,25 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
 
     ArrayList<Order> listOfOrders;
     private View.OnClickListener listener;
+    private String state;
 
-    public ListClassAdapter(ArrayList<Order> listsOfOrders) {
+    public ListClassAdapter(ArrayList<Order> listsOfOrders, String state) {
         this.listOfOrders = listsOfOrders;
+        this.state = state;
     }
 
     public class OrderViewHolder extends RecyclerView.ViewHolder {
 
         TextView textObject, textVolumeNumber,
-                textState, textReferenceID;
+                textState, textReferenceID, textFecha;
 
         public OrderViewHolder(@NonNull View itemView) {
             super(itemView);
             textObject = (TextView) itemView.findViewById(R.id.ObjectName);
             textVolumeNumber = (TextView) itemView.findViewById(R.id.VolumeNumber);
+            textFecha = (TextView) itemView.findViewById(R.id.fechaNumber);
             textState = (TextView) itemView.findViewById(R.id.State);
-            textReferenceID = (TextView) itemView.findViewById(R.id.ReferenceId);
+            textReferenceID = (TextView) itemView.findViewById(R.id.ReferenceIdNum);
         }
 
     }
@@ -49,10 +54,11 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
 
     @Override
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
-        holder.textObject.setText(listOfOrders.get(position).getObject());
-        holder.textVolumeNumber.setText(listOfOrders.get(position).getVolumeNumber());
-        holder.textState.setText(listOfOrders.get(position).getState());
-        holder.textReferenceID.setText(listOfOrders.get(position).getReferenceID());
+        holder.textObject.setText("" + listOfOrders.get(position).getId_objeto());
+        holder.textVolumeNumber.setText("" + listOfOrders.get(position).getCantidad());
+        holder.textFecha.setText(listOfOrders.get(position).getFecha());
+        holder.textState.setText(state);
+        holder.textReferenceID.setText("" +listOfOrders.get(position).getId());
     }
 
     @Override

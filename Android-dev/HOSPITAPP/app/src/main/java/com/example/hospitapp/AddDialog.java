@@ -54,6 +54,10 @@ public class AddDialog extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
+                            Objects.requireNonNull(object);
+                            Objects.requireNonNull(volumeNumber);
+                            Objects.requireNonNull(newAdress);
+
                             object = objectInput.getText().toString();
                             volumeNumber = volumeInput.getText().toString();
 
@@ -64,11 +68,9 @@ public class AddDialog extends AppCompatDialogFragment {
                                 newAdress = adressInput.getText().toString();
                             }
 
-                            Objects.requireNonNull(object);
-                            Objects.requireNonNull(volumeNumber);
-                            Objects.requireNonNull(newAdress);
 
-                            makeServerCall(object, volumeNumber, newAdress);
+
+                            makeServerCall("httpURL");
                     }
                 });
 
@@ -76,7 +78,7 @@ public class AddDialog extends AppCompatDialogFragment {
     }
 
     /**     TODO    */
-    public boolean makeServerCall(String object, String volumeNumber, String newAdress) {
+    public boolean makeServerCall(String URL) {
 
         return false;
     }
