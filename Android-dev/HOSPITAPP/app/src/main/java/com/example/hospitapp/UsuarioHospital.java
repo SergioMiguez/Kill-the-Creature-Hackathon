@@ -4,44 +4,68 @@ import java.io.Serializable;
 
 public class UsuarioHospital implements Serializable {
 
-    private String name;
+    private int id;
+    private String nombre;
+    private String usuario;
+    private String password;
+    private String direccion;
     private String email;
-    private String hospitalName;
-    private String address;
+    private String telefono;
     private String numberAddress;
     private String zipCode;
     private String city;
-    private String telephone;
 
-    public UsuarioHospital (String name, String email, String hospitalName,
-                            String address, String numberAddress, String zipCode, String city,
-                            String telephone) {
-
-        this.name = name;
+    public UsuarioHospital(int id, String nombre, String usuario, String direccion, String email, String telefono, String numberAddress, String zipCode, String city) {
+        this.id = id;
+        this.nombre = nombre;
+        this.usuario = usuario;
+        this.direccion = direccion;
         this.email = email;
-        this.hospitalName = hospitalName;
-        this.address = address;
+        this.telefono = telefono;
         this.numberAddress = numberAddress;
         this.zipCode = zipCode;
         this.city = city;
-        this.telephone = telephone;
+    }
+
+    public UsuarioHospital (int id, String nombre, String usuario, String password, String email,
+                            String direccion, String numberAddress, String zipCode,
+                            String city, String telefono) {
+
+        this.id = id;
+        this.nombre = nombre;
+        this.usuario = usuario;
+        this.password = password;
+        this.email = email;
+        this.direccion = direccion;
+        this.numberAddress = numberAddress;
+        this.zipCode = zipCode;
+        this.city = city;
+        this.telefono = telefono;
     }
 
     /**         GETTER FUNCTIONS       */
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public String getHospitalName() {
-        return hospitalName;
+    public int getId() {
+        return id;
     }
 
-    public String getAddress() {
-        return address;
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getDireccion() {
+        return direccion;
     }
 
     public String getNumberAddress() {
@@ -56,25 +80,33 @@ public class UsuarioHospital implements Serializable {
         return city;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public String getTelefono() {
+        return telefono;
     }
 
     /**         SETTER FUNCTIONS       */
-    public void setName(String name) {
-        this.name = name;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setHospitalName(String hospitalName) {
-        this.hospitalName = hospitalName;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public void setNumberAddress(String numberAddress) {
@@ -89,8 +121,8 @@ public class UsuarioHospital implements Serializable {
         this.city = city;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
 }

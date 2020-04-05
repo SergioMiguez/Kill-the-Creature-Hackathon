@@ -7,22 +7,22 @@ public class Proveedor {
     private String password;
     private String direccion;
     private String telefono;
-    private String nameBusiness;
     private String email;
+    private String descripcion;
 
-    public Proveedor(int id, String usuario, String nameBusiness, String email, String direccion, String telefono) {
+    public Proveedor(int id, String usuario, String email, String direccion, String telefono, String descripcion) {
         this.id = id;
-        this.nameBusiness = nameBusiness;
+        this.descripcion = descripcion;
         this.email = email;
         this.usuario = usuario;
         this.direccion = direccion;
         this.telefono = telefono;
     }
 
-    public Proveedor(int id, String usuario,String password, String nameBusiness, String email, String direccion, String telefono) {
+    public Proveedor(int id, String usuario,String password, String descripcion, String email, String direccion, String telefono) {
         super();
         this.id = id;
-        this.nameBusiness = nameBusiness;
+        this.descripcion = descripcion;
         this.email = email;
         this.password = password;
         this.direccion = direccion;
@@ -31,8 +31,8 @@ public class Proveedor {
     }
 
     /** _______________ GETTER FUNCTIONS _______________ */
-    public String getNameBusiness() {
-        return nameBusiness;
+    public String getDescripcion() {
+        return descripcion;
     }
 
     public String getEmail() {
@@ -60,8 +60,8 @@ public class Proveedor {
     }
 
     /** _______________ SETTER FUNCTIONS _______________ */
-    public void setNameBusiness(String nameBusiness) {
-        this.nameBusiness = nameBusiness;
+    public void setDescripcion(String nameBusiness) {
+        this.descripcion = descripcion;
     }
 
     public void setEmail(String email) {
