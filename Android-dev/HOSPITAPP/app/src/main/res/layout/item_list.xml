@@ -35,7 +35,29 @@
 
         </TextView>
 
+        <TextView
+            android:id="@+id/fecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha"
+            android:textSize="16sp"
 
+            android:layout_marginLeft="30dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/fechaNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha"
+            android:textSize="16sp"
+
+            android:layout_marginLeft="10dp"
+            >
+
+        </TextView>
 
     </LinearLayout>
 
@@ -47,6 +69,17 @@
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
         >
+
+        <TextView
+            android:id="@+id/textVN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Unidades:"
+            android:layout_marginTop="20dp"
+            android:textSize="16sp"
+            >
+
+        </TextView>
 
         <TextView
             android:id="@+id/VolumeNumber"
@@ -61,12 +94,23 @@
         </TextView>
 
         <TextView
-            android:id="@+id/ReferenceId"
+            android:id="@+id/ReferenceIdText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/referenceid"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:textSize="16sp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/ReferenceIdNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/id"
+            android:layout_marginTop="20dp"
             android:textSize="16sp"
             >
 

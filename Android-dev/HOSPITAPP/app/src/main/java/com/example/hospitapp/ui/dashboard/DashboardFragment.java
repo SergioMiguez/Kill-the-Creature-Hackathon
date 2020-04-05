@@ -41,7 +41,7 @@ public class DashboardFragment extends Fragment {
 
         fillList();
 
-        ListClassAdapter adapter = new ListClassAdapter(listOfOrders);
+        ListClassAdapter adapter = new ListClassAdapter(listOfOrders, "COMPLETADOS");
 
 
         recyclerView.setAdapter(adapter);
@@ -52,8 +52,8 @@ public class DashboardFragment extends Fragment {
 
 
     private void fillList() {
-        listOfOrders.add(new Order("Object","VN","Pending","Reference"));
-        listOfOrders.add(new Order("Object","VN","Pending","Reference"));
+        listOfOrders.add(new Order(0,0,1000,20, 0,"5/04/2020", "mi casa"));
+        listOfOrders.add(new Order(1,1,20,15, 1, "5/04/2020", "tu casa"));
 
 
     }

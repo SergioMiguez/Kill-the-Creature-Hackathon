@@ -13,12 +13,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -33,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     private String userName, hospitalName, addressName, numAddress, zipCode, city, email, telefone, Fpsw, Spsw;
 
     RequestQueue requestQueue;
+    private boolean registerSuccess;
 
 
     @Override
@@ -54,21 +52,22 @@ public class RegisterActivity extends AppCompatActivity {
         registerButton = findViewById(R.id.saveUserBtn);
         singinButton = findViewById(R.id.singInButton);
 
-        userName = getInfo(nameRegisterInput);
-        hospitalName = getInfo(hospitalNameInput);
-        addressName = getInfo(adressInput);
-        numAddress = getInfo(numberAdressInput);
-        zipCode = getInfo(zipCodeInput);
-        city = getInfo(cityInput);
-        email = getInfo(emailInput);
-        telefone = getInfo(telefoneInput);
-        Fpsw = getInfo(FpswInput);
-        Spsw = getInfo(SpswInput);
 
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                userName = getInfo(nameRegisterInput);
+                hospitalName = getInfo(hospitalNameInput);
+                addressName = getInfo(adressInput);
+                numAddress = getInfo(numberAdressInput);
+                zipCode = getInfo(zipCodeInput);
+                city = getInfo(cityInput);
+                email = getInfo(emailInput);
+                telefone = getInfo(telefoneInput);
+                Fpsw = getInfo(FpswInput);
+                Spsw = getInfo(SpswInput);
 
                 Objects.requireNonNull(userName);
                 Objects.requireNonNull(hospitalName);
@@ -81,9 +80,26 @@ public class RegisterActivity extends AppCompatActivity {
                 Objects.requireNonNull(Fpsw);
                 Objects.requireNonNull(Spsw);
 
+                /**
+                 * userName = "test10";
+                 *                 hospitalName = "test10";
+                 *                 addressName = "test10";
+                 *                 numAddress = "test10";
+                 *                 zipCode = "test10";
+                 *                 city = "test10";
+                 *                 email = "test10";
+                 *                 telefone = "test10";
+                 *                 Fpsw = "test10";
+                 *                 Spsw = "test10";
+                 */
+
                 if (Fpsw.equals(Spsw)) {
-                    makeCallServerAddNewUser("http://URLCOMPLETAR");
+                    makeCallServerAddNewUser ("http://192.168.1.86:80/matalbicho/registro_hospitales.php");
+                } else {
+                    Toast.makeText(getApplicationContext(), "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
                 }
+
+
 
             }
         });
@@ -104,57 +120,49 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void makeCallServerAddNewUser (String URL) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(getApplicationContext(), "OPERACION EXITOSA", Toast.LENGTH_SHORT).show();
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    if (jsonResponse.getBoolean("success")){
+                        Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_SHORT).show();
+                        registerSuccess = true;
+                    } else {
+                        Toast.makeText(getApplicationContext(), "No se pudo crear el usuario, posible error de duplicacion", Toast.LENGTH_SHORT).show();
+                        registerSuccess = false;
+                    }
+
+                } catch (Exception e) { // PABLO PLS DON'T KILL ME
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("username", userName);
+                parameters.put("nombre", hospitalName);
+                parameters.put("usuario", userName);
                 parameters.put("password", Fpsw);
-                parameters.put("hospitalName", hospitalName);
-                parameters.put("adressName", toStringAdress(addressName, numAddress,zipCode,city));
+                parameters.put("direccion", toStringAddress(addressName, numAddress, zipCode, city));
+                parameters.put("telefono", telefone);
+                parameters.put("email", email);
                 return parameters;
             }
         };
-        requestQueue = Volley.newRequestQueue(this);
+        requestQueue=Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
 
-    private void askServerUsername(String URL) {
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                JSONObject jsonObject = null;
-                for (int i = 0; i < response.length(); i++) {
-                    try {
-                        jsonObject = response.getJSONObject(i);
-                        nameRegisterInput.setText(jsonObject.getString("username"));
-                    } catch (JSONException e) {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
-            }
-        }
-        );
-        requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(jsonArrayRequest);
-    }
 
-    private String toStringAdress( String addressName, String numAddress, String zipCode, String city) {
+    private String toStringAddress(String addressName, String numAddress, String zipCode, String city) {
         return addressName.toUpperCase() + " " + numAddress + " " + zipCode + " " + city.toUpperCase();
     }
 

@@ -73,15 +73,13 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
     }
 
     private void fillList() {
-        listOfProveedores.add(new Proveedor("Nombre", "Business", "email@", "State"));
-        listOfProveedores.add(new Proveedor("Nombre", "Business", "email@", "State"));
-        listOfProveedores.add(new Proveedor("Nombre", "Business", "email@", "State"));
-        listOfProveedores.add(new Proveedor("Nombre", "Business", "email@", "State"));
-        listOfProveedores.add(new Proveedor("Nombre", "Business", "email@", "State"));
-        listOfProveedores.add(new Proveedor("Nombre", "Business", "email@", "State"));
-        listOfProveedores.add(new Proveedor("Nombre", "Business", "email@", "State"));
-        listOfProveedores.add(new Proveedor("Nombre", "Business", "email@", "State"));
-
+        listOfProveedores.add(new Proveedor("Nombre", "Business", "email@", "usuario", "pass", "direccion", "telf", 0));
+        listOfProveedores.add(new Proveedor("Nombre", "Business", "email@", "usuario", "pass", "direccion", "telf", 0));
+        listOfProveedores.add(new Proveedor("Nombre", "Business", "email@", "usuario", "pass", "direccion", "telf", 0));
+        listOfProveedores.add(new Proveedor("Nombre", "Business", "email@", "usuario", "pass", "direccion", "telf", 0));
+        listOfProveedores.add(new Proveedor("Nombre", "Business", "email@", "usuario", "pass", "direccion", "telf", 0));
+        listOfProveedores.add(new Proveedor("Nombre", "Business", "email@", "usuario", "pass", "direccion", "telf", 0));
+        
     }
 
 }
