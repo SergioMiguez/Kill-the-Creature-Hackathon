@@ -7,12 +7,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 
 import java.util.Objects;
-import java.util.function.ToDoubleBiFunction;
 
 public class AddDialog extends AppCompatDialogFragment {
 
@@ -23,7 +21,7 @@ public class AddDialog extends AppCompatDialogFragment {
 
     private EditText objectInput;
     private EditText volumeInput;
-    private EditText adressInput;
+    private EditText addressInput;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -37,7 +35,7 @@ public class AddDialog extends AppCompatDialogFragment {
 
         objectInput = view.findViewById(R.id.objectInput);
         volumeInput = view.findViewById(R.id.inputVN);
-        adressInput = view.findViewById(R.id.changeAddress);
+        addressInput = view.findViewById(R.id.changeAddress);
 
         keepAdress = view.findViewById(R.id.switch1);
 
@@ -54,18 +52,18 @@ public class AddDialog extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                            Objects.requireNonNull(object);
-                            Objects.requireNonNull(volumeNumber);
-                            Objects.requireNonNull(newAdress);
+                            Objects.requireNonNull(objectInput);
+                            Objects.requireNonNull(volumeInput);
+                            Objects.requireNonNull(addressInput);
 
                             object = objectInput.getText().toString();
                             volumeNumber = volumeInput.getText().toString();
 
                             if (!keepAdress.isChecked()) {
-                                newAdress = adressInput.getText().toString();
+                                newAdress = addressInput.getText().toString();
                             } else {
                                 /** TODO  change newAdress to the Default Adress*/
-                                newAdress = adressInput.getText().toString();
+                                newAdress = addressInput.getText().toString();
                             }
 
 
