@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="@string/nombre_proveedor"
             android:layout_marginLeft="40dp"
-            android:textSize="20sp"
+            android:textSize="16sp"
             >
 
         </TextView>
@@ -60,17 +60,16 @@
 
         </TextView>
 
-        <Button
+        <CheckBox
             android:id="@+id/ButtonAccept"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="aceptar"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
-            android:textSize="16sp"
-            >
+            android:layout_marginTop="20dp"
+            android:text="Aceptar?"
+            android:textSize="16sp">
 
-        </Button>
+        </CheckBox>
 
     </LinearLayout>
 
