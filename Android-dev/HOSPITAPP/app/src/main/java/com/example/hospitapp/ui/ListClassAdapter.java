@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +21,6 @@ import java.util.ArrayList;
 public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.OrderViewHolder> implements View.OnClickListener{
 
     ArrayList<Order> listOfOrders;
-    Dialog proveedoresDialog;
     Context mContext;
 
     private View.OnClickListener listener;
@@ -36,15 +34,11 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
 
     public static class OrderViewHolder extends RecyclerView.ViewHolder {
 
-        private RelativeLayout order_item;
-
         TextView textObject, textVolumeNumber,
                 textState, textReferenceID, textFecha;
 
         public OrderViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            order_item = (RelativeLayout) itemView.findViewById(R.id.order_item);
 
             textObject = (TextView) itemView.findViewById(R.id.ObjectName);
             textVolumeNumber = (TextView) itemView.findViewById(R.id.VolumeNumber);
@@ -59,20 +53,7 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
     @NonNull
     @Override
     public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list,null,false);
-
-        Button item = view.findViewById(R.id.order_item);
-
-        item.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(mContext, "Test Click ", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        view.setOnClickListener(this);
-
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list,null,false);
         return new OrderViewHolder(view);
     }
 
