@@ -32,6 +32,9 @@ public class LoginActivity extends AppCompatActivity {
     private String email;
     private String password;
 
+    private boolean loginSuccess;
+    private RequestQueue requestQueue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,34 +81,44 @@ public class LoginActivity extends AppCompatActivity {
 
         if (email.equals("email") && password.equals("pass")) {
             return true;
+        } else {
+            return loginSuccess;
         }
 
-        return false;
     }
 
-    private void makeCall (String URL) {
-
+    private void makeCall (String URL){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(getApplicationContext(), "OPERACION EXITOSA", Toast.LENGTH_SHORT).show();
+                try {
+                    loginSuccess = !response.isEmpty();
+                    if (loginSuccess) {
+                        Toast.makeText(getApplicationContext(), "Login Exitoso", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Nombre de usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("email", email);
+                parameters.put("usuario", email);
                 parameters.put("password", password);
-                return super.getParams();
+                return parameters;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue=Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
-
     }
 }
