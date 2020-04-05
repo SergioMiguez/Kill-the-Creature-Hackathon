@@ -81,10 +81,6 @@ public class RegisterActivity extends AppCompatActivity {
                 Objects.requireNonNull(Fpsw);
                 Objects.requireNonNull(Spsw);
 
-                //makeCallCheckUsername(userName);
-                //askServerUsername("http://URLTOBECHANGED");
-
-                /** TODO CHECK IF USERNAME EXISTS */
                 if (Fpsw.equals(Spsw)) {
                     makeCallServerAddNewUser("http://URLCOMPLETAR");
                 }

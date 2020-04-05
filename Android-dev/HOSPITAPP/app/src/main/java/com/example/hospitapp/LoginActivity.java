@@ -56,11 +56,8 @@ public class LoginActivity extends AppCompatActivity {
                 email = emailInput.getText().toString();
                 password = passwordInput.getText().toString();
 
-                if(makeLoginCall(email, password)) {
-                    finish();
-                    Intent loadMenu = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(loadMenu);
-                }
+                makeCall("http://URLOFSERVER");
+
             }
         });
 
@@ -75,26 +72,18 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private boolean makeLoginCall(String email, String password) {
-
-        makeCall("http://URLOFSERVER");
-
-        if (email.equals("email") && password.equals("pass")) {
-            return true;
-        } else {
-            return loginSuccess;
-        }
-
-    }
-
     private void makeCall (String URL){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     loginSuccess = !response.isEmpty();
+
                     if (loginSuccess) {
                         Toast.makeText(getApplicationContext(), "Login Exitoso", Toast.LENGTH_SHORT).show();
+                        finish();
+                        Intent loadMenu = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(loadMenu);
                     } else {
                         Toast.makeText(getApplicationContext(), "Nombre de usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
                     }
@@ -108,6 +97,14 @@ public class LoginActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                 //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
+
+                /**         TODO ELIMINATE AT THE END           */
+                if (email.equals("email") && (password.equals("pass"))) {
+                    Toast.makeText(getApplicationContext(), "Login Exitoso", Toast.LENGTH_SHORT).show();
+                    finish();
+                    Intent loadMenu = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(loadMenu);
+                }
             }
         }) {
             @Override
