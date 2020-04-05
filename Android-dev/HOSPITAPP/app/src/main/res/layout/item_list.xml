@@ -117,15 +117,40 @@
 
         </TextView>
 
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/VolumeNumberLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        >
+        <Button
+            android:id="@+id/proveedoresButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="proveedores"
+            >
+
+        </Button>
+
+
     </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/VolumeNumberLayout"
+        android:layout_below="@+id/buttonLayout"
         android:layout_marginTop="10dp"
         >
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="3dp"

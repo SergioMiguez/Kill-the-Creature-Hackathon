@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,13 +59,14 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
     @NonNull
     @Override
     public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list,null,false);
-        final OrderViewHolder viewHolder = new OrderViewHolder(view);
+        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list,null,false);
 
-        viewHolder.order_item.setOnClickListener(new View.OnClickListener() {
+        Button item = view.findViewById(R.id.order_item);
+
+        item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "Test Click " + String.valueOf(viewHolder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Test Click ", Toast.LENGTH_SHORT).show();
 
             }
         });
