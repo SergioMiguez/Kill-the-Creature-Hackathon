@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">PROVITAPP</string>
+    <string name="title_home">HOME</string>
+    <string name="title_dashboard">COMPLETADO</string>
+    <string name="title_notifications">PERFIL</string>
+    <string name="respiradores">RESPIRADORES</string>
+    <string name="mascarillas">MASCARILLAS</string>
+    <string name="numero_de_unidades">NUs</string>
+    <string name="selecione_su_pedido">Selecione su pedido:</string>
+    <string name="abrir_calendario">Abrir calendario</string>
+    <string name="seleccionar_un_dia">Seleccionar un dia</string>
+    <string name="nombre">Objeto</string>
+    <string name="referenceid">Referencia:</string>
+    <string name="num_unidades">Número de unidades:</string>
+    <string name="mantener_direccion_de_envio">¿Mantener direccion de envio?</string>
+    <string name="si_eligiste_no_indica_la_nueva">Si eligiste no indica la nueva:</string>
+    <string name="material">Material</string>
+    <string name="numero">nº</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="register_now">Register now</string>
+    <string name="iniciar_sesion">Iniciar Sesion</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="pass">Contraseña</string>
+    <string name="nombre_proveedor">Proveedor</string>
+    <string name="nombre_empresa">Empresa</string>
+    <string name="id">ID</string>
+    <string name="usuario">Usuario</string>
+
+
+</resources>
