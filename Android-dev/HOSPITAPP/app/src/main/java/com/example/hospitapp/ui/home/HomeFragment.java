@@ -24,6 +24,8 @@ public class HomeFragment extends Fragment {
     RecyclerView recyclerView;
     ArrayList<Order> listOfOrders;
 
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 

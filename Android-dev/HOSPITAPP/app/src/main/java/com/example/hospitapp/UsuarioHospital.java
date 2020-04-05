@@ -92,5 +92,5 @@ public class UsuarioHospital implements Serializable {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
-    
+
 }
