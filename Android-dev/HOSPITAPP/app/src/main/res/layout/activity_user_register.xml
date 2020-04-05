@@ -1,220 +1,296 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="16dp"
+
     >
 
-    <EditText
-        android:id="@+id/checkPasswordRegistered"
-        android:layout_width="270dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="508dp"
-        android:hint="Introduzca su contraseña de nuevo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </EditText>
-
-    <TextView
-        android:id="@+id/password-text"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/registerLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="456dp"
-        android:text="Contraseña:"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </TextView>
-
-    <EditText
-        android:id="@+id/passwordRegistered"
-        android:layout_width="269dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="448dp"
-        android:hint="Introduzca su contraseña"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </EditText>
-
-    <TextView
-        android:id="@+id/welcome_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Registre sus datos de contacto para poder recibir los envíos."
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </TextView>
-
-    <TextView
-        android:id="@+id/name_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
-        android:text="Nombre:"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </TextView>
-
-
-    <EditText
-        android:id="@+id/nameRegistered"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="85dp"
-        android:layout_marginTop="76dp"
-        android:hint="Introduzca su nombre completo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
+        android:gravity="center_horizontal"
+        tools:ignore="MissingConstraints"
         >
 
-    </EditText>
+        <TextView
+            android:id="@+id/welcome_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registrese"
+            android:textSize="24sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="32dp"
+            >
 
-    <TextView
-        android:id="@+id/direction_text"
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/nameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_marginTop="10dp"
+        >
+
+        <TextView
+            android:id="@+id/name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre:"
+            android:textSize="18sp"
+            >
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/nameRegistered"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:hint="Introduzca su nombre completo"
+            android:layout_marginLeft="20dp"
+            >
+
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/PasswordLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_marginTop="10dp"
+        >
+
+        <TextView
+            android:id="@+id/password-text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="19dp"
+            android:text="Contraseña:"
+            android:textSize="18sp"
+            >
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/passwordRegistered"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:hint="Introduzca su contraseña"
+
+            >
+
+        </EditText>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/repeatpswLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        >
+
+        <EditText
+            android:id="@+id/checkPasswordRegistered"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:hint="Repetir contraseña"
+            >
+
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/emailLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_marginTop="10dp"
+        >
+
+        <TextView
+            android:id="@+id/email_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email:"
+            android:layout_marginRight="19dp"
+            android:textSize="18sp"
+            >
+
+        </TextView>
+
+
+        <EditText
+            android:id="@+id/emailRegistered"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            >
+
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addressLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_marginTop="10dp"
+        >
+
+        <TextView
+            android:id="@+id/direction_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dirección:"
+            android:layout_marginRight="19dp"
+            android:textSize="18sp">
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/nameHospitalRegistered"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:hint="Nombre de hospital"
+            >
+
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/num_address_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        >
+
+        <EditText
+            android:id="@+id/nameStreetRegistered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:hint="Introduzca la calle del hospital"
+            >
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/numberStreetRegistered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Número"
+            >
+
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/zip_city_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        >
+
+        <EditText
+            android:id="@+id/CPRegistered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Código postal"
+            android:layout_marginRight="57dp"
+            >
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/cityRegistered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Ciudad o provincia"
+            >
+
+        </EditText>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/telephoneLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_marginTop="10dp"
+        >
+
+        <TextView
+            android:id="@+id/telephone_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Teléfono:"
+            android:layout_marginRight="19dp"
+            android:textSize="18sp"
+            >
+
+        </TextView>
+
+
+        <EditText
+            android:id="@+id/telephoneRegistered"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+
+            >
+
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
-        android:text="Dirección:"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        >
 
-    </TextView>
+        <Button
+            android:id="@+id/saveUserBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
+            android:text="Registrar Perfil "
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_telephoneAdded"
+            app:layout_constraintVertical_bias="1.0" />
 
-    <EditText
-        android:id="@+id/nameHospitalRegistered"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="85dp"
-        android:layout_marginTop="146dp"
-        android:hint="Introduzca el nombre del hospital"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <Button
+            android:id="@+id/singInButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sing in"
+            android:layout_marginLeft="50dp"
+            >
 
-    </EditText>
+        </Button>
 
-
-    <EditText
-        android:id="@+id/nameStreetRegistered"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="196dp"
-
-        android:hint="Introduzca la calle del hospital"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </EditText>
-
-    <EditText
-        android:id="@+id/numberStreetRegistered"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="285dp"
-        android:layout_marginTop="196dp"
-        android:hint="Número"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </EditText>
-
-    <EditText
-        android:id="@+id/CPRegistered"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="246dp"
-
-        android:hint="Código postal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </EditText>
-
-    <EditText
-        android:id="@+id/cityRegistered"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="202dp"
-        android:layout_marginTop="246dp"
-
-        android:hint="Ciudad o provincia"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </EditText>
-
-    <TextView
-        android:id="@+id/email_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="330dp"
-        android:text="Email:"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </TextView>
+    </LinearLayout>
 
 
-    <EditText
-        android:id="@+id/emailRegistered"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="85dp"
-        android:layout_marginTop="316dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </EditText>
-
-    <TextView
-        android:id="@+id/telephone_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
-        android:text="Teléfono:"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </TextView>
-
-
-    <EditText
-        android:id="@+id/telephoneRegistered"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="85dp"
-        android:layout_marginTop="386dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </EditText>
-
-    <Button
-        android:id="@+id/saveUserBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        android:text="Registrar Perfil "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_telephoneAdded"
-        app:layout_constraintVertical_bias="1.0" />
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
