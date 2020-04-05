@@ -17,7 +17,9 @@ import android.widget.EditText;
 
 import com.example.hospitapp.MainActivity;
 import com.example.hospitapp.R;
+import com.example.hospitapp.UsuarioHospital;
 
+import java.util.ArrayList;
 import java.util.zip.Inflater;
 
 public class InfoUsuario extends AppCompatActivity {
@@ -50,17 +52,22 @@ public class InfoUsuario extends AppCompatActivity {
                 String emailEditedStr = emailEdited.getText().toString();
                 String telephoneEditedStr = telephoneEdited.getText().toString();
 
+                ArrayList<String> userData = new ArrayList<>();
+                userData.add(nameEditedStr);
+                userData.add(nameHospitalEditedStr);
+                userData.add(nameStreetEditedStr);
+                userData.add(streetNumberEditedStr);
+                userData.add(CPEditedStr);
+                userData.add(cityEditedStr);
+                userData.add(emailEditedStr);
+                userData.add(telephoneEditedStr);
+
+
                 Intent updateUserInfo = new Intent(InfoUsuario.this, MainActivity.class);
-                updateUserInfo.putExtra("key.name.edited", nameEditedStr);
-                updateUserInfo.putExtra("key.name.hospital.edited", nameHospitalEditedStr);
-                updateUserInfo.putExtra("key.name.street.edited", nameStreetEditedStr);
-                updateUserInfo.putExtra("key.street.number.edited", streetNumberEditedStr);
-                updateUserInfo.putExtra("key.CP.edited", CPEditedStr);
-                updateUserInfo.putExtra("key.city.edited", cityEditedStr);
-                updateUserInfo.putExtra("key.email.edited", emailEditedStr);
-                updateUserInfo.putExtra("key.telephone.edited", telephoneEditedStr);
+                updateUserInfo.putExtra("key.hospital.user.edited.data", userData);
                 startActivity(updateUserInfo);
 
+                finish();
             }
         });
 

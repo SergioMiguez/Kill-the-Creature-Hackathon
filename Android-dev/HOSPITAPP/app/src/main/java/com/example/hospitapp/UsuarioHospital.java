@@ -5,7 +5,6 @@ import java.io.Serializable;
 public class UsuarioHospital implements Serializable {
 
     private String name;
-    private String password;
     private String email;
     private String hospitalName;
     private String address;
@@ -14,12 +13,11 @@ public class UsuarioHospital implements Serializable {
     private String city;
     private String telephone;
 
-    public UsuarioHospital (String name, String password, String email, String hospitalName,
+    public UsuarioHospital (String name, String email, String hospitalName,
                             String address, String numberAddress, String zipCode, String city,
                             String telephone) {
 
         this.name = name;
-        this.password = password;
         this.email = email;
         this.hospitalName = hospitalName;
         this.address = address;
@@ -32,10 +30,6 @@ public class UsuarioHospital implements Serializable {
     /**         GETTER FUNCTIONS       */
     public String getName() {
         return name;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public String getEmail() {
@@ -69,10 +63,6 @@ public class UsuarioHospital implements Serializable {
     /**         SETTER FUNCTIONS       */
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public void setEmail(String email) {

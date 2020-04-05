@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.example.hospitapp.R;
 
+import java.util.ArrayList;
+
 public class NotificationsFragment extends Fragment {
 
     private NotificationsViewModel notificationsViewModel;
@@ -48,6 +50,12 @@ public class NotificationsFragment extends Fragment {
 
         return root;
     }
+
+    public void updateTextView(TextView textView, ArrayList<String> userInfo, int position) {
+        textView.setText(userInfo.get(position));
+    }
+
+
 
 
 
