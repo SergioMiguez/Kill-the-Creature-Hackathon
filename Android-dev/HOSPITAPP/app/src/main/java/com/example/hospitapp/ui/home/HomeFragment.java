@@ -10,12 +10,22 @@ import android.widget.ListAdapter;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.example.hospitapp.InfoPedidosDialog;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
 import com.example.hospitapp.ui.ListClassAdapter;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
@@ -23,6 +33,9 @@ public class HomeFragment extends Fragment {
 
     RecyclerView recyclerView;
     ArrayList<Order> listOfOrders;
+
+    RequestQueue requestQueue;
+
 
 
 
@@ -62,9 +75,32 @@ public class HomeFragment extends Fragment {
         listOfOrders.add(new Order("Object","VN","Pending","Reference"));
         listOfOrders.add(new Order("Object","VN","Pending","Reference"));
         listOfOrders.add(new Order("Object","VN","Pending","Reference"));
-        listOfOrders.add(new Order("Object","VN","Pending","Reference"));
-        listOfOrders.add(new Order("Object","VN","Pending","Reference"));
-        listOfOrders.add(new Order("Object","VN","Pending","Reference"));
+
+        //makeListRequest("http://URLCALL");
 
     }
+
+    /*
+    private List<Order> makeListRequest (String URL) {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray array = new JSONArray(response);
+
+                    for (int i = 0; i < array.length(); i++) {
+                        JSONObject order = array.getJSONObject(i);
+
+                        // listOfOrders.add(new Order( order.getInt("id_objeto"), order.getInt("cantidad"), "Pending", order.getInt("id"));
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        })
+    }
+
+     */
 }

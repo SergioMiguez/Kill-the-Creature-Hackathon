@@ -81,6 +81,12 @@ public class MainActivity extends AppCompatActivity {
 
         if (i.hasExtra("key.hospital.user.edited.data")) {
 
+            Bundle b = new Bundle();
+            b.putString("message", nameAdded.getText().toString());
+            NotificationsFragment fragmentN = new NotificationsFragment();
+            fragmentN.setArguments(b);
+            getSupportFragmentManager().beginTransaction().add(R.id.notification_fragment_id, fragmentN).commit();
+
             ArrayList<String> userInfoList = i.getStringArrayListExtra("key.hospital.user.edited.data");
 
             NotificationsFragment fragment = (NotificationsFragment) getSupportFragmentManager().findFragmentById(R.id.notification_fragment_id);
