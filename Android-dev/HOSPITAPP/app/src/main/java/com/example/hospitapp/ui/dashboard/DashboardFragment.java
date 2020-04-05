@@ -82,7 +82,7 @@ public class DashboardFragment extends Fragment {
     }
 
     private void fillList() {
-        makeListRequest("http://192.168.1.86/matalbicho/display_pedidos.php");
+        makeListRequest("http://192.168.1.86/matalbicho/display_pedidos_conectados.php");
     }
 
 
