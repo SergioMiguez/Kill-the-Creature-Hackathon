@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        final View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         listOfOrders = new ArrayList<>();
 
@@ -66,6 +66,7 @@ public class HomeFragment extends Fragment {
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getContext(),"SELECCION: " + listOfOrders.get(recyclerView.getChildAdapterPosition(view)).getNombre_objeto(), Toast.LENGTH_SHORT).show();
                 openInformationPedidoDialog();
             }
         });
