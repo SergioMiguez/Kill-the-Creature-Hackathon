@@ -2,14 +2,11 @@ package com.example.hospitapp.ui.home;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.ListAdapter;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.widget.Toast;
@@ -18,11 +15,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hospitapp.InfoPedidosDialog;
-import com.example.hospitapp.MainActivity;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
 import com.example.hospitapp.ui.ListClassAdapter;
@@ -32,13 +27,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
 
     private final String state = "Pendientes";
+    private Context mContext;
+
 
     RecyclerView recyclerView;
     ArrayList<Order> listOfOrders;
@@ -83,7 +79,6 @@ public class HomeFragment extends Fragment {
         listOfOrders.add(new Order(0,0,1000,20, 0,"5/04/2020", "mi casa"));
         listOfOrders.add(new Order(1,1,20,15, 1, "5/04/2020", "tu casa"));
 
-
         makeListRequest("http://URLCALL");
 
     }
@@ -122,7 +117,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (mContext != null) {
-                    Toast.makeText(mContext, error.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "ERROR HOME", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -135,7 +130,6 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private Context mContext;
 
     @Override
     public void onAttach(Context context) {

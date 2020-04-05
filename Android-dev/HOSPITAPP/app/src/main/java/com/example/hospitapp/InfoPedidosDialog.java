@@ -13,8 +13,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.hospitapp.ui.ListClassAdapter;
 import com.example.hospitapp.ui.ListProveedoresClass;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -77,6 +88,49 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
         listOfProveedores.add(new Proveedor(0, "Proveedor", "Business", "email", "direccion", "telefono"));
         listOfProveedores.add(new Proveedor(0, "Proveedor", "Business", "email", "direccion", "telefono"));
         listOfProveedores.add(new Proveedor(0, "Proveedor", "Business", "email", "direccion", "telefono"));
+
+        /* TODO CAMBIAR EL URL AL QUE SEA CONVENIENTE */
+        makeListRequest("HTTP://URL DE LISTA DE PROVEEDORES PARA UN DETERMINADO PEDIDO");
+    }
+
+    private void makeListRequest (String URL) {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray array = new JSONArray(response);
+
+                    for (int i = 0; i < array.length(); i++) {
+                        JSONObject proveedor = array.getJSONObject(i);
+
+                        listOfProveedores.add(new Proveedor(
+                                proveedor.getInt("id"),
+                                proveedor.getString("usuario"),
+                                proveedor.getString("email"),
+                                proveedor.getString("direccion"),
+                                proveedor.getString("telefono"),
+                                proveedor.getString("descripcion")
+                        ));
+
+                    }
+
+                    ListProveedoresClass adapter = new ListProveedoresClass(listOfProveedores);
+                    recyclerView.setAdapter(adapter);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.getContext(), "ERROR PEDIDOS", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        /*  TODO CHECK IF CONTEXT WORKS  (MainActivity.getContext() */
+        Volley.newRequestQueue(MainActivity.getContext()).add(stringRequest);
+
     }
 
 }
