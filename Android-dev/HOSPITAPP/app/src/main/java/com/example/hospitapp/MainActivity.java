@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         mContext = getApplicationContext();
 
         openAdd();
+
     }
 
     public void openAdd() {
@@ -69,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
     public static Context getContext(){
         return mContext;
     }
+
+
+
+
+
 
 
 
