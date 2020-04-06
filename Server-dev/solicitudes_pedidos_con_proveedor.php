@@ -1,10 +1,11 @@
 <?php
 include 'connexion.php';
-
 $usuario = $_POST['usuario'];
-//$usuario = "juan";
+$id_pedido =intval($_POST['id_pedido']);
 
-// Encontrar ID de hospital a partir de nombre de usuario
+//$usuario = "test";
+//$id_pedido = 46;
+
 $queryHospital = "SELECT id FROM hospitales WHERE usuario = '$usuario'";
 
 $resultadoHospital = $conexion ->query($queryHospital);
@@ -17,9 +18,8 @@ else{
     throw new Exception("FATAL ERROR: Hospital not in our database");
 }
 
-// Seleccionar pedidos conectados de un hospital
-$query = "SELECT * FROM pedidos_conectados WHERE id_hospital = '$id_hospital'";
 
+$query = "SELECT * from pedidos_pendientes WHERE id ='$id_pedido' AND id_hospital ='$id_hospital'";
 $resultado = $conexion -> query($query);
 
 while($fila = mysqli_fetch_assoc($resultado)){
@@ -29,11 +29,10 @@ while($fila = mysqli_fetch_assoc($resultado)){
 }
 
 echo json_encode($product);
-$conexion->close();
 
 // Encontrar el nombre de un objeto en base a su ID
 function helper($id){
-	include 'connexion.php';
+    include 'connexion.php';
 
     $queryObjetos = "SELECT nombre FROM objetos WHERE id = '$id'";
 
@@ -46,8 +45,10 @@ function helper($id){
     else{
         throw new Exception("Object not in our database");
 }
-$conexion->close();
+$conexion -> close();
 return $nombre_objeto;
 }
+$conexion -> close();
+
 
 ?>

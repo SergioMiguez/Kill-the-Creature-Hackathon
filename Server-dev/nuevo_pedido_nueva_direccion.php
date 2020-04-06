@@ -1,13 +1,30 @@
 <?php
+
+include 'connexion.php';
+
+$nombre_del_objeto = $_POST['nombre_del_objeto'];
+$usuario = $_POST['usuario'];
+$fecha = $_POST['fecha'];
+$id_proveedor = 1;
+$cantidad = intval($_POST['cantidad']);
+$direccion_hospital = $_POST['direccion'];
+
+//$nombre_del_objeto = "Guantes";
+//$usuario = "juan";
+//$fecha = "fecha";
+//$id_proveedor = 1;
+//$cantidad = intval("50");
+//$direccion_hospital = "nueva direccion";
+
 // Query to obtain the id of the object
 $queryObjetos = "SELECT id FROM objetos WHERE nombre = '$nombre_del_objeto'";
 
 $resultadoObjetos = $conexion ->query($queryObjetos);
-$direccion_hospital = $_POST['direccion'];
 
 if(mysqli_num_rows($resultadoObjetos)){
     $id_objeto = $resultadoObjetos ->fetch_assoc()["id"];
-
+    //echo $id_objeto;
+}
 else{
     throw new Exception("Object not in our database");
 }
@@ -19,6 +36,7 @@ $resultadoHospital = $conexion ->query($queryHospital);
 
 if(mysqli_num_rows($resultadoHospital)){
     $id_hospital = $resultadoHospital ->fetch_assoc()["id"];
+    //echo $id_hospital;
 }
 else{
     throw new Exception("FATAL ERROR: Hospital not in our database");

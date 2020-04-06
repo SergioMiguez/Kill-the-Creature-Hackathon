@@ -1,16 +1,24 @@
 <?php
 include 'connexion.php';
-$usuario =$_REQUEST['usuario'];
-$password=$_REQUEST['password'];
-$resultado = $conexion ->query("SELECT * FROM usuarios WHERE usuario = $usuario AND password =$password")
-if ($resultado ->rowcount() > 0 ){
-    return TRUE;
-}
-else{
-    return FALSE;
+
+if(isset($_POST['usuario'])) {
+	$usuario = $_POST['usuario'];
 }
 
-$conexion ->close()
+if(isset($_POST['password'])){
+	$password = $_POST['password'];
+}
+//$usuario ="fgasdfas";
+//$password="test";
 
 
+$query = ("SELECT * FROM hospitales WHERE usuario = '$usuario' AND password ='$password'");
+
+$resultado = mysqli_query($conexion,$query);
+
+if($fila = $resultado ->fetch_assoc()){
+    echo json_encode($fila,JSON_UNESCAPED_UNICODE);
+}
+
+$conexion ->close();
 ?>
