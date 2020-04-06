@@ -232,7 +232,7 @@
             app:layout_constraintTop_toTopOf="parent">
         </TextView>
 
-        <Button
+       <!-- <Button
             android:id="@+id/editUserBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -243,19 +243,9 @@
             app:layout_constraintHorizontal_bias="0.413"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/telephoneAdded"
-            app:layout_constraintVertical_bias="0.063" />
+            app:layout_constraintVertical_bias="0.063" />-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="@color/colorPrimary"
-            app:layout_constraintBottom_toTopOf="@+id/nameEdited"
-            app:layout_constraintTop_toBottomOf="@+id/editUserBtn"
-            app:layout_constraintVertical_bias="0.514"
-            tools:layout_editor_absoluteX="13dp">
-        </TextView>
-
-        <TextView
+        <!--<TextView
             android:id="@+id/name_text_edit"
             android:layout_width="77dp"
             android:layout_height="27dp"
@@ -266,9 +256,9 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-        </TextView>
+        </TextView>-->
 
-        <EditText
+        <!--<EditText
             android:id="@+id/nameEdited"
             android:layout_width="277dp"
             android:layout_height="45dp"
@@ -277,7 +267,33 @@
             android:hint="Introduzca su nombre completo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-        </EditText>
+        </EditText>-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginBottom="177dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintBottom_toTopOf="@+id/nameHospitalEdited"
+            app:layout_constraintTop_toBottomOf="@+id/telephoneAdded"
+            app:layout_constraintVertical_bias="1.0"
+            tools:layout_editor_absoluteX="24dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/welcome_text_edit"
+            android:layout_width="291dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="600dp"
+            android:text="Editar Perfil de Usuario"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.456"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
 
         <TextView
             android:id="@+id/hospital_text_edit"

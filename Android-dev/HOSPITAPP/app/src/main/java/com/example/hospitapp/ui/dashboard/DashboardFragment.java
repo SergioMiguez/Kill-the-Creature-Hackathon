@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -44,6 +45,8 @@ public class DashboardFragment extends Fragment {
     private RecyclerView recyclerView;
     private final String state = "COMPLETADOS";
     private Context mContext;
+
+    private RequestQueue requestQueue;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -133,10 +136,14 @@ public class DashboardFragment extends Fragment {
             }
         };
 
-        /*  TODO CHECK IF CONTEXT WORKS  (mContext) */
-        if (mContext != null) {
-            Volley.newRequestQueue(mContext).add(stringRequest);
-        }
 
+        /**
+         * if (mContext != null) {
+         *             Volley.newRequestQueue(mContext).add(stringRequest);
+         *         }
+         */
+
+        requestQueue= Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
     }
 }

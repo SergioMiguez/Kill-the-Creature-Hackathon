@@ -16,11 +16,13 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hospitapp.LoginActivity;
+import com.example.hospitapp.MainActivity;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
 import com.example.hospitapp.UsuarioHospital;
@@ -36,7 +38,11 @@ import java.util.Map;
 
 public class NotificationsFragment extends Fragment {
 
-    EditText nameEdited;
+    private RequestQueue requestInfoQueue;
+    private RequestQueue requestEditQueue;
+    private boolean editSuccess;
+
+    //EditText nameEdited;
     EditText nameHospitalEdited;
     EditText nameStreetEdited;
     EditText streetNumberEdited;
@@ -63,11 +69,21 @@ public class NotificationsFragment extends Fragment {
     String defEmail;
     String defTelephone;
 
+    private String edit_hospital;
+    private String edit_street;
+    private String edit_street_number;
+    private String edit_CP;
+    private String edit_city;
+    private String edit_email;
+    private String edit_telephone;
+
+
     SharedPreferences myPrefs;
 
     String def = "ERROR";
 
-    String serverURL = "http::/URL.com";
+    String serverURL = "http://192.168.1.86:80/matalbicho/profile.php";
+    String editUrl  = "http://192.168.1.86:80/matalbicho/update_perfil.php";
 
     UsuarioHospital userHospital;
 
@@ -81,17 +97,6 @@ public class NotificationsFragment extends Fragment {
                 ViewModelProviders.of(this).get(NotificationsViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_notifications, container, false);
 
-        makeUserRequest(serverURL);
-
-        defName = userHospital.getUsuario();
-        defHospital = userHospital.getNombre();
-        defStreet = userHospital.getDireccion();
-        defNumber = userHospital.getNumberAddress();
-        defCP = userHospital.getZipCode();
-        defCity = userHospital.getCity();
-        defEmail = userHospital.getEmail();
-        defTelephone = userHospital.getTelefono();
-
         nameAdded = root.findViewById(R.id.nameAdded);
         nameHospitalAdded = root.findViewById(R.id.nameHospitalAdded);
         nameStreetAdded = root.findViewById(R.id.nameStreetAdded);
@@ -101,32 +106,14 @@ public class NotificationsFragment extends Fragment {
         emailAdded = root.findViewById(R.id.emailAdded);
         telephoneAdded = root.findViewById(R.id.telephoneAdded);
 
-        myPrefs = getActivity().getSharedPreferences("prefID", Context.MODE_PRIVATE);
-
-        String name = myPrefs.getString("name", defName);
-        String hospital = myPrefs.getString("hospital", defHospital);
-        String street = myPrefs.getString("street", defStreet);
-        String street_number = myPrefs.getString("street_number", defNumber);
-        String CP = myPrefs.getString("CP", defCP);
-        String city = myPrefs.getString("city", defCity);
-        String email = myPrefs.getString("email", defEmail);
-        String telephone = myPrefs.getString("telephone", defTelephone);
-
-        nameAdded.setText(name);
-        nameHospitalAdded.setText(hospital);
-        nameStreetAdded.setText(street);
-        streetNumberAdded.setText(street_number);
-        CPAdded.setText(CP);
-        cityAdded.setText(city);
-        emailAdded.setText(email);
-        telephoneAdded.setText(telephone);
+        makeUserRequest(serverURL);
 
         Button saveUserBtn = root.findViewById(R.id.saveUserBtn);
         saveUserBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                nameEdited = root.findViewById(R.id.nameEdited);
+                //nameEdited = root.findViewById(R.id.nameEdited);
                 nameHospitalEdited = root.findViewById(R.id.nameHospitalEdited);
                 nameStreetEdited = root.findViewById(R.id.nameStreetEdited);
                 streetNumberEdited = root.findViewById(R.id.streetNumberEdited);
@@ -135,7 +122,7 @@ public class NotificationsFragment extends Fragment {
                 emailEdited = root.findViewById(R.id.emailEdited);
                 telephoneEdited = root.findViewById(R.id.telephoneEdited);
 
-                String nameEditedStr = nameEdited.getText().toString();
+                //String nameEditedStr = nameEdited.getText().toString();
                 String nameHospitalEditedStr = nameHospitalEdited.getText().toString();
                 String nameStreetEditedStr = nameStreetEdited.getText().toString();
                 String streetNumberEditedStr = streetNumberEdited.getText().toString();
@@ -147,7 +134,7 @@ public class NotificationsFragment extends Fragment {
                 myPrefs = getActivity().getSharedPreferences("prefID", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = myPrefs.edit();
 
-                editor.putString("name", nameEditedStr);
+                //editor.putString("name", nameEditedStr);
                 editor.putString("hospital", nameHospitalEditedStr);
                 editor.putString("street", nameStreetEditedStr);
                 editor.putString("street_number", streetNumberEditedStr);
@@ -157,29 +144,31 @@ public class NotificationsFragment extends Fragment {
                 editor.putString("telephone", telephoneEditedStr);
                 editor.apply();
 
-                String name = myPrefs.getString("name", def);
-                String hospital = myPrefs.getString("hospital", def);
-                String street = myPrefs.getString("street", def);
-                String street_number = myPrefs.getString("street_number", def);
-                String CP = myPrefs.getString("CP", def);
-                String city = myPrefs.getString("city", def);
-                String email = myPrefs.getString("email", def);
-                String telephone = myPrefs.getString("telephone", def);
+                //String name = myPrefs.getString("name", def);
+                edit_hospital = myPrefs.getString("hospital", defHospital);
+                edit_street = myPrefs.getString("street", defStreet);
+                edit_street_number = myPrefs.getString("street_number", defNumber);
+                edit_CP = myPrefs.getString("CP", defCP);
+                edit_city = myPrefs.getString("city", defCity);
+                edit_email = myPrefs.getString("email", defEmail);
+                edit_telephone = myPrefs.getString("telephone", defTelephone);
 
-                boolean allFilled = fullEdit(nameEdited) && fullEdit(nameHospitalEdited) && fullEdit(nameStreetEdited) &&
-                        fullEdit(emailEdited) && fullEdit(telephoneEdited);
+                boolean allFilled = fullEdit(nameHospitalEdited) && fullEdit(nameStreetEdited) &&
+                        fullEdit(emailEdited) && fullEdit(telephoneEdited); // && fullEdit(nameEdited);
 
                 if (allFilled) {
-                    nameAdded.setText(name);
-                    nameHospitalAdded.setText(hospital);
-                    nameStreetAdded.setText(street);
-                    streetNumberAdded.setText(street_number);
-                    CPAdded.setText(CP);
-                    cityAdded.setText(city);
-                    emailAdded.setText(email);
-                    telephoneAdded.setText(telephone);
+                    /**
+                     * //nameAdded.setText(name);
+                     *                     nameHospitalAdded.setText(edit_hospital);
+                     *                     nameStreetAdded.setText(edit_street);
+                     *                     streetNumberAdded.setText(edit_street_number);
+                     *                     CPAdded.setText(edit_CP);
+                     *                     cityAdded.setText(edit_city);
+                     *                     emailAdded.setText(edit_email);
+                     *                     telephoneAdded.setText(edit_telephone);
+                     */
 
-                    nameEdited.getText().clear();
+                    //nameEdited.getText().clear();
                     nameHospitalEdited.getText().clear();
                     nameStreetEdited.getText().clear();
                     streetNumberEdited.getText().clear();
@@ -188,10 +177,12 @@ public class NotificationsFragment extends Fragment {
                     emailEdited.getText().clear();
                     telephoneEdited.getText().clear();
 
-                    Toast.makeText(getContext(), "Datos de perfil actualizados correctamente!", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "Datos de perfil actualizados correctamente!", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(), "Rellene todos los campos para continuar!", Toast.LENGTH_LONG).show();
                 }
+
+                makeEditRequest(editUrl);
             }
         });
         return root;
@@ -206,8 +197,12 @@ public class NotificationsFragment extends Fragment {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                //Toast.makeText(MainActivity.getContext(), response, Toast.LENGTH_SHORT).show();
                 try {
-                    JSONObject user = new JSONObject(response);
+                    JSONArray array = new JSONArray(response);
+
+                    JSONObject user = array.getJSONObject(0);
+
 
                     String[] directionInfo = user.getString("direccion").split("\\Q$\\E");
 
@@ -223,7 +218,30 @@ public class NotificationsFragment extends Fragment {
                             directionInfo[3] //city/province
                     );
 
+                    defName = userHospital.getUsuario();
+                    defHospital = userHospital.getNombre();
+                    defStreet = userHospital.getDireccion();
+                    defNumber = userHospital.getNumberAddress();
+                    defCP = userHospital.getZipCode();
+                    defCity = userHospital.getCity();
+                    defEmail = userHospital.getEmail();
+                    defTelephone = userHospital.getTelefono();
+
+
+                    myPrefs = getActivity().getSharedPreferences("prefID", Context.MODE_PRIVATE);
+
+                    nameAdded.setText(defName); //TODO change to defname
+                    nameHospitalAdded.setText(defHospital);
+                    nameStreetAdded.setText(defStreet);
+                    streetNumberAdded.setText(defNumber);
+                    CPAdded.setText(defCP);
+                    cityAdded.setText(defCity);
+                    emailAdded.setText(defEmail);
+                    telephoneAdded.setText(defTelephone);
+
+
                 } catch (JSONException e) {
+                    Toast.makeText(MainActivity.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
@@ -244,11 +262,62 @@ public class NotificationsFragment extends Fragment {
             }
         };
 
-        /*  TODO CHECK IF CONTEXT WORKS  (mContext) */
-        if (mContext != null) {
-            Volley.newRequestQueue(mContext).add(stringRequest);
-        }
 
+        /**
+         * if (mContext != null) {
+         *             Volley.newRequestQueue(mContext).add(stringRequest);
+         *         }
+         */
+
+        requestInfoQueue= Volley.newRequestQueue(getContext());
+        requestInfoQueue.add(stringRequest);
+
+    }
+
+    private void makeEditRequest (String URL) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //Toast.makeText(MainActivity.getContext(), response, Toast.LENGTH_LONG).show();
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    if (jsonResponse.getBoolean("success")){
+                        Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
+                        editSuccess = true;
+                    } else {
+                        Toast.makeText(MainActivity.getContext(), "No se pudo editar el usuario. Posible error de duplicidad", Toast.LENGTH_SHORT).show();
+                        editSuccess = false;
+                    }
+
+                } catch (Exception e) {
+                    Toast.makeText(MainActivity.getContext(), "Estes es el catch", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("nombre", edit_hospital);
+                parameters.put("usuario", LoginActivity.userName);
+                parameters.put("direccion", toStringAddress(edit_street, edit_street_number, edit_CP, edit_city));
+                parameters.put("telefono", edit_telephone);
+                parameters.put("email", edit_email);
+                return parameters;
+            }
+        };
+        requestEditQueue=Volley.newRequestQueue(getContext());
+        requestEditQueue.add(stringRequest);
+    }
+
+    private String toStringAddress(String addressName, String numAddress, String zipCode, String city) {
+        return addressName.toUpperCase() + "$" + numAddress + "$" + zipCode + "$" + city.toUpperCase();
     }
 }
             

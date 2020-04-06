@@ -147,10 +147,15 @@ public class HomeFragment extends Fragment {
             }
         };
 
-        /*  TODO CHECK IF CONTEXT WORKS  (mContext) */
-        if (mContext != null) {
-            Volley.newRequestQueue(mContext).add(stringRequest);
-        }
+        /**
+         *
+         *if (mContext != null) {
+         *Volley.newRequestQueue(mContext).add(stringRequest);
+         *}
+         */
+
+        requestQueue= Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
 
     }
 
