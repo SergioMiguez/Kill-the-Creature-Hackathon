@@ -36,7 +36,7 @@ import java.util.Map;
 
 public class NotificationsFragment extends Fragment {
 
-    EditText nameEdited;
+    //EditText nameEdited;
     EditText nameHospitalEdited;
     EditText nameStreetEdited;
     EditText streetNumberEdited;
@@ -69,7 +69,7 @@ public class NotificationsFragment extends Fragment {
 
     String serverURL = "http::/URL.com";
 
-    UsuarioHospital userHospital;
+    UsuarioHospital userHospital = new UsuarioHospital(1,def, def, def, def, def,def,def,def);
 
     private Context mContext;
 
@@ -81,7 +81,7 @@ public class NotificationsFragment extends Fragment {
                 ViewModelProviders.of(this).get(NotificationsViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_notifications, container, false);
 
-        makeUserRequest(serverURL);
+        //makeUserRequest(serverURL);
 
         defName = userHospital.getUsuario();
         defHospital = userHospital.getNombre();
@@ -103,7 +103,7 @@ public class NotificationsFragment extends Fragment {
 
         myPrefs = getActivity().getSharedPreferences("prefID", Context.MODE_PRIVATE);
 
-        String name = myPrefs.getString("name", defName);
+        //String name = myPrefs.getString("name", defName);
         String hospital = myPrefs.getString("hospital", defHospital);
         String street = myPrefs.getString("street", defStreet);
         String street_number = myPrefs.getString("street_number", defNumber);
@@ -112,7 +112,7 @@ public class NotificationsFragment extends Fragment {
         String email = myPrefs.getString("email", defEmail);
         String telephone = myPrefs.getString("telephone", defTelephone);
 
-        nameAdded.setText(name);
+        nameAdded.setText(def); //TODO change to defname
         nameHospitalAdded.setText(hospital);
         nameStreetAdded.setText(street);
         streetNumberAdded.setText(street_number);
@@ -126,7 +126,7 @@ public class NotificationsFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                nameEdited = root.findViewById(R.id.nameEdited);
+                //nameEdited = root.findViewById(R.id.nameEdited);
                 nameHospitalEdited = root.findViewById(R.id.nameHospitalEdited);
                 nameStreetEdited = root.findViewById(R.id.nameStreetEdited);
                 streetNumberEdited = root.findViewById(R.id.streetNumberEdited);
@@ -135,7 +135,7 @@ public class NotificationsFragment extends Fragment {
                 emailEdited = root.findViewById(R.id.emailEdited);
                 telephoneEdited = root.findViewById(R.id.telephoneEdited);
 
-                String nameEditedStr = nameEdited.getText().toString();
+                //String nameEditedStr = nameEdited.getText().toString();
                 String nameHospitalEditedStr = nameHospitalEdited.getText().toString();
                 String nameStreetEditedStr = nameStreetEdited.getText().toString();
                 String streetNumberEditedStr = streetNumberEdited.getText().toString();
@@ -147,7 +147,7 @@ public class NotificationsFragment extends Fragment {
                 myPrefs = getActivity().getSharedPreferences("prefID", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = myPrefs.edit();
 
-                editor.putString("name", nameEditedStr);
+                //editor.putString("name", nameEditedStr);
                 editor.putString("hospital", nameHospitalEditedStr);
                 editor.putString("street", nameStreetEditedStr);
                 editor.putString("street_number", streetNumberEditedStr);
@@ -166,8 +166,8 @@ public class NotificationsFragment extends Fragment {
                 String email = myPrefs.getString("email", def);
                 String telephone = myPrefs.getString("telephone", def);
 
-                boolean allFilled = fullEdit(nameEdited) && fullEdit(nameHospitalEdited) && fullEdit(nameStreetEdited) &&
-                        fullEdit(emailEdited) && fullEdit(telephoneEdited);
+                boolean allFilled = fullEdit(nameHospitalEdited) && fullEdit(nameStreetEdited) &&
+                        fullEdit(emailEdited) && fullEdit(telephoneEdited); // && fullEdit(nameEdited);
 
                 if (allFilled) {
                     nameAdded.setText(name);
@@ -179,7 +179,7 @@ public class NotificationsFragment extends Fragment {
                     emailAdded.setText(email);
                     telephoneAdded.setText(telephone);
 
-                    nameEdited.getText().clear();
+                    //nameEdited.getText().clear();
                     nameHospitalEdited.getText().clear();
                     nameStreetEdited.getText().clear();
                     streetNumberEdited.getText().clear();
