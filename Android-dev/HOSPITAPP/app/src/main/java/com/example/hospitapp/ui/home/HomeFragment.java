@@ -46,7 +46,6 @@ public class HomeFragment extends Fragment {
     private Context mContext;
 
     private RecyclerView recyclerView;
-    private ListAdaptor mAdaptor;
     private RecyclerView.LayoutManager mLayoutManager;
 
     private ArrayList<Order> listOfOrders;
@@ -68,23 +67,9 @@ public class HomeFragment extends Fragment {
 
         fillList();
 
-        mAdaptor = new ListAdaptor(listOfOrders, state);
+        ListClassAdapter adapter = new ListClassAdapter(listOfOrders, state, mContext);
 
-        mAdaptor.setOnItemClickListener(new ListAdaptor.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                Toast.makeText(getContext(),"SELECCION: " + listOfOrders.get(position).getNombre_objeto(), Toast.LENGTH_SHORT).show();
-                openInformationPedidoDialog();
-            }
-
-            @Override
-            public void onButtonClick(int position) {
-                Toast.makeText(getContext(),"SELECCION DE BOTÓN: " + listOfOrders.get(position).getNombre_objeto(), Toast.LENGTH_SHORT).show();
-                openInformationPedidoDialog();
-            }
-        });
-
-        recyclerView.setAdapter(mAdaptor);
+        recyclerView.setAdapter(adapter);
 
         return view;
     }
