@@ -15,7 +15,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -28,6 +30,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.function.ToDoubleBiFunction;
 
@@ -52,6 +56,8 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
     private String email;
     private String id;
     private String idProveedor;
+
+    private RequestQueue requestQueue;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -87,7 +93,7 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
             public void onClick(View v) {
                 if(fullEdit(enlazarInput)){
                     idProveedor = enlazarInput.getText().toString();
-                    sendIdProveedor("http:// url");
+                    sendIdProveedor("http://192.168.1.86:80/matalbicho/transition_home_complete.php");
                 }
             }
         });
@@ -117,11 +123,12 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
     private void fillList() {
 
         /* TODO CAMBIAR EL URL AL QUE SEA CONVENIENTE */
-        makeListRequest("HTTP://URL DE LISTA DE PROVEEDORES PARA UN DETERMINADO PEDIDO");
+        makeListRequest("http://192.168.1.86:80/matalbicho/solicitudes_pedidos_con_proveedor.php");
     }
 
     private void makeListRequest (String URL) {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+        //Toast.makeText(MainActivity.getContext(), "entra dentro del request", Toast.LENGTH_SHORT).show();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -162,10 +169,19 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(MainActivity.getContext(), "ERROR PEDIDOS", Toast.LENGTH_SHORT).show();
             }
-        });
+        }){
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("usuario", LoginActivity.userName);
+                parameters.put("id_pedido", id);
+                return parameters;
+            }
+        };
 
         /*  TODO CHECK IF CONTEXT WORKS  (MainActivity.getContext() */
-        Volley.newRequestQueue(MainActivity.getContext()).add(stringRequest);
+        requestQueue=Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
 
     }
 
@@ -174,8 +190,41 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
         return !editText.getText().toString().trim().equals(empty);
     }
 
-    private void sendIdProveedor(String URL) {
 
+    private void sendIdProveedor (String URL) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    if (jsonResponse.getBoolean("success")){
+                        Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainActivity.getContext(), "No se pudo crear el usuario, posible error de duplicacion", Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (Exception e) {
+                    Toast.makeText(MainActivity.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("usuario", LoginActivity.userName);
+                parameters.put("id_proveedor", idProveedor);
+                parameters.put("id", id);
+                return parameters;
+            }
+        };
+        requestQueue=Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
     }
-
 }
