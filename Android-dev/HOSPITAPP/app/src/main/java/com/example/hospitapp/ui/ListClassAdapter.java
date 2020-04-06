@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +27,7 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
 
     private View.OnClickListener listener;
     private String state;
+    private OnItemClickListener mListemer;
 
     public ListClassAdapter(ArrayList<Order> listsOfOrders, String state, Context mContext) {
         this.listOfOrders = listsOfOrders;
@@ -32,19 +35,56 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
         this.mContext = mContext;
     }
 
+    private interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListemer = listener;
+    }
+
     public static class OrderViewHolder extends RecyclerView.ViewHolder {
 
         TextView textObject, textVolumeNumber,
                 textState, textReferenceID, textFecha;
 
-        public OrderViewHolder(@NonNull View itemView) {
-            super(itemView);
+        Button proveedoresButton;
+
+
+        public OrderViewHolder(@NonNull View intemView, final OnItemClickListener listener) {
+            super(intemView);
 
             textObject = (TextView) itemView.findViewById(R.id.ObjectName);
             textVolumeNumber = (TextView) itemView.findViewById(R.id.VolumeNumber);
             textFecha = (TextView) itemView.findViewById(R.id.fechaNumber);
             textState = (TextView) itemView.findViewById(R.id.State);
             textReferenceID = (TextView) itemView.findViewById(R.id.ReferenceIdNum);
+
+            proveedoresButton = intemView.findViewById(R.id.proveedoresButton);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener != null) {
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
+
+            proveedoresButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener != null) {
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
 
     }
@@ -54,7 +94,8 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
     @Override
     public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list,null,false);
-        return new OrderViewHolder(view);
+        OrderViewHolder evh = new OrderViewHolder(view, mListemer);
+        return evh;
     }
 
     @Override

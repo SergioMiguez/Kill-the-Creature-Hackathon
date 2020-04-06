@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -21,9 +23,12 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hospitapp.InfoPedidosDialog;
 import com.example.hospitapp.LoginActivity;
+import com.example.hospitapp.MainActivity;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
+import com.example.hospitapp.ui.ListAdaptor;
 import com.example.hospitapp.ui.ListClassAdapter;
+import com.example.hospitapp.ui.ListProveedoresClass;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,9 +45,11 @@ public class HomeFragment extends Fragment {
     private final String state = "Pendientes";
     private Context mContext;
 
+    private RecyclerView recyclerView;
+    private ListAdaptor mAdaptor;
+    private RecyclerView.LayoutManager mLayoutManager;
 
-    RecyclerView recyclerView;
-    ArrayList<Order> listOfOrders;
+    private ArrayList<Order> listOfOrders;
 
     RequestQueue requestQueue;
 
@@ -51,7 +58,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        final View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         listOfOrders = new ArrayList<>();
 
@@ -61,17 +68,23 @@ public class HomeFragment extends Fragment {
 
         fillList();
 
-        ListClassAdapter adapter = new ListClassAdapter(listOfOrders, state, mContext);
+        mAdaptor = new ListAdaptor(listOfOrders, state);
 
-        adapter.setOnClickListener(new View.OnClickListener() {
+        mAdaptor.setOnItemClickListener(new ListAdaptor.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(),"SELECCION: " + listOfOrders.get(recyclerView.getChildAdapterPosition(view)).getNombre_objeto(), Toast.LENGTH_SHORT).show();
+            public void onItemClick(int position) {
+                Toast.makeText(getContext(),"SELECCION: " + listOfOrders.get(position).getNombre_objeto(), Toast.LENGTH_SHORT).show();
+                openInformationPedidoDialog();
+            }
+
+            @Override
+            public void onButtonClick(int position) {
+                Toast.makeText(getContext(),"SELECCION DE BOTÓN: " + listOfOrders.get(position).getNombre_objeto(), Toast.LENGTH_SHORT).show();
                 openInformationPedidoDialog();
             }
         });
 
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(mAdaptor);
 
         return view;
     }
@@ -83,6 +96,7 @@ public class HomeFragment extends Fragment {
 
     private void fillList() {
         makeListRequest("http://192.168.1.86:80/matalbicho/display_pedidos.php");
+        listOfOrders.add(new Order( 0,1,2,3,4,"hoy", "casa","guantes"));
     }
 
 
@@ -108,7 +122,8 @@ public class HomeFragment extends Fragment {
 
                     }
 
-                    ListClassAdapter adapter = new ListClassAdapter(listOfOrders, state, mContext);
+                    ListAdaptor adapter = new ListAdaptor(listOfOrders, state);
+
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
