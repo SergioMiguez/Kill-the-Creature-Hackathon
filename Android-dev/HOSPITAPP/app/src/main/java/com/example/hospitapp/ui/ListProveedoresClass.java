@@ -29,8 +29,8 @@ public class ListProveedoresClass extends RecyclerView.Adapter<ListProveedoresCl
         public OrderViewHolder(@NonNull View itemView) {
             super(itemView);
             textName = (TextView) itemView.findViewById(R.id.ParticularName);
-            textBusinessName = (TextView) itemView.findViewById(R.id.EnterpriseName);
-            textEmail = (TextView) itemView.findViewById(R.id.ProveedorEmail);
+            //textBusinessName = (TextView) itemView.findViewById(R.id.EnterpriseName);
+
         }
 
     }

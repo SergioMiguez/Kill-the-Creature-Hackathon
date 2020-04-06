@@ -1,20 +1,14 @@
 package com.example.hospitapp.ui;
 
-import android.app.Dialog;
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.toolbox.StringRequest;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
 
@@ -26,13 +20,17 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
     Context mContext;
 
     private View.OnClickListener listener;
-    private String state;
+    private String state = "POR ACEPTAR";
     private OnItemClickListener mListemer;
 
     public ListClassAdapter(ArrayList<Order> listsOfOrders, String state, Context mContext) {
         this.listOfOrders = listsOfOrders;
         this.state = state;
         this.mContext = mContext;
+    }
+
+    public ListClassAdapter(ArrayList<Order> listOfProveedores) {
+        this.listOfOrders = listOfProveedores;
     }
 
     private interface OnItemClickListener {
@@ -43,24 +41,33 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
         mListemer = listener;
     }
 
-    public static class OrderViewHolder extends RecyclerView.ViewHolder {
+    public class OrderViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textObject, textVolumeNumber,
+        TextView textObject, textVolumeNumber, textProveedorId,
                 textState, textReferenceID, textFecha;
 
-        Button proveedoresButton;
-
+        TextView textProveedorName;
 
         public OrderViewHolder(@NonNull View intemView, final OnItemClickListener listener) {
             super(intemView);
 
-            textObject = (TextView) itemView.findViewById(R.id.ObjectName);
-            textVolumeNumber = (TextView) itemView.findViewById(R.id.VolumeNumber);
-            textFecha = (TextView) itemView.findViewById(R.id.fechaNumber);
-            textState = (TextView) itemView.findViewById(R.id.State);
-            textReferenceID = (TextView) itemView.findViewById(R.id.ReferenceIdNum);
 
-            proveedoresButton = intemView.findViewById(R.id.proveedoresButton);
+            if (!state.equals("POR ACEPTAR")) {
+
+                textObject = (TextView) itemView.findViewById(R.id.ObjectName);
+                textVolumeNumber = (TextView) itemView.findViewById(R.id.VolumeNumber);
+                textFecha = (TextView) itemView.findViewById(R.id.fechaNumber);
+                textState = (TextView) itemView.findViewById(R.id.State);
+                textProveedorId = (TextView) intemView.findViewById(R.id.proveedorNum);
+                textReferenceID = (TextView) itemView.findViewById(R.id.ReferenceIdNum);
+
+            } else {
+                textProveedorName = (TextView) intemView.findViewById(R.id.ParticularName);
+                textProveedorId = (TextView) intemView.findViewById(R.id.identificator);
+
+            }
+
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -74,17 +81,6 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
                 }
             });
 
-            proveedoresButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(listener != null) {
-                        int position = getAdapterPosition();
-                        if(position != RecyclerView.NO_POSITION){
-                            listener.onItemClick(position);
-                        }
-                    }
-                }
-            });
         }
 
     }
@@ -93,18 +89,34 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
     @NonNull
     @Override
     public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list,null,false);
+        View view;
+        if (!state.equals("POR ACEPTAR")){
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list,null,false);
+        } else {
+            view =  LayoutInflater.from(parent.getContext()).inflate(R.layout.item_proveedor_list,null,false);
+        }
+
         OrderViewHolder evh = new OrderViewHolder(view, mListemer);
         return evh;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
-        holder.textObject.setText("" + listOfOrders.get(position).getId_objeto());
-        holder.textVolumeNumber.setText("" + listOfOrders.get(position).getCantidad());
-        holder.textFecha.setText(listOfOrders.get(position).getFecha());
-        holder.textState.setText(state);
-        holder.textReferenceID.setText("" +listOfOrders.get(position).getId());
+
+        if (state.equals("POR ACEPTAR")) {
+            holder.textProveedorId.setText("" + listOfOrders.get(position).getId_proveedor());
+            holder.textProveedorName.setText("" + listOfOrders.get(position).getNombre_objeto());
+
+        } else {
+            holder.textObject.setText("" + listOfOrders.get(position).getId_objeto());
+            holder.textVolumeNumber.setText("" + listOfOrders.get(position).getCantidad());
+            holder.textFecha.setText(listOfOrders.get(position).getFecha());
+            holder.textProveedorId.setText("" + listOfOrders.get(position).getId_proveedor());
+            holder.textState.setText(state);
+            holder.textReferenceID.setText("" +listOfOrders.get(position).getId());
+        }
+
     }
 
     @Override

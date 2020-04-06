@@ -81,7 +81,6 @@ public class HomeFragment extends Fragment {
 
     private void fillList() {
         makeListRequest("http://192.168.1.86:80/matalbicho/display_pedidos.php");
-        listOfOrders.add(new Order( 0,1,2,3,4,"hoy", "casa","guantes"));
     }
 
 

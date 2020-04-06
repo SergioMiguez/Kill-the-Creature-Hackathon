@@ -63,13 +63,10 @@ public class DashboardFragment extends Fragment {
 
         ListClassAdapter adapter = new ListClassAdapter(listOfOrders, state, mContext);
 
-
         recyclerView.setAdapter(adapter);
 
         return view;
     }
-
-
 
 
     @Override

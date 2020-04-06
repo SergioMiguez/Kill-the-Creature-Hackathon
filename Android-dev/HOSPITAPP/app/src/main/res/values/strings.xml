@@ -2,6 +2,7 @@
     <string name="app_name">HOSPITAPP</string>
     <string name="title_home">HOME</string>
     <string name="title_dashboard">COMPLETADO</string>
+    <string name="title_proveedores">PROVEEDORES</string>
     <string name="title_notifications">PERFIL</string>
     <string name="respiradores">RESPIRADORES</string>
     <string name="mascarillas">MASCARILLAS</string>
@@ -27,13 +28,16 @@
     <string name="login_failed">"Login failed"</string>
     <string name="register_now">Register now</string>
     <string name="iniciar_sesion">Iniciar Sesion</string>
-    <string name="email">Email</string>
+    <string name="email">Email:</string>
     <string name="password">Password</string>
     <string name="pass">Contraseña</string>
     <string name="nombre_proveedor">Proveedor</string>
     <string name="nombre_empresa">Empresa</string>
     <string name="id">ID</string>
     <string name="usuario">Usuario</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

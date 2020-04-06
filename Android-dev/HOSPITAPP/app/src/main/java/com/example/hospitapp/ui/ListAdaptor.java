@@ -45,7 +45,6 @@ public class ListAdaptor extends RecyclerView.Adapter<ListAdaptor.ListViewHolder
             textState = (TextView) itemView.findViewById(R.id.State);
             textReferenceID = (TextView) itemView.findViewById(R.id.ReferenceIdNum);
 
-            proveedoresButton = (Button) itemView.findViewById(R.id.proveedoresButton);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -54,17 +53,6 @@ public class ListAdaptor extends RecyclerView.Adapter<ListAdaptor.ListViewHolder
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
                             listener.onButtonClick(position);
-                        }
-                    }
-                }
-            });
-            proveedoresButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (listener != null) {
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            listener.onItemClick(position);
                         }
                     }
                 }

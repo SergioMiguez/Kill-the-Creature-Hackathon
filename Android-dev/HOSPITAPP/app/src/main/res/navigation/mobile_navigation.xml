@@ -8,6 +8,7 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.hospitapp.ui.home.HomeFragment"
+        android:label="EN PROCESO"
         tools:layout="@layout/fragment_home" />
 
     <fragment

@@ -1,33 +1,23 @@
 package com.example.hospitapp;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.Button;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.hospitapp.ui.home.HomeFragment;
-import com.example.hospitapp.ui.notifications.NotificationsFragment;
-
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton fabAdd;
+    private Button proveedoresButton;
 
     private static Context mContext;
 
@@ -48,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         mContext = getApplicationContext();
 
         openAdd();
+
+        openProveedores();
 
     }
 
@@ -70,6 +62,19 @@ public class MainActivity extends AppCompatActivity {
     public static Context getContext(){
         return mContext;
     }
+
+    public void openProveedores() {
+
+        proveedoresButton = findViewById(R.id.buttonProveedor);
+        proveedoresButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InfoPedidosDialog newDialog = new InfoPedidosDialog();
+                newDialog.show(getSupportFragmentManager(), "Elegir Proveedor");
+            }
+        });
+    }
+
 
 
 

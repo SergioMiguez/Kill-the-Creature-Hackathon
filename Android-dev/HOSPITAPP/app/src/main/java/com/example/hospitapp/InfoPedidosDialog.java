@@ -34,34 +34,65 @@ import java.util.function.ToDoubleBiFunction;
 public class InfoPedidosDialog extends AppCompatDialogFragment {
 
     RecyclerView recyclerView;
-    ArrayList<Proveedor> listOfProveedores;
+    ArrayList<Order> listOfProveedores;
+
 
     private TextView nameProviderInput;
     private TextView nameBussinesInput;
     private TextView emailInput;
 
-    private Button acceptButton;
+    private EditText idInput;
+    private EditText enlazarInput;
+
+    private Button buscarIdButton;
+    private Button enlazarButton;
 
     private String nameProvider;
     private String nameBussiness;
     private String email;
+    private String id;
+    private String idProveedor;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        final View view = inflater.inflate(R.layout.information_pedidos__dialog, null, false);
+        final View view = inflater.inflate(R.layout.activity_proveedores, null, false);
+        buscarIdButton = view.findViewById(R.id.buscarButton);
+        enlazarButton = view.findViewById(R.id.enlazarButton);
+        idInput = view.findViewById(R.id.idInput);
+        enlazarInput = view.findViewById(R.id.enlazarInput);
+
 
         listOfProveedores = new ArrayList<>();
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerProveedores);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        fillList();
+        buscarIdButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (fullEdit(idInput)) {
+                    id = idInput.getText().toString();
+                    fillList();
+                }
+            }
+        });
 
-        ListProveedoresClass adapter = new ListProveedoresClass(listOfProveedores);
+        enlazarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(fullEdit(enlazarInput)){
+                    idProveedor = enlazarInput.getText().toString();
+                    sendIdProveedor("http:// url");
+                }
+            }
+        });
+
+        ListClassAdapter adapter = new ListClassAdapter(listOfProveedores);
 
         recyclerView.setAdapter(adapter);
 
@@ -84,10 +115,6 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
     }
 
     private void fillList() {
-        listOfProveedores.add(new Proveedor(0, "Proveedor", "Business", "email", "direccion", "telefono"));
-        listOfProveedores.add(new Proveedor(0, "Proveedor", "Business", "email", "direccion", "telefono"));
-        listOfProveedores.add(new Proveedor(0, "Proveedor", "Business", "email", "direccion", "telefono"));
-        listOfProveedores.add(new Proveedor(0, "Proveedor", "Business", "email", "direccion", "telefono"));
 
         /* TODO CAMBIAR EL URL AL QUE SEA CONVENIENTE */
         makeListRequest("HTTP://URL DE LISTA DE PROVEEDORES PARA UN DETERMINADO PEDIDO");
@@ -101,20 +128,29 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
                     JSONArray array = new JSONArray(response);
 
                     for (int i = 0; i < array.length(); i++) {
-                        JSONObject proveedor = array.getJSONObject(i);
+                        JSONObject order = array.getJSONObject(i);
 
-                        listOfProveedores.add(new Proveedor(
-                                proveedor.getInt("id"),
-                                proveedor.getString("usuario"),
-                                proveedor.getString("email"),
+                        listOfProveedores.add(new Order(
+                                order.getInt("id"),
+                                order.getInt("id_objeto"),
+                                order.getInt("cantidad"),
+                                order.getInt("id_proveedor"),
+                                order.getInt("id_hospital"),
+                                order.getString("fecha"),
+                                order.getString("direccion_envio"),
+                                order.getString("nombre_objeto")
+                                /*
+                                order.getInt("id"),
+                                order.getString("usuario"),
+                                order.getString("email"),
                                 proveedor.getString("direccion"),
                                 proveedor.getString("telefono"),
-                                proveedor.getString("descripcion")
+                                proveedor.getString("descripcion")*/
                         ));
 
                     }
 
-                    ListProveedoresClass adapter = new ListProveedoresClass(listOfProveedores);
+                    ListClassAdapter adapter = new ListClassAdapter(listOfProveedores);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
@@ -130,6 +166,15 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
 
         /*  TODO CHECK IF CONTEXT WORKS  (MainActivity.getContext() */
         Volley.newRequestQueue(MainActivity.getContext()).add(stringRequest);
+
+    }
+
+    private boolean fullEdit(EditText editText) {
+        String empty = "";
+        return !editText.getText().toString().trim().equals(empty);
+    }
+
+    private void sendIdProveedor(String URL) {
 
     }
 

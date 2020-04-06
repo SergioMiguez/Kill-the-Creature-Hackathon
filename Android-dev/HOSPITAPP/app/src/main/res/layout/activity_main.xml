@@ -51,6 +51,19 @@
 
         </android.support.design.widget.FloatingActionButton>
 
+        <Button
+            android:id="@+id/buttonProveedor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="113dp"
+            android:layout_marginBottom="81dp"
+            android:text="Proveedores"
+            android:textColor="@color/colorPrimary">
+
+        </Button>
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
