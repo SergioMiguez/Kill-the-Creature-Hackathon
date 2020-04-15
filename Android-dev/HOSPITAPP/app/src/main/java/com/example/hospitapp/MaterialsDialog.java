@@ -9,6 +9,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -29,6 +31,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class MaterialsDialog extends AppCompatDialogFragment {
 
@@ -36,6 +39,9 @@ public class MaterialsDialog extends AppCompatDialogFragment {
     private ArrayList<Material> listOfMaterials;
     private String state;
     private RequestQueue requestQueue;
+    private Button addMaterial;
+    private EditText materialInputText;
+    private String material;
 
 
 
@@ -47,11 +53,25 @@ public class MaterialsDialog extends AppCompatDialogFragment {
 
         state = "MATERIALS";
 
+        addMaterial = view.findViewById(R.id.addMaterialButton);
+        materialInputText = view.findViewById(R.id.newMaterialInput);
+        addMaterial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (materialInputText.getText() != null) {
+                    material = materialInputText.getText().toString();
+                    sendServerNewMaterial("URL");
+                }
+            }
+        });
+
+
         recyclerView = view.findViewById(R.id.recyclerMaterials);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         listOfMaterials = new ArrayList<>();
 
         fillList();
+
 
         ListMaterialsAdaptor adapter = new ListMaterialsAdaptor(listOfMaterials);
 
@@ -133,6 +153,40 @@ public class MaterialsDialog extends AppCompatDialogFragment {
         requestQueue.add(stringRequest);
     }
 
+    private void sendServerNewMaterial(String URL) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    if (jsonResponse.getBoolean("success")){
+                        Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainActivity.getContext(), "No se pudo crear el usuario, posible error de duplicacion", Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (Exception e) {
+                    Toast.makeText(MainActivity.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("nombre_material", material);
+                return parameters;
+            }
+        };
+        requestQueue=Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+    }
 
 
 }
