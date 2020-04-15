@@ -60,7 +60,7 @@ public class MaterialsDialog extends AppCompatDialogFragment {
             public void onClick(View v) {
                 if (materialInputText.getText() != null) {
                     material = materialInputText.getText().toString();
-                    sendServerNewMaterial("URL");
+                    sendServerNewMaterial("http://192.168.1.86:80/matalbicho/anadir_material.php");
                 }
             }
         });
@@ -98,7 +98,7 @@ public class MaterialsDialog extends AppCompatDialogFragment {
 
     private void fillList() {
         /*  TODO IMPLEMENT URL  */
-        makeListRequest("URL");
+        makeListRequest("http://192.168.1.86:80/matalbicho/show_materiales.php");
     }
 
     private void makeListRequest(String URL) {
