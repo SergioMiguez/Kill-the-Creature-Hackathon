@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+    <LinearLayout
+        android:id="@+id/select_text_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        >
+
+        <TextView
+            android:id="@+id/select_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/selecione_su_pedido"
+            android:textSize="16sp"
+            />
+
+        <EditText
+            android:id="@+id/objectInput"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:hint="@string/material"
+            android:inputType="text"
+            android:importantForAutofill="no"
+            android:gravity="center_horizontal"
+            >
+
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_numero_de_unidades"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/select_text_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/VolumeNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/num_unidades"
+            android:textSize="16sp"
+            />
+
+        <EditText
+            android:id="@+id/inputVN"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:inputType="number"
+            android:hint="@string/numero"
+            android:autofillHints=""
+            android:gravity="center_horizontal"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_envio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_numero_de_unidades"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/Direccion_de_envio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mantener_direccion_de_envio"
+            android:textSize="16sp"
+            />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="70dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Address_change_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_envio"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+    >
+
+        <EditText
+            android:id="@+id/changeAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/si_eligiste_no_indica_la_nueva"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

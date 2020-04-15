@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
+
+    <LinearLayout
+        android:id="@+id/buscador"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        >
+
+        <EditText
+            android:id="@+id/idInput"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:hint="ID"
+            android:gravity="center_horizontal"
+            >
+        </EditText>
+
+        <Button
+            android:id="@+id/buscarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buscar ID"
+            >
+
+        </Button>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/enlazarLayout"
+        android:layout_below="@+id/buscador"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        >
+
+        <EditText
+            android:id="@+id/enlazarInput"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:hint="ID"
+            android:gravity="center_horizontal"
+            >
+        </EditText>
+
+        <Button
+            android:id="@+id/enlazarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enlazar"
+            >
+
+        </Button>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/recyclerLayout"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/enlazarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerProveedores"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+</RelativeLayout>
