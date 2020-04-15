@@ -50,7 +50,7 @@
             app:backgroundTint="@color/colorPrimary">
 
         </android.support.design.widget.FloatingActionButton>
-
+        <!--
         <Button
             android:id="@+id/buttonProveedor"
             android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
             android:textColor="@color/colorPrimary">
 
         </Button>
-
+        -->
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

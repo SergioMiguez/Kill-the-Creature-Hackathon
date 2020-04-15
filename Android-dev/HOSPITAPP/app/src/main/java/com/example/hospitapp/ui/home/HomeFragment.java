@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.Toast;
@@ -47,6 +48,7 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
+    private Button proveedoresButton;
 
     private ArrayList<Order> listOfOrders;
 
@@ -54,8 +56,8 @@ public class HomeFragment extends Fragment {
 
 
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater,
+                             final ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
@@ -70,6 +72,9 @@ public class HomeFragment extends Fragment {
         ListClassAdapter adapter = new ListClassAdapter(listOfOrders, state, mContext);
 
         recyclerView.setAdapter(adapter);
+
+        proveedoresButton = view.findViewById(R.id.proveedorButton);
+        openProveedores();
 
         return view;
     }
@@ -154,6 +159,17 @@ public class HomeFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mContext = null;
+    }
+
+    public void openProveedores() {
+
+        proveedoresButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InfoPedidosDialog newDialog = new InfoPedidosDialog();
+                newDialog.show(getActivity().getSupportFragmentManager(), "Elegir Proveedor");
+            }
+        });
     }
 
 

@@ -232,18 +232,19 @@
             app:layout_constraintTop_toTopOf="parent">
         </TextView>
 
-       <!-- <Button
-            android:id="@+id/editUserBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="60dp"
-            android:text="Editar Perfil "
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.413"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/telephoneAdded"
-            app:layout_constraintVertical_bias="0.063" />-->
+
+        <!-- <Button
+             android:id="@+id/editUserBtn"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginBottom="60dp"
+             android:text="Editar Perfil "
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintHorizontal_bias="0.413"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/telephoneAdded"
+             app:layout_constraintVertical_bias="0.063" />-->
 
         <!--<TextView
             android:id="@+id/name_text_edit"
@@ -268,6 +269,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
         </EditText>-->
+
+        <Button
+            android:id="@+id/logoutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="448dp"
+            android:text="Log Out"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </Button>
 
         <TextView
             android:layout_width="match_parent"
@@ -364,7 +378,9 @@
             android:layout_marginTop="868dp"
             android:hint="Código postal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:inputType="number"
+            >
         </EditText>
 
         <TextView
@@ -388,7 +404,9 @@
             android:layout_marginTop="936dp"
             android:hint="Número"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:inputType="number"
+            >
         </EditText>
 
         <TextView
@@ -423,7 +441,9 @@
             android:layout_marginTop="1068dp"
             android:hint="Introduzca su Email"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:inputType="textEmailAddress"
+            >
         </EditText>
 
         <TextView
@@ -460,7 +480,9 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:inputType="number"
+            >
 
         </TextView>
 

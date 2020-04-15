@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         openAdd();
 
-        openProveedores();
+        //openProveedores();
 
     }
 
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openProveedores() {
 
-        proveedoresButton = findViewById(R.id.buttonProveedor);
+        //proveedoresButton = findViewById(R.id.buttonProveedor);
         proveedoresButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void finalizeMain() {
+        finish();
+    }
 
 
 

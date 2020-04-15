@@ -1,6 +1,7 @@
 package com.example.hospitapp.ui.notifications;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -35,9 +36,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class NotificationsFragment extends Fragment {
 
+    private Button logOutButton;
     private RequestQueue requestInfoQueue;
     private RequestQueue requestEditQueue;
     private boolean editSuccess;
@@ -185,6 +188,18 @@ public class NotificationsFragment extends Fragment {
                 makeEditRequest(editUrl);
             }
         });
+
+        logOutButton = root.findViewById(R.id.logoutButton);
+        logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginActivity.userName = null;
+                Intent logInActivity = new Intent(getContext(), LoginActivity.class);
+                startActivity(logInActivity);
+
+            }
+        });
+
         return root;
     }
 
@@ -318,6 +333,10 @@ public class NotificationsFragment extends Fragment {
 
     private String toStringAddress(String addressName, String numAddress, String zipCode, String city) {
         return addressName.toUpperCase() + "$" + numAddress + "$" + zipCode + "$" + city.toUpperCase();
+    }
+
+    private void logOut() {
+
     }
 }
             
