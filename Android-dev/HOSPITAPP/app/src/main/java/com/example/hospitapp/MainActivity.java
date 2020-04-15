@@ -17,6 +17,7 @@ import androidx.navigation.ui.NavigationUI;
 public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton fabAdd;
+    private FloatingActionButton fabMaterial;
     private Button proveedoresButton;
 
     private static Context mContext;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         mContext = getApplicationContext();
 
         openAdd();
+        openMaterial();
 
         //openProveedores();
 
@@ -57,6 +59,21 @@ public class MainActivity extends AppCompatActivity {
     public void onDialogAdd() {
         AddDialog addDialog = new AddDialog();
         addDialog.show(getSupportFragmentManager(), "Add Dialog");
+    }
+
+    public void openMaterial(){
+        fabMaterial = findViewById(R.id.addMaterialButton);
+        fabMaterial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onDialogMaterials();
+            }
+        });
+    }
+
+    public void onDialogMaterials() {
+        MaterialsDialog materalsDialog = new MaterialsDialog();
+        materalsDialog.show(getSupportFragmentManager(), "Add Materials");
     }
 
     public static Context getContext(){

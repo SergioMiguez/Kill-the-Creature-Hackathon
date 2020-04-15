@@ -38,6 +38,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enlazar">Enlazar</string>
+    <string name="add_a_material_if_you_don_t_find_it_in_the_list_below">Add a material if you don\'t find it in the list below</string>
 
 
 </resources>
