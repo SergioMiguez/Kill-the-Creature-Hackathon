@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton fabAdd;
     private FloatingActionButton fabMaterial;
+    private FloatingActionButton fabHelp;
     private Button proveedoresButton;
 
     private static Context mContext;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         openAdd();
         openMaterial();
+        openHelp();
 
         //openProveedores();
 
@@ -74,6 +76,17 @@ public class MainActivity extends AppCompatActivity {
     public void onDialogMaterials() {
         MaterialsDialog materalsDialog = new MaterialsDialog();
         materalsDialog.show(getSupportFragmentManager(), "Add Materials");
+    }
+
+    public void openHelp() {
+        fabHelp = findViewById(R.id.helpFabButton);
+        fabHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openHelp = new Intent(getContext(), HelpActivity.class);
+                startActivity(openHelp);
+            }
+        });
     }
 
     public static Context getContext(){
