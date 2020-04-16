@@ -128,7 +128,7 @@
                 android:id="@+id/direction_hospital_edit"
                 android:layout_width="185dp"
                 android:layout_height="31dp"
-                android:text="Direccíon de Hospital:"
+                android:text="Hospital address:"
                 android:textSize="18sp"
                 android:textStyle="bold">
             </TextView>
@@ -165,7 +165,7 @@
                 android:id="@+id/CPEdited"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:hint="ZIP"
+                android:hint="PC"
                 android:inputType="number"
                 android:textAlignment="center"
                 >
@@ -183,7 +183,7 @@
                 android:id="@+id/street_number_text_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Número de Calle:"
+                android:text="Street number:"
                 android:textSize="18sp"
                 android:textStyle="bold">
             </TextView>
@@ -192,7 +192,7 @@
                 android:id="@+id/streetNumberEdited"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Número"
+                android:hint="Number"
 
                 android:inputType="number"
                 >
@@ -210,7 +210,7 @@
                 android:id="@+id/city_province_text_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ciudad o Provincia:"
+                android:text="City or region"
                 android:textSize="18sp"
                 android:textStyle="bold">
             </TextView>
@@ -219,7 +219,7 @@
                 android:id="@+id/cityEdited"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:hint="City"
+                android:hint="City or region"
                 android:textAlignment="center"
                 >
             </EditText>
@@ -246,7 +246,7 @@
                 android:id="@+id/emailEdited"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:hint="Introduzca su Email"
+                android:hint="Introduce your email"
                 android:inputType="textEmailAddress"
                 >
             </EditText>
@@ -263,7 +263,7 @@
                 android:id="@+id/telephone_text_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Teléfono:"
+                android:text="Telephone number:"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:inputType="number"
