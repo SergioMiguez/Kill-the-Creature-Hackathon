@@ -26,6 +26,7 @@ import com.example.hospitapp.LoginActivity;
 import com.example.hospitapp.MainActivity;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
+import com.example.hospitapp.URLS;
 import com.example.hospitapp.UsuarioHospital;
 import com.example.hospitapp.ui.ListClassAdapter;
 
@@ -85,8 +86,8 @@ public class NotificationsFragment extends Fragment {
 
     String def = "ERROR";
 
-    String serverURL = "http://192.168.1.86:80/matalbicho/profile.php";
-    String editUrl  = "http://192.168.1.86:80/matalbicho/update_perfil.php";
+    String serverURL = URLS.profile_url;
+    String editUrl  = URLS.update_profile_url;
 
     UsuarioHospital userHospital;
 
