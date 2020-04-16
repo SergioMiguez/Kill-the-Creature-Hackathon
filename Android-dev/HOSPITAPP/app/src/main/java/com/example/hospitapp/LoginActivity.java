@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                 userName = userNameInput.getText().toString();
                 password = passwordInput.getText().toString();
 
-                makeCall("http://192.168.1.86:80/matalbicho/login.php");
+                makeCall(URLS.login_url);
 
             }
         });

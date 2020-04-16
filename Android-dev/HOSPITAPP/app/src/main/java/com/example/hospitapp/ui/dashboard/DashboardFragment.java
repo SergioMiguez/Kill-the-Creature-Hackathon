@@ -21,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.hospitapp.LoginActivity;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
+import com.example.hospitapp.URLS;
 import com.example.hospitapp.ui.ListClassAdapter;
 
 
@@ -58,7 +59,7 @@ public class DashboardFragment extends Fragment {
         recyclerViewReceibed.setLayoutManager(new LinearLayoutManager(getContext()));
 
         fillListLinked();
-        fillListReceibed();
+        //fillListReceibed();
 
         ListClassAdapter adapter = new ListClassAdapter(listOfOrders, stateLinked, mContext);
 
@@ -81,12 +82,15 @@ public class DashboardFragment extends Fragment {
     }
 
     private void fillListLinked() {
-        makeListRequest("http://192.168.1.86:80/matalbicho/display_pedidos_conectados.php");
+        makeListRequest(URLS.display_connected_orders_url);
     }
 
-    private void fillListReceibed() {
-        makeListRequest("URL");
-    }
+    /**
+     * private void fillListReceibed() {
+     *         makeListRequest("URL");
+     *     }
+     *
+     */
 
 
     private void makeListRequest (String URL) {
@@ -125,7 +129,7 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (mContext != null) {
-                    Toast.makeText(mContext, "ERROR HOME", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
             }

@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +22,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hospitapp.ui.ListClassAdapter;
-import com.example.hospitapp.ui.ListProveedoresClass;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,8 +30,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
-import java.util.function.ToDoubleBiFunction;
 
 public class InfoPedidosDialog extends AppCompatDialogFragment {
 
@@ -93,7 +89,7 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
             public void onClick(View v) {
                 if(fullEdit(enlazarInput)){
                     idProveedor = enlazarInput.getText().toString();
-                    sendIdProveedor("http://192.168.1.86:80/matalbicho/transition_home_complete.php");
+                    sendIdProveedor(URLS.connect_orders_url);
                 }
             }
         });
@@ -123,7 +119,7 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
     private void fillList() {
 
         /* TODO CAMBIAR EL URL AL QUE SEA CONVENIENTE */
-        makeListRequest("http://192.168.1.86:80/matalbicho/solicitudes_pedidos_con_proveedor.php");
+        makeListRequest(URLS.show_potential_providers_url);
     }
 
     private void makeListRequest (String URL) {

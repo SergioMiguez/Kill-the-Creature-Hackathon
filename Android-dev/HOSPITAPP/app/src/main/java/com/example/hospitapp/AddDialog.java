@@ -118,9 +118,9 @@ public class AddDialog extends AppCompatDialogFragment {
 
                                 /*  TODO REVISAR SI LA DIRECCION ES CORRECTA, ES NECESARIO EL RESTO DE INFORMACION NO USADA*/
                                 newAddress = generateNewAdd(nameStreet, streetNumber, CP, city);
-                                makeServerCallNewAddress("http://192.168.1.86:80/matalbicho/nuevo_pedido_nueva_direccion.php");
+                                makeServerCallNewAddress(URLS.new_order_with_new_address_url);
                             } else {
-                                makeServerCallDefaultAddress("http://192.168.1.86:80/matalbicho/nuevo_pedido_con_direccion.php");
+                                makeServerCallDefaultAddress(URLS.new_order_with_same_address_url);
                             }
 
 

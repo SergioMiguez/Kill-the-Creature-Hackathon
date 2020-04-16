@@ -94,7 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
                  */
 
                 if (Fpsw.equals(Spsw)) {
-                    makeCallServerAddNewUser ("http://192.168.1.86:80/matalbicho/registro_hospitales.php");
+                    makeCallServerAddNewUser (URLS.hospital_registry_url);
                 } else {
                     Toast.makeText(getApplicationContext(), "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
                 }

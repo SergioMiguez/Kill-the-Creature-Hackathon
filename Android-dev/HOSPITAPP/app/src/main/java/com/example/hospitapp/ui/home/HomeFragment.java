@@ -27,6 +27,7 @@ import com.example.hospitapp.LoginActivity;
 import com.example.hospitapp.MainActivity;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
+import com.example.hospitapp.URLS;
 import com.example.hospitapp.ui.ListAdaptor;
 import com.example.hospitapp.ui.ListClassAdapter;
 import com.example.hospitapp.ui.ListProveedoresClass;
@@ -85,7 +86,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void fillList() {
-        makeListRequest("http://192.168.1.86:80/matalbicho/display_pedidos.php");
+        makeListRequest(URLS.display_orders_url);
     }
 
 
