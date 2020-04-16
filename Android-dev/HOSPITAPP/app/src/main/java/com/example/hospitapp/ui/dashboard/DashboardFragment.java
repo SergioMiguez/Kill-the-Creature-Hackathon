@@ -2,18 +2,13 @@ package com.example.hospitapp.ui.dashboard;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -23,7 +18,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.hospitapp.AddDialog;
 import com.example.hospitapp.LoginActivity;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
@@ -42,8 +36,10 @@ public class DashboardFragment extends Fragment {
 
     private DashboardViewModel dashboardViewModel;
     private ArrayList<Order> listOfOrders;
-    private RecyclerView recyclerView;
-    private final String state = "COMPLETADOS";
+    private RecyclerView recyclerViewLinked;
+    private RecyclerView recyclerViewReceibed;
+    private final String stateLinked = "LINKED";
+    private final String stateCompleted = "RECEIVED";
     private Context mContext;
 
     private RequestQueue requestQueue;
@@ -56,14 +52,17 @@ public class DashboardFragment extends Fragment {
 
         listOfOrders = new ArrayList<>();
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerDashboard);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewLinked = (RecyclerView) view.findViewById(R.id.recyclerDashboard);
+        recyclerViewLinked.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewReceibed = (RecyclerView) view.findViewById(R.id.recyclerCompletado);
+        recyclerViewReceibed.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        fillList();
+        fillListLinked();
+        fillListReceibed();
 
-        ListClassAdapter adapter = new ListClassAdapter(listOfOrders, state, mContext);
+        ListClassAdapter adapter = new ListClassAdapter(listOfOrders, stateLinked, mContext);
 
-        recyclerView.setAdapter(adapter);
+        recyclerViewLinked.setAdapter(adapter);
 
         return view;
     }
@@ -81,8 +80,12 @@ public class DashboardFragment extends Fragment {
         mContext = null;
     }
 
-    private void fillList() {
+    private void fillListLinked() {
         makeListRequest("http://192.168.1.86:80/matalbicho/display_pedidos_conectados.php");
+    }
+
+    private void fillListReceibed() {
+        makeListRequest("URL");
     }
 
 
@@ -105,12 +108,14 @@ public class DashboardFragment extends Fragment {
                                 order.getString("fecha"),
                                 order.getString("direccion_envio"),
                                 order.getString("nombre_objeto")
+                                //order.getInt("recibido"),
+                               // order.getInt("enviado")
                         ));
 
                     }
 
-                    ListClassAdapter adapter = new ListClassAdapter(listOfOrders, state, mContext);
-                    recyclerView.setAdapter(adapter);
+                    ListClassAdapter adapter = new ListClassAdapter(listOfOrders, stateLinked, mContext);
+                    recyclerViewLinked.setAdapter(adapter);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
