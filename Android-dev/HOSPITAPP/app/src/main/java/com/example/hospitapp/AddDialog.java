@@ -24,6 +24,7 @@ import com.example.hospitapp.ui.home.HomeFragment;
 
 import org.json.JSONObject;
 
+import java.security.cert.Certificate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -35,12 +36,22 @@ public class AddDialog extends AppCompatDialogFragment {
 
     private String object;
     private String volumeNumber;
-    private Switch keepAdress;
-    private String newAdress;
+    private Switch keepAddress;
+    private String newAddress;
 
     private EditText objectInput;
     private EditText volumeInput;
-    private EditText addressInput;
+
+    private EditText nameHospitalEdited;
+    private EditText nameStreetEdited;
+    private EditText CPEdited;
+    private EditText streetNumberEdited;
+    private EditText cityEdited;
+    private EditText emailEdited;
+    private EditText telephoneEdited;
+
+    private String nameHospital, nameStreet, CP, streetNumber, city, email, telephone;
+
 
     private boolean orderSuccess;
     private RequestQueue requestQueue;
@@ -57,9 +68,15 @@ public class AddDialog extends AppCompatDialogFragment {
 
         objectInput = view.findViewById(R.id.objectInput);
         volumeInput = view.findViewById(R.id.inputVN);
-        addressInput = view.findViewById(R.id.changeAddress);
+        nameHospitalEdited = view.findViewById(R.id.nameHospitalEdited);
+        nameStreetEdited = view.findViewById(R.id.nameStreetEdited);
+        CPEdited = view.findViewById(R.id.CPEdited);
+        streetNumberEdited = view.findViewById(R.id.streetNumberEdited);
+        cityEdited = view.findViewById(R.id.cityEdited);
+        emailEdited = view.findViewById(R.id.emailEdited);
+        telephoneEdited = view.findViewById(R.id.telephoneEdited);
 
-        keepAdress = view.findViewById(R.id.switch1);
+        keepAddress = view.findViewById(R.id.switch1);
 
 
         builder.setView(view)
@@ -76,13 +93,31 @@ public class AddDialog extends AppCompatDialogFragment {
 
                             Objects.requireNonNull(objectInput);
                             Objects.requireNonNull(volumeInput);
-                            Objects.requireNonNull(addressInput);
+
 
                             object = objectInput.getText().toString();
                             volumeNumber = volumeInput.getText().toString();
-                            newAdress = addressInput.getText().toString();
+                           // newAddress = addressInput.getText().toString();
 
-                            if (!keepAdress.isChecked()) {
+                            if (!keepAddress.isChecked()) {
+                                Objects.requireNonNull(nameHospitalEdited);
+                                Objects.requireNonNull(nameStreetEdited);
+                                Objects.requireNonNull(CPEdited);
+                                Objects.requireNonNull(streetNumberEdited);
+                                Objects.requireNonNull(cityEdited);
+                                Objects.requireNonNull(emailEdited);
+                                Objects.requireNonNull(telephoneEdited);
+
+                                nameHospital = nameHospitalEdited.getText().toString();
+                                nameStreet = nameStreetEdited.getText().toString();
+                                CP = CPEdited.getText().toString();
+                                streetNumber = streetNumberEdited.getText().toString();
+                                city = cityEdited.getText().toString();
+                                email = emailEdited.getText().toString();
+                                telephone = telephoneEdited.getText().toString();
+
+                                /*  TODO REVISAR SI LA DIRECCION ES CORRECTA, ES NECESARIO EL RESTO DE INFORMACION NO USADA*/
+                                newAddress = generateNewAdd(nameStreet, streetNumber, CP, city);
                                 makeServerCallNewAddress("http://192.168.1.86:80/matalbicho/nuevo_pedido_nueva_direccion.php");
                             } else {
                                 makeServerCallDefaultAddress("http://192.168.1.86:80/matalbicho/nuevo_pedido_con_direccion.php");
@@ -174,7 +209,7 @@ public class AddDialog extends AppCompatDialogFragment {
                 parameters.put("cantidad", volumeNumber);
                 parameters.put("usuario", LoginActivity.userName);
                 parameters.put("fecha", getDate());
-                parameters.put("direccion", newAdress);
+                parameters.put("direccion", newAddress);
                 return parameters;
             }
         };
@@ -189,4 +224,9 @@ public class AddDialog extends AppCompatDialogFragment {
         LocalDateTime now = LocalDateTime.now();
         return dtf.format(now);
     }
+
+    private String generateNewAdd(String nameStreetEdited, String streetNumberEdited, String CPEdited, String cityEdited) {
+        return nameStreetEdited.toUpperCase() + "$" + streetNumberEdited + "$" + CPEdited + "$" + cityEdited.toUpperCase();
+    }
+
 }

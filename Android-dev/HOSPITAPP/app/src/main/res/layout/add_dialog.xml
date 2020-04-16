@@ -1,116 +1,288 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true">
 
     <LinearLayout
         android:id="@+id/select_text_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+
         >
 
-        <TextView
-            android:id="@+id/select_text"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/selecione_su_pedido"
-            android:textSize="16sp"
-            />
+            android:layout_gravity="center_horizontal"
+            >
+            <TextView
+                android:id="@+id/select_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/selecione_su_pedido"
+                android:textSize="16sp"
+                />
 
-        <EditText
-            android:id="@+id/objectInput"
-            android:layout_width="150dp"
+            <EditText
+                android:id="@+id/objectInput"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:hint="@string/material"
+                android:inputType="text"
+                android:importantForAutofill="no"
+                android:gravity="center_horizontal"
+                >
+
+            </EditText>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:hint="@string/material"
-            android:inputType="text"
-            android:importantForAutofill="no"
-            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
             >
 
-        </EditText>
+            <TextView
+                android:id="@+id/VolumeNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/num_unidades"
+                android:textSize="16sp"
+                />
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/inputVN"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:inputType="number"
+                android:hint="@string/numero"
+                android:autofillHints=""
+                android:gravity="center_horizontal"
+                />
 
-    <LinearLayout
-        android:id="@+id/layout_numero_de_unidades"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/select_text_layout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp">
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/VolumeNumber"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/num_unidades"
-            android:textSize="16sp"
-            />
+            android:layout_gravity="center_horizontal"
+            >
 
-        <EditText
-            android:id="@+id/inputVN"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:inputType="number"
-            android:hint="@string/numero"
-            android:autofillHints=""
-            android:gravity="center_horizontal"
-            />
+            <TextView
+                android:id="@+id/Direccion_de_envio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mantener_direccion_de_envio"
+                android:textSize="16sp"
+                />
 
-    </LinearLayout>
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="70dp"
+                />
+        </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/layout_envio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layout_numero_de_unidades"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp">
-
-        <TextView
-            android:id="@+id/Direccion_de_envio"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/mantener_direccion_de_envio"
-            android:textSize="16sp"
-            />
+            android:layout_gravity="center_horizontal"
+            >
+            <TextView
+                android:id="@+id/hospital_text_edit"
+                android:layout_width="170dp"
+                android:layout_height="35dp"
+                android:text="@string/nombre_de_hospital"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                >
+            </TextView>
 
-        <Switch
-            android:id="@+id/switch1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="70dp"
-            />
+            <EditText
+                android:id="@+id/nameHospitalEdited"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/name"
+                android:textAlignment="center"
+                >
 
-    </LinearLayout>
+            </EditText>
 
-    <LinearLayout
-        android:id="@+id/Address_change_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/layout_envio"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-    >
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/changeAddress"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/si_eligiste_no_indica_la_nueva"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:textSize="16sp" />
+            android:layout_gravity="center_horizontal"
+            >
+            <TextView
+                android:id="@+id/direction_hospital_edit"
+                android:layout_width="185dp"
+                android:layout_height="31dp"
+                android:text="Direccíon de Hospital:"
+                android:textSize="18sp"
+                android:textStyle="bold">
+            </TextView>
+
+            <EditText
+                android:id="@+id/nameStreetEdited"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:hint="Street"
+                >
+
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            >
+
+            <TextView
+                android:id="@+id/codigo_postal_text_edit"
+                android:layout_width="131dp"
+                android:layout_height="29dp"
+                android:text="@string/c_digo_postal"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                >
+            </TextView>
+
+            <EditText
+                android:id="@+id/CPEdited"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:hint="ZIP"
+                android:inputType="number"
+                android:textAlignment="center"
+                >
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            >
+
+            <TextView
+                android:id="@+id/street_number_text_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Número de Calle:"
+                android:textSize="18sp"
+                android:textStyle="bold">
+            </TextView>
+
+            <EditText
+                android:id="@+id/streetNumberEdited"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Número"
+
+                android:inputType="number"
+                >
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            >
+
+            <TextView
+                android:id="@+id/city_province_text_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ciudad o Provincia:"
+                android:textSize="18sp"
+                android:textStyle="bold">
+            </TextView>
+
+            <EditText
+                android:id="@+id/cityEdited"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:hint="City"
+                android:textAlignment="center"
+                >
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            >
+
+            <TextView
+                android:id="@+id/email_text_ed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email:"
+                android:textSize="18sp"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/emailEdited"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:hint="Introduzca su Email"
+                android:inputType="textEmailAddress"
+                >
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            >
+
+            <TextView
+                android:id="@+id/telephone_text_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Teléfono:"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:inputType="number"
+                >
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/telephoneEdited"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:hint="Phone"
+                android:textAlignment="center"
+                >
+
+            </EditText>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-
-</RelativeLayout>
+</ScrollView>
