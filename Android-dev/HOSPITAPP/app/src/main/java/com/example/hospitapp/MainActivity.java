@@ -1,13 +1,18 @@
 package com.example.hospitapp;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
+import android.opengl.Visibility;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -16,6 +21,8 @@ import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
 
+    private FloatingActionButton fabThree;
+    private ConstraintLayout container;
     private FloatingActionButton fabAdd;
     private FloatingActionButton fabMaterial;
     private FloatingActionButton fabHelp;
@@ -39,12 +46,60 @@ public class MainActivity extends AppCompatActivity {
 
         mContext = getApplicationContext();
 
+        openThree();
+        constraintClick();
         openAdd();
         openMaterial();
         openHelp();
 
         //openProveedores();
 
+    }
+
+    public void openThree() {
+        fabThree = findViewById(R.id.threeFabButton);
+        fabThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    hideFab(fabThree);
+                    showFab(fabAdd);
+                    showFab(fabMaterial);
+                    showFab(fabHelp);
+                    finalize();
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public void constraintClick() {
+        container = findViewById(R.id.container);
+        container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    showFab(fabThree);
+                    hideFab(fabAdd);
+                    hideFab(fabMaterial);
+                    hideFab(fabHelp);
+                    finalize();
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public void showFab (FloatingActionButton b) {
+        b.show();
+        b.setEnabled(true);
+    }
+
+    public void hideFab (final FloatingActionButton b) {
+        b.hide();
+        b.setEnabled(false);
     }
 
     public void openAdd() {
