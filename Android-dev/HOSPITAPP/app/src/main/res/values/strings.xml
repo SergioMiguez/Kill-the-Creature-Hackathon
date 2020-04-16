@@ -75,7 +75,7 @@
     <string name="telephoneEditProfileInfo">Introduce your telephone number</string>
     <string name="telephoneEditProfilePrompt">Telephone:</string>
     <string name="saveProfileBtn">Save profile</string>
-
+    <string name="helpTitle">Help</string>
 
 
 </resources>
