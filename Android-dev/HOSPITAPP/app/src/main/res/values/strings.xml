@@ -40,6 +40,40 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="enlazar">Enlazar</string>
     <string name="add_a_material_if_you_don_t_find_it_in_the_list_below">Add a material if you don\'t find it in the list below</string>
+    <string name="nameProfileInfo">Nombre</string>
+    <string name="nameProfilePrompt">Nombre:</string>
+    <string name="hospitalProfilePrompt">Nombre de Hospital:</string>
+    <string name="hospitalProfileInfo">Nombre de Hospital</string>
+    <string name="streetProfilePrompt">Direccíon de Hospital:</string>
+    <string name="streetProfileInfo">Dirección del Hospital</string>
+    <string name="CPProfilePrompt">Código Postal:</string>
+    <string name="CPProfileInfo">Código Postal</string>
+    <string name="numberProfilePrompt">Número de Calle:</string>
+    <string name="numberProfileInfo">Número de Calle</string>
+    <string name="cityProfilePrompt">Ciudad o Provincia:</string>
+    <string name="cityProfileInfo">Ciudad o Provincia</string>
+    <string name="emailProfilePrompt">Email:</string>
+    <string name="emailProfileInfo">Email</string>
+    <string name="telephoneProfilePrompt">Teléfono:</string>
+    <string name="telephoneProfileInfo">Teléfono</string>
+    <string name="logOutButtonStr">Log Out</string>
+    <string name="profileTitle">Perfil de Usuario</string>
+    <string name="profileEditTitle">Editar Perfil de Usuario</string>
+    <string name="hospitalEditProfilePrompt">Nombre de Hospital:</string>
+    <string name="hospitalEditProfileInfo">Introduzca el nombre del hospital</string>
+    <string name="streetEditProfilePrompt">Direccíon de Hospital:</string>
+    <string name="streetEditProfileInfo">Introduzca la calle del hospital</string>
+    <string name="CPEditProfilePrompt">Código Postal:</string>
+    <string name="CPEditProfileInfo">Código postal</string>
+    <string name="numberEditProfilePrompt">Número de Calle:</string>
+    <string name="numberEditProfileInfo">Número</string>
+    <string name="cityEditProfilePrompt">Ciudad o Provincia:</string>
+    <string name="cityEditProfileInfo">Ciudad o provincia</string>
+    <string name="emailEditProfileInfo">Introduzca su Email</string>
+    <string name="emailEditProfilePrompt">Email:</string>
+    <string name="telephoneEditProfileInfo">Introduzca su Número de Teléfono</string>
+    <string name="telephoneEditProfilePrompt">Teléfono:</string>
+    <string name="saveProfileBtn">Guardar Perfil</string>
 
 
 </resources>
