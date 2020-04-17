@@ -2,6 +2,7 @@ package com.example.hospitapp;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDialogFragment;
@@ -34,17 +35,18 @@ import java.util.Map;
 public class ReceivedDialog extends AppCompatDialogFragment {
 
     private RecyclerView recyclerView;
-    private ArrayList<Order> listOfSent;
-    private String id;
+    private ArrayList<Order> listOfOrders;
+    private final String stateLinked = "LINKED";
     private RequestQueue requestQueue;
+    private Context mContext;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         final View view = inflater.inflate(R.layout.received_dialog, null, false);
-
-        listOfSent = new ArrayList<>();
+        mContext = this.getContext();
+        listOfOrders = new ArrayList<>();
 
         recyclerView = view.findViewById(R.id.recyclerSentOrders);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -70,21 +72,20 @@ public class ReceivedDialog extends AppCompatDialogFragment {
     }
 
     private void fillList() {
-        makeListRequest(URLS.display_connected_orders_url);
+        makeListRequest(URLS.only_sent_url);
     }
 
-    private void makeListRequest(String URL) {
-        //Toast.makeText(MainActivity.getContext(), "entra dentro del request", Toast.LENGTH_SHORT).show();
+    private void makeListRequest (String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONArray array = new JSONArray(response);
-                    Toast.makeText(MainActivity.getContext(), response, Toast.LENGTH_SHORT).show();
+
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject order = array.getJSONObject(i);
 
-                        listOfSent.add(new Order(
+                        listOfOrders.add(new Order(
                                 order.getInt("id"),
                                 order.getInt("id_objeto"),
                                 order.getInt("cantidad"),
@@ -93,12 +94,12 @@ public class ReceivedDialog extends AppCompatDialogFragment {
                                 order.getString("fecha"),
                                 order.getString("direccion_envio"),
                                 order.getString("nombre_objeto"),
-                                order.getInt("recibido"),
-                                order.getInt("enviado")
+                                order.getInt("enviado"),
+                                order.getInt("recibido")
                         ));
                     }
 
-                    ListClassAdapter adapter = new ListClassAdapter(listOfSent);
+                    ListSentAdapter adapter = new ListSentAdapter(listOfOrders);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
@@ -108,18 +109,28 @@ public class ReceivedDialog extends AppCompatDialogFragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                if (mContext != null) {
+                    Toast.makeText(mContext, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
             }
         }) {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
                 parameters.put("usuario", LoginActivity.userName);
-                parameters.put("id_pedido", id);
                 return parameters;
             }
         };
-        requestQueue=Volley.newRequestQueue(MainActivity.getContext());
+
+
+        /**
+         * if (mContext != null) {
+         *             Volley.newRequestQueue(mContext).add(stringRequest);
+         *         }
+         */
+
+        requestQueue= Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
     }
 }

@@ -64,7 +64,7 @@ public class ListSentAdapter extends RecyclerView.Adapter<ListSentAdapter.OrderV
     @NonNull
     @Override
     public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, null, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_received, null, false);
         return new OrderViewHolder(view, mListemer);
     }
 
@@ -75,7 +75,7 @@ public class ListSentAdapter extends RecyclerView.Adapter<ListSentAdapter.OrderV
         holder.textVolumeNumber.setText("" + listOfOrdersSent.get(position).getCantidad());
         holder.textFecha.setText(listOfOrdersSent.get(position).getFecha());
         holder.textProveedorId.setText("" + listOfOrdersSent.get(position).getId_proveedor());
-        holder.textState.setText("LINKED");
+        holder.textState.setText("SENT");
         holder.textReferenceID.setText("" + listOfOrdersSent.get(position).getId());
 
     }
