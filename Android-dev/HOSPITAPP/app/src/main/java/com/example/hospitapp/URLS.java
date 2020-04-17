@@ -15,4 +15,5 @@ public class URLS {
     public static String connect_orders_url = "http://35.246.98.126/matalbicho/transition_home_complete.php";
     public static String update_profile_url = "http://35.246.98.126/matalbicho/update_perfil.php";
     public static String only_sent_url = "http://35.246.98.126/matalbicho/display_pedidos_enviados.php";
+    public static String confirm_received_url = "http://35.246.98.126/matalbicho/confirmar_recepcion_pedido.php";
 }

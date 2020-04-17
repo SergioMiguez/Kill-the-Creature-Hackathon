@@ -4,12 +4,15 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -28,9 +31,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class ReceivedDialog extends AppCompatDialogFragment {
 
@@ -39,6 +45,10 @@ public class ReceivedDialog extends AppCompatDialogFragment {
     private final String stateLinked = "LINKED";
     private RequestQueue requestQueue;
     private Context mContext;
+    private Button markAsReceived;
+    private EditText idInput;
+    private String inputIdReceived;
+    private String fecha;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -47,6 +57,10 @@ public class ReceivedDialog extends AppCompatDialogFragment {
         final View view = inflater.inflate(R.layout.received_dialog, null, false);
         mContext = this.getContext();
         listOfOrders = new ArrayList<>();
+
+        markAsReceived = view.findViewById(R.id.markAsReceivedButton);
+        idInput = view.findViewById(R.id.idInput);
+        markAsReceivedButton();
 
         recyclerView = view.findViewById(R.id.recyclerSentOrders);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -69,6 +83,18 @@ public class ReceivedDialog extends AppCompatDialogFragment {
                 });
 
         return builder.create();
+    }
+
+    private void markAsReceivedButton() {
+        markAsReceived.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inputIdReceived = idInput.getText().toString();
+                if (!inputIdReceived.equals("")) {
+                    sendReceivedRequest(URLS.confirm_received_url);
+                }
+            }
+        });
     }
 
     private void fillList() {
@@ -132,6 +158,51 @@ public class ReceivedDialog extends AppCompatDialogFragment {
 
         requestQueue= Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
+    }
+
+    private void sendReceivedRequest(String URL) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    if (jsonResponse.getBoolean("success")){
+                        Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainActivity.getContext(), "No se pudo crear el usuario, posible error de duplicacion", Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (Exception e) {
+                    Toast.makeText(MainActivity.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("usuario", LoginActivity.userName);
+                parameters.put("fecha_recibido", getDate());
+                parameters.put("id_pedido", inputIdReceived);
+                return parameters;
+            }
+        };
+        requestQueue=Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private String getDate () {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        return dtf.format(now);
     }
 }
 
