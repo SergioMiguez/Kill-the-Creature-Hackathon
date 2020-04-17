@@ -16,14 +16,16 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="40dp"
             >
             <TextView
                 android:id="@+id/select_text"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:text="@string/selecione_su_pedido"
                 android:textSize="16sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
                 />
 
             <EditText
@@ -45,15 +47,17 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="40dp"
             >
 
             <TextView
                 android:id="@+id/VolumeNumber"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:text="@string/num_unidades"
                 android:textSize="16sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
                 />
 
             <EditText
@@ -72,13 +76,13 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
             >
 
             <TextView
                 android:id="@+id/Direccion_de_envio"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:text="@string/mantener_direccion_de_envio"
                 android:textSize="16sp"
                 />
@@ -88,22 +92,23 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginStart="70dp"
+                android:layout_marginStart="50dp"
                 />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="40dp"
             >
             <TextView
                 android:id="@+id/hospital_text_edit"
-                android:layout_width="170dp"
-                android:layout_height="35dp"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
                 android:text="@string/nombre_de_hospital"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:textAlignment="center"
                 >
             </TextView>
 
@@ -111,6 +116,7 @@
                 android:id="@+id/nameHospitalEdited"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:hint="@string/name"
                 android:textAlignment="center"
                 >
@@ -122,15 +128,17 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="40dp"
             >
             <TextView
                 android:id="@+id/direction_hospital_edit"
-                android:layout_width="185dp"
-                android:layout_height="31dp"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
                 android:text="Hospital address:"
                 android:textSize="18sp"
-                android:textStyle="bold">
+                android:textStyle="bold"
+                android:textAlignment="center"
+                >
             </TextView>
 
             <EditText
@@ -139,6 +147,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:hint="Street"
+                android:layout_marginStart="20dp"
                 >
 
             </EditText>
@@ -148,16 +157,17 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="40dp"
             >
 
             <TextView
                 android:id="@+id/codigo_postal_text_edit"
-                android:layout_width="131dp"
-                android:layout_height="29dp"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
                 android:text="@string/c_digo_postal"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:textAlignment="center"
                 >
             </TextView>
 
@@ -168,6 +178,7 @@
                 android:hint="PC"
                 android:inputType="number"
                 android:textAlignment="center"
+                android:layout_marginStart="60dp"
                 >
             </EditText>
 
@@ -176,16 +187,18 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="40dp"
             >
 
             <TextView
                 android:id="@+id/street_number_text_edit"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:text="Street number:"
                 android:textSize="18sp"
-                android:textStyle="bold">
+                android:textStyle="bold"
+                android:textAlignment="center"
+                >
             </TextView>
 
             <EditText
@@ -193,6 +206,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Number"
+                android:layout_marginStart="60dp"
 
                 android:inputType="number"
                 >
@@ -203,16 +217,18 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="40dp"
             >
 
             <TextView
                 android:id="@+id/city_province_text_edit"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:text="City or region"
                 android:textSize="18sp"
-                android:textStyle="bold">
+                android:textStyle="bold"
+                android:textAlignment="center"
+                >
             </TextView>
 
             <EditText
@@ -221,6 +237,7 @@
                 android:layout_height="wrap_content"
                 android:hint="City or region"
                 android:textAlignment="center"
+                android:layout_marginStart="20dp"
                 >
             </EditText>
 
@@ -229,25 +246,29 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="40dp"
             >
 
             <TextView
                 android:id="@+id/email_text_ed"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:text="Email:"
                 android:textSize="18sp"
-                android:textStyle="bold">
+                android:textStyle="bold"
+                android:textAlignment="center"
+                >
 
             </TextView>
 
             <EditText
                 android:id="@+id/emailEdited"
-                android:layout_width="200dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:hint="Introduce your email"
+                android:hint="Email"
                 android:inputType="textEmailAddress"
+                android:textAlignment="center"
+                android:layout_marginStart="20dp"
                 >
             </EditText>
 
@@ -256,17 +277,18 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="40dp"
             >
 
             <TextView
                 android:id="@+id/telephone_text_edit"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:text="Telephone number:"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:inputType="number"
+                android:textAlignment="center"
                 >
 
             </TextView>
@@ -275,8 +297,9 @@
                 android:id="@+id/telephoneEdited"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:hint="Phone"
+                android:hint="Telephone"
                 android:textAlignment="center"
+                android:layout_marginStart="20dp"
                 >
 
             </EditText>
