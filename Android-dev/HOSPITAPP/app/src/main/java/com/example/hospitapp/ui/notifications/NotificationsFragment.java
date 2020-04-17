@@ -1,6 +1,8 @@
 package com.example.hospitapp.ui.notifications;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -24,20 +26,16 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hospitapp.LoginActivity;
 import com.example.hospitapp.MainActivity;
-import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
 import com.example.hospitapp.URLS;
 import com.example.hospitapp.UsuarioHospital;
-import com.example.hospitapp.ui.ListClassAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class NotificationsFragment extends Fragment {
 
@@ -173,20 +171,40 @@ public class NotificationsFragment extends Fragment {
                      */
 
                     //nameEdited.getText().clear();
-                    nameHospitalEdited.getText().clear();
-                    nameStreetEdited.getText().clear();
-                    streetNumberEdited.getText().clear();
-                    CPEdited.getText().clear();
-                    cityEdited.getText().clear();
-                    emailEdited.getText().clear();
-                    telephoneEdited.getText().clear();
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+                    String infoTitle = "Are you sure?";
+                    String infoMessage = "Once changes have been made to user information, this cannot be reversed. \n\"Continue anyways?\"";
+
+                    builder.setTitle(infoTitle)
+                            .setMessage(infoMessage)
+                            .setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Toast.makeText(getContext(), "Changes Accepted", Toast.LENGTH_SHORT).show();
+                                    nameHospitalEdited.getText().clear();
+                                    nameStreetEdited.getText().clear();
+                                    streetNumberEdited.getText().clear();
+                                    CPEdited.getText().clear();
+                                    cityEdited.getText().clear();
+                                    emailEdited.getText().clear();
+                                    telephoneEdited.getText().clear();
+                                    makeEditRequest(editUrl);
+                                }
+                            })
+                            .setNegativeButton("Decline", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Toast.makeText(getContext(), "Changes Declined", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                    builder.show();
 
                     //Toast.makeText(getContext(), "Datos de perfil actualizados correctamente!", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(), "Rellene todos los campos para continuar!", Toast.LENGTH_LONG).show();
                 }
-
-                makeEditRequest(editUrl);
             }
         });
 

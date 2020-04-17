@@ -12,17 +12,18 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.hospitapp.ui.notifications.NotificationsFragment;
+
 public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton fabThree;
-    private ConstraintLayout container;
     private FloatingActionButton fabAdd;
     private FloatingActionButton fabMaterial;
     private FloatingActionButton fabHelp;
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void constraintClick() {
-        container = findViewById(R.id.container);
+        ConstraintLayout container = findViewById(R.id.container);
         container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
