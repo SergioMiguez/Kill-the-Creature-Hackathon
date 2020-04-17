@@ -203,7 +203,7 @@ public class NotificationsFragment extends Fragment {
 
                     //Toast.makeText(getContext(), "Datos de perfil actualizados correctamente!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getContext(), "Rellene todos los campos para continuar!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Fill in all the fields to continue!", Toast.LENGTH_LONG).show();
                 }
             }
         });

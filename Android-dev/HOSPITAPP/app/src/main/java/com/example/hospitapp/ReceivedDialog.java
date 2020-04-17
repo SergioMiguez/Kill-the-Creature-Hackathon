@@ -95,9 +95,7 @@ public class ReceivedDialog extends AppCompatDialogFragment {
                                 order.getString("nombre_objeto"),
                                 order.getInt("recibido"),
                                 order.getInt("enviado")
-
                         ));
-
                     }
 
                     ListClassAdapter adapter = new ListClassAdapter(listOfSent);

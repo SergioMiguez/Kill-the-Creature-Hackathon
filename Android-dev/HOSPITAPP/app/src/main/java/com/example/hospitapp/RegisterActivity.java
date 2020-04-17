@@ -18,6 +18,7 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -52,8 +53,6 @@ public class RegisterActivity extends AppCompatActivity {
         registerButton = findViewById(R.id.saveUserBtn);
         singinButton = findViewById(R.id.singInButton);
 
-
-
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,16 +68,27 @@ public class RegisterActivity extends AppCompatActivity {
                 Fpsw = getInfo(FpswInput);
                 Spsw = getInfo(SpswInput);
 
-                Objects.requireNonNull(userName);
-                Objects.requireNonNull(hospitalName);
-                Objects.requireNonNull(addressName);
-                Objects.requireNonNull(numAddress);
-                Objects.requireNonNull(zipCode);
-                Objects.requireNonNull(city);
-                Objects.requireNonNull(email);
-                Objects.requireNonNull(telefone);
-                Objects.requireNonNull(Fpsw);
-                Objects.requireNonNull(Spsw);
+                boolean registerNonNull = fullString(userName) &&
+                                          fullString(hospitalName) &&
+                                          fullString(addressName) &&
+                                          fullString(numAddress) &&
+                                          fullString(zipCode) &&
+                                          fullString(city) &&
+                                          fullString(email) &&
+                                          fullString(telefone) &&
+                                          fullString(Fpsw) &&
+                                          fullString(Spsw);
+
+               // Objects.requireNonNull(userName);
+               // Objects.requireNonNull(hospitalName);
+               // Objects.requireNonNull(addressName);
+               // Objects.requireNonNull(numAddress);
+               // Objects.requireNonNull(zipCode);
+               // Objects.requireNonNull(city);
+               // Objects.requireNonNull(email);
+               // Objects.requireNonNull(telefone);
+               // Objects.requireNonNull(Fpsw);
+               // Objects.requireNonNull(Spsw);
 
                 /**
                  * userName = "test10";
@@ -93,14 +103,16 @@ public class RegisterActivity extends AppCompatActivity {
                  *                 Spsw = "test10";
                  */
 
-                if (Fpsw.equals(Spsw)) {
-                    makeCallServerAddNewUser (URLS.hospital_registry_url);
-                } else {
-                    Toast.makeText(getApplicationContext(), "The passwords are not equal", Toast.LENGTH_SHORT).show();
+                if (registerNonNull) {
+                    if (Fpsw.equals(Spsw)) {
+                        makeCallServerAddNewUser(URLS.hospital_registry_url);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "The passwords are not equal", Toast.LENGTH_SHORT).show();
+                    }
                 }
-
-
-
+                else {
+                    Toast.makeText(getApplicationContext(), "Fill in all the fields to continue!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -115,8 +127,13 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+    public static boolean fullString(String text) {
+        String empty = "";
+        return !text.trim().equals(empty);
+    }
+
     private String getInfo(EditText text) {
-        return text.getText().toString();
+        return text.getText().toString().trim();
     }
 
     private void makeCallServerAddNewUser (String URL) {

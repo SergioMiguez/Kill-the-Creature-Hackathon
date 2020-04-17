@@ -61,8 +61,6 @@ public class AddDialog extends AppCompatDialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -159,7 +157,6 @@ public class AddDialog extends AppCompatDialogFragment {
                     System.out.println(e);
                     Toast.makeText(MainActivity.getContext(), "The object doesn't exist.", Toast.LENGTH_SHORT).show();
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override
