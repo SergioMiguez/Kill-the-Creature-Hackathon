@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -18,9 +19,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.hospitapp.InfoPedidosDialog;
 import com.example.hospitapp.LoginActivity;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
+import com.example.hospitapp.ReceivedDialog;
 import com.example.hospitapp.URLS;
 import com.example.hospitapp.ui.ListClassAdapter;
 
@@ -41,6 +44,7 @@ public class DashboardFragment extends Fragment {
     private final String stateLinked = "LINKED";
     private final String stateCompleted = "RECEIVED";
     private Context mContext;
+    private Button receivedButton;
 
     private RequestQueue requestQueue;
 
@@ -52,6 +56,9 @@ public class DashboardFragment extends Fragment {
 
         listOfOrders = new ArrayList<>();
 
+        receivedButton = view.findViewById(R.id.receivedButton);
+        openReceived();
+
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerDashboard);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -62,6 +69,16 @@ public class DashboardFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         return view;
+    }
+
+    private void openReceived() {
+        receivedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReceivedDialog newDialog = new ReceivedDialog();
+                newDialog.show(getActivity().getSupportFragmentManager(), "Mark as received");
+            }
+        });
     }
 
 

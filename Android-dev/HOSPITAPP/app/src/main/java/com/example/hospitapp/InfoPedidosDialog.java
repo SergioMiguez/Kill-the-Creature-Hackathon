@@ -99,14 +99,14 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
         recyclerView.setAdapter(adapter);
 
         builder.setView(view)
-                .setTitle("Lista de proveedores")
-                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                .setTitle("List of providers")
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
                     }
                 })
-                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Accept", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 

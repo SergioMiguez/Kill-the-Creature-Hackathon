@@ -84,5 +84,6 @@
     <string name="homeTitle">HOME</string>
     <string name="linkedTitle">LINKED</string>
     <string name="helpProfileTitle">PROFILE</string>
+    <string name="received">Received</string>
 
 </resources>
