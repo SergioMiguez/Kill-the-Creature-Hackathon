@@ -96,7 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (Fpsw.equals(Spsw)) {
                     makeCallServerAddNewUser (URLS.hospital_registry_url);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "The passwords are not equal", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -129,7 +129,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_SHORT).show();
                         registerSuccess = true;
                     } else {
-                        Toast.makeText(getApplicationContext(), "No se pudo crear el usuario, posible error de duplicacion", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "User couldn't be created. Possible duplication error.", Toast.LENGTH_SHORT).show();
                         registerSuccess = false;
                     }
 
