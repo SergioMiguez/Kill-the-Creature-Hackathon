@@ -10,10 +10,10 @@ public class Order {
     private String fecha;
     private String direccion_envio;
     private String nombre_objeto;
-    //private boolean enviado;
-    //private boolean recibido;
+    private boolean enviado;
+    private boolean recibido;
 
-    public Order(int id, int id_objeto, int cantidad, int id_proveedor, int id_hospital, String fecha, String direccion_envio, String nombre_objeto /* int enviado, int recibido */) {
+    public Order(int id, int id_objeto, int cantidad, int id_proveedor, int id_hospital, String fecha, String direccion_envio, String nombre_objeto, int enviado, int recibido) {
         this.id = id;
         this.id_objeto = id_objeto;
         this.cantidad = cantidad;
@@ -22,18 +22,21 @@ public class Order {
         this.fecha = fecha;
         this.direccion_envio = direccion_envio;
         this.nombre_objeto = nombre_objeto;
-        /*
-        if (enviado == 1) {
-            this.enviado = true;
-        } else {
-            this.enviado = false;
-        }
-        if (recibido == 1) {
-            this.recibido = true;
-        } else {
-            this.recibido = false;
-        }*/
 
+        this.enviado = enviado == 1;
+        this.recibido = recibido == 1;
+
+    }
+
+    public Order(int id, int id_objeto, int cantidad, int id_proveedor, int id_hospital, String fecha, String direccion_envio, String nombre_objeto) {
+        this.id = id;
+        this.id_objeto = id_objeto;
+        this.cantidad = cantidad;
+        this.id_proveedor = id_proveedor;
+        this.id_hospital = id_hospital;
+        this.fecha = fecha;
+        this.direccion_envio = direccion_envio;
+        this.nombre_objeto = nombre_objeto;
     }
 
     /** _______________ GETTER FUNCTIONS _______________ */
@@ -45,7 +48,7 @@ public class Order {
         return id_objeto;
     }
 
-    /*
+
     public boolean isEnviado() {
         return enviado;
     }
@@ -53,8 +56,6 @@ public class Order {
     public boolean isRecibido() {
         return recibido;
     }
-
-     */
 
     public int getCantidad() {
         return cantidad;
@@ -92,7 +93,7 @@ public class Order {
         this.cantidad = cantidad;
     }
 
-    /*
+
     public void setEnviado(boolean enviado) {
         this.enviado = enviado;
     }
@@ -100,8 +101,6 @@ public class Order {
     public void setRecibido(boolean recibido) {
         this.recibido = recibido;
     }
-
-     */
 
     public void setId_proveedor(int id_proveedor) {
         this.id_proveedor = id_proveedor;

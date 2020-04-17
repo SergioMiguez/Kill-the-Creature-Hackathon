@@ -37,8 +37,7 @@ public class DashboardFragment extends Fragment {
 
     private DashboardViewModel dashboardViewModel;
     private ArrayList<Order> listOfOrders;
-    private RecyclerView recyclerViewLinked;
-    private RecyclerView recyclerViewReceibed;
+    private RecyclerView recyclerView;
     private final String stateLinked = "LINKED";
     private final String stateCompleted = "RECEIVED";
     private Context mContext;
@@ -53,17 +52,14 @@ public class DashboardFragment extends Fragment {
 
         listOfOrders = new ArrayList<>();
 
-        recyclerViewLinked = (RecyclerView) view.findViewById(R.id.recyclerDashboard);
-        recyclerViewLinked.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerViewReceibed = (RecyclerView) view.findViewById(R.id.recyclerCompletado);
-        recyclerViewReceibed.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerDashboard);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        fillListLinked();
-        //fillListReceibed();
+        fillList();
 
         ListClassAdapter adapter = new ListClassAdapter(listOfOrders, stateLinked, mContext);
 
-        recyclerViewLinked.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
 
         return view;
     }
@@ -81,16 +77,10 @@ public class DashboardFragment extends Fragment {
         mContext = null;
     }
 
-    private void fillListLinked() {
+    private void fillList() {
         makeListRequest(URLS.display_connected_orders_url);
     }
 
-    /**
-     * private void fillListReceibed() {
-     *         makeListRequest("URL");
-     *     }
-     *
-     */
 
 
     private void makeListRequest (String URL) {
@@ -111,15 +101,16 @@ public class DashboardFragment extends Fragment {
                                 order.getInt("id_hospital"),
                                 order.getString("fecha"),
                                 order.getString("direccion_envio"),
-                                order.getString("nombre_objeto")
-                                //order.getInt("recibido"),
-                               // order.getInt("enviado")
+                                order.getString("nombre_objeto"),
+                                order.getInt("enviado"),
+                                order.getInt("recibido")
+
                         ));
 
                     }
 
                     ListClassAdapter adapter = new ListClassAdapter(listOfOrders, stateLinked, mContext);
-                    recyclerViewLinked.setAdapter(adapter);
+                    recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
                     e.printStackTrace();

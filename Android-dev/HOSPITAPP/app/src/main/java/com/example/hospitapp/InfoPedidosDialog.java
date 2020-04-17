@@ -141,14 +141,10 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
                                 order.getInt("id_hospital"),
                                 order.getString("fecha"),
                                 order.getString("direccion_envio"),
-                                order.getString("nombre_objeto")
-                                /*
-                                order.getInt("id"),
-                                order.getString("usuario"),
-                                order.getString("email"),
-                                proveedor.getString("direccion"),
-                                proveedor.getString("telefono"),
-                                proveedor.getString("descripcion")*/
+                                order.getString("nombre_objeto"),
+                                order.getInt("recibido"),
+                                order.getInt("enviado")
+
                         ));
 
                     }

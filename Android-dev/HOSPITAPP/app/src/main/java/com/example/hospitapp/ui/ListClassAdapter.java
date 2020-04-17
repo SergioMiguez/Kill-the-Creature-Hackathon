@@ -48,6 +48,7 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
 
         TextView textProveedorName;
 
+
         public OrderViewHolder(@NonNull View intemView, final OnItemClickListener listener) {
             super(intemView);
 
@@ -109,12 +110,36 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
             holder.textProveedorName.setText("" + listOfOrders.get(position).getNombre_objeto());
 
         } else {
-            holder.textObject.setText("" + listOfOrders.get(position).getId_objeto());
-            holder.textVolumeNumber.setText("" + listOfOrders.get(position).getCantidad());
-            holder.textFecha.setText(listOfOrders.get(position).getFecha());
-            holder.textProveedorId.setText("" + listOfOrders.get(position).getId_proveedor());
-            holder.textState.setText(state);
-            holder.textReferenceID.setText("" +listOfOrders.get(position).getId());
+            if (!listOfOrders.get(position).isEnviado() && !listOfOrders.get(position).isRecibido()) {
+                holder.textObject.setText("" + listOfOrders.get(position).getId_objeto());
+                holder.textVolumeNumber.setText("" + listOfOrders.get(position).getCantidad());
+                holder.textFecha.setText(listOfOrders.get(position).getFecha());
+                holder.textProveedorId.setText("" + listOfOrders.get(position).getId_proveedor());
+                holder.textState.setText("LINKED");
+                holder.textReferenceID.setText("" +listOfOrders.get(position).getId());
+            }
+
+
+            if (listOfOrders.get(position).isEnviado() && !listOfOrders.get(position).isRecibido()) {
+                holder.textObject.setText("" + listOfOrders.get(position).getId_objeto());
+                holder.textVolumeNumber.setText("" + listOfOrders.get(position).getCantidad());
+                holder.textFecha.setText(listOfOrders.get(position).getFecha());
+                holder.textProveedorId.setText("" + listOfOrders.get(position).getId_proveedor());
+                holder.textState.setText("SENT");
+                holder.textReferenceID.setText("" + listOfOrders.get(position).getId());
+            }
+
+
+            if (listOfOrders.get(position).isEnviado() && listOfOrders.get(position).isRecibido()) {
+                holder.textObject.setText("" + listOfOrders.get(position).getId_objeto());
+                holder.textVolumeNumber.setText("" + listOfOrders.get(position).getCantidad());
+                holder.textFecha.setText(listOfOrders.get(position).getFecha());
+                holder.textProveedorId.setText("" + listOfOrders.get(position).getId_proveedor());
+                holder.textState.setText("RECEIVED");
+                holder.textReferenceID.setText("" +listOfOrders.get(position).getId());
+
+            }
+
         }
 
     }

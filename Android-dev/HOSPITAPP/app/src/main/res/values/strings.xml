@@ -76,6 +76,9 @@
     <string name="telephoneEditProfilePrompt">Telephone:</string>
     <string name="saveProfileBtn">Save profile</string>
     <string name="helpTitle">Help</string>
+    <string name="state">State</string>
+    <string name="date">Date</string>
+    <string name="unities">Unities:</string>
 
 
 </resources>

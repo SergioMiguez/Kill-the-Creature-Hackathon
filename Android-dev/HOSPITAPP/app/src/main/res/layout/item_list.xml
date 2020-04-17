@@ -28,7 +28,7 @@
             android:id="@+id/State"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Estado"
+            android:text="@string/state"
             android:textSize="16sp"
 
             android:layout_marginLeft="50dp"
@@ -40,7 +40,7 @@
             android:id="@+id/fecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fecha"
+            android:text="@string/date"
             android:textSize="16sp"
 
             android:layout_marginLeft="30dp"
@@ -52,7 +52,7 @@
             android:id="@+id/fechaNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fecha"
+            android:text="@string/date"
             android:textSize="16sp"
 
             android:layout_marginLeft="10dp"
@@ -75,7 +75,7 @@
             android:id="@+id/textVN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Unidades:"
+            android:text="@string/unities"
             android:layout_marginTop="20dp"
             android:textSize="16sp"
             >
@@ -133,9 +133,10 @@
             android:id="@+id/proveedorNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/id"
+            android:text="Not assigned"
             android:layout_marginTop="20dp"
             android:textSize="16sp"
+            android:layout_marginLeft="10dp"
             >
 
         </TextView>
