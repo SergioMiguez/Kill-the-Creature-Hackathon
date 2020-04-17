@@ -79,12 +79,12 @@ public class LoginActivity extends AppCompatActivity {
                     loginSuccess = !response.isEmpty();
 
                     if (loginSuccess) {
-                        Toast.makeText(getApplicationContext(), "Login Exitoso", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Successful Login", Toast.LENGTH_SHORT).show();
                         finish();
                         Intent loadMenu = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(loadMenu);
                     } else {
-                        Toast.makeText(getApplicationContext(), "Nombre de usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Incorrect username or password", Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 /**         TODO ELIMINATE AT THE END           */
                 if (userName.equals("email") && (password.equals("pass"))) {
-                    Toast.makeText(getApplicationContext(), "Login Exitoso", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Successful Login", Toast.LENGTH_SHORT).show();
                     finish();
                     Intent loadMenu = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(loadMenu);

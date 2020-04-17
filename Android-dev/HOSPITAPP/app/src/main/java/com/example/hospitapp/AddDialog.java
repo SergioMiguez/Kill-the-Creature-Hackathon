@@ -82,14 +82,14 @@ public class AddDialog extends AppCompatDialogFragment {
 
 
         builder.setView(view)
-                .setTitle("Hacer pedido")
-                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                .setTitle("Place Order")
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
                 })
-                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Accept", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -151,13 +151,13 @@ public class AddDialog extends AppCompatDialogFragment {
                         Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
                         orderSuccess = true;
                     } else {
-                        Toast.makeText(MainActivity.getContext(), "No se pudo procesar el pedido", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.getContext(), "Order could not be processed.", Toast.LENGTH_SHORT).show();
                         orderSuccess = false;
                     }
 
                 } catch (Exception e) {
                     System.out.println(e);
-                    Toast.makeText(MainActivity.getContext(), "No existe el objeto", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.getContext(), "The object doesn't exist.", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -195,12 +195,12 @@ public class AddDialog extends AppCompatDialogFragment {
                         Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
                         orderSuccess = true;
                     } else {
-                        Toast.makeText(MainActivity.getContext(), "No se pudo procesar el pedido", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.getContext(), "Order could not be processed.", Toast.LENGTH_SHORT).show();
                         orderSuccess = false;
                     }
 
                 } catch (Exception e) {
-                    Toast.makeText(MainActivity.getContext(), "No existe el objeto", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.getContext(), "The object doesn't exist.", Toast.LENGTH_SHORT).show();
                 }
 
             }
