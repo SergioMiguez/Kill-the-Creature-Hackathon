@@ -23,6 +23,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.hospitapp.ui.ListAdaptor;
 import com.example.hospitapp.ui.ListClassAdapter;
 import com.example.hospitapp.ui.ListMaterialsAdaptor;
+import com.example.hospitapp.ui.notifications.NotificationsFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,10 +59,14 @@ public class MaterialsDialog extends AppCompatDialogFragment {
         addMaterial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (materialInputText.getText() != null) {
+                if (NotificationsFragment.fullEdit(materialInputText)) {
                     material = materialInputText.getText().toString();
                     sendServerNewMaterial(URLS.add_material_url);
                 }
+                else {
+                    Toast.makeText(getContext(), "Fill in the required \"Type of Material\" field!", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
