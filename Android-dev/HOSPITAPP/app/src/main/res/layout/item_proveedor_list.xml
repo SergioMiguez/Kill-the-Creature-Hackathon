@@ -41,7 +41,7 @@
             android:id="@+id/txtnombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Proveedor"
+            android:text="@string/itemProviderListProvider"
             android:textSize="20sp"
             android:layout_marginRight="20dp"
             >
@@ -53,7 +53,7 @@
             android:id="@+id/ParticularName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre"
+            android:text="@string/particularName"
             android:textSize="20sp"
             android:layout_marginRight="20dp"
             >
