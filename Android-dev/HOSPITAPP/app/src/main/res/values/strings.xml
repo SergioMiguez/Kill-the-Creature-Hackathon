@@ -88,5 +88,21 @@
     <string name="itemProviderListProvider">Provider</string>
     <string name="particularName">Name</string>
     <string name="materialName">Name</string>
+    <string name="userRegister">Register</string>
+    <string name="userPrompt">User:</string>
+    <string name="registerPassword">Password:</string>
+    <string name="userHintRegister">Username</string>
+    <string name="passwordFirstRegister">Enter your new password</string>
+    <string name="passwordSecondRegister">Repeat your new password</string>
+    <string name="emailRegisterPrompt">Email:</string>
+    <string name="addressRegister">Address:</string>
+    <string name="telephoneRegisterPrompt">Telephone:</string>
+    <string name="cityRegisterHint">City or region</string>
+    <string name="postalRegisterHint">Postal code</string>
+    <string name="numberRegisterHint">Number</string>
+    <string name="addressRegisterHint">Hospital\'s address</string>
+    <string name="nameRegisterHint">Hospital name</string>
+    <string name="signinRegisterBtn">Sign in</string>
+    <string name="registerProfileRegisterBtn">Register profile</string>
 
 </resources>
