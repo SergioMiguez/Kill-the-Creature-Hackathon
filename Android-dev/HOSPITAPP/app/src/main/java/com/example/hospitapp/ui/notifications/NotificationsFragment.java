@@ -215,14 +215,13 @@ public class NotificationsFragment extends Fragment {
                 LoginActivity.userName = null;
                 Intent logInActivity = new Intent(getContext(), LoginActivity.class);
                 startActivity(logInActivity);
-
             }
         });
 
         return root;
     }
 
-    private boolean fullEdit(EditText editText) {
+    public static boolean fullEdit(EditText editText) {
         String empty = "";
         return !editText.getText().toString().trim().equals(empty);
     }

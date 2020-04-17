@@ -21,9 +21,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hospitapp.ui.home.HomeFragment;
+import com.example.hospitapp.ui.notifications.NotificationsFragment;
 
 import org.json.JSONObject;
 
+import java.net.URL;
 import java.security.cert.Certificate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -84,46 +86,54 @@ public class AddDialog extends AppCompatDialogFragment {
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        dialog.dismiss();
                     }
                 })
                 .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                            Objects.requireNonNull(objectInput);
-                            Objects.requireNonNull(volumeInput);
+                        boolean nonEmptyOrder = NotificationsFragment.fullEdit(objectInput) &&
+                                NotificationsFragment.fullEdit(volumeInput);
 
-
+                        if (nonEmptyOrder) {
                             object = objectInput.getText().toString();
                             volumeNumber = volumeInput.getText().toString();
-                           // newAddress = addressInput.getText().toString();
+                            // newAddress = addressInput.getText().toString();
 
                             if (!keepAddress.isChecked()) {
-                                Objects.requireNonNull(nameHospitalEdited);
-                                Objects.requireNonNull(nameStreetEdited);
-                                Objects.requireNonNull(CPEdited);
-                                Objects.requireNonNull(streetNumberEdited);
-                                Objects.requireNonNull(cityEdited);
-                                Objects.requireNonNull(emailEdited);
-                                Objects.requireNonNull(telephoneEdited);
 
-                                nameHospital = nameHospitalEdited.getText().toString();
-                                nameStreet = nameStreetEdited.getText().toString();
-                                CP = CPEdited.getText().toString();
-                                streetNumber = streetNumberEdited.getText().toString();
-                                city = cityEdited.getText().toString();
-                                email = emailEdited.getText().toString();
-                                telephone = telephoneEdited.getText().toString();
+                                boolean nonEmptyChangeOrder = NotificationsFragment.fullEdit(nameHospitalEdited) &&
+                                        NotificationsFragment.fullEdit(nameStreetEdited) &&
+                                        NotificationsFragment.fullEdit(CPEdited) &&
+                                        NotificationsFragment.fullEdit(streetNumberEdited) &&
+                                        NotificationsFragment.fullEdit(cityEdited) &&
+                                        NotificationsFragment.fullEdit(emailEdited) &&
+                                        NotificationsFragment.fullEdit(telephoneEdited);
 
-                                /*  TODO REVISAR SI LA DIRECCION ES CORRECTA, ES NECESARIO EL RESTO DE INFORMACION NO USADA*/
-                                newAddress = generateNewAdd(nameStreet, streetNumber, CP, city);
-                                makeServerCallNewAddress(URLS.new_order_with_new_address_url);
+                                if (nonEmptyChangeOrder) {
+
+                                    nameHospital = nameHospitalEdited.getText().toString();
+                                    nameStreet = nameStreetEdited.getText().toString();
+                                    CP = CPEdited.getText().toString();
+                                    streetNumber = streetNumberEdited.getText().toString();
+                                    city = cityEdited.getText().toString();
+                                    email = emailEdited.getText().toString();
+                                    telephone = telephoneEdited.getText().toString();
+
+                                    /*  TODO REVISAR SI LA DIRECCION ES CORRECTA, ES NECESARIO EL RESTO DE INFORMACION NO USADA*/
+                                    newAddress = generateNewAdd(nameStreet, streetNumber, CP, city);
+                                    makeServerCallNewAddress(URLS.new_order_with_new_address_url);
+                                    dialog.dismiss();
+                                }
                             } else {
                                 makeServerCallDefaultAddress(URLS.new_order_with_same_address_url);
+                                dialog.dismiss();
                             }
-
-
+                        }
+                        else {
+                            Toast.makeText(getContext(), "No order made. You need to fill in the required fields!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 
