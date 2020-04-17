@@ -21,7 +21,7 @@
             android:id="@+id/welcome_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Regístrese"
+            android:text="Register"
             android:textSize="24sp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="32dp"
@@ -43,7 +43,7 @@
             android:id="@+id/name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Usuario:"
+            android:text="User:"
             android:textSize="18sp"
             >
 
@@ -53,7 +53,7 @@
             android:id="@+id/nameRegistered"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:hint="Nombre de usuario"
+            android:hint="Username"
             android:layout_marginLeft="20dp"
             >
 
@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="19dp"
-            android:text="Contraseña:"
+            android:text="Password:"
             android:textSize="18sp"
             >
 
@@ -84,7 +84,7 @@
             android:id="@+id/passwordRegistered"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:hint="Introduzca su contraseña"
+            android:hint="Enter your new password"
             android:inputType="textPassword"
             >
 
@@ -104,7 +104,7 @@
             android:id="@+id/checkPasswordRegistered"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:hint="Repetir contraseña"
+            android:hint="Repeat your new password"
             android:inputType="textPassword"
             >
 
@@ -154,7 +154,7 @@
             android:id="@+id/direction_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dirección:"
+            android:text="Address:"
             android:layout_marginRight="19dp"
             android:textSize="18sp">
 
@@ -164,7 +164,7 @@
             android:id="@+id/nameHospitalRegistered"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:hint="Nombre de hospital"
+            android:hint="Hospital name"
             >
 
         </EditText>
@@ -175,17 +175,15 @@
         android:id="@+id/num_address_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        >
+        android:gravity="center_horizontal">
 
         <EditText
             android:id="@+id/nameStreetRegistered"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:hint="Introduzca la calle del hospital"
-            >
+            android:layout_marginRight="50dp"
+            android:hint="Hospital's address">
 
         </EditText>
 
@@ -193,9 +191,8 @@
             android:id="@+id/numberStreetRegistered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Número"
-            android:inputType="number"
-            >
+            android:hint="Number"
+            android:inputType="number">
 
         </EditText>
 
@@ -213,8 +210,8 @@
             android:id="@+id/CPRegistered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Código postal"
-            android:layout_marginRight="57dp"
+            android:hint="Postal code"
+            android:layout_marginRight="110dp"
             android:inputType="number"
             >
 
@@ -224,7 +221,7 @@
             android:id="@+id/cityRegistered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Ciudad o provincia"
+            android:hint="City or region"
             >
 
         </EditText>
@@ -245,7 +242,7 @@
             android:id="@+id/telephone_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Teléfono:"
+            android:text="Telephone:"
             android:layout_marginRight="19dp"
             android:textSize="18sp"
             >
@@ -276,7 +273,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="Registrar Perfil "
+            android:text="Register profile "
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
