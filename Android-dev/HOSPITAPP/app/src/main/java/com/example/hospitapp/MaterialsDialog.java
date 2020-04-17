@@ -83,14 +83,14 @@ public class MaterialsDialog extends AppCompatDialogFragment {
         recyclerView.setAdapter(adapter);
 
         builder.setView(view)
-                .setTitle("Hacer pedido")
-                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                .setTitle("Add Material")
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
                     }
                 })
-                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Accept", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -167,7 +167,7 @@ public class MaterialsDialog extends AppCompatDialogFragment {
                     if (jsonResponse.getBoolean("success")){
                         Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(MainActivity.getContext(), "No se pudo crear el usuario, posible error de duplicacion", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.getContext(), "User couldn't be created. Possible duplication error.", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (Exception e) {

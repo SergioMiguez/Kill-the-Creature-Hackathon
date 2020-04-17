@@ -85,5 +85,8 @@
     <string name="linkedTitle">LINKED</string>
     <string name="helpProfileTitle">PROFILE</string>
     <string name="received">Received</string>
+    <string name="itemProviderListProvider">Provider</string>
+    <string name="particularName">Name</string>
+    <string name="materialName">Name</string>
 
 </resources>
