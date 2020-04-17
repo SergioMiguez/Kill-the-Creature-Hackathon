@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="@string/helpTitle"
+            android:textColor="@color/colorPrimary"
             android:textAlignment="center"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,12 +28,13 @@
 
         <TextView
             android:id="@+id/hospitappIntro"
-            android:textSize="18sp"
-            android:text="INTRODUCTION"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:paddingHorizontal= "12dp"
+            android:text="INTRODUCTION"
             android:textAlignment="center"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/helpTitle" />
@@ -44,21 +46,161 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:paddingHorizontal= "12dp"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hospitappIntro" />
 
+        <TextView
+            android:id="@+id/hospitappNavBtnTitle"
+            android:textSize="18sp"
+            android:text="@string/navBtnTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingHorizontal= "12dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hospitappIntro2" />
+
+        <TextView
+            android:id="@+id/hospitappNavBtnIntro"
+            android:textSize="18sp"
+            android:text="NAVBTN INTRODUCTION"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingHorizontal= "12dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hospitappNavBtnTitle" />
+
+        <TextView
+            android:id="@+id/hospitappNavBtnAdd"
+            android:textSize="18sp"
+            android:text="NAVBTN ADD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingHorizontal= "12dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hospitappNavBtnIntro" />
+
+        <TextView
+            android:id="@+id/hospitappNavBtnBand"
+            android:textSize="18sp"
+            android:text="NAVBTN BAND"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingHorizontal= "12dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hospitappNavBtnAdd" />
+
+        <TextView
+            android:id="@+id/hospitappHomeTitle"
+            android:textSize="18sp"
+            android:text="@string/homeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingHorizontal= "12dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hospitappNavBtnBand" />
+
+        <TextView
+            android:id="@+id/hospitappHomeIntroduction"
+            android:textSize="18sp"
+            android:text="HOME INTRODUCTION"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingHorizontal= "12dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hospitappHomeTitle" />
+
+        <TextView
+            android:id="@+id/hospitappLinkedTitle"
+            android:textSize="18sp"
+            android:text="@string/linkedTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingHorizontal= "12dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hospitappHomeIntroduction" />
+
+        <TextView
+            android:id="@+id/hospitappLinkedIntroduction"
+            android:textSize="18sp"
+            android:text="LINKED INTRODUCTION"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingHorizontal= "12dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hospitappLinkedTitle" />
+
+        <TextView
+            android:id="@+id/hospitappProfileTitle"
+            android:textSize="18sp"
+            android:text="@string/helpProfileTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingHorizontal= "12dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hospitappLinkedIntroduction" />
+
+        <TextView
+            android:id="@+id/hospitappProfileIntroduction"
+            android:textSize="18sp"
+            android:text="PROFILE INTRODUCTION"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingHorizontal= "12dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hospitappProfileTitle" />
+
+
         <Button
             android:id="@+id/backMain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="440dp"
-            android:text="Back to Main"
+            android:layout_marginTop="32dp"
+            android:text="@string/helpToMainBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/helpTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/hospitappProfileIntroduction" />
 
 
     </android.support.constraint.ConstraintLayout>

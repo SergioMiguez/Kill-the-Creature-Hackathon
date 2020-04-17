@@ -58,8 +58,8 @@
     <string name="telephoneProfilePrompt">Telephone:</string>
     <string name="telephoneProfileInfo">Telephone</string>
     <string name="logOutButtonStr">Log Out</string>
-    <string name="profileTitle">User profile</string>
-    <string name="profileEditTitle">Edit user profile</string>
+    <string name="profileTitle">User Profile</string>
+    <string name="profileEditTitle">Edit User Profile</string>
     <string name="hospitalEditProfilePrompt">Hospital name:</string>
     <string name="hospitalEditProfileInfo">Introduce the hospital name</string>
     <string name="streetEditProfilePrompt">Hospital address:</string>
@@ -76,6 +76,11 @@
     <string name="telephoneEditProfilePrompt">Telephone:</string>
     <string name="saveProfileBtn">Save profile</string>
     <string name="helpTitle">Help</string>
+    <string name="helpToMainBtn">Back to Home</string>
+    <string name="navBtnTitle">NAVIGATION BUTTON</string>
+    <string name="homeTitle">HOME</string>
+    <string name="linkedTitle">LINKED</string>
+    <string name="helpProfileTitle">PROFILE</string>
 
 
 </resources>
