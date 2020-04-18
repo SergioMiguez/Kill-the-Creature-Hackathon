@@ -19,10 +19,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.provitapp.CompletedDialog;
 import com.example.provitapp.InfoPedidosDialog;
 import com.example.provitapp.LoginActivity;
 import com.example.provitapp.Order;
 import com.example.provitapp.R;
+import com.example.provitapp.ReceivedDialog;
 import com.example.provitapp.URLS;
 import com.example.provitapp.ui.ListAdaptor;
 import com.example.provitapp.ui.ListClassAdapter;
@@ -44,7 +46,7 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
-    private Button proveedoresButton;
+    private Button completedButton;
 
     private ArrayList<Order> listOfOrders;
 
@@ -69,8 +71,8 @@ public class HomeFragment extends Fragment {
 
         recyclerView.setAdapter(adapter);
 
-        proveedoresButton = view.findViewById(R.id.proveedorButton);
-        openProveedores();
+        completedButton = view.findViewById(R.id.completedButton);
+        openCompletedOrders();
 
         return view;
     }
@@ -157,13 +159,13 @@ public class HomeFragment extends Fragment {
         mContext = null;
     }
 
-    public void openProveedores() {
+    public void openCompletedOrders() {
 
-        proveedoresButton.setOnClickListener(new View.OnClickListener() {
+        completedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InfoPedidosDialog newDialog = new InfoPedidosDialog();
-                newDialog.show(getActivity().getSupportFragmentManager(), "Elegir Proveedor");
+                CompletedDialog newDialog = new CompletedDialog();
+                newDialog.show(getActivity().getSupportFragmentManager(), "Completed Order");
             }
         });
     }

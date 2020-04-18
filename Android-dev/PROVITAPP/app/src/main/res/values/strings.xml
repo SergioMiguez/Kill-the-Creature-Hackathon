@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HOSPITAPP</string>
+    <string name="app_name">PROVITAPP</string>
     <string name="title_home">HOME</string>
     <string name="title_dashboard">LINKED</string>
     <string name="title_proveedores">PROVIDERS</string>

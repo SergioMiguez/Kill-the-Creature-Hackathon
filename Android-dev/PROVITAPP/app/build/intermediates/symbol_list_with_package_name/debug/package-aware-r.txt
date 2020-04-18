@@ -1141,6 +1141,7 @@ id clip_vertical
 id codigo_postal_text
 id codigo_postal_text_edit
 id collapseActionView
+id completedButton
 id container
 id content
 id contentPanel
@@ -1286,7 +1287,6 @@ id percent
 id pin
 id progress_circular
 id progress_horizontal
-id proveedorButton
 id proveedorId
 id proveedorNum
 id radio

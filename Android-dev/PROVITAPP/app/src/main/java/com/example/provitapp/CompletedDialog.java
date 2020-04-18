@@ -36,10 +36,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ReceivedDialog extends AppCompatDialogFragment {
+public class CompletedDialog extends AppCompatDialogFragment {
 
     private RecyclerView recyclerView;
-    private ArrayList<Order> listOfOrders = new ArrayList<>();
+    private ArrayList<Order> listOfOrders;
     private final String stateLinked = "LINKED";
     private RequestQueue requestQueue;
     private Context mContext;
@@ -53,7 +53,8 @@ public class ReceivedDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         final View view = inflater.inflate(R.layout.received_dialog, null, false);
-        mContext = this.getContext();
+        mContext = MainActivity.getContext();
+        listOfOrders = new ArrayList<>();
 
         markAsReceived = view.findViewById(R.id.markAsReceivedButton);
         idInput = view.findViewById(R.id.idInput);
@@ -65,7 +66,7 @@ public class ReceivedDialog extends AppCompatDialogFragment {
 
 
         builder.setView(view)
-                .setTitle("List of sent orders")
+                .setTitle("Your list of orders")
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -88,21 +89,22 @@ public class ReceivedDialog extends AppCompatDialogFragment {
             public void onClick(View v) {
                 inputIdReceived = idInput.getText().toString();
                 if (!inputIdReceived.equals("")) {
-                    sendReceivedRequest(URLS.confirm_received_url);
+                    //sendReceivedRequest(URLS.confirm_received_url);
                 }
             }
         });
     }
 
     private void fillList() {
-        makeListRequest(URLS.only_sent_url);
+        makeListRequest(URLS.display_orders_url);
     }
 
-    private void makeListRequest (String URL) {
+    private void makeListRequest(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
+                    Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
                     JSONArray array = new JSONArray(response);
 
                     for (int i = 0; i < array.length(); i++) {
@@ -155,51 +157,6 @@ public class ReceivedDialog extends AppCompatDialogFragment {
 
         requestQueue= Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
-    }
-
-    private void sendReceivedRequest(String URL) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonResponse = new JSONObject(response);
-                    if (jsonResponse.getBoolean("success")){
-                        Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(MainActivity.getContext(), "No se pudo crear el usuario, posible error de duplicacion", Toast.LENGTH_SHORT).show();
-                    }
-
-                } catch (Exception e) {
-                    Toast.makeText(MainActivity.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("usuario", LoginActivity.userName);
-                parameters.put("fecha_recibido", getDate());
-                parameters.put("id_pedido", inputIdReceived);
-                return parameters;
-            }
-        };
-        requestQueue=Volley.newRequestQueue(getContext());
-        requestQueue.add(stringRequest);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private String getDate () {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        return dtf.format(now);
     }
 }
 
