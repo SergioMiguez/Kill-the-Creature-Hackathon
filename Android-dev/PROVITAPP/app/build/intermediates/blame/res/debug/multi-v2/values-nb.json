@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\migue\\OneDrive - University of Edinburgh\\EDINBURGH\\HACKATHONS\\Kill-the-Creature-Hackathon\\Android-dev\\PROVITAPP\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-nb\\values-nb.xml",
+            "outputFile": "C:\\Users\\migue\\OneDrive - University of Edinburgh\\EDINBURGH\\HACKATHONS\\Kill-the-Creature-Hackathon\\Android-dev\\proyect\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-nb\\values-nb.xml",
             "map": [
                 {
                     "source": "C:\\Users\\migue\\.gradle\\caches\\transforms-2\\files-2.1\\a1c1dfcd183d26aab840873de8521f32\\navigation-ui-1.0.0\\res\\values-nb\\values-nb.xml",
