@@ -39,7 +39,7 @@ import java.util.Map;
 public class ReceivedDialog extends AppCompatDialogFragment {
 
     private RecyclerView recyclerView;
-    private ArrayList<Order> listOfOrders = new ArrayList<>();
+    private ArrayList<Order> listOfOrders;
     private final String stateLinked = "LINKED";
     private RequestQueue requestQueue;
     private Context mContext;
@@ -54,6 +54,7 @@ public class ReceivedDialog extends AppCompatDialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         final View view = inflater.inflate(R.layout.received_dialog, null, false);
         mContext = this.getContext();
+        listOfOrders = new ArrayList<>();
 
         markAsReceived = view.findViewById(R.id.markAsReceivedButton);
         idInput = view.findViewById(R.id.idInput);

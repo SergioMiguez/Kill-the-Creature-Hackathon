@@ -1597,6 +1597,7 @@ string linkedTitle
 string logOutButtonStr
 string login_failed
 string mantener_direccion_de_envio
+string mark_as_completed
 string mark_as_received
 string mascarillas
 string material

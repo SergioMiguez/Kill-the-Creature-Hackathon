@@ -23,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.provitapp.ui.ListClassAdapter;
 import com.example.provitapp.ui.ListSentAdapter;
 
 import org.json.JSONArray;
@@ -38,8 +39,8 @@ import java.util.Map;
 
 public class CompletedDialog extends AppCompatDialogFragment {
 
-    private RecyclerView recyclerView;
-    private ArrayList<Order> listOfOrders;
+    private static ArrayList<Order> listOfOrders;
+    private static RecyclerView recyclerView;
     private final String stateLinked = "LINKED";
     private RequestQueue requestQueue;
     private Context mContext;
@@ -53,6 +54,7 @@ public class CompletedDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         final View view = inflater.inflate(R.layout.received_dialog, null, false);
+
         mContext = MainActivity.getContext();
         listOfOrders = new ArrayList<>();
 
@@ -61,7 +63,7 @@ public class CompletedDialog extends AppCompatDialogFragment {
         markAsReceivedButton();
 
         recyclerView = view.findViewById(R.id.recyclerSentOrders);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         fillList();
 
 
@@ -99,18 +101,19 @@ public class CompletedDialog extends AppCompatDialogFragment {
         makeListRequest(URLS.display_orders_url);
     }
 
-    private void makeListRequest(String URL) {
+    private void makeListRequest (String URL) {
+        //Toast.makeText(MainActivity.getContext(), "entra dentro del request", Toast.LENGTH_SHORT).show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
-                    Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
                     JSONArray array = new JSONArray(response);
 
+                    ArrayList<Order> listOfProveedores = new ArrayList<>();
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject order = array.getJSONObject(i);
 
-                        listOfOrders.add(new Order(
+                        listOfProveedores.add(new Order(
                                 order.getInt("id"),
                                 order.getInt("id_objeto"),
                                 order.getInt("cantidad"),
@@ -118,13 +121,12 @@ public class CompletedDialog extends AppCompatDialogFragment {
                                 order.getInt("id_hospital"),
                                 order.getString("fecha"),
                                 order.getString("direccion_envio"),
-                                order.getString("nombre_objeto"),
-                                order.getInt("enviado"),
-                                order.getInt("recibido")
+                                order.getString("nombre_objeto")
                         ));
+
                     }
 
-                    ListSentAdapter adapter = new ListSentAdapter(listOfOrders);
+                    ListSentAdapter adapter = new ListSentAdapter(listOfProveedores);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
@@ -134,12 +136,9 @@ public class CompletedDialog extends AppCompatDialogFragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (mContext != null) {
-                    Toast.makeText(mContext, error.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-
+                Toast.makeText(MainActivity.getContext(), "ERROR PEDIDOS", Toast.LENGTH_SHORT).show();
             }
-        }) {
+        }){
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
@@ -148,15 +147,10 @@ public class CompletedDialog extends AppCompatDialogFragment {
             }
         };
 
-
-        /**
-         * if (mContext != null) {
-         *             Volley.newRequestQueue(mContext).add(stringRequest);
-         *         }
-         */
-
-        requestQueue= Volley.newRequestQueue(getContext());
+        /*  TODO CHECK IF CONTEXT WORKS  (MainActivity.getContext() */
+        requestQueue=Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
+
     }
 }
 
