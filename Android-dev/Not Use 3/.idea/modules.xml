@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Android-dev-PROVITAPP-HOSPITAPP.iml" filepath="$PROJECT_DIR$/Android-dev-PROVITAPP-HOSPITAPP.iml" group="HOSPITAPP" />
+      <module fileurl="file://$PROJECT_DIR$/HOSPITAPP.iml" filepath="$PROJECT_DIR$/HOSPITAPP.iml" group="HOSPITAPP" />
+      <module fileurl="file://$PROJECT_DIR$/PROVITAPP-HOSPITAPP.iml" filepath="$PROJECT_DIR$/PROVITAPP-HOSPITAPP.iml" group="HOSPITAPP" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="HOSPITAPP/app" />
+    </modules>
+  </component>
+</project>
