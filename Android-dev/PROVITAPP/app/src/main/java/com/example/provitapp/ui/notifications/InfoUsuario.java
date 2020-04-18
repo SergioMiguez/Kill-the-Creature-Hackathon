@@ -16,7 +16,7 @@ import com.example.provitapp.R;
 public class InfoUsuario extends AppCompatActivity {
 
     EditText nameEdited;
-    EditText nameHospitalEdited;
+    EditText nameProviderEdited;
     EditText nameStreetEdited;
     EditText streetNumberEdited;
     EditText CPEdited;
@@ -25,7 +25,7 @@ public class InfoUsuario extends AppCompatActivity {
     EditText telephoneEdited;
 
     TextView nameAdded;
-    TextView nameHospitalAdded;
+    TextView nameProviderAdded;
     TextView nameStreetAdded;
     TextView streetNumberAdded;
     TextView CPAdded;
@@ -47,7 +47,7 @@ public class InfoUsuario extends AppCompatActivity {
         View userEntries = layoutInflater.inflate(R.layout.fragment_notifications, null, false);
 
         nameAdded = userEntries.findViewById(R.id.nameAdded);
-        nameHospitalAdded = userEntries.findViewById(R.id.nameHospitalAdded);
+        nameProviderAdded = userEntries.findViewById(R.id.nameProviderAdded);
         nameStreetAdded = userEntries.findViewById(R.id.nameStreetAdded);
         streetNumberAdded = userEntries.findViewById(R.id.streetNumberAdded);
         CPAdded = userEntries.findViewById(R.id.CPAdded);
@@ -67,7 +67,7 @@ public class InfoUsuario extends AppCompatActivity {
         String telephone = myPrefs.getString("telephone", def);
 
         nameAdded.setText(name);
-        nameHospitalAdded.setText(hospital);
+        nameProviderAdded.setText(hospital);
         nameStreetAdded.setText(street);
         streetNumberAdded.setText(street_number);
         CPAdded.setText(CP);
@@ -81,7 +81,7 @@ public class InfoUsuario extends AppCompatActivity {
             public void onClick(View v) {
 
                 nameEdited = findViewById(R.id.nameEdited);
-                nameHospitalEdited = findViewById(R.id.nameHospitalEdited);
+                nameProviderEdited = findViewById(R.id.nameProviderEdited);
                 nameStreetEdited = findViewById(R.id.nameStreetEdited);
                 streetNumberEdited = findViewById(R.id.streetNumberEdited);
                 CPEdited = findViewById(R.id.CPEdited);
@@ -90,7 +90,7 @@ public class InfoUsuario extends AppCompatActivity {
                 telephoneEdited = findViewById(R.id.telephoneEdited);
 
                 String nameEditedStr = nameEdited.getText().toString();
-                String nameHospitalEditedStr = nameHospitalEdited.getText().toString();
+                String nameHospitalEditedStr = nameProviderEdited.getText().toString();
                 String nameStreetEditedStr = nameStreetEdited.getText().toString();
                 String streetNumberEditedStr = streetNumberEdited.getText().toString();
                 String CPEditedStr = CPEdited.getText().toString();
@@ -121,7 +121,7 @@ public class InfoUsuario extends AppCompatActivity {
                 String telephone = myPrefs.getString("telephone", def);
 
                 nameAdded.setText(name);
-                nameHospitalAdded.setText(hospital);
+                nameProviderAdded.setText(hospital);
                 nameStreetAdded.setText(street);
                 streetNumberAdded.setText(street_number);
                 CPAdded.setText(CP);

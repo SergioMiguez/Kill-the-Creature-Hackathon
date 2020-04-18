@@ -45,7 +45,7 @@ public class NotificationsFragment extends Fragment {
     private boolean editSuccess;
 
     //EditText nameEdited;
-    EditText nameHospitalEdited;
+    EditText nameProviderEdited;
     EditText nameStreetEdited;
     EditText streetNumberEdited;
     EditText CPEdited;
@@ -54,7 +54,7 @@ public class NotificationsFragment extends Fragment {
     EditText telephoneEdited;
 
     TextView nameAdded;
-    TextView nameHospitalAdded;
+    TextView nameProviderAdded;
     TextView nameStreetAdded;
     TextView streetNumberAdded;
     TextView CPAdded;
@@ -100,7 +100,7 @@ public class NotificationsFragment extends Fragment {
         final View root = inflater.inflate(R.layout.fragment_notifications, container, false);
 
         nameAdded = root.findViewById(R.id.nameAdded);
-        nameHospitalAdded = root.findViewById(R.id.nameHospitalAdded);
+        nameProviderAdded = root.findViewById(R.id.nameProviderAdded);
         nameStreetAdded = root.findViewById(R.id.nameStreetAdded);
         streetNumberAdded = root.findViewById(R.id.streetNumberAdded);
         CPAdded = root.findViewById(R.id.CPAdded);
@@ -116,7 +116,7 @@ public class NotificationsFragment extends Fragment {
             public void onClick(View v) {
 
                 //nameEdited = root.findViewById(R.id.nameEdited);
-                nameHospitalEdited = root.findViewById(R.id.nameHospitalEdited);
+                nameProviderEdited = root.findViewById(R.id.nameProviderEdited);
                 nameStreetEdited = root.findViewById(R.id.nameStreetEdited);
                 streetNumberEdited = root.findViewById(R.id.streetNumberEdited);
                 CPEdited = root.findViewById(R.id.CPEdited);
@@ -125,7 +125,7 @@ public class NotificationsFragment extends Fragment {
                 telephoneEdited = root.findViewById(R.id.telephoneEdited);
 
                 //String nameEditedStr = nameEdited.getText().toString();
-                String nameHospitalEditedStr = nameHospitalEdited.getText().toString();
+                String nameHospitalEditedStr = nameProviderEdited.getText().toString();
                 String nameStreetEditedStr = nameStreetEdited.getText().toString();
                 String streetNumberEditedStr = streetNumberEdited.getText().toString();
                 String CPEditedStr = CPEdited.getText().toString();
@@ -155,7 +155,7 @@ public class NotificationsFragment extends Fragment {
                 edit_email = myPrefs.getString("email", defEmail);
                 edit_telephone = myPrefs.getString("telephone", defTelephone);
 
-                boolean allFilled = fullEdit(nameHospitalEdited) && fullEdit(nameStreetEdited) &&
+                boolean allFilled = fullEdit(nameProviderEdited) && fullEdit(nameStreetEdited) &&
                         fullEdit(emailEdited) && fullEdit(telephoneEdited); // && fullEdit(nameEdited);
 
                 if (allFilled) {
@@ -183,7 +183,7 @@ public class NotificationsFragment extends Fragment {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     Toast.makeText(getContext(), "Changes Accepted", Toast.LENGTH_SHORT).show();
-                                    nameHospitalEdited.getText().clear();
+                                    nameProviderEdited.getText().clear();
                                     nameStreetEdited.getText().clear();
                                     streetNumberEdited.getText().clear();
                                     CPEdited.getText().clear();
@@ -264,7 +264,7 @@ public class NotificationsFragment extends Fragment {
                     myPrefs = getActivity().getSharedPreferences("prefID", Context.MODE_PRIVATE);
 
                     nameAdded.setText(defName); //TODO change to defname
-                    nameHospitalAdded.setText(defHospital);
+                    nameProviderAdded.setText(defHospital);
                     nameStreetAdded.setText(defStreet);
                     streetNumberAdded.setText(defNumber);
                     CPAdded.setText(defCP);

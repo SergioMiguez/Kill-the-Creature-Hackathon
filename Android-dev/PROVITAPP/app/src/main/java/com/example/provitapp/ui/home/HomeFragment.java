@@ -24,7 +24,7 @@ import com.example.provitapp.InfoPedidosDialog;
 import com.example.provitapp.LoginActivity;
 import com.example.provitapp.Order;
 import com.example.provitapp.R;
-import com.example.provitapp.ReceivedDialog;
+import com.example.provitapp.DeliveredDialog;
 import com.example.provitapp.URLS;
 import com.example.provitapp.ui.ListAdaptor;
 import com.example.provitapp.ui.ListClassAdapter;

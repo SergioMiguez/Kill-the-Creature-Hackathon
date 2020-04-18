@@ -101,7 +101,7 @@
             android:layout_marginStart="40dp"
             >
             <TextView
-                android:id="@+id/hospital_text_edit"
+                android:id="@+id/provider_text_edit"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:text="@string/nombre_de_hospital"
@@ -112,7 +112,7 @@
             </TextView>
 
             <EditText
-                android:id="@+id/nameHospitalEdited"
+                android:id="@+id/nameProviderEdited"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -130,7 +130,7 @@
             android:layout_marginStart="40dp"
             >
             <TextView
-                android:id="@+id/direction_hospital_edit"
+                android:id="@+id/direction_provider_edit"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:text="Hospital address:"

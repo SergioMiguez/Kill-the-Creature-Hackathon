@@ -22,7 +22,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.provitapp.LoginActivity;
 import com.example.provitapp.Order;
 import com.example.provitapp.R;
-import com.example.provitapp.ReceivedDialog;
+import com.example.provitapp.DeliveredDialog;
 import com.example.provitapp.URLS;
 import com.example.provitapp.ui.ListClassAdapter;
 
@@ -43,7 +43,7 @@ public class DashboardFragment extends Fragment {
     private final String stateLinked = "LINKED";
     private final String stateCompleted = "RECEIVED";
     private Context mContext;
-    private Button receivedButton;
+    private Button deliveredButton;
 
     private RequestQueue requestQueue;
 
@@ -55,8 +55,8 @@ public class DashboardFragment extends Fragment {
 
         listOfOrders = new ArrayList<>();
 
-        receivedButton = view.findViewById(R.id.receivedButton);
-        openReceived();
+        deliveredButton = view.findViewById(R.id.deliveredButton);
+        openDelivered();
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerDashboard);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -70,12 +70,12 @@ public class DashboardFragment extends Fragment {
         return view;
     }
 
-    private void openReceived() {
-        receivedButton.setOnClickListener(new View.OnClickListener() {
+    private void openDelivered() {
+        deliveredButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReceivedDialog newDialog = new ReceivedDialog();
-                newDialog.show(getActivity().getSupportFragmentManager(), "Mark as received");
+                DeliveredDialog newDialog = new DeliveredDialog();
+                newDialog.show(getActivity().getSupportFragmentManager(), "Mark as delivered");
             }
         });
     }

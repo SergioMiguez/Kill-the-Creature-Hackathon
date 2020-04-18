@@ -58,7 +58,7 @@ public class CompletedDialog extends AppCompatDialogFragment {
         mContext = MainActivity.getContext();
         listOfOrders = new ArrayList<>();
 
-        markAsReceived = view.findViewById(R.id.markAsReceivedButton);
+        markAsReceived = view.findViewById(R.id.markAsDeliveredButton);
         idInput = view.findViewById(R.id.idInput);
         markAsReceivedButton();
 
