@@ -45,8 +45,8 @@
     <string name="nameProfilePrompt">Name:</string>
     <string name="hospitalProfilePrompt">Hospital name:</string>
     <string name="hospitalProfileInfo">Hospital name</string>
-    <string name="streetProfilePrompt">Hospital address:</string>
-    <string name="streetProfileInfo">Hospital address</string>
+    <string name="streetProfilePrompt">Provider address:</string>
+    <string name="streetProfileInfo">Provider address</string>
     <string name="CPProfilePrompt">Postal code:</string>
     <string name="CPProfileInfo">Postal code</string>
     <string name="numberProfilePrompt">Number:</string>
@@ -62,8 +62,8 @@
     <string name="profileEditTitle">Edit User Profile</string>
     <string name="hospitalEditProfilePrompt">Hospital name:</string>
     <string name="hospitalEditProfileInfo">Introduce the hospital name</string>
-    <string name="streetEditProfilePrompt">Hospital address:</string>
-    <string name="streetEditProfileInfo">Introduce hospital address</string>
+    <string name="streetEditProfilePrompt">Provider address:</string>
+    <string name="streetEditProfileInfo">Introduce provider address</string>
     <string name="CPEditProfilePrompt">Postal code:</string>
     <string name="CPEditProfileInfo">Postal code</string>
     <string name="numberEditProfilePrompt">Number:</string>
@@ -107,5 +107,9 @@
     <string name="mark_as_received">Mark as Received</string>
     <string name="id_text">ID</string>
     <string name="spinnerTitle">Material</string>
+    <string name="nameProviderPrompt">Provider name:</string>
+    <string name="nameProviderAdded">Provider name</string>
+    <string name="nameProviderPromptEdited">Provider name:</string>
+    <string name="nameProviderInfoEdited">Introduce the provider name</string>
 
 </resources>

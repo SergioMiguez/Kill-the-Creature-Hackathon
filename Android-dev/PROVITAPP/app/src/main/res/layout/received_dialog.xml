@@ -29,10 +29,10 @@
             </EditText>
 
             <Button
-                android:id="@+id/markAsReceivedButton"
+                android:id="@+id/markAsDeliveredButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mark_as_received"
+                android:text="MARK AS DELIVERED"
                 >
 
             </Button>

@@ -36,14 +36,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ReceivedDialog extends AppCompatDialogFragment {
+public class DeliveredDialog extends AppCompatDialogFragment {
 
     private RecyclerView recyclerView;
     private ArrayList<Order> listOfOrders;
     private final String stateLinked = "LINKED";
     private RequestQueue requestQueue;
     private Context mContext;
-    private Button markAsReceived;
+    private Button markAsDelivered;
     private EditText idInput;
     private String inputIdReceived;
     private String fecha;
@@ -56,9 +56,9 @@ public class ReceivedDialog extends AppCompatDialogFragment {
         mContext = this.getContext();
         listOfOrders = new ArrayList<>();
 
-        markAsReceived = view.findViewById(R.id.markAsReceivedButton);
+        markAsDelivered = view.findViewById(R.id.markAsDeliveredButton);
         idInput = view.findViewById(R.id.idInput);
-        markAsReceivedButton();
+        markAsDeliveredButton();
 
         recyclerView = view.findViewById(R.id.recyclerSentOrders);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -66,7 +66,7 @@ public class ReceivedDialog extends AppCompatDialogFragment {
 
 
         builder.setView(view)
-                .setTitle("List of sent orders")
+                .setTitle("List of delivered orders")
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -83,8 +83,8 @@ public class ReceivedDialog extends AppCompatDialogFragment {
         return builder.create();
     }
 
-    private void markAsReceivedButton() {
-        markAsReceived.setOnClickListener(new View.OnClickListener() {
+    private void markAsDeliveredButton() {
+        markAsDelivered.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 inputIdReceived = idInput.getText().toString();
@@ -167,7 +167,7 @@ public class ReceivedDialog extends AppCompatDialogFragment {
                     if (jsonResponse.getBoolean("success")){
                         Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(MainActivity.getContext(), "No se pudo crear el usuario, posible error de duplicacion", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.getContext(), "User could not be created. Possible duplication error.", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (Exception e) {

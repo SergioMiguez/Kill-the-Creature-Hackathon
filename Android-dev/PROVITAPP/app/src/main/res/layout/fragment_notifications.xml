@@ -60,12 +60,12 @@
         </TextView>
 
         <TextView
-            android:id="@+id/hospital_name_text"
+            android:id="@+id/provider_name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="104dp"
-            android:text="@string/hospitalProfilePrompt"
+            android:text="@string/nameProviderPrompt"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -74,14 +74,14 @@
         </TextView>
 
         <TextView
-            android:id="@+id/nameHospitalAdded"
+            android:id="@+id/nameProviderAdded"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="104dp"
-            android:text="@string/hospitalProfileInfo"
+            android:text="@string/nameProviderAdded"
             android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/hospital_name_text"
+            app:layout_constraintStart_toEndOf="@+id/provider_name_text"
             app:layout_constraintTop_toTopOf="parent">
 
 
@@ -329,12 +329,12 @@
         </TextView>
 
         <TextView
-            android:id="@+id/hospital_text_edit"
+            android:id="@+id/provider_text_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="606dp"
-            android:text="@string/hospitalEditProfilePrompt"
+            android:text="@string/nameProviderPromptEdited"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -343,19 +343,19 @@
         </TextView>
 
         <EditText
-            android:id="@+id/nameHospitalEdited"
+            android:id="@+id/nameProviderEdited"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="638dp"
-            android:hint="@string/hospitalEditProfileInfo"
+            android:hint="@string/nameProviderInfoEdited"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
         </EditText>
 
         <TextView
-            android:id="@+id/direction_hospital_edit"
+            android:id="@+id/direction_provider_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"

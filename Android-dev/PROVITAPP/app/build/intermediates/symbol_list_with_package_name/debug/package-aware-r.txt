@@ -1149,6 +1149,7 @@ id custom
 id customPanel
 id decor_content_parent
 id default_activity_button
+id deliveredButton
 id design_bottom_sheet
 id design_menu_item_action_area
 id design_menu_item_action_area_stub
@@ -1195,8 +1196,6 @@ id helpFabButton
 id helpTitle
 id home
 id homeAsUp
-id hospital_name_text
-id hospital_text_edit
 id hospitappHomeIntroduction
 id hospitappHomeTitle
 id hospitappIntro
@@ -1232,7 +1231,7 @@ id line3
 id listMode
 id list_item
 id logoutButton
-id markAsReceivedButton
+id markAsDeliveredButton
 id masked
 id materialName
 id media_actions
@@ -1245,10 +1244,10 @@ id mtrl_internal_children_alpha_tag
 id multiply
 id nameAdded
 id nameEdited
-id nameHospitalAdded
-id nameHospitalEdited
 id nameHospitalRegistered
 id nameLayout
+id nameProviderAdded
+id nameProviderEdited
 id nameRegistered
 id nameStreetAdded
 id nameStreetEdited
@@ -1289,8 +1288,9 @@ id progress_horizontal
 id proveedorButton
 id proveedorId
 id proveedorNum
+id provider_name_text
+id provider_text_edit
 id radio
-id receivedButton
 id recyclerDashboard
 id recyclerHome
 id recyclerLayout
@@ -1605,6 +1605,10 @@ string mtrl_chip_close_icon_content_description
 string name
 string nameProfileInfo
 string nameProfilePrompt
+string nameProviderAdded
+string nameProviderInfoEdited
+string nameProviderPrompt
+string nameProviderPromptEdited
 string nameRegisterHint
 string navBtnTitle
 string nav_app_bar_navigate_up_description

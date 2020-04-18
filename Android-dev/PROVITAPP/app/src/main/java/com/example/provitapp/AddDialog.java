@@ -47,7 +47,7 @@ public class AddDialog extends AppCompatDialogFragment {
     private ArrayList<Material> listOfMaterials;
     private ArrayList<String> listOfMaterialName;
 
-    private EditText nameHospitalEdited;
+    private EditText nameProviderEdited;
     private EditText nameStreetEdited;
     private EditText CPEdited;
     private EditText streetNumberEdited;
@@ -55,7 +55,7 @@ public class AddDialog extends AppCompatDialogFragment {
     private EditText emailEdited;
     private EditText telephoneEdited;
 
-    private String nameHospital, nameStreet, CP, streetNumber, city, email, telephone;
+    private String nameProvider, nameStreet, CP, streetNumber, city, email, telephone;
 
 
     private boolean orderSuccess;
@@ -74,7 +74,7 @@ public class AddDialog extends AppCompatDialogFragment {
 
         objectInput = view.findViewById(R.id.objectInput);
         volumeInput = view.findViewById(R.id.inputVN);
-        nameHospitalEdited = view.findViewById(R.id.nameHospitalEdited);
+        nameProviderEdited = view.findViewById(R.id.nameProviderEdited);
         nameStreetEdited = view.findViewById(R.id.nameStreetEdited);
         CPEdited = view.findViewById(R.id.CPEdited);
         streetNumberEdited = view.findViewById(R.id.streetNumberEdited);
@@ -109,7 +109,7 @@ public class AddDialog extends AppCompatDialogFragment {
 
                             if (!keepAddress.isChecked()) {
 
-                                boolean nonEmptyChangeOrder = NotificationsFragment.fullEdit(nameHospitalEdited) &&
+                                boolean nonEmptyChangeOrder = NotificationsFragment.fullEdit(nameProviderEdited) &&
                                         NotificationsFragment.fullEdit(nameStreetEdited) &&
                                         NotificationsFragment.fullEdit(CPEdited) &&
                                         NotificationsFragment.fullEdit(streetNumberEdited) &&
@@ -119,7 +119,7 @@ public class AddDialog extends AppCompatDialogFragment {
 
                                 if (nonEmptyChangeOrder) {
 
-                                    nameHospital = nameHospitalEdited.getText().toString();
+                                    nameProvider = nameProviderEdited.getText().toString();
                                     nameStreet = nameStreetEdited.getText().toString();
                                     CP = CPEdited.getText().toString();
                                     streetNumber = streetNumberEdited.getText().toString();
