@@ -106,5 +106,6 @@
     <string name="registerProfileRegisterBtn">Register profile</string>
     <string name="mark_as_received">Mark as Received</string>
     <string name="id_text">ID</string>
+    <string name="spinnerTitle">Material</string>
 
 </resources>

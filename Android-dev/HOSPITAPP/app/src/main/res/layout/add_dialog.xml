@@ -28,18 +28,17 @@
                 android:textAlignment="center"
                 />
 
-            <EditText
+            <Spinner
                 android:id="@+id/objectInput"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:hint="@string/material"
+                android:gravity="center_horizontal">
+                <!---android:hint="@string/material"
                 android:inputType="text"
-                android:importantForAutofill="no"
-                android:gravity="center_horizontal"
-                >
+                android:importantForAutofill="no"-->
 
-            </EditText>
+            </Spinner>
 
         </LinearLayout>
 
