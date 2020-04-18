@@ -1,4 +1,4 @@
-#Sat Apr 18 19:44:36 CEST 2020
+#Sat Apr 18 20:00:24 CEST 2020
 base.0=/Users/antonioleonvillares/Kill-the-Creature-Hackathon/Android-dev/PROVITAPP/app/build/intermediates/dex/debug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

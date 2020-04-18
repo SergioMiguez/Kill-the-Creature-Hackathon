@@ -1157,7 +1157,7 @@ int id design_navigation_view 0x7f08005b
 int id dimensions 0x7f08005c
 int id direct 0x7f08005d
 int id direction_hospital 0x7f08005e
-int id direction_hospital_edit 0x7f08005f
+int id direction_provider_edit 0x7f08005f
 int id direction_text 0x7f080060
 int id disableHome 0x7f080061
 int id edit_query 0x7f080062

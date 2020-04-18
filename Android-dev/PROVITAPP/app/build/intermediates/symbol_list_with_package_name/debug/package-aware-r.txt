@@ -1158,7 +1158,7 @@ id design_navigation_view
 id dimensions
 id direct
 id direction_hospital
-id direction_hospital_edit
+id direction_provider_edit
 id direction_text
 id disableHome
 id edit_query
