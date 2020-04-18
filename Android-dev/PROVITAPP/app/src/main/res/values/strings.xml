@@ -61,9 +61,9 @@
     <string name="profileTitle">User Profile</string>
     <string name="profileEditTitle">Edit User Profile</string>
     <string name="hospitalEditProfilePrompt">Hospital name:</string>
-    <string name="hospitalEditProfileInfo">Introduce the hospital name</string>
+    <string name="hospitalEditProfileInfo">Enter the hospital name</string>
     <string name="streetEditProfilePrompt">Hospital address:</string>
-    <string name="streetEditProfileInfo">Introduce hospital address</string>
+    <string name="streetEditProfileInfo">Enter hospital address</string>
     <string name="CPEditProfilePrompt">Postal code:</string>
     <string name="CPEditProfileInfo">Postal code</string>
     <string name="numberEditProfilePrompt">Number:</string>
