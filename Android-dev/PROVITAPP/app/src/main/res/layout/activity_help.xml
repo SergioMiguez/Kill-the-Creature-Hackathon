@@ -80,7 +80,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hospitappNavBtnTitle" />
 
-        <TextView
+       <!-- <TextView
             android:id="@+id/hospitappNavBtnAdd"
             android:textSize="18sp"
             android:text="NAVBTN ADD"
@@ -92,7 +92,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hospitappNavBtnIntro" />
-
+-->
         <TextView
             android:id="@+id/hospitappNavBtnBand"
             android:textSize="18sp"
@@ -104,7 +104,7 @@
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hospitappNavBtnAdd" />
+            app:layout_constraintTop_toBottomOf="@+id/hospitappNavBtnIntro" />
 
         <TextView
             android:id="@+id/hospitappHomeTitle"

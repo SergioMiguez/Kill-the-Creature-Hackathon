@@ -7,43 +7,43 @@ import java.io.Serializable;
  */
 public class UsuarioHospital implements Serializable {
     /**
-     * Constant (int) used to store the reference of a given user in the database.
+     * Field (int) used to store the reference of a given user in the database.
      */
     private int id;
     /**
-     * Constant (String) used to store the name of the user.
+     * Field (String) used to store the name of the user.
      */
     private String name;
     /**
-     * Constant (String) used to store the username of the user.
+     * Field (String) used to store the username of the user.
      */
     private String username;
     /**
-     * Constant (String) used to store the password of the user.
+     * Field (String) used to store the password of the user.
      */
     private String password;
     /**
-     * Constant (String) used to store the Street name of the user.
+     * Field (String) used to store the Street name of the user.
      */
     private String direction;
     /**
-     * Constant (String) used to store the email address of the user.
+     * Field (String) used to store the email address of the user.
      */
     private String email;
     /**
-     * Constant (String) used to store the phone Number of the user.
+     * Field (String) used to store the phone Number of the user.
      */
     private String phoneNumber;
     /**
-     * Constant (String) used to store the Street's address of the user.
+     * Field (String) used to store the Street's address of the user.
      */
     private String numberAddress;
     /**
-     * Constant (String) used to store the zip code of the user.
+     * Field (String) used to store the zip code of the user.
      */
     private String zipCode;
     /**
-     * Constant (String) used to store the name of the city of the user.
+     * Field (String) used to store the name of the city of the user.
      */
     private String city;
 

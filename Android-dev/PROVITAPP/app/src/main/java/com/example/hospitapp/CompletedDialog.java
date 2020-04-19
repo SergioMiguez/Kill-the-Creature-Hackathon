@@ -25,6 +25,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hospitapp.ui.ListCompletedAdapter;
 
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -87,7 +88,6 @@ public class CompletedDialog extends AppCompatDialogFragment {
             public void onClick(View v) {
                 inputIdReceived = idInput.getText().toString();
                 if (!inputIdReceived.equals("")) {
-                    /* TODO CHANGE URL TO COMPLETED ORDERS*/
                     sendReceivedRequest(URLS.mark_completed_url);
                     fillList();
                 }
