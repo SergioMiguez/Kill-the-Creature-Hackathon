@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                 userName = userNameInput.getText().toString();
                 password = passwordInput.getText().toString();
 
-                makeCall(URLS.login_url);
+                makeCall(URLS.proveedor_login_url);
 
             }
         });

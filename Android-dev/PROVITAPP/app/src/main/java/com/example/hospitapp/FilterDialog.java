@@ -200,7 +200,7 @@ public class FilterDialog extends AppCompatDialogFragment {
         objectInput.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                makeListRequestFiltered(URLS.display_orders_url);
+                makeListRequestFiltered(URLS.display_all_orders_url);
             }
 
             @Override

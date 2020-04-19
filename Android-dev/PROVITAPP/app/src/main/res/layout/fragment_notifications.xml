@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="176dp"
-            android:text="@string/streetProfilePrompt"
+            android:text="Provider address"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -334,7 +334,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="606dp"
-            android:text="@string/hospitalEditProfilePrompt"
+            android:text="@string/provider_name"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -348,7 +348,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="638dp"
-            android:hint="@string/hospitalEditProfileInfo"
+            android:hint="@string/introduce_provider_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -360,7 +360,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="700dp"
-            android:text="@string/streetEditProfilePrompt"
+            android:text="@string/provider_address"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -374,7 +374,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="732dp"
-            android:hint="@string/streetEditProfileInfo"
+            android:hint="@string/introduce_provider_address"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 

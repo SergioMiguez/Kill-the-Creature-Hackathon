@@ -110,5 +110,9 @@
     <string name="confirmHasMaterial">Confirm that you have this material</string>
     <string name="mark_as_completed">Mark as completed</string>
     <string name="mark_as_sent">mark as sent</string>
+    <string name="introduce_provider_name">Introduce provider name</string>
+    <string name="provider_name">Provider Name:</string>
+    <string name="provider_address">Provider Address</string>
+    <string name="introduce_provider_address">Introduce provider address</string>
 
 </resources>

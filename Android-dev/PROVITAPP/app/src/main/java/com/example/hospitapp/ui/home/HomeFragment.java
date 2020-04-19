@@ -82,7 +82,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void fillList() {
-        makeListRequest(URLS.display_orders_url);
+        makeListRequest(URLS.display_all_orders_url);
     }
 
 
