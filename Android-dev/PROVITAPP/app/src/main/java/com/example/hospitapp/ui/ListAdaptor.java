@@ -78,11 +78,11 @@ public class ListAdaptor extends RecyclerView.Adapter<ListAdaptor.ListViewHolder
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         Order currentItem = listOfOrders.get(position);
 
-        holder.textObject.setText(currentItem.getNombre_objeto());
+        holder.textObject.setText(currentItem.getObject_name());
 
-        holder.textObject.setText("" + currentItem.getNombre_objeto());
-        holder.textVolumeNumber.setText("" + currentItem.getCantidad());
-        holder.textFecha.setText(currentItem.getFecha());
+        holder.textObject.setText("" + currentItem.getObject_name());
+        holder.textVolumeNumber.setText("" + currentItem.getQuantity());
+        holder.textFecha.setText(currentItem.getDate());
         holder.textState.setText(state);
         holder.textReferenceID.setText("" + currentItem.getId());
     }
