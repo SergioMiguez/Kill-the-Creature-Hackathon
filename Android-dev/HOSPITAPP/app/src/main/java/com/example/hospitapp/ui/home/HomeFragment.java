@@ -30,7 +30,7 @@ import com.example.hospitapp.R;
 import com.example.hospitapp.URLS;
 import com.example.hospitapp.ui.ListAdaptor;
 import com.example.hospitapp.ui.ListClassAdapter;
-import com.example.hospitapp.ui.ListProveedoresClass;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
