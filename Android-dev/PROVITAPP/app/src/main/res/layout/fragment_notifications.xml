@@ -563,7 +563,6 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="32dp"
             android:hint="Introduce your description"
-            android:inputType="number"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/description_text_eddited">
 
