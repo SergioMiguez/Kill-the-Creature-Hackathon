@@ -23,7 +23,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.hospitapp.ui.ListSentAdapter;
+import com.example.hospitapp.ui.ListCompletedAdapter;
+import com.example.hospitapp.ui.ListFilterAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,7 +42,7 @@ public class CompletedDialog extends AppCompatDialogFragment {
     private ArrayList<Order> listOfOrders;
     private RequestQueue requestQueue;
     private Context mContext;
-    private Button markAsReceived;
+    private Button markAsCompletedButton;
     private EditText idInput;
     private String inputIdReceived;
     private String fecha;
@@ -50,15 +51,15 @@ public class CompletedDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        final View view = inflater.inflate(R.layout.dialog_received, null, false);
+        final View view = inflater.inflate(R.layout.dialog_completed, null, false);
         mContext = this.getContext();
         listOfOrders = new ArrayList<>();
 
-        markAsReceived = view.findViewById(R.id.markAsReceivedButton);
+        markAsCompletedButton = view.findViewById(R.id.markAsCompleted);
         idInput = view.findViewById(R.id.idInput);
-        markAsReceivedButton();
+        markAsCompleted();
 
-        recyclerView = view.findViewById(R.id.recyclerSentOrders);
+        recyclerView = view.findViewById(R.id.recyclerCompleted);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         fillList();
 
@@ -81,29 +82,33 @@ public class CompletedDialog extends AppCompatDialogFragment {
         return builder.create();
     }
 
-    private void markAsReceivedButton() {
-        markAsReceived.setOnClickListener(new View.OnClickListener() {
+    private void markAsCompleted() {
+        markAsCompletedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 inputIdReceived = idInput.getText().toString();
                 if (!inputIdReceived.equals("")) {
-                    sendReceivedRequest(URLS.confirm_received_url);
+                    /* TODO CHANGE URL TO COMPLETED ORDERS*/
+                    sendReceivedRequest("URL");
+                    fillList();
                 }
             }
         });
     }
 
     private void fillList() {
-        makeListRequest(URLS.only_sent_url);
+        makeListRequest(URLS.display_connected_orders_url);
     }
 
     private void makeListRequest (String URL) {
+        Toast.makeText(MainActivity.getContext(), "entra dentro del request", Toast.LENGTH_SHORT).show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONArray array = new JSONArray(response);
 
+                    ArrayList<Order> listOfOrders = new ArrayList<>();
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject order = array.getJSONObject(i);
 
@@ -119,9 +124,17 @@ public class CompletedDialog extends AppCompatDialogFragment {
                                 order.getInt("enviado"),
                                 order.getInt("recibido")
                         ));
+
                     }
 
-                    ListSentAdapter adapter = new ListSentAdapter(listOfOrders);
+                    ArrayList<Order> onlyLinked = new ArrayList<>();
+                    for (Order order : listOfOrders) {
+                        if (!(order.isEnviado() || order.isRecibido())) {
+                            onlyLinked.add(order);
+                        }
+                    }
+
+                    ListCompletedAdapter adapter = new ListCompletedAdapter(onlyLinked);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
@@ -131,12 +144,9 @@ public class CompletedDialog extends AppCompatDialogFragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (mContext != null) {
-                    Toast.makeText(mContext, error.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-
+                Toast.makeText(MainActivity.getContext(), "ERROR PEDIDOS", Toast.LENGTH_SHORT).show();
             }
-        }) {
+        }){
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
@@ -145,15 +155,10 @@ public class CompletedDialog extends AppCompatDialogFragment {
             }
         };
 
-
-        /**
-         * if (mContext != null) {
-         *             Volley.newRequestQueue(mContext).add(stringRequest);
-         *         }
-         */
-
-        requestQueue= Volley.newRequestQueue(getContext());
+        /*  TODO CHECK IF CONTEXT WORKS  (MainActivity.getContext() */
+        requestQueue=Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
+
     }
 
     private void sendReceivedRequest(String URL) {

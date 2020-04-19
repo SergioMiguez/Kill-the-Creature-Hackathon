@@ -19,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.hospitapp.CompletedDialog;
 import com.example.hospitapp.LoginActivity;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
@@ -74,7 +75,7 @@ public class DashboardFragment extends Fragment {
         completedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReceivedDialog newDialog = new ReceivedDialog();
+                CompletedDialog newDialog = new CompletedDialog();
                 newDialog.show(getActivity().getSupportFragmentManager(), "Mark as received");
             }
         });
