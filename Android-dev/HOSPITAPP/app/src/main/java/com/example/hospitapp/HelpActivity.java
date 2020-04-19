@@ -6,9 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+/** Creates the window which gives the user information about how to use the app. */
 public class HelpActivity extends AppCompatActivity {
 
+    /**
+     * Creates the window use to display useful information about how to use the app.
+     * It informs about the type of data displayed in each window as well as the functionality of each button.
+     * @param savedInstanceState saved data about the current app status used to create the window.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
