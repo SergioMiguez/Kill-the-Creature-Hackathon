@@ -11,16 +11,27 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         tools:ignore="UselessParent"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp">
 
         <Button
-            android:id="@+id/receivedButton"
+            android:id="@+id/completedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/received"
+            android:text="completed"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginRight="30dp"
+            >
+
+        </Button>
+
+        <Button
+            android:id="@+id/sentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="order sent"
             android:textColor="@color/colorPrimary"
             >
 

@@ -208,7 +208,7 @@ public class AddDialog extends AppCompatDialogFragment {
                         listOfMaterialName.add(listOfMaterials.get(i).getMaterialName());
                     }
 
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.custom_spinner_item,listOfMaterialName);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.item_custom_spinner,listOfMaterialName);
 
                     objectInput.setAdapter(adapter);
 
