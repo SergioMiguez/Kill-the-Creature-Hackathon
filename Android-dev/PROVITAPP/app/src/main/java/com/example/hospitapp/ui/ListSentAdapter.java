@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.hospitapp.Material;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
 
@@ -73,10 +72,10 @@ public class ListSentAdapter extends RecyclerView.Adapter<ListSentAdapter.OrderV
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
-        holder.textObject.setText("" + listOfOrdersSent.get(position).getNombre_objeto());
-        holder.textVolumeNumber.setText("" + listOfOrdersSent.get(position).getCantidad());
-        holder.textFecha.setText(listOfOrdersSent.get(position).getFecha());
-        holder.textProveedorId.setText("" + listOfOrdersSent.get(position).getId_proveedor());
+        holder.textObject.setText("" + listOfOrdersSent.get(position).getObject_name());
+        holder.textVolumeNumber.setText("" + listOfOrdersSent.get(position).getQuantity());
+        holder.textFecha.setText(listOfOrdersSent.get(position).getDate());
+        holder.textProveedorId.setText("" + listOfOrdersSent.get(position).getId_provider());
         holder.textState.setText("COMPLETED");
         holder.textReferenceID.setText("" + listOfOrdersSent.get(position).getId());
     }
