@@ -24,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hospitapp.ui.ListSentAdapter;
+import com.example.hospitapp.ui.dashboard.DashboardFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -87,7 +88,6 @@ public class SentDialog  extends AppCompatDialogFragment{
             public void onClick(View v) {
                 inputIdReceived = idInput.getText().toString();
                 if (!inputIdReceived.equals("")) {
-                    /* TODO CHANGE URL SEND ORDERS */
                     sendReceivedRequest(URLS.mark_sent_url);
                     fillList();
                 }
@@ -105,7 +105,6 @@ public class SentDialog  extends AppCompatDialogFragment{
             public void onResponse(String response) {
                 try {
                     JSONArray array = new JSONArray(response);
-
                     ArrayList<Order> listOrders = new ArrayList<>();
 
                     for (int i = 0; i < array.length(); i++) {
@@ -180,7 +179,7 @@ public class SentDialog  extends AppCompatDialogFragment{
                     if (jsonResponse.getBoolean("success")){
                         Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(MainActivity.getContext(), "No se pudo crear el usuario, posible error de duplicacion", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.getContext(), "It was not possible to find the user, possible error of duplication", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (Exception e) {

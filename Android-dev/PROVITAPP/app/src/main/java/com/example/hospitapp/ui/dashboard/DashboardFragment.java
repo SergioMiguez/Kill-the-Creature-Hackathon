@@ -111,7 +111,7 @@ public class DashboardFragment extends Fragment {
         mContext = null;
     }
 
-    private void fillList() {
+    public void fillList() {
         makeListRequest(URLS.display_connected_orders_url);
     }
 
