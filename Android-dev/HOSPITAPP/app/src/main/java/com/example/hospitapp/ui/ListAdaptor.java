@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.example.hospitapp.MainActivity;
@@ -79,11 +78,11 @@ public class ListAdaptor extends RecyclerView.Adapter<ListAdaptor.ListViewHolder
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         Order currentItem = listOfOrders.get(position);
 
-        holder.textObject.setText(currentItem.getNombre_objeto());
+        holder.textObject.setText(currentItem.getObject_name());
 
-        holder.textObject.setText("" + currentItem.getNombre_objeto());
-        holder.textVolumeNumber.setText("" + currentItem.getCantidad());
-        holder.textFecha.setText(currentItem.getFecha());
+        holder.textObject.setText("" + currentItem.getObject_name());
+        holder.textVolumeNumber.setText("" + currentItem.getQuantity());
+        holder.textFecha.setText(currentItem.getDate());
         holder.textState.setText(state);
         holder.textReferenceID.setText("" + currentItem.getId());
     }

@@ -1,124 +1,121 @@
 package com.example.hospitapp;
 
+/** Class that is responsible for the creation of an order object*/
 public class Order {
 
+    /** Private int that represents the id*/
     private int id;
-    private int id_objeto;
-    private int cantidad;
-    private int id_proveedor;;
+    /** Private int that represents the id of the object*/
+    private int id_object;
+    /** Private int that represents the quatity*/
+    private int quantity;
+    /** Private int that represents the id of the provider*/
+    private int id_provider;
+    /** Private int that represents the id of the hospital*/
     private int id_hospital;
-    private String fecha;
-    private String direccion_envio;
-    private String nombre_objeto;
-    private boolean enviado;
-    private boolean recibido;
+    /** Private string that represents the date*/
+    private String date;
+    /** Private string that represents the shipping address*/
+    private String shipping_address;
+    /** Private string that represents the object name*/
+    private String object_name;
+    /** Private boolean that represents whether the order was sent or not*/
+    private boolean sent;
+    /** Private boolean that represents whether the order was received or not*/
+    private boolean received;
+    /** Private boolean that represents whether the order was completed or not*/
+    private boolean completed;
 
-    public Order(int id, int id_objeto, int cantidad, int id_proveedor, int id_hospital, String fecha, String direccion_envio, String nombre_objeto, int enviado, int recibido) {
+    /** Standard constructor of the order class with no completed parameter*/
+    public Order(int id, int id_object, int quantity, int id_provider, int id_hospital, String date, String shipping_address, String object_name, int sent, int received) {
         this.id = id;
-        this.id_objeto = id_objeto;
-        this.cantidad = cantidad;
-        this.id_proveedor = id_proveedor;
+        this.id_object = id_object;
+        this.quantity = quantity;
+        this.id_provider = id_provider;
         this.id_hospital = id_hospital;
-        this.fecha = fecha;
-        this.direccion_envio = direccion_envio;
-        this.nombre_objeto = nombre_objeto;
+        this.date = date;
+        this.shipping_address = shipping_address;
+        this.object_name = object_name;
 
-        this.enviado = enviado == 1;
-        this.recibido = recibido == 1;
+        this.sent = sent == 1;
+        this.received = received == 1;
 
     }
 
-    public Order(int id, int id_objeto, int cantidad, int id_proveedor, int id_hospital, String fecha, String direccion_envio, String nombre_objeto) {
+    /** Constructor of the order class which overrides the other order constructor if the parameter completed is added*/
+    public Order(int id, int id_object, int quantity, int id_provider, int id_hospital, String date, String shipping_address, String object_name, int sent, int received, int completed) {
         this.id = id;
-        this.id_objeto = id_objeto;
-        this.cantidad = cantidad;
-        this.id_proveedor = id_proveedor;
+        this.id_object = id_object;
+        this.quantity = quantity;
+        this.id_provider = id_provider;
         this.id_hospital = id_hospital;
-        this.fecha = fecha;
-        this.direccion_envio = direccion_envio;
-        this.nombre_objeto = nombre_objeto;
+        this.date = date;
+        this.shipping_address = shipping_address;
+        this.object_name = object_name;
+
+        this.sent = sent == 1;
+        this.received = received == 1;
+        this.completed = completed == 1;
+
     }
 
-    /** _______________ GETTER FUNCTIONS _______________ */
+    /** Constructor of the order class which overrides the other order constructor if no sent, received or completed parameter is used*/
+    public Order(int id, int id_object, int quantity, int id_provider, int id_hospital, String date, String shipping_address, String object_name) {
+        this.id = id;
+        this.id_object = id_object;
+        this.quantity = quantity;
+        this.id_provider = id_provider;
+        this.id_hospital = id_hospital;
+        this.date = date;
+        this.shipping_address = shipping_address;
+        this.object_name = object_name;
+    }
+
+    // _______________ GETTER FUNCTIONS _______________
+
+    /** Getter of the id parameter*/
     public int getId() {
         return id;
     }
 
-    public int getId_objeto() {
-        return id_objeto;
+    /** Getter of the sent parameter*/
+    public boolean isSent() {
+        return sent;
     }
 
-
-    public boolean isEnviado() {
-        return enviado;
+    /** Getter of the completed parameter*/
+    public boolean isCompleted() {
+        return completed;
     }
 
-    public boolean isRecibido() {
-        return recibido;
+    /** Getter of the received parameter*/
+    public boolean isReceived() {
+        return received;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    /** Getter of the quantity parameter*/
+    public int getQuantity() {
+        return quantity;
     }
 
-    public int getId_proveedor() {
-        return id_proveedor;
+    /** Getter of the provider id parameter*/
+    public int getId_provider() {
+        return id_provider;
     }
 
-    public int getId_hospital() {
-        return id_hospital;
+    /** Getter of the date parameter*/
+    public String getDate() {
+        return date;
     }
 
-    public String getFecha() {
-        return fecha;
-    }
+    /** Getter of the object name parameter*/
+    public String getObject_name() {return object_name;}
 
-    public String getDireccion_envio() {
-        return direccion_envio;
-    }
+    // _______________ SETTER FUNCTIONS _______________
 
-    public String getNombre_objeto() {return nombre_objeto;}
-
-    /** _______________ SETTER FUNCTIONS _______________ */
-
+    /** Setter method of the id parameter*/
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setId_objeto(int id_objeto) {
-        this.id_objeto = id_objeto;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-
-    public void setEnviado(boolean enviado) {
-        this.enviado = enviado;
-    }
-
-    public void setRecibido(boolean recibido) {
-        this.recibido = recibido;
-    }
-
-    public void setId_proveedor(int id_proveedor) {
-        this.id_proveedor = id_proveedor;
-    }
-
-    public void setId_hospital(int id_hospital) {
-        this.id_hospital = id_hospital;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-
-    public void setDireccion_envio(String direccion_envio) {
-        this.direccion_envio = direccion_envio;
-    }
-
-    public void setNombre_objeto(String nombre_objeto) {
-        this.nombre_objeto = nombre_objeto;
-    }
 }

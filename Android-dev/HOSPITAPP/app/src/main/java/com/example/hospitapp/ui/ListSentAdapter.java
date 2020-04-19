@@ -71,10 +71,10 @@ public class ListSentAdapter extends RecyclerView.Adapter<ListSentAdapter.OrderV
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
-        holder.textObject.setText("" + listOfOrdersSent.get(position).getId_objeto());
-        holder.textVolumeNumber.setText("" + listOfOrdersSent.get(position).getCantidad());
-        holder.textFecha.setText(listOfOrdersSent.get(position).getFecha());
-        holder.textProveedorId.setText("" + listOfOrdersSent.get(position).getId_proveedor());
+        holder.textObject.setText("" + listOfOrdersSent.get(position).getId_object());
+        holder.textVolumeNumber.setText("" + listOfOrdersSent.get(position).getQuantity());
+        holder.textFecha.setText(listOfOrdersSent.get(position).getDate());
+        holder.textProveedorId.setText("" + listOfOrdersSent.get(position).getId_provider());
         holder.textState.setText("SENT");
         holder.textReferenceID.setText("" + listOfOrdersSent.get(position).getId());
 
