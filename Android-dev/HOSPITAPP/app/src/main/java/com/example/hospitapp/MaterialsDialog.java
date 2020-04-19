@@ -20,8 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.hospitapp.ui.ListAdaptor;
-import com.example.hospitapp.ui.ListClassAdapter;
+
 import com.example.hospitapp.ui.ListMaterialsAdaptor;
 import com.example.hospitapp.ui.notifications.NotificationsFragment;
 
@@ -32,20 +31,47 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
+/**
+ * Public class that creates the display which allows the Hospital to add a new Material and to see what materials are available.
+ */
 public class MaterialsDialog extends AppCompatDialogFragment {
-
+    /**
+     * Private field used to store the used materials in a recycleView.
+     */
     private RecyclerView recyclerView;
+    /**
+     * Private field used to store the used materials in an ArrayList.
+     */
     private ArrayList<Material> listOfMaterials;
+    /**
+     * Private field used to store the state of the dialog.
+     */
     private String state;
+    /**
+     * Private field used to make a request to the server to obtain information and Update information of the database (materials).
+     */
     private RequestQueue requestQueue;
+    /**
+     * Button that is used to add a send a request to the server to add a new Material.
+     */
     private Button addMaterial;
+    /**
+     * Private EditText used to store the input of the user (the name of the new material).
+     */
     private EditText materialInputText;
+    /**
+     * Private string used to store the information of the EditText.
+     */
     private String material;
 
 
-
+    /**
+     * Method used to create the layout of the pop-up (dialog) and to initialize all the values.
+     * This dialog allows the user to create a new Material and also see the materials that are already available.
+     * @param  savedInstanceState saved data about the current app status used to create the pop-up.
+     * @return the pop-up display.
+     */
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -101,10 +127,19 @@ public class MaterialsDialog extends AppCompatDialogFragment {
         return builder.create();
     }
 
+    /**
+     * Private method used to fill the list of materials, it calls the server with the method makeListRequest.
+     */
     private void fillList() {
-        /*  TODO IMPLEMENT URL  */
+
         makeListRequest(URLS.show_materials_url);
     }
+
+    /**
+     * Private Method tha is used when the dialog is initialized, it makes a request to the server to get a list (JsonArray) of all the materials available in the database,
+     * it adds those materials to the ArrayList listOfMaterials.
+     * @param URL given URL to make the server call
+     */
 
     private void makeListRequest(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
@@ -147,16 +182,16 @@ public class MaterialsDialog extends AppCompatDialogFragment {
             }
         };
 
-        /**
-         *
-         *if (mContext != null) {
-         *Volley.newRequestQueue(mContext).add(stringRequest);
-         *}
-         */
+
 
         requestQueue= Volley.newRequestQueue(MainActivity.getContext());
         requestQueue.add(stringRequest);
     }
+    /**
+     * Private Method tha is used when the the button addMaterial is pressed.
+     * It gives information to the server to create a new Entry for a new Material in the database
+     * @param URL given URL to make the server call
+     */
 
     private void sendServerNewMaterial(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
@@ -179,7 +214,6 @@ public class MaterialsDialog extends AppCompatDialogFragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(MainActivity.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
