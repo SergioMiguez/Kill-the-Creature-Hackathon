@@ -65,7 +65,7 @@ public class CompletedDialog extends AppCompatDialogFragment {
 
 
         builder.setView(view)
-                .setTitle("List of sent orders")
+                .setTitle("List orders linked to be completed:")
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -144,7 +144,7 @@ public class CompletedDialog extends AppCompatDialogFragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.getContext(), "ERROR PEDIDOS", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.getContext(), "ERROR ORDERS", Toast.LENGTH_SHORT).show();
             }
         }){
             @Override
@@ -170,7 +170,7 @@ public class CompletedDialog extends AppCompatDialogFragment {
                     if (jsonResponse.getBoolean("success")){
                         Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(MainActivity.getContext(), "No se pudo crear el usuario, posible error de duplicacion", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.getContext(), "It was not possible to create the user, possible error of duplication", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (Exception e) {
