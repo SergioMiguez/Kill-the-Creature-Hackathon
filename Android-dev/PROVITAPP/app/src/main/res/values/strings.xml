@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HOSPITAPP</string>
+    <string name="app_name">PROVITAPP</string>
     <string name="title_home">HOME</string>
     <string name="title_dashboard">LINKED</string>
     <string name="title_proveedores">PROVIDERS</string>
@@ -115,5 +115,6 @@
     <string name="provider_address">Provider Address</string>
     <string name="introduce_provider_address">Introduce provider address</string>
     <string name="link_an_order">Link an order</string>
+    <string name="in_progress">IN PROGRESS</string>
 
 </resources>
