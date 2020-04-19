@@ -137,7 +137,8 @@ public class DashboardFragment extends Fragment {
                                 order.getString("direccion_envio"),
                                 order.getString("nombre_objeto"),
                                 order.getInt("enviado"),
-                                order.getInt("recibido")
+                                order.getInt("recibido"),
+                                order.getInt("completado")
 
                         ));
 

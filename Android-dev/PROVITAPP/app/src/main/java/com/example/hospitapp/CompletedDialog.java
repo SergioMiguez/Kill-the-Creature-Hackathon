@@ -122,14 +122,15 @@ public class CompletedDialog extends AppCompatDialogFragment {
                                 order.getString("direccion_envio"),
                                 order.getString("nombre_objeto"),
                                 order.getInt("enviado"),
-                                order.getInt("recibido")
+                                order.getInt("recibido"),
+                                order.getInt("completado")
                         ));
 
                     }
 
                     ArrayList<Order> onlyLinked = new ArrayList<>();
                     for (Order order : listOfOrders) {
-                        if (!(order.isEnviado() || order.isRecibido())) {
+                        if (!(order.isEnviado() || order.isRecibido() || order.isCompletado())) {
                             onlyLinked.add(order);
                         }
                     }

@@ -88,7 +88,7 @@ public class SentDialog  extends AppCompatDialogFragment{
                 inputIdReceived = idInput.getText().toString();
                 if (!inputIdReceived.equals("")) {
                     /* TODO CHANGE URL SEND ORDERS */
-                    sendReceivedRequest("URL");
+                    sendReceivedRequest(URLS.mark_sent_url);
                     fillList();
                 }
             }
@@ -200,8 +200,8 @@ public class SentDialog  extends AppCompatDialogFragment{
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
                 parameters.put("usuario", LoginActivity.userName);
-                parameters.put("fecha_recibido", getDate());
-                parameters.put("id_pedido", inputIdReceived);
+                parameters.put("fecha_envio", getDate());
+                parameters.put("id", inputIdReceived);
                 return parameters;
             }
         };
