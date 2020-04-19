@@ -4,7 +4,9 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -32,6 +34,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,17 +47,16 @@ public class FilterDialog extends AppCompatDialogFragment {
     private final String stateLinked = "LINKED";
     private RequestQueue requestQueue;
     private Context mContext;
-    private Button markAsReceived;
-    private EditText idInput;
-    private String inputIdReceived;
-    private String fecha;
 
-    private String object;
     private Spinner objectInput;
     private String materialSelectedSpinner;
 
     private ArrayList<Material> listOfMaterials;
     private ArrayList<String> listOfMaterialName;
+
+    private Button linkButton;
+    private EditText inputIDLink;
+    private String inputIDText;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -69,6 +72,10 @@ public class FilterDialog extends AppCompatDialogFragment {
 
         objectInput = view.findViewById(R.id.objectInput);
         makeMaterialListRequest(URLS.show_materials_url);
+
+        linkButton = view.findViewById(R.id.linkButton);
+        inputIDLink = view.findViewById(R.id.inputIDfilter);
+        linkButtonPressed();
 
         recyclerView = view.findViewById(R.id.recyclerSentOrders);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
@@ -90,6 +97,19 @@ public class FilterDialog extends AppCompatDialogFragment {
                 });
 
         return builder.create();
+    }
+
+    private void linkButtonPressed() {
+        linkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inputIDText = inputIDLink.getText().toString();
+                if (!inputIDText.equals("")) {
+                    /* TODO implement url for linked oder*/
+                    sendIdServerLinkedOrder(URLS.provider_link_order_request_url);
+                }
+            }
+        });
     }
 
     private void fillList() {
@@ -216,6 +236,7 @@ public class FilterDialog extends AppCompatDialogFragment {
             @Override
             public void onResponse(String response) {
                 try {
+
                     JSONArray array = new JSONArray(response);
 
                     ArrayList<Order> listOfProveedores = new ArrayList<>();
@@ -247,6 +268,8 @@ public class FilterDialog extends AppCompatDialogFragment {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
+                } catch (NullPointerException e) {
+                    Toast.makeText(MainActivity.getContext(), "CONNECTION ERROR", Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
@@ -267,6 +290,44 @@ public class FilterDialog extends AppCompatDialogFragment {
         requestQueue=Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
 
+    }
+
+    private void sendIdServerLinkedOrder(String URL) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    Toast.makeText(MainActivity.getContext(), response, Toast.LENGTH_SHORT).show();
+                    JSONObject jsonResponse = new JSONObject(response);
+                    if (jsonResponse.getBoolean("success")){
+                        Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainActivity.getContext(), "No se pudo crear el usuario, posible error de duplicacion", Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (Exception e) {
+                    Toast.makeText(MainActivity.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("username", LoginActivity.userName);
+                parameters.put("id_pedido", inputIDText);
+                return parameters;
+            }
+        };
+        requestQueue=Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
     }
 
 }

@@ -114,5 +114,6 @@
     <string name="provider_name">Provider Name:</string>
     <string name="provider_address">Provider Address</string>
     <string name="introduce_provider_address">Introduce provider address</string>
+    <string name="link_an_order">Link an order</string>
 
 </resources>
