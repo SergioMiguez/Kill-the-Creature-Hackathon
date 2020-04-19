@@ -24,7 +24,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hospitapp.ui.ListCompletedAdapter;
-import com.example.hospitapp.ui.ListFilterAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -130,7 +129,7 @@ public class CompletedDialog extends AppCompatDialogFragment {
 
                     ArrayList<Order> onlyLinked = new ArrayList<>();
                     for (Order order : listOfOrders) {
-                        if (!(order.isEnviado() || order.isRecibido() || order.isCompletado())) {
+                        if (!(order.isSent() || order.isReceived() || order.isCompleted())) {
                             onlyLinked.add(order);
                         }
                     }

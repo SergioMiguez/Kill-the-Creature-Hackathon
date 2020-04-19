@@ -106,35 +106,35 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
 
         if (state.equals("POR ACEPTAR")) {
-            holder.textProveedorId.setText("" + listOfOrders.get(position).getId_proveedor());
-            holder.textProveedorName.setText("" + listOfOrders.get(position).getNombre_objeto());
+            holder.textProveedorId.setText("" + listOfOrders.get(position).getId_provider());
+            holder.textProveedorName.setText("" + listOfOrders.get(position).getObject_name());
 
         } else {
-            if (!listOfOrders.get(position).isEnviado() && !listOfOrders.get(position).isRecibido()) {
-                holder.textObject.setText("" + listOfOrders.get(position).getNombre_objeto());
-                holder.textVolumeNumber.setText("" + listOfOrders.get(position).getCantidad());
-                holder.textFecha.setText(listOfOrders.get(position).getFecha());
-                holder.textProveedorId.setText("" + listOfOrders.get(position).getId_proveedor());
+            if (!listOfOrders.get(position).isSent() && !listOfOrders.get(position).isReceived()) {
+                holder.textObject.setText("" + listOfOrders.get(position).getObject_name());
+                holder.textVolumeNumber.setText("" + listOfOrders.get(position).getQuantity());
+                holder.textFecha.setText(listOfOrders.get(position).getDate());
+                holder.textProveedorId.setText("" + listOfOrders.get(position).getId_provider());
                 holder.textState.setText("LINKED");
                 holder.textReferenceID.setText("" +listOfOrders.get(position).getId());
             }
 
 
-            if (listOfOrders.get(position).isEnviado() && !listOfOrders.get(position).isRecibido()) {
-                holder.textObject.setText("" + listOfOrders.get(position).getNombre_objeto());
-                holder.textVolumeNumber.setText("" + listOfOrders.get(position).getCantidad());
-                holder.textFecha.setText(listOfOrders.get(position).getFecha());
-                holder.textProveedorId.setText("" + listOfOrders.get(position).getId_proveedor());
+            if (listOfOrders.get(position).isSent() && !listOfOrders.get(position).isReceived()) {
+                holder.textObject.setText("" + listOfOrders.get(position).getObject_name());
+                holder.textVolumeNumber.setText("" + listOfOrders.get(position).getQuantity());
+                holder.textFecha.setText(listOfOrders.get(position).getDate());
+                holder.textProveedorId.setText("" + listOfOrders.get(position).getId_provider());
                 holder.textState.setText("SENT");
                 holder.textReferenceID.setText("" + listOfOrders.get(position).getId());
             }
 
 
-            if (listOfOrders.get(position).isEnviado() && listOfOrders.get(position).isRecibido()) {
-                holder.textObject.setText("" + listOfOrders.get(position).getNombre_objeto());
-                holder.textVolumeNumber.setText("" + listOfOrders.get(position).getCantidad());
-                holder.textFecha.setText(listOfOrders.get(position).getFecha());
-                holder.textProveedorId.setText("" + listOfOrders.get(position).getId_proveedor());
+            if (listOfOrders.get(position).isSent() && listOfOrders.get(position).isReceived()) {
+                holder.textObject.setText("" + listOfOrders.get(position).getObject_name());
+                holder.textVolumeNumber.setText("" + listOfOrders.get(position).getQuantity());
+                holder.textFecha.setText(listOfOrders.get(position).getDate());
+                holder.textProveedorId.setText("" + listOfOrders.get(position).getId_provider());
                 holder.textState.setText("RECEIVED");
                 holder.textReferenceID.setText("" +listOfOrders.get(position).getId());
 

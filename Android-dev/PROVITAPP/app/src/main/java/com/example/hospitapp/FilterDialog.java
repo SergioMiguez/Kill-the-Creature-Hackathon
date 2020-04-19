@@ -34,8 +34,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -258,7 +256,7 @@ public class FilterDialog extends AppCompatDialogFragment {
                     materialSelectedSpinner = objectInput.getSelectedItem().toString();
                     ArrayList<Order> filteredArray = new ArrayList<>();
                     for (Order order : listOfProveedores) {
-                        if (order.getNombre_objeto().equals(materialSelectedSpinner)) {
+                        if (order.getObject_name().equals(materialSelectedSpinner)) {
                             filteredArray.add(order);
                         }
                     }

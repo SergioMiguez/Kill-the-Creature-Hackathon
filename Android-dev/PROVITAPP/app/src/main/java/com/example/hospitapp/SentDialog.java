@@ -131,7 +131,7 @@ public class SentDialog  extends AppCompatDialogFragment{
                     ArrayList<Order> onlyCompleted = new ArrayList<>();
                     //listOrders.add(new Order(1,1,1,1,1, "hoy", "casa","nombre", 1, 0));
                     for (Order order : listOrders) {
-                        if (order.isCompletado() && !order.isRecibido() && !order.isEnviado()) {
+                        if (order.isCompleted() && !order.isReceived() && !order.isSent()) {
                             onlyCompleted.add(order);
                         }
                     }

@@ -76,11 +76,11 @@ public class ListFilterAdapter extends RecyclerView.Adapter<ListFilterAdapter.Or
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
-        if (listOfOrdersSent.get(position).getNombre_objeto().equals(materialSelectedFiltered)) {
-            holder.textObject.setText("" + listOfOrdersSent.get(position).getNombre_objeto());
-            holder.textVolumeNumber.setText("" + listOfOrdersSent.get(position).getCantidad());
-            holder.textFecha.setText(listOfOrdersSent.get(position).getFecha());
-            holder.textProveedorId.setText("" + listOfOrdersSent.get(position).getId_proveedor());
+        if (listOfOrdersSent.get(position).getObject_name().equals(materialSelectedFiltered)) {
+            holder.textObject.setText("" + listOfOrdersSent.get(position).getObject_name());
+            holder.textVolumeNumber.setText("" + listOfOrdersSent.get(position).getQuantity());
+            holder.textFecha.setText(listOfOrdersSent.get(position).getDate());
+            holder.textProveedorId.setText("" + listOfOrdersSent.get(position).getId_provider());
             holder.textState.setText("SENT");
             holder.textReferenceID.setText("" + listOfOrdersSent.get(position).getId());
         }
