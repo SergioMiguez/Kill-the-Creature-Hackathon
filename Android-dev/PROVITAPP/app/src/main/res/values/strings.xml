@@ -109,5 +109,6 @@
     <string name="spinnerTitle">Material</string>
     <string name="confirmHasMaterial">Confirm that you have this material</string>
     <string name="mark_as_completed">Mark as completed</string>
+    <string name="mark_as_sent">mark as sent</string>
 
 </resources>

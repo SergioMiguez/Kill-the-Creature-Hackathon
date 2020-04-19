@@ -24,6 +24,7 @@ import com.example.hospitapp.LoginActivity;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
 import com.example.hospitapp.ReceivedDialog;
+import com.example.hospitapp.SentDialog;
 import com.example.hospitapp.URLS;
 import com.example.hospitapp.ui.ListClassAdapter;
 
@@ -45,6 +46,7 @@ public class DashboardFragment extends Fragment {
     private final String stateCompleted = "RECEIVED";
     private Context mContext;
     private Button completedButton;
+    private Button sentButton;
 
     private RequestQueue requestQueue;
 
@@ -58,6 +60,9 @@ public class DashboardFragment extends Fragment {
 
         completedButton = view.findViewById(R.id.completedButton);
         openCompleted();
+
+        sentButton = view.findViewById(R.id.sentButton);
+        openSent();
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerDashboard);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -76,10 +81,22 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CompletedDialog newDialog = new CompletedDialog();
-                newDialog.show(getActivity().getSupportFragmentManager(), "Mark as received");
+                newDialog.show(getActivity().getSupportFragmentManager(), "Mark as completed");
             }
         });
     }
+
+    private void openSent() {
+        sentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SentDialog newDialog = new SentDialog();
+                newDialog.show(getActivity().getSupportFragmentManager(), "Mark as sent");
+            }
+        });
+    }
+
+
 
 
     @Override

@@ -77,7 +77,7 @@ public class ListSentAdapter extends RecyclerView.Adapter<ListSentAdapter.OrderV
         holder.textVolumeNumber.setText("" + listOfOrdersSent.get(position).getCantidad());
         holder.textFecha.setText(listOfOrdersSent.get(position).getFecha());
         holder.textProveedorId.setText("" + listOfOrdersSent.get(position).getId_proveedor());
-        holder.textState.setText("SENT");
+        holder.textState.setText("COMPLETED");
         holder.textReferenceID.setText("" + listOfOrdersSent.get(position).getId());
     }
 

@@ -23,8 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.hospitapp.ui.ListCompletedAdapter;
-import com.example.hospitapp.ui.ListFilterAdapter;
+import com.example.hospitapp.ui.ListSentAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,13 +35,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CompletedDialog extends AppCompatDialogFragment {
+public class SentDialog  extends AppCompatDialogFragment{
 
     private RecyclerView recyclerView;
     private ArrayList<Order> listOfOrders;
     private RequestQueue requestQueue;
     private Context mContext;
-    private Button markAsCompletedButton;
+    private Button markAsSentButton;
     private EditText idInput;
     private String inputIdReceived;
     private String fecha;
@@ -51,15 +50,15 @@ public class CompletedDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        final View view = inflater.inflate(R.layout.dialog_completed, null, false);
+        final View view = inflater.inflate(R.layout.dialog_sent, null, false);
         mContext = this.getContext();
         listOfOrders = new ArrayList<>();
 
-        markAsCompletedButton = view.findViewById(R.id.markAsCompleted);
-        idInput = view.findViewById(R.id.idInput);
-        markAsCompleted();
+        markAsSentButton = view.findViewById(R.id.markAsSent);
+        idInput = view.findViewById(R.id.idInputSent);
+        markAsSent();
 
-        recyclerView = view.findViewById(R.id.recyclerCompleted);
+        recyclerView = view.findViewById(R.id.recyclerSent);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         fillList();
 
@@ -82,13 +81,13 @@ public class CompletedDialog extends AppCompatDialogFragment {
         return builder.create();
     }
 
-    private void markAsCompleted() {
-        markAsCompletedButton.setOnClickListener(new View.OnClickListener() {
+    private void markAsSent() {
+        markAsSentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 inputIdReceived = idInput.getText().toString();
                 if (!inputIdReceived.equals("")) {
-                    /* TODO CHANGE URL TO COMPLETED ORDERS*/
+                    /* TODO CHANGE URL SEND ORDERS */
                     sendReceivedRequest("URL");
                     fillList();
                 }
@@ -101,18 +100,18 @@ public class CompletedDialog extends AppCompatDialogFragment {
     }
 
     private void makeListRequest (String URL) {
-        //Toast.makeText(MainActivity.getContext(), "entra dentro del request", Toast.LENGTH_SHORT).show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONArray array = new JSONArray(response);
 
-                    ArrayList<Order> listOfOrders = new ArrayList<>();
+                    ArrayList<Order> listOrders = new ArrayList<>();
+
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject order = array.getJSONObject(i);
 
-                        listOfOrders.add(new Order(
+                        listOrders.add(new Order(
                                 order.getInt("id"),
                                 order.getInt("id_objeto"),
                                 order.getInt("cantidad"),
@@ -123,18 +122,20 @@ public class CompletedDialog extends AppCompatDialogFragment {
                                 order.getString("nombre_objeto"),
                                 order.getInt("enviado"),
                                 order.getInt("recibido")
+
                         ));
 
                     }
 
-                    ArrayList<Order> onlyLinked = new ArrayList<>();
-                    for (Order order : listOfOrders) {
-                        if (!(order.isEnviado() || order.isRecibido())) {
-                            onlyLinked.add(order);
+                    ArrayList<Order> onlyCompleted = new ArrayList<>();
+                    //listOrders.add(new Order(1,1,1,1,1, "hoy", "casa","nombre", 1, 0));
+                    for (Order order : listOrders) {
+                        if (order.isEnviado() && !order.isRecibido()) {
+                            onlyCompleted.add(order);
                         }
                     }
 
-                    ListCompletedAdapter adapter = new ListCompletedAdapter(onlyLinked);
+                    ListSentAdapter adapter = new ListSentAdapter(onlyCompleted);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
@@ -144,9 +145,12 @@ public class CompletedDialog extends AppCompatDialogFragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.getContext(), "ERROR PEDIDOS", Toast.LENGTH_SHORT).show();
+                if (mContext != null) {
+                    Toast.makeText(mContext, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
             }
-        }){
+        }) {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
@@ -155,10 +159,15 @@ public class CompletedDialog extends AppCompatDialogFragment {
             }
         };
 
-        /*  TODO CHECK IF CONTEXT WORKS  (MainActivity.getContext() */
-        requestQueue=Volley.newRequestQueue(getContext());
-        requestQueue.add(stringRequest);
 
+        /**
+         * if (mContext != null) {
+         *             Volley.newRequestQueue(mContext).add(stringRequest);
+         *         }
+         */
+
+        requestQueue= Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
     }
 
     private void sendReceivedRequest(String URL) {
