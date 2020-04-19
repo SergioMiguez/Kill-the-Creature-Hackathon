@@ -275,50 +275,13 @@
             app:layout_constraintTop_toTopOf="@id/telephone_text">
 
         </TextView>
-
-
-        <!-- <Button
-             android:id="@+id/editUserBtn"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginBottom="60dp"
-             android:text="Editar Perfil "
-             app:layout_constraintBottom_toBottomOf="parent"
-             app:layout_constraintEnd_toEndOf="parent"
-             app:layout_constraintHorizontal_bias="0.413"
-             app:layout_constraintStart_toStartOf="parent"
-             app:layout_constraintTop_toBottomOf="@+id/telephoneAdded"
-             app:layout_constraintVertical_bias="0.063" />-->
-
-        <!--<TextView
-            android:id="@+id/name_text_edit"
-            android:layout_width="77dp"
-            android:layout_height="27dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="672dp"
-            android:text="Nombre:"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-        </TextView>-->
-
-        <!--<EditText
-            android:id="@+id/nameEdited"
-            android:layout_width="277dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="104dp"
-            android:layout_marginTop="656dp"
-            android:hint="Introduzca su nombre completo"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-        </EditText>-->
+        
 
         <Button
             android:id="@+id/logoutButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="62dp"
+            android:layout_marginTop="72dp"
             android:text="@string/logOutButtonStr"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -332,7 +295,7 @@
             android:id="@+id/separation_bar"
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="26dp"
             android:background="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
