@@ -13,7 +13,7 @@ public class URLS {
     public static String show_materials_url = "http://35.246.98.126/matalbicho/show_materiales.php";
     public static String show_potential_providers_url = "http://35.246.98.126/matalbicho/solicitudes_pedidos_con_proveedor.php";
     public static String connect_orders_url = "http://35.246.98.126/matalbicho/transition_home_complete.php";
-    public static String update_profile_url = "http://35.246.98.126/matalbicho/update_perfil.php";
+    public static String update_profile_url = "http://35.246.98.126/matalbicho/update_perfil_proveedores.php";
     public static String only_sent_url = "http://35.246.98.126/matalbicho/display_pedidos_enviados.php";
     public static String confirm_received_url = "http://35.246.98.126/matalbicho/confirmar_recepcion_pedido.php";
     public static String display_all_orders_url = "http://35.246.98.126/matalbicho/display_pedidos_proveedores.php";
