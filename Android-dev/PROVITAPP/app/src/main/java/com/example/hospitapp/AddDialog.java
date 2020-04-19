@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -22,12 +21,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.hospitapp.ui.notifications.NotificationsFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -38,22 +37,14 @@ public class AddDialog extends AppCompatDialogFragment {
 
     private String object;
     private String volumeNumber;
-    private Switch keepAddress;
+    private Switch confirmMaterialSwitch;
     private String newAddress;
 
     private Spinner objectInput;
-    private EditText volumeInput;
 
     private ArrayList<Material> listOfMaterials;
     private ArrayList<String> listOfMaterialName;
 
-    private EditText nameHospitalEdited;
-    private EditText nameStreetEdited;
-    private EditText CPEdited;
-    private EditText streetNumberEdited;
-    private EditText cityEdited;
-    private EditText emailEdited;
-    private EditText telephoneEdited;
 
     private String nameHospital, nameStreet, CP, streetNumber, city, email, telephone;
 
@@ -67,28 +58,19 @@ public class AddDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        final View view = inflater.inflate(R.layout.add_dialog, null);
+        final View view = inflater.inflate(R.layout.dialog_add, null);
 
         listOfMaterials = new ArrayList<>();
         listOfMaterialName = new ArrayList<>();
 
         objectInput = view.findViewById(R.id.objectInput);
-        volumeInput = view.findViewById(R.id.inputVN);
-        nameHospitalEdited = view.findViewById(R.id.nameHospitalEdited);
-        nameStreetEdited = view.findViewById(R.id.nameStreetEdited);
-        CPEdited = view.findViewById(R.id.CPEdited);
-        streetNumberEdited = view.findViewById(R.id.streetNumberEdited);
-        cityEdited = view.findViewById(R.id.cityEdited);
-        emailEdited = view.findViewById(R.id.emailEdited);
-        telephoneEdited = view.findViewById(R.id.telephoneEdited);
+        confirmMaterialSwitch = view.findViewById(R.id.confirmMaterialSwitch);
 
-        keepAddress = view.findViewById(R.id.switch1);
-
-        makeMaterialListRequest(URLS.show_materials_url);
+        makeMaterialListRequest(URLS.show_materials_url); //gets materials to put on spinner
 
 
         builder.setView(view)
-                .setTitle("Place Order")
+                .setTitle("Add Available Material")
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -99,47 +81,9 @@ public class AddDialog extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        boolean nonEmptyOrder = //NotificationsFragment.fullEdit(objectInput) &&
-                                NotificationsFragment.fullEdit(volumeInput);
-
-                        if (nonEmptyOrder) {
-                            object = objectInput.getSelectedItem().toString();
-                            volumeNumber = volumeInput.getText().toString();
-                            // newAddress = addressInput.getText().toString();
-
-                            if (!keepAddress.isChecked()) {
-
-                                boolean nonEmptyChangeOrder = NotificationsFragment.fullEdit(nameHospitalEdited) &&
-                                        NotificationsFragment.fullEdit(nameStreetEdited) &&
-                                        NotificationsFragment.fullEdit(CPEdited) &&
-                                        NotificationsFragment.fullEdit(streetNumberEdited) &&
-                                        NotificationsFragment.fullEdit(cityEdited) &&
-                                        NotificationsFragment.fullEdit(emailEdited) &&
-                                        NotificationsFragment.fullEdit(telephoneEdited);
-
-                                if (nonEmptyChangeOrder) {
-
-                                    nameHospital = nameHospitalEdited.getText().toString();
-                                    nameStreet = nameStreetEdited.getText().toString();
-                                    CP = CPEdited.getText().toString();
-                                    streetNumber = streetNumberEdited.getText().toString();
-                                    city = cityEdited.getText().toString();
-                                    email = emailEdited.getText().toString();
-                                    telephone = telephoneEdited.getText().toString();
-
-                                    /*  TODO REVISAR SI LA DIRECCION ES CORRECTA, ES NECESARIO EL RESTO DE INFORMACION NO USADA*/
-                                    newAddress = generateNewAdd(nameStreet, streetNumber, CP, city);
-                                    makeServerCallNewAddress(URLS.new_order_with_new_address_url);
-                                    dialog.dismiss();
-                                }
-                            } else {
-                                makeServerCallDefaultAddress(URLS.new_order_with_same_address_url);
-                                dialog.dismiss();
-                            }
-                        }
-                        else {
-                            Toast.makeText(getContext(), "No order made. You need to fill in the required fields!", Toast.LENGTH_SHORT).show();
-                        }
+                        object = objectInput.getSelectedItem().toString();
+                        makeServerCallDefaultAddress(URLS.new_order_with_new_address_url);
+                        dialog.dismiss();
                     }
                 });
 
