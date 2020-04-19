@@ -61,16 +61,15 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        final View view = inflater.inflate(R.layout.activity_proveedores, null, false);
+        View view = inflater.inflate(R.layout.activity_proveedores, null, false);
         buscarIdButton = view.findViewById(R.id.buscarButton);
         enlazarButton = view.findViewById(R.id.enlazarButton);
         idInput = view.findViewById(R.id.idInput);
         enlazarInput = view.findViewById(R.id.enlazarInput);
 
-
         listOfProveedores = new ArrayList<>();
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerProveedores);
+        recyclerView =  view.findViewById(R.id.recyclerProveedores);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         buscarIdButton.setOnClickListener(new View.OnClickListener() {
@@ -128,9 +127,9 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
             public void onResponse(String response) {
                 try {
                     JSONArray array = new JSONArray(response);
-
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject order = array.getJSONObject(i);
+
 
                         listOfProveedores.add(new Order(
                                 order.getInt("id"),
@@ -140,9 +139,7 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
                                 order.getInt("id_hospital"),
                                 order.getString("fecha"),
                                 order.getString("direccion_envio"),
-                                order.getString("nombre_objeto"),
-                                order.getInt("recibido"),
-                                order.getInt("enviado")
+                                order.getString("nombre_objeto")
 
                         ));
 
