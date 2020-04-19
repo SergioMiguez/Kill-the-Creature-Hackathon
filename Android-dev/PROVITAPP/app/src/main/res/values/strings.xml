@@ -116,5 +116,6 @@
     <string name="introduce_provider_address">Introduce provider address</string>
     <string name="link_an_order">Link an order</string>
     <string name="in_progress">IN PROGRESS</string>
+    <string name="filter">FILTER</string>
 
 </resources>

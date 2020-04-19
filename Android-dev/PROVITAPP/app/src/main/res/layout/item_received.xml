@@ -67,21 +67,16 @@
 
             </TextView>
 
-
-
-
-
             <TextView
-                android:id="@+id/textVN"
+                android:id="@+id/fechaNumberItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/unities"
-                android:layout_marginTop="10dp"
+                android:text="@string/date"
                 android:textSize="16sp"
-                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
 
                 >
-
             </TextView>
 
 
@@ -95,16 +90,16 @@
         >
 
         <TextView
-            android:id="@+id/fechaNumberItem"
+            android:id="@+id/textVN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/date"
-            android:textSize="16sp"
+            android:text="@string/unities"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="30dp"
+            android:textSize="16sp"
+            android:layout_marginRight="10dp"
 
             >
+
         </TextView>
 
         <TextView
@@ -181,7 +176,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="260dp"
+                android:layout_width="300dp"
                 android:layout_height="3dp"
                 android:background="@color/colorPrimary"
                 android:layout_marginTop="10dp"

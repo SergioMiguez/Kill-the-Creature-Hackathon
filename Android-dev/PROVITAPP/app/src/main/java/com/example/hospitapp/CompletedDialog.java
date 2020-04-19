@@ -170,7 +170,7 @@ public class CompletedDialog extends AppCompatDialogFragment {
                     if (jsonResponse.getBoolean("success")){
                         Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(MainActivity.getContext(), "It was not possible to create the user, possible error of duplication", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.getContext(), "Unable to find the order", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (Exception e) {
