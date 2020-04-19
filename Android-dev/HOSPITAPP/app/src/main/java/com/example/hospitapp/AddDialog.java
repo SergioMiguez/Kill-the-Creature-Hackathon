@@ -39,7 +39,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.zip.Inflater;
-
+/** Creates the display which allows the hospital to place a new order */
 public class AddDialog extends AppCompatDialogFragment {
 
     private String object;
@@ -67,6 +67,13 @@ public class AddDialog extends AppCompatDialogFragment {
     private boolean orderSuccess;
     private RequestQueue requestQueue;
 
+    /**
+     * Creates the pop-up display used to place an order.
+     * It prompts the hospital for the material being ordered and the quantity of the material.
+     * The hospital is allowed to send the order to their address or to a different one.
+     * @param savedInstanceState saved data about the current app status used to create the pop-up.
+     * @return the pop-up display.
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -152,6 +159,10 @@ public class AddDialog extends AppCompatDialogFragment {
         return builder.create();
     }
 
+    /**
+     * Makes a server call to place an order with the input data using the default hospital address.
+     * @param URL The url to the appropriate web service.
+     */
     public void makeServerCallDefaultAddress(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
             @Override
@@ -194,7 +205,10 @@ public class AddDialog extends AppCompatDialogFragment {
         requestQueue.add(stringRequest);
     }
 
-
+    /**
+     * Makes a server call to place an order with the input data using a new hospital address.
+     * @param URL The url to the appropriate web service.
+     */
     public void makeServerCallNewAddress(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
             @Override
@@ -238,7 +252,10 @@ public class AddDialog extends AppCompatDialogFragment {
         requestQueue.add(stringRequest);
     }
 
-
+    /**
+     * Creates a useful string representation of the current date.
+     * @return A useful string representation of the current date.
+     */
     @RequiresApi(api = Build.VERSION_CODES.O)
     private String getDate () {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -246,10 +263,22 @@ public class AddDialog extends AppCompatDialogFragment {
         return dtf.format(now);
     }
 
+    /**
+     * Turns all the new inputted address data into a single string separated by '$'.
+     * @param nameStreetEdited The street name
+     * @param streetNumberEdited The building number
+     * @param CPEdited The postal code
+     * @param cityEdited The city name
+     * @return A string containing address data separated by '$'
+     */
     private String generateNewAdd(String nameStreetEdited, String streetNumberEdited, String CPEdited, String cityEdited) {
         return nameStreetEdited.toUpperCase() + "$" + streetNumberEdited + "$" + CPEdited + "$" + cityEdited.toUpperCase();
     }
 
+    /**
+     * Makes a server call to request the list of accepted materials
+     * @param URL The url to the appropriate web service.
+     */
     private void makeMaterialListRequest(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
