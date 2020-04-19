@@ -19,5 +19,6 @@ public class URLS {
     public static String display_all_orders_url = "http://35.246.98.126/matalbicho/display_pedidos_proveedores.php";
     public static String proveedor_login_url = "http://35.246.98.126/matalbicho/login_proveedores.php";
     public static String provider_link_order_request_url = "http://35.246.98.126/matalbicho/solicitar_pedido_proveedor.php";
+    public static String mark_completed_url = "http://35.246.98.126/matalbicho/completar_pedido_proveedor.php";
     /* TODO NECESITAMOS URL COMPLETADOSDIALOG -> MARCAR COMO COMPLETADO UNA ORDEN */
 }

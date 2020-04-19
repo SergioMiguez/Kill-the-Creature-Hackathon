@@ -89,7 +89,7 @@ public class CompletedDialog extends AppCompatDialogFragment {
                 inputIdReceived = idInput.getText().toString();
                 if (!inputIdReceived.equals("")) {
                     /* TODO CHANGE URL TO COMPLETED ORDERS*/
-                    sendReceivedRequest("URL");
+                    sendReceivedRequest(URLS.mark_completed_url);
                     fillList();
                 }
             }
@@ -189,9 +189,9 @@ public class CompletedDialog extends AppCompatDialogFragment {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("usuario", LoginActivity.userName);
-                parameters.put("fecha_recibido", getDate());
-                parameters.put("id_pedido", inputIdReceived);
+                parameters.put("user", LoginActivity.userName);
+                //parameters.put("fecha_recibido", getDate());
+                parameters.put("id", inputIdReceived);
                 return parameters;
             }
         };
