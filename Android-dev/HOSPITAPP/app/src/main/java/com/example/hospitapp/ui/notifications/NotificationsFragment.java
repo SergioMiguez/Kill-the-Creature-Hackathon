@@ -251,14 +251,14 @@ public class NotificationsFragment extends Fragment {
                             directionInfo[3] //city/province
                     );
 
-                    defName = userHospital.getUsuario();
-                    defHospital = userHospital.getNombre();
-                    defStreet = userHospital.getDireccion();
+                    defName = userHospital.getUsername();
+                    defHospital = userHospital.getName();
+                    defStreet = userHospital.getDirection();
                     defNumber = userHospital.getNumberAddress();
                     defCP = userHospital.getZipCode();
                     defCity = userHospital.getCity();
                     defEmail = userHospital.getEmail();
-                    defTelephone = userHospital.getTelefono();
+                    defTelephone = userHospital.getPhoneNumber();
 
 
                     myPrefs = getActivity().getSharedPreferences("prefID", Context.MODE_PRIVATE);
