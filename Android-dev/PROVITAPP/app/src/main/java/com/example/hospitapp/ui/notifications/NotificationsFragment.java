@@ -45,39 +45,12 @@ public class NotificationsFragment extends Fragment {
     private boolean editSuccess;
 
     //EditText nameEdited;
-    EditText nameHospitalEdited;
-    EditText nameStreetEdited;
-    EditText streetNumberEdited;
-    EditText CPEdited;
-    EditText cityEdited;
-    EditText emailEdited;
-    EditText telephoneEdited;
+    private EditText nameHospitalEdited, nameStreetEdited, streetNumberEdited, CPEdited, cityEdited, emailEdited, telephoneEdited, descriptionEdited;
 
-    TextView nameAdded;
-    TextView nameHospitalAdded;
-    TextView nameStreetAdded;
-    TextView streetNumberAdded;
-    TextView CPAdded;
-    TextView cityAdded;
-    TextView emailAdded;
-    TextView telephoneAdded;
+    private TextView nameAdded, nameHospitalAdded, nameStreetAdded, streetNumberAdded, CPAdded, cityAdded, emailAdded, telephoneAdded, descriptionAdded;
 
-    String defName;
-    String defHospital;
-    String defStreet;
-    String defNumber;
-    String defCP;
-    String defCity;
-    String defEmail;
-    String defTelephone;
-
-    private String edit_hospital;
-    private String edit_street;
-    private String edit_street_number;
-    private String edit_CP;
-    private String edit_city;
-    private String edit_email;
-    private String edit_telephone;
+    private String defName, defHospital, defStreet, defNumber, defCP, defCity, defEmail, defTelephone, defDescription;
+    private String edit_hospital, edit_street, edit_street_number, edit_CP, edit_city, edit_email, edit_telephone, edit_description;
 
 
     SharedPreferences myPrefs;
@@ -107,6 +80,7 @@ public class NotificationsFragment extends Fragment {
         cityAdded = root.findViewById(R.id.cityAdded);
         emailAdded = root.findViewById(R.id.emailAdded);
         telephoneAdded = root.findViewById(R.id.telephoneAdded);
+        descriptionAdded = root.findViewById(R.id.descriptionAdded);
 
         makeUserRequest(serverURL);
 
@@ -123,6 +97,7 @@ public class NotificationsFragment extends Fragment {
                 cityEdited = root.findViewById(R.id.cityEdited);
                 emailEdited = root.findViewById(R.id.emailEdited);
                 telephoneEdited = root.findViewById(R.id.telephoneEdited);
+                descriptionEdited = root.findViewById(R.id.descriptionEdited);
 
                 //String nameEditedStr = nameEdited.getText().toString();
                 String nameHospitalEditedStr = nameHospitalEdited.getText().toString();
@@ -132,6 +107,7 @@ public class NotificationsFragment extends Fragment {
                 String cityEditedStr = cityEdited.getText().toString();
                 String emailEditedStr = emailEdited.getText().toString();
                 String telephoneEditedStr = telephoneEdited.getText().toString();
+                String descriptionEditedStr = descriptionEdited.getText().toString();
 
                 myPrefs = getActivity().getSharedPreferences("prefID", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = myPrefs.edit();
@@ -144,6 +120,7 @@ public class NotificationsFragment extends Fragment {
                 editor.putString("city", cityEditedStr);
                 editor.putString("email", emailEditedStr);
                 editor.putString("telephone", telephoneEditedStr);
+                editor.putString("description", descriptionEditedStr);
                 editor.apply();
 
                 //String name = myPrefs.getString("name", def);
@@ -154,6 +131,7 @@ public class NotificationsFragment extends Fragment {
                 edit_city = myPrefs.getString("city", defCity);
                 edit_email = myPrefs.getString("email", defEmail);
                 edit_telephone = myPrefs.getString("telephone", defTelephone);
+                edit_description = myPrefs.getString("description", defDescription);
 
                 boolean allFilled = fullEdit(nameHospitalEdited) && fullEdit(nameStreetEdited) &&
                         fullEdit(emailEdited) && fullEdit(telephoneEdited); // && fullEdit(nameEdited);
@@ -190,6 +168,7 @@ public class NotificationsFragment extends Fragment {
                                     cityEdited.getText().clear();
                                     emailEdited.getText().clear();
                                     telephoneEdited.getText().clear();
+                                    descriptionEdited.getText().clear();
                                     makeEditRequest(editUrl);
                                 }
                             })
@@ -248,7 +227,8 @@ public class NotificationsFragment extends Fragment {
                             user.getString("telefono"),
                             directionInfo[1], //street number
                             directionInfo[2], //zip code
-                            directionInfo[3] //city/province
+                            directionInfo[3], //city/province
+                            user.getString("descripcion")
                     );
 
                     defName = userHospital.getUsuario();
@@ -259,6 +239,7 @@ public class NotificationsFragment extends Fragment {
                     defCity = userHospital.getCity();
                     defEmail = userHospital.getEmail();
                     defTelephone = userHospital.getTelefono();
+                    defDescription = userHospital.getDescripcion();
 
 
                     myPrefs = getActivity().getSharedPreferences("prefID", Context.MODE_PRIVATE);
@@ -271,6 +252,7 @@ public class NotificationsFragment extends Fragment {
                     cityAdded.setText(defCity);
                     emailAdded.setText(defEmail);
                     telephoneAdded.setText(defTelephone);
+                    descriptionAdded.setText(defDescription);
 
 
                 } catch (JSONException e) {
@@ -342,6 +324,7 @@ public class NotificationsFragment extends Fragment {
                 parameters.put("direccion", toStringAddress(edit_street, edit_street_number, edit_CP, edit_city));
                 parameters.put("telefono", edit_telephone);
                 parameters.put("email", edit_email);
+                parameters.put("descripcion", edit_description);
                 return parameters;
             }
         };

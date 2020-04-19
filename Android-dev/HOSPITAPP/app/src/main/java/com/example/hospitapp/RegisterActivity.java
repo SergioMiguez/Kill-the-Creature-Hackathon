@@ -171,6 +171,7 @@ public class RegisterActivity extends AppCompatActivity {
                 parameters.put("direccion", toStringAddress(addressName, numAddress, zipCode, city));
                 parameters.put("telefono", telefone);
                 parameters.put("email", email);
+
                 return parameters;
             }
         };

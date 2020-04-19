@@ -14,6 +14,7 @@ public class UsuarioHospital implements Serializable {
     private String numberAddress;
     private String zipCode;
     private String city;
+    private String descripcion;
 
     public UsuarioHospital(int id, String nombre, String usuario, String direccion, String email, String telefono, String numberAddress, String zipCode, String city) {
         this.id = id;
@@ -27,6 +28,20 @@ public class UsuarioHospital implements Serializable {
         this.city = city;
     }
 
+    public UsuarioHospital(int id, String nombre, String usuario, String direccion, String email, String telefono, String numberAddress, String zipCode, String city, String descripcion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.usuario = usuario;
+        this.direccion = direccion;
+        this.email = email;
+        this.telefono = telefono;
+        this.numberAddress = numberAddress;
+        this.zipCode = zipCode;
+        this.city = city;
+        this.descripcion = descripcion;
+    }
+
+    /*
     public UsuarioHospital (int id, String nombre, String usuario, String password, String email,
                             String direccion, String numberAddress, String zipCode,
                             String city, String telefono) {
@@ -42,6 +57,7 @@ public class UsuarioHospital implements Serializable {
         this.city = city;
         this.telefono = telefono;
     }
+    */
 
     /**         GETTER FUNCTIONS       */
     public String getNombre() {
@@ -80,6 +96,10 @@ public class UsuarioHospital implements Serializable {
         return city;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
     public String getTelefono() {
         return telefono;
     }
@@ -95,6 +115,10 @@ public class UsuarioHospital implements Serializable {
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public void setPassword(String password) {

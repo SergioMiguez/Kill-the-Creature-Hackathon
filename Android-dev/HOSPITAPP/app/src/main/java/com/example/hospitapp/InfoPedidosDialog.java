@@ -192,7 +192,7 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
                     }
 
                 } catch (Exception e) {
-                    Toast.makeText(MainActivity.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.getContext(), "Unable to fulfil request", Toast.LENGTH_SHORT).show();
                 }
 
             }

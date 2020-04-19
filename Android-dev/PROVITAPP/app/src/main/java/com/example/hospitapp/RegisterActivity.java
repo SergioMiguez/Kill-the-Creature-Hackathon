@@ -23,10 +23,10 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText nameRegisterInput, hospitalNameInput, adressInput, numberAdressInput, zipCodeInput, cityInput, emailInput, telefoneInput, FpswInput, SpswInput;
+    private EditText nameRegisterInput, hospitalNameInput, adressInput, numberAdressInput, zipCodeInput, cityInput, emailInput, telefoneInput, FpswInput, SpswInput, descriptionInput;
     private Button registerButton, singinButton;
 
-    private String userName, hospitalName, addressName, numAddress, zipCode, city, email, telefone, Fpsw, Spsw;
+    private String userName, hospitalName, addressName, numAddress, zipCode, city, email, telefone, Fpsw, Spsw, description;
 
     RequestQueue requestQueue;
     private boolean registerSuccess;
@@ -47,6 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
         telefoneInput = findViewById(R.id.telephoneRegistered);
         FpswInput = findViewById(R.id.passwordRegistered);
         SpswInput = findViewById(R.id.checkPasswordRegistered);
+        descriptionInput = findViewById(R.id.infoRegistered);
 
         registerButton = findViewById(R.id.saveUserBtn);
         singinButton = findViewById(R.id.singInButton);
@@ -65,6 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
                 telefone = getInfo(telefoneInput);
                 Fpsw = getInfo(FpswInput);
                 Spsw = getInfo(SpswInput);
+                description = getInfo(descriptionInput);
 
                 boolean registerNonNull = fullString(userName) &&
                                           fullString(hospitalName) &&
@@ -75,7 +77,8 @@ public class RegisterActivity extends AppCompatActivity {
                                           fullString(email) &&
                                           fullString(telefone) &&
                                           fullString(Fpsw) &&
-                                          fullString(Spsw);
+                                          fullString(Spsw) &&
+                                          fullString(description);
 
                // Objects.requireNonNull(userName);
                // Objects.requireNonNull(hospitalName);
@@ -169,6 +172,7 @@ public class RegisterActivity extends AppCompatActivity {
                 parameters.put("direccion", toStringAddress(addressName, numAddress, zipCode, city));
                 parameters.put("telefono", telefone);
                 parameters.put("email", email);
+                parameters.put("descripcion", description);
                 return parameters;
             }
         };

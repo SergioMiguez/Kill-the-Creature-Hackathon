@@ -12,6 +12,7 @@ public class Order {
     private String nombre_objeto;
     private boolean enviado;
     private boolean recibido;
+    private boolean completado;
 
     public Order(int id, int id_objeto, int cantidad, int id_proveedor, int id_hospital, String fecha, String direccion_envio, String nombre_objeto, int enviado, int recibido) {
         this.id = id;
@@ -25,6 +26,22 @@ public class Order {
 
         this.enviado = enviado == 1;
         this.recibido = recibido == 1;
+
+    }
+
+    public Order(int id, int id_objeto, int cantidad, int id_proveedor, int id_hospital, String fecha, String direccion_envio, String nombre_objeto, int enviado, int recibido, int completado) {
+        this.id = id;
+        this.id_objeto = id_objeto;
+        this.cantidad = cantidad;
+        this.id_proveedor = id_proveedor;
+        this.id_hospital = id_hospital;
+        this.fecha = fecha;
+        this.direccion_envio = direccion_envio;
+        this.nombre_objeto = nombre_objeto;
+
+        this.enviado = enviado == 1;
+        this.recibido = recibido == 1;
+        this.completado = completado == 1;
 
     }
 
@@ -48,9 +65,12 @@ public class Order {
         return id_objeto;
     }
 
-
     public boolean isEnviado() {
         return enviado;
+    }
+
+    public boolean isCompletado() {
+        return completado;
     }
 
     public boolean isRecibido() {
@@ -93,6 +113,9 @@ public class Order {
         this.cantidad = cantidad;
     }
 
+    public void setCompletado(boolean completado) {
+        this.completado = completado;
+    }
 
     public void setEnviado(boolean enviado) {
         this.enviado = enviado;
