@@ -14,14 +14,14 @@ public class HelpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
 
-        String hospitappIntroText = "Welcome to Hospitapp, an app developed to connect businesses and individuals with medical centers. The aim is to facilitate the provision and donation of sanitary material, such as face masks, gloves and respirators.";
-        String hospitappIntroText2 = "Hospitapp is organised in 3 simple windows: Home, Linked and Profile. Information is distributed amongst these, including user information, orders that have been made and the orders that have been received.";
-        String hospitappNavBtnIntroText = "There is a circular button at the bottom right of all windows, which can be used to access 2 key functionalities of the app. Once clicked, a set of 3 buttons appear.";
-        String hospitappNavBtnAddText = "The first button (with an \"add\" symbol) is used to place an order. You simply need to input the type of material you need, the number of units and click \"Accept\". It's that simple! You also have the option to change the delivery address in this window.";
-        String hospitappNavBtnBandText = "The second button (with a \"band-aid\" symbol) is used to add material to our database. Certain medical centers might require some specific orders. By pressing this button, a user can add a new material (so that it can be ordered), and check the ones which are already in the database.";
-        String hospitappHomeIntroText = "Home provides a simple interface for the user to check what orders have been placed, and have not yet been linked to a provider. By pressing the button \"Providers\", one can access the list of all providers and their IDs. Using your order ID, you can then link it to a certain provider of your choice. After that, the order will be moved to Linked.";
-        String hospitappLinkedIntroText ="In Linked, the user can check 2 things: the orders that have been processed (that is, an order that has already been linked), and the orders that have been received. These can be easily differentiated by their colour, for easier understanding.";
-        String hospitappProfileIntroText ="In profile, the user can easily check their account information, which is what is used when placing an order. This window also allows the user to change this information.";
+        String hospitappIntroText = "Welcome to PROVITAPP, an app aimed at businesses and individuals, who can provide sanitary material for hospitals. The aim is to facilitate the provision and donation of sanitary material, such as face masks, gloves and respirators.";
+        String hospitappIntroText2 = "PROVITAPP is organised in 3 simple windows: Home, Linked and Profile. Information is distributed amongst these, including user information, orders that need to be manufactured and the orders that have been delivered. ";
+        String hospitappNavBtnIntroText = "There is a circular button at the bottom right of all windows, which can be used to access a key functionality of the app. Once clicked, a set of 3 buttons appear.";
+        //String hospitappNavBtnAddText = "The first button (with an \"add\" symbol) is used to place an order. You simply need to input the type of material you need, the number of units and click \"Accept\". It's that simple! You also have the option to change the delivery address in this window.";
+        String hospitappNavBtnBandText = "The button with a \"band aid\" symbol is used to add material to our database. Certain medical centers might require some specific orders. By pressing this button, a user can add a new material (so that it can be ordered), and check the ones which are already in the database.";
+        String hospitappHomeIntroText = "The Home window contains orders from hospitals looking for a producer. You can click the \"Filter\" button to filter the orders based on material and then select the ID of an order you wish to fulfill. ";
+        String hospitappLinkedIntroText ="The Linked window contains orders which a hospital has approved to be manufactured by the producer. You can click the Completed button to change the status of an order from 'Linked' to 'Completed', which means that the materials have been manufactured. You can also click the \"Order Sent\" button to change the status of an order from 'Completed' to 'Sent', which means the materials have been sent to the hospital. ";
+        String hospitappProfileIntroText ="In profile, the user can easily check their account information, which is what is used when accepting an order. This window also allows the user to change this information.";
 
 
         TextView hospitappIntro = findViewById(R.id.hospitappIntro);
@@ -33,8 +33,8 @@ public class HelpActivity extends AppCompatActivity {
         TextView hospitappNavBtnIntro = findViewById(R.id.hospitappNavBtnIntro);
         hospitappNavBtnIntro.setText(hospitappNavBtnIntroText);
 
-        TextView hospitappNavBtnAdd = findViewById(R.id.hospitappNavBtnAdd);
-        hospitappNavBtnAdd.setText(hospitappNavBtnAddText);
+        //TextView hospitappNavBtnAdd = findViewById(R.id.hospitappNavBtnAdd);
+        //hospitappNavBtnAdd.setText(hospitappNavBtnAddText);
 
         TextView hospitappNavBtnBand = findViewById(R.id.hospitappNavBtnBand);
         hospitappNavBtnBand.setText(hospitappNavBtnBandText);
