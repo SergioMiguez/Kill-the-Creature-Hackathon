@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
         mContext = getApplicationContext();
 
         openThree();
-        constraintClick();
         openAdd();
         openMaterial();
         openHelp();
@@ -69,24 +68,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void constraintClick() {
-        ConstraintLayout container = findViewById(R.id.container);
-        container.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    showFab(fabThree);
-                    hideFab(fabAdd);
-                    hideFab(fabMaterial);
-                    hideFab(fabHelp);
-                    finalize();
-                } catch (Throwable throwable) {
-                    throwable.printStackTrace();
-                }
-            }
-        });
-    }
-
     public void showFab (FloatingActionButton b) {
         b.show();
         b.setEnabled(true);
@@ -103,15 +84,23 @@ public class MainActivity extends AppCompatActivity {
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onDialogAdd();
+                try {
+                    showFab(fabThree);
+                    hideFab(fabAdd);
+                    hideFab(fabMaterial);
+                    hideFab(fabHelp);
+                    finalize();
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                }
             }
         });
     }
 
-    public void onDialogAdd() {
+    /*public void onDialogAdd() {
         AddDialog addDialog = new AddDialog();
         addDialog.show(getSupportFragmentManager(), "Add Dialog");
-    }
+    }*/
 
     public void openMaterial(){
         fabMaterial = findViewById(R.id.addMaterialButton);
