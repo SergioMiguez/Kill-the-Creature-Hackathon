@@ -4,9 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -34,8 +32,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -63,7 +59,7 @@ public class FilterDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        final View view = inflater.inflate(R.layout.filter_dialog, null, false);
+        final View view = inflater.inflate(R.layout.dialog_filter, null, false);
 
         mContext = MainActivity.getContext();
         listOfOrders = new ArrayList<>();
@@ -172,7 +168,7 @@ public class FilterDialog extends AppCompatDialogFragment {
                         listOfMaterialName.add(listOfMaterials.get(i).getMaterialName());
                     }
 
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.custom_spinner_item,listOfMaterialName);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.item_custom_spinner,listOfMaterialName);
 
                     objectInput.setAdapter(adapter);
 

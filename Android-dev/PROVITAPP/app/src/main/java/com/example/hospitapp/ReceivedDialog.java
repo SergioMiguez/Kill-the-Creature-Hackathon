@@ -52,7 +52,7 @@ public class ReceivedDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        final View view = inflater.inflate(R.layout.received_dialog, null, false);
+        final View view = inflater.inflate(R.layout.dialog_received, null, false);
         mContext = this.getContext();
         listOfOrders = new ArrayList<>();
 
