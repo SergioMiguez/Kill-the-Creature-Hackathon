@@ -188,7 +188,7 @@ public class MaterialsDialog extends AppCompatDialogFragment {
         requestQueue.add(stringRequest);
     }
     /**
-     * Private Method tha is used when the the button addMaterial is pressed.
+     * Private Method that is used when the the button addMaterial is pressed.
      * It gives information to the server to create a new Entry for a new Material in the database
      * @param URL given URL to make the server call
      */

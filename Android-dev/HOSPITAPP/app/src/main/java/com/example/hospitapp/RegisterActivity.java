@@ -1,5 +1,4 @@
 package com.example.hospitapp;
-
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -15,25 +13,38 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONObject;
-
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
+/**
+ * Creates the Activity that allows the User to create a new User for the Application
+ */
 public class RegisterActivity extends AppCompatActivity {
-
-    private EditText nameRegisterInput, hospitalNameInput, adressInput, numberAdressInput, zipCodeInput, cityInput, emailInput, telefoneInput, FpswInput, SpswInput;
+    /**
+     * EditText used to store the information about the user.
+     */
+    private EditText nameRegisterInput, hospitalNameInput, adressInput, numberAdressInput, zipCodeInput, cityInput, emailInput, telephoneInput, FpswInput, SpswInput;
+    /**
+     * Private fields (Strings) used to store all the information that the user provides in the EditTexts.
+     */
+    private String userName, hospitalName, addressName, numAddress, zipCode, city, email, telephone, Fpsw, Spsw;
+    /**
+     * Buttons used to register and to go back to the log in.
+     */
     private Button registerButton, singinButton;
 
-    private String userName, hospitalName, addressName, numAddress, zipCode, city, email, telefone, Fpsw, Spsw;
 
+    /**
+     * Private Field used to make a call to the server to make a new Entry and register a new User in the database.
+     */
     RequestQueue requestQueue;
-    private boolean registerSuccess;
 
-
+    /**
+     *  Creates the activity-display used to register a new user.
+     *  This activity allows the user to register in the application.
+     *  @param savedInstanceState saved data about the current app status used to create activity.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
         zipCodeInput = findViewById(R.id.CPRegistered);
         cityInput = findViewById(R.id.cityRegistered);
         emailInput = findViewById(R.id.emailRegistered);
-        telefoneInput = findViewById(R.id.telephoneRegistered);
+        telephoneInput = findViewById(R.id.telephoneRegistered);
         FpswInput = findViewById(R.id.passwordRegistered);
         SpswInput = findViewById(R.id.checkPasswordRegistered);
 
@@ -64,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
                 zipCode = getInfo(zipCodeInput);
                 city = getInfo(cityInput);
                 email = getInfo(emailInput);
-                telefone = getInfo(telefoneInput);
+                telephone = getInfo(telephoneInput);
                 Fpsw = getInfo(FpswInput);
                 Spsw = getInfo(SpswInput);
 
@@ -75,33 +86,9 @@ public class RegisterActivity extends AppCompatActivity {
                                           fullString(zipCode) &&
                                           fullString(city) &&
                                           fullString(email) &&
-                                          fullString(telefone) &&
+                                          fullString(telephone) &&
                                           fullString(Fpsw) &&
                                           fullString(Spsw);
-
-               // Objects.requireNonNull(userName);
-               // Objects.requireNonNull(hospitalName);
-               // Objects.requireNonNull(addressName);
-               // Objects.requireNonNull(numAddress);
-               // Objects.requireNonNull(zipCode);
-               // Objects.requireNonNull(city);
-               // Objects.requireNonNull(email);
-               // Objects.requireNonNull(telefone);
-               // Objects.requireNonNull(Fpsw);
-               // Objects.requireNonNull(Spsw);
-
-                /**
-                 * userName = "test10";
-                 *                 hospitalName = "test10";
-                 *                 addressName = "test10";
-                 *                 numAddress = "test10";
-                 *                 zipCode = "test10";
-                 *                 city = "test10";
-                 *                 email = "test10";
-                 *                 telefone = "test10";
-                 *                 Fpsw = "test10";
-                 *                 Spsw = "test10";
-                 */
 
                 if (registerNonNull) {
                     if (Fpsw.equals(Spsw)) {
@@ -127,15 +114,29 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Public method used to check if a the string Stored in an EditText (previously) is empty or not.
+     * @param text given String
+     * @return true if it is not empty and false otherwise.
+     */
     public static boolean fullString(String text) {
         String empty = "";
         return !text.trim().equals(empty);
     }
 
+    /**
+     * Public method used to get the String Stored in an EditText (introduced by the user).
+     * @param text given EditText that is going to be analysed.
+     * @return String stored in the given EditText.
+     */
     private String getInfo(EditText text) {
         return text.getText().toString().trim();
     }
-
+    /**
+     * Private Method that is used when the the button registerButton is pressed.
+     * It gives information to the server to create a new Entry for a new User in the database.
+     * @param URL given URL to make the server call.
+     */
     private void makeCallServerAddNewUser (String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
             @Override
@@ -144,10 +145,10 @@ public class RegisterActivity extends AppCompatActivity {
                     JSONObject jsonResponse = new JSONObject(response);
                     if (jsonResponse.getBoolean("success")){
                         Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_SHORT).show();
-                        registerSuccess = true;
+
                     } else {
                         Toast.makeText(getApplicationContext(), "User couldn't be created. Possible duplication error.", Toast.LENGTH_SHORT).show();
-                        registerSuccess = false;
+
                     }
 
                 } catch (Exception e) {
@@ -159,7 +160,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
+
             }
         }) {
             @Override
@@ -169,7 +170,7 @@ public class RegisterActivity extends AppCompatActivity {
                 parameters.put("usuario", userName);
                 parameters.put("password", Fpsw);
                 parameters.put("direccion", toStringAddress(addressName, numAddress, zipCode, city));
-                parameters.put("telefono", telefone);
+                parameters.put("telefono", telephone);
                 parameters.put("email", email);
 
                 return parameters;
@@ -179,7 +180,14 @@ public class RegisterActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-
+    /**
+     * Private method used to store the Address of the user in the correct format for its later display.
+     * @param addressName Street name.
+     * @param numAddress Street Number
+     * @param zipCode ZipCode of the residence.
+     * @param city Name of the city.
+     * @return String with the appropriate format.
+     */
     private String toStringAddress(String addressName, String numAddress, String zipCode, String city) {
         return addressName.toUpperCase() + "$" + numAddress + "$" + zipCode + "$" + city.toUpperCase();
     }
