@@ -44,6 +44,7 @@ public class ListFilterAdapter extends RecyclerView.Adapter<ListFilterAdapter.Or
 
         public OrderViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
+
             textObject = (TextView) itemView.findViewById(R.id.ObjectNameItem);
             textVolumeNumber = (TextView) itemView.findViewById(R.id.VolumeNumberItem);
             textFecha = (TextView) itemView.findViewById(R.id.fechaNumberItem);
@@ -83,7 +84,6 @@ public class ListFilterAdapter extends RecyclerView.Adapter<ListFilterAdapter.Or
             holder.textState.setText("SENT");
             holder.textReferenceID.setText("" + listOfOrdersSent.get(position).getId());
         }
-
     }
 
 

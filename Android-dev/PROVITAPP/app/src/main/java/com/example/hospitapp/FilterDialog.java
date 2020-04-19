@@ -76,8 +76,7 @@ public class FilterDialog extends AppCompatDialogFragment {
 
         recyclerView = view.findViewById(R.id.recyclerSentOrders);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        fillList();
-
+        updateFilter();
 
         builder.setView(view)
                 .setTitle("Your list of orders")
@@ -202,6 +201,16 @@ public class FilterDialog extends AppCompatDialogFragment {
     }
 
     private void updateFilter() {
+        objectInput.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                makeListRequestFiltered(URLS.display_orders_url);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
         makeListRequestFiltered(URLS.display_orders_url);
     }
 
@@ -229,9 +238,15 @@ public class FilterDialog extends AppCompatDialogFragment {
                         ));
 
                     }
-
                     materialSelectedSpinner = objectInput.getSelectedItem().toString();
-                    ListFilterAdapter adapter = new ListFilterAdapter(listOfProveedores, materialSelectedSpinner);
+                    ArrayList<Order> filteredArray = new ArrayList<>();
+                    for (Order order : listOfProveedores) {
+                        if (order.getNombre_objeto().equals(materialSelectedSpinner)) {
+                            filteredArray.add(order);
+                        }
+                    }
+
+                    ListFilterAdapter adapter = new ListFilterAdapter(filteredArray, materialSelectedSpinner);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
