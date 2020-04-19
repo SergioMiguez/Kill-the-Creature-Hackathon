@@ -39,14 +39,14 @@
     <string name="enlazar">Link</string>
     <string name="add_a_material_if_you_don_t_find_it_in_the_list_below">Add a material if you don\'t find it in the list below</string>
     <string name="name">Name</string>
-    <string name="nombre_de_hospital">Hospital name:</string>
+    <string name="nombre_de_hospital">Provider name:</string>
     <string name="c_digo_postal">Postal code:</string>
     <string name="nameProfileInfo">Name</string>
     <string name="nameProfilePrompt">Name:</string>
-    <string name="hospitalProfilePrompt">Hospital name:</string>
-    <string name="hospitalProfileInfo">Hospital name</string>
-    <string name="streetProfilePrompt">Hospital address:</string>
-    <string name="streetProfileInfo">Hospital address</string>
+    <string name="hospitalProfilePrompt">Provider name:</string>
+    <string name="hospitalProfileInfo">Provider name</string>
+    <string name="streetProfilePrompt">Provider address:</string>
+    <string name="streetProfileInfo">Provider address</string>
     <string name="CPProfilePrompt">Postal code:</string>
     <string name="CPProfileInfo">Postal code</string>
     <string name="numberProfilePrompt">Number:</string>
@@ -60,10 +60,10 @@
     <string name="logOutButtonStr">Log Out</string>
     <string name="profileTitle">User Profile</string>
     <string name="profileEditTitle">Edit User Profile</string>
-    <string name="hospitalEditProfilePrompt">Hospital name:</string>
-    <string name="hospitalEditProfileInfo">Introduce the hospital name</string>
-    <string name="streetEditProfilePrompt">Hospital address:</string>
-    <string name="streetEditProfileInfo">Introduce hospital address</string>
+    <string name="hospitalEditProfilePrompt">Provider name:</string>
+    <string name="hospitalEditProfileInfo">Enter the provider name</string>
+    <string name="streetEditProfilePrompt">Provider address:</string>
+    <string name="streetEditProfileInfo">Enter provider address</string>
     <string name="CPEditProfilePrompt">Postal code:</string>
     <string name="CPEditProfileInfo">Postal code</string>
     <string name="numberEditProfilePrompt">Number:</string>
@@ -100,19 +100,12 @@
     <string name="cityRegisterHint">City or region</string>
     <string name="postalRegisterHint">Postal code</string>
     <string name="numberRegisterHint">Number</string>
-    <string name="addressRegisterHint">Hospital\'s address</string>
-    <string name="nameRegisterHint">Hospital name</string>
+    <string name="addressRegisterHint">Provider\'s address</string>
+    <string name="nameRegisterHint">Provider\'s name</string>
     <string name="signinRegisterBtn">Sign in</string>
     <string name="registerProfileRegisterBtn">Register profile</string>
     <string name="mark_as_received">Mark as Received</string>
     <string name="id_text">ID</string>
     <string name="spinnerTitle">Material</string>
-    <string name="confirmHasMaterial">Confirm that you have this material</string>
-    <string name="mark_as_completed">Mark as completed</string>
-    <string name="mark_as_sent">mark as sent</string>
-    <string name="introduce_provider_name">Introduce provider name</string>
-    <string name="provider_name">Provider Name:</string>
-    <string name="provider_address">Provider Address</string>
-    <string name="introduce_provider_address">Introduce provider address</string>
 
 </resources>
