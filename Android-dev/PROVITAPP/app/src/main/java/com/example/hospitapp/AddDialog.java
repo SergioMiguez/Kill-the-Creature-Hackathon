@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -36,24 +37,19 @@ import java.util.Map;
 public class AddDialog extends AppCompatDialogFragment {
 
     private String object;
-    private String volumeNumber;
     private Switch confirmMaterialSwitch;
-    private String newAddress;
 
     private Spinner objectInput;
 
     private ArrayList<Material> listOfMaterials;
     private ArrayList<String> listOfMaterialName;
 
-
-    private String nameHospital, nameStreet, CP, streetNumber, city, email, telephone;
-
-
     private boolean orderSuccess;
     private RequestQueue requestQueue;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
@@ -68,7 +64,6 @@ public class AddDialog extends AppCompatDialogFragment {
 
         makeMaterialListRequest(URLS.show_materials_url); //gets materials to put on spinner
 
-
         builder.setView(view)
                 .setTitle("Add Available Material")
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -81,33 +76,35 @@ public class AddDialog extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        object = objectInput.getSelectedItem().toString();
-                        makeServerCallDefaultAddress(URLS.new_order_with_new_address_url);
-                        dialog.dismiss();
+                        if (confirmMaterialSwitch.isChecked()) {
+                            object = objectInput.getSelectedItem().toString();
+                            sendAvailableRequest(URLS.only_sent_url); // change to sendRequest
+                            Toast.makeText(getContext(),"Material confirmed. Thank you!",Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        }
+                        else {
+                            Toast.makeText(getContext(),"Check the switch to confirm that the material is available!",Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 
         return builder.create();
     }
 
-    public void makeServerCallDefaultAddress(String URL) {
+    private void sendAvailableRequest(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
-                    System.out.println("RESPONSE: " + response);
                     JSONObject jsonResponse = new JSONObject(response);
                     if (jsonResponse.getBoolean("success")){
                         Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
-                        orderSuccess = true;
                     } else {
-                        Toast.makeText(MainActivity.getContext(), "Order could not be processed.", Toast.LENGTH_SHORT).show();
-                        orderSuccess = false;
+                        Toast.makeText(MainActivity.getContext(), "User could not be created. Possible duplication error.", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (Exception e) {
-                    System.out.println(e);
-                    Toast.makeText(MainActivity.getContext(), "The object doesn't exist.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
@@ -121,71 +118,13 @@ public class AddDialog extends AppCompatDialogFragment {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("nombre_del_objeto", object);
-                parameters.put("cantidad", volumeNumber);
                 parameters.put("usuario", LoginActivity.userName);
-                parameters.put("fecha", getDate());
+                parameters.put("nombre_material", object);
                 return parameters;
             }
         };
-        requestQueue= Volley.newRequestQueue(getContext());
+        requestQueue=Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
-    }
-
-
-    public void makeServerCallNewAddress(String URL) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    System.out.println("RESPONSE: " + response);
-                    JSONObject jsonResponse = new JSONObject(response);
-                    if (jsonResponse.getBoolean("success")){
-                        Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
-                        orderSuccess = true;
-                    } else {
-                        Toast.makeText(MainActivity.getContext(), "Order could not be processed.", Toast.LENGTH_SHORT).show();
-                        orderSuccess = false;
-                    }
-
-                } catch (Exception e) {
-                    Toast.makeText(MainActivity.getContext(), "The object doesn't exist.", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("nombre_del_objeto", object);
-                parameters.put("cantidad", volumeNumber);
-                parameters.put("usuario", LoginActivity.userName);
-                parameters.put("fecha", getDate());
-                parameters.put("direccion", newAddress);
-                return parameters;
-            }
-        };
-        requestQueue= Volley.newRequestQueue(getContext());
-        requestQueue.add(stringRequest);
-    }
-
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private String getDate () {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        return dtf.format(now);
-    }
-
-    private String generateNewAdd(String nameStreetEdited, String streetNumberEdited, String CPEdited, String cityEdited) {
-        return nameStreetEdited.toUpperCase() + "$" + streetNumberEdited + "$" + CPEdited + "$" + cityEdited.toUpperCase();
     }
 
     private void makeMaterialListRequest(String URL) {
