@@ -37,25 +37,38 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
+/** It is the class responsible for filtering the orders.*/
 public class FilterDialog extends AppCompatDialogFragment {
 
-    private static ArrayList<Order> listOfOrders;
+    /** Private field used to store the orders that have been linked in a recycleView.*/
     private static RecyclerView recyclerView;
-    private final String stateLinked = "LINKED";
+    /** RequestQueue used to make a call to the server to get and Update information.*/
     private RequestQueue requestQueue;
+    /** Used to get the situation of the app to display the messages.*/
     private Context mContext;
 
+    /** Drop-down menu*/
     private Spinner objectInput;
+    /** String used to store the material of the selected spinner.*/
     private String materialSelectedSpinner;
 
+    /** ArrayList of Materials with all the materials*/
     private ArrayList<Material> listOfMaterials;
+    /** ArrayList of strings with the name of the materials*/
     private ArrayList<String> listOfMaterialName;
 
+    /** Button that is responsible for the ID linking*/
     private Button linkButton;
+    /** EditText used to store the input of the ID.*/
     private EditText inputIDLink;
+    /** String that represents the ID number that is inputed*/
     private String inputIDText;
 
+    /**
+     * Creates the pop-up display used to introduce the ID by which it is going to be filtered.
+     * @param savedInstanceState saved data about the current app status used to create the pop-up.
+     * @return the pop-up display used to place an order.
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -63,7 +76,7 @@ public class FilterDialog extends AppCompatDialogFragment {
         final View view = inflater.inflate(R.layout.dialog_filter, null, false);
 
         mContext = MainActivity.getContext();
-        listOfOrders = new ArrayList<>();
+        ArrayList<Order> listOfOrders = new ArrayList<>();
 
         listOfMaterials = new ArrayList<>();
         listOfMaterialName = new ArrayList<>();
@@ -97,75 +110,26 @@ public class FilterDialog extends AppCompatDialogFragment {
         return builder.create();
     }
 
+    /**
+     * Sets the action when the button link ID is pressed.
+     */
     private void linkButtonPressed() {
         linkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 inputIDText = inputIDLink.getText().toString();
                 if (!inputIDText.equals("")) {
-                    /* TODO implement url for linked oder*/
                     sendIdServerLinkedOrder(URLS.provider_link_order_request_url);
                 }
             }
         });
     }
 
-    private void fillList() {
-        makeListRequest(URLS.display_orders_url);
-    }
 
-    private void makeListRequest (String URL) {
-        //Toast.makeText(MainActivity.getContext(), "entra dentro del request", Toast.LENGTH_SHORT).show();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONArray array = new JSONArray(response);
-
-                    ArrayList<Order> listOfProveedores = new ArrayList<>();
-                    for (int i = 0; i < array.length(); i++) {
-                        JSONObject order = array.getJSONObject(i);
-
-                        listOfProveedores.add(new Order(
-                                order.getInt("id"),
-                                order.getInt("id_objeto"),
-                                order.getInt("cantidad"),
-                                order.getInt("id_proveedor"),
-                                order.getInt("id_hospital"),
-                                order.getString("fecha"),
-                                order.getString("direccion_envio"),
-                                order.getString("nombre_objeto")
-                        ));
-
-                    }
-
-                    ListSentAdapter adapter = new ListSentAdapter(listOfProveedores);
-                    recyclerView.setAdapter(adapter);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.getContext(), "ERROR PEDIDOS", Toast.LENGTH_SHORT).show();
-            }
-        }){
-            @Override
-            public Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("usuario", LoginActivity.userName);
-                return parameters;
-            }
-        };
-
-        /*  TODO CHECK IF CONTEXT WORKS  (MainActivity.getContext() */
-        requestQueue=Volley.newRequestQueue(getContext());
-        requestQueue.add(stringRequest);
-
-    }
-
+    /**
+     * Method that is responsible for making the list where all the materials are filtered as desired
+     * @param URL The url to the appropriate web service.
+     */
     private void makeMaterialListRequest(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
@@ -214,6 +178,9 @@ public class FilterDialog extends AppCompatDialogFragment {
         requestQueue.add(stringRequest);
     }
 
+    /**
+     * Updates the filter when introduced the required parameters
+     */
     private void updateFilter() {
         objectInput.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -228,8 +195,11 @@ public class FilterDialog extends AppCompatDialogFragment {
         makeListRequestFiltered(URLS.display_orders_url);
     }
 
+    /**
+     * Makes a server call to request the list of the filtered list
+     * @param URL The url to the appropriate web service.
+     */
     private void makeListRequestFiltered (String URL) {
-        //Toast.makeText(MainActivity.getContext(), "entra dentro del request", Toast.LENGTH_SHORT).show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -283,13 +253,15 @@ public class FilterDialog extends AppCompatDialogFragment {
                 return parameters;
             }
         };
-
-        /*  TODO CHECK IF CONTEXT WORKS  (MainActivity.getContext() */
         requestQueue=Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
 
     }
 
+    /**
+     * Sends the ID to the server in order to link the order.
+     * @param URL The url to the appropriate web service.
+     */
     private void sendIdServerLinkedOrder(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
             @Override
@@ -300,7 +272,7 @@ public class FilterDialog extends AppCompatDialogFragment {
                     if (jsonResponse.getBoolean("success")){
                         Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(MainActivity.getContext(), "No se pudo crear el usuario, posible error de duplicacion", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.getContext(), "Could not create a user, possible user duplication issue.", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (Exception e) {
@@ -312,7 +284,6 @@ public class FilterDialog extends AppCompatDialogFragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(MainActivity.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
             }
         }) {
             @RequiresApi(api = Build.VERSION_CODES.O)
