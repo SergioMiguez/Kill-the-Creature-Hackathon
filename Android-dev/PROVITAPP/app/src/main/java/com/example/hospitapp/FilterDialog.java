@@ -267,16 +267,15 @@ public class FilterDialog extends AppCompatDialogFragment {
             @Override
             public void onResponse(String response) {
                 try {
-                    Toast.makeText(MainActivity.getContext(), response, Toast.LENGTH_SHORT).show();
                     JSONObject jsonResponse = new JSONObject(response);
                     if (jsonResponse.getBoolean("success")){
                         Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(MainActivity.getContext(), "Could not create a user, possible user duplication issue.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.getContext(), "Order not found", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (Exception e) {
-                    Toast.makeText(MainActivity.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.getContext(), "Order not found", Toast.LENGTH_SHORT).show();
                 }
 
             }

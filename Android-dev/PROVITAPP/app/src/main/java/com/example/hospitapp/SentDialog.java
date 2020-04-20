@@ -165,7 +165,7 @@ public class SentDialog  extends AppCompatDialogFragment{
                     }
 
                     ArrayList<Order> onlyCompleted = new ArrayList<>();
-                    //listOrders.add(new Order(1,1,1,1,1, "hoy", "casa","nombre", 1, 0));
+
                     for (Order order : listOrders) {
                         if (order.isCompleted() && !order.isReceived() && !order.isSent()) {
                             onlyCompleted.add(order);
@@ -214,7 +214,7 @@ public class SentDialog  extends AppCompatDialogFragment{
                     if (jsonResponse.getBoolean("success")){
                         Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(MainActivity.getContext(), "It was not possible to find the user, possible error of duplication", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.getContext(), "It was not possible to find the order", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (Exception e) {

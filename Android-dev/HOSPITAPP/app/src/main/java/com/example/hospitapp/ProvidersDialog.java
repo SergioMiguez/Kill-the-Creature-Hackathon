@@ -168,7 +168,7 @@ public class ProvidersDialog extends AppCompatDialogFragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.getContext(), "ERROR PEDIDOS", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.getContext(), "ERROR when loading from the database", Toast.LENGTH_SHORT).show();
             }
         }){
             @Override
@@ -209,7 +209,7 @@ public class ProvidersDialog extends AppCompatDialogFragment {
                     if (jsonResponse.getBoolean("success")){
                         Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(MainActivity.getContext(), "No se pudo crear el usuario, posible error de duplicacion", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.getContext(), "Unable to link order with provider check that the order end the request exist", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (Exception e) {

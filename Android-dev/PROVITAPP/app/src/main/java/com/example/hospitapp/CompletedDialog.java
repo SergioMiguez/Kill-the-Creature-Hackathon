@@ -137,7 +137,6 @@ public class CompletedDialog extends AppCompatDialogFragment {
      * @param URL given URL to make the server call.
      */
     private void makeListRequest (String URL) {
-        //Toast.makeText(MainActivity.getContext(), "entra dentro del request", Toast.LENGTH_SHORT).show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
