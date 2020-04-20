@@ -23,7 +23,7 @@ import com.example.hospitapp.CompletedDialog;
 import com.example.hospitapp.LoginActivity;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
-import com.example.hospitapp.ReceivedDialog;
+
 import com.example.hospitapp.SentDialog;
 import com.example.hospitapp.URLS;
 import com.example.hospitapp.ui.ListClassAdapter;
