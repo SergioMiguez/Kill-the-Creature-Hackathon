@@ -83,6 +83,11 @@ public class Order {
         return sent;
     }
 
+    /** Getter of the getId parameter*/
+    public int getId_object() {
+        return id_object;
+    }
+
     /** Getter of the completed parameter*/
     public boolean isCompleted() {
         return completed;
