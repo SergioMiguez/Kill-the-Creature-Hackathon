@@ -36,7 +36,7 @@ public class HomeFragment extends Fragment {
     /**
      * Private String used to store the state of the orders
      */
-    private final String state = "Pendientes";
+    private final String state = "Pending";
     /**
      * Used to get the situation of the app to display the messages.
      */
