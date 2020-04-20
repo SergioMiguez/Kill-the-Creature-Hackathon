@@ -127,7 +127,6 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
      */
     private void fillList() {
 
-        /* TODO CAMBIAR EL URL AL QUE SEA CONVENIENTE */
         makeListRequest(URLS.show_potential_providers_url);
     }
 
@@ -182,7 +181,7 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
             }
         };
 
-        /*  TODO CHECK IF CONTEXT WORKS  (MainActivity.getContext() */
+       
         requestQueue=Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
 

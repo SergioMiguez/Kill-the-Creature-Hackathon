@@ -4,17 +4,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -24,39 +20,54 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hospitapp.InfoPedidosDialog;
 import com.example.hospitapp.LoginActivity;
-import com.example.hospitapp.MainActivity;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
 import com.example.hospitapp.URLS;
 import com.example.hospitapp.ui.ListAdaptor;
 import com.example.hospitapp.ui.ListClassAdapter;
-
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class HomeFragment extends Fragment {
-
-    private HomeViewModel homeViewModel;
-
+    /**
+     * Private String used to store the state of the orders
+     */
     private final String state = "Pendientes";
+    /**
+     * Used to get the situation of the app to display the messages.
+     */
     private Context mContext;
-
+    /**
+     * RecyclerView used to store the not linked orders of a user.
+     */
     private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager mLayoutManager;
-    private Button proveedoresButton;
-
+    /**
+     * RecyclerView used to store the not linked orders of a user.
+     */
     private ArrayList<Order> listOfOrders;
+    /**
+     * Button used to open the infoPedidosDialog.
+     */
+    private Button providersButton;
 
+    /**
+     * Request to the server to get the list of all the not-linked orders of the user.
+     */
     RequestQueue requestQueue;
 
 
-
+    /**
+     * Creates the display and functionality of the Fragment using all the needed information.
+     * It allows the user to see the list of not-linked orders (the orders of the user) and to open a window to select a provider (InfoPedidosDialog).
+     * @param inflater object used to decompress other views.
+     * @param container the outside container which holds the display of orders.
+     * @param savedInstanceState saved data about the current app status used to create the window.
+     * @return the display of the fragment.
+     */
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
 
@@ -74,22 +85,23 @@ public class HomeFragment extends Fragment {
 
         recyclerView.setAdapter(adapter);
 
-        proveedoresButton = view.findViewById(R.id.proveedorButton);
-        openProveedores();
+        providersButton = view.findViewById(R.id.proveedorButton);
+        openProviders();
 
         return view;
     }
 
-    private void openInformationPedidoDialog(){
-        InfoPedidosDialog info = new InfoPedidosDialog();
-        info.show(getActivity().getSupportFragmentManager(), "Add Dialog");
-    }
-
+    /**
+     * Method used to call the server to get the list of the not linked-orders of tue user.
+     */
     private void fillList() {
         makeListRequest(URLS.display_orders_url);
     }
 
-
+    /**
+     * Method that is used to make the actual call to the server, it adds all the collected orders to the ArrayList listOfOrders, and it allows the display of the recyclerView.
+     * @param URL given URL to make the server call.
+     */
     private void makeListRequest (String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
@@ -137,34 +149,36 @@ public class HomeFragment extends Fragment {
             }
         };
 
-        /**
-         *
-         *if (mContext != null) {
-         *Volley.newRequestQueue(mContext).add(stringRequest);
-         *}
-         */
-
         requestQueue= Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
 
     }
 
-
+    /**
+     * Method used to create a link between the context and the fragment
+     * @param context given context of the activity.
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         mContext = context;
     }
 
+    /**
+     * Method used to destroy the link between the fragment and the context
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         mContext = null;
     }
 
-    public void openProveedores() {
+    /**
+     * Opens the infoPedidosDialog through the button providers.
+     */
+    public void openProviders() {
 
-        proveedoresButton.setOnClickListener(new View.OnClickListener() {
+        providersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 InfoPedidosDialog newDialog = new InfoPedidosDialog();
