@@ -1,30 +1,34 @@
 <?php
 include 'connexion.php';
-
-$usuario = $_POST['usuario'];
-$id_proveedor =intval($_POST['id_proveedor']);
-$id=intval($_POST['id']);
-
+$id_pedido = intval($_POST['id_pedido']);
+$username = $_POST['username'];
+//$id_pedido = 6;
 //$usuario = "test";
-//$id_proveedor = 2;
-//$id=47;
+$queryProveedor = "SELECT id FROM proveedores WHERE usuario = '$username'";
 
-$queryHospital = "SELECT id FROM hospitales WHERE usuario = '$usuario'";
+$resultadoProveedor = $conexion ->query($queryProveedor);
 
-$resultadoHospital = $conexion ->query($queryHospital);
-
-if(mysqli_num_rows($resultadoHospital)){
-    $id_hospital = intval($resultadoHospital ->fetch_assoc()["id"]);
+if(mysqli_num_rows($resultadoProveedor)){
+    $id_proveedor = $resultadoProveedor ->fetch_assoc()["id"];
     //echo $id_hospital;
 }
 else{
     throw new Exception("FATAL ERROR: Hospital not in our database");
 }
+// CANTIDAD
 
+$queryidHospital= "SELECT id_hospital FROM pedidos WHERE id = '$id_pedido'";
+
+$resultadoidHospital = $conexion ->query($queryidHospital);
+
+if(mysqli_num_rows($resultadoidHospital)){
+    $id_hospital = intval($resultadoidHospital ->fetch_assoc()["id_hospital"]);
+    //echo $id_hospital;
+}
 
 // CANTIDAD
 
-$queryCantidad = "SELECT cantidad FROM pedidos_pendientes WHERE id = '$id' AND id_proveedor = '$id_proveedor' AND id_hospital = '$id_hospital'";
+$queryCantidad = "SELECT cantidad FROM pedidos WHERE id = '$id_pedido'";
 
 $resultadoCantidad = $conexion ->query($queryCantidad);
 
@@ -38,7 +42,7 @@ else{
 
 // ID OBJETO
 
-$queryObjeto = "SELECT id_objeto FROM pedidos_pendientes WHERE id = '$id' AND id_proveedor = '$id_proveedor' AND id_hospital = '$id_hospital'";
+$queryObjeto = "SELECT id_objeto FROM pedidos WHERE id = '$id_pedido' ";
 
 $resultadoObjeto = $conexion ->query($queryObjeto);
 
@@ -52,20 +56,19 @@ else{
 
 // FECHA
 
-$queryFecha = "SELECT fecha FROM pedidos_pendientes WHERE id = '$id' AND id_proveedor = '$id_proveedor' AND id_hospital = '$id_hospital'";
+$queryFecha = "SELECT fecha FROM pedidos WHERE id = '$id_pedido'";
 
 $resultadoFecha = $conexion ->query($queryFecha);
 
 if(mysqli_num_rows($resultadoFecha)){
     $fecha = $resultadoFecha ->fetch_assoc()["fecha"];
-    //echo $id_hospital;
 }
 else{
     throw new Exception("FATAL ERROR: Hospital not in our database");
 }
 
 // DIRECCION
-$queryDireccion = "SELECT direccion_envio FROM pedidos_pendientes WHERE id = '$id' AND id_proveedor = '$id_proveedor' AND id_hospital = '$id_hospital'";
+$queryDireccion = "SELECT direccion_envio FROM pedidos WHERE id = '$id_pedido'";
 
 $resultadoDireccion = $conexion ->query($queryDireccion);
 
@@ -77,20 +80,15 @@ else{
     throw new Exception("FATAL ERROR: Hospital not in our database");
 }
 
-$query1 = "INSERT INTO pedidos_conectados (id, id_objeto, cantidad, id_proveedor, id_hospital, fecha, direccion_envio) VALUES ('".$id."', '".$id_objeto."' , '".$cantidad."', '".$id_proveedor."', '".$id_hospital."', '".$fecha."', '".$direccion_envio."')";
+$query1 = "INSERT INTO pedidos_pendientes VALUES ('".$id_pedido."', '".$id_objeto."' , '".$cantidad."', '".$id_proveedor."', '".$id_hospital."', '".$fecha."', '".$direccion_envio."')";
 
-$query2 = "DELETE FROM pedidos WHERE id = '$id'";
 
-$query3 = "DELETE FROM pedidos_pendientes WHERE id = '$id'";
 
 $resultado1 = mysqli_query($conexion,$query1);
 
-$resultado2 =  mysqli_query($conexion,$query2);
-
-$resultado3 =  mysqli_query($conexion,$query3);
 
 
-if($resultado1 && $resultado2 && $resultado3){
+if($resultado1){
     $result = Array();
     $result["success"] = true;
     echo json_encode($result);
@@ -103,4 +101,5 @@ else{
 }
 
 $conexion ->close();
+
 ?>
