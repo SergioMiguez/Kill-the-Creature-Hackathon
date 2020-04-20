@@ -37,33 +37,112 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+/** Class that is responsible for the handling of the profile tab*/
 public class NotificationsFragment extends Fragment {
 
+    /** The log out button*/
     private Button logOutButton;
+    /** The call tot the server */
     private RequestQueue requestInfoQueue;
+    /** The call tot the server */
     private RequestQueue requestEditQueue;
+    /** Boolean that represents the success of the operation*/
     private boolean editSuccess;
 
-    //EditText nameEdited;
-    private EditText nameHospitalEdited, nameStreetEdited, streetNumberEdited, CPEdited, cityEdited, emailEdited, telephoneEdited, descriptionEdited;
+    /** EditText parameter that is responsible for the hospital name input*/
+    EditText nameHospitalEdited;
+    /** EditText parameter that is responsible for the street name input*/
+    EditText nameStreetEdited;
+    /** EditText parameter that is responsible for the street number input*/
+    EditText streetNumberEdited;
+    /** EditText parameter that is responsible for the postal code input*/
+    EditText CPEdited;
+    /** EditText parameter that is responsible for the city input*/
+    EditText cityEdited;
+    /** EditText parameter that is responsible for the email input*/
+    EditText emailEdited;
+    /** EditText parameter that is responsible for the telephone input*/
+    EditText telephoneEdited;
+    /** EditText parameter that is responsible for the description input*/
+    EditText descriptionEdited;
 
-    private TextView nameAdded, nameHospitalAdded, nameStreetAdded, streetNumberAdded, CPAdded, cityAdded, emailAdded, telephoneAdded, descriptionAdded;
+    /** TextView parameter that represents the name text*/
+    TextView nameAdded;
+    /** TextView parameter that represents the hospital name text*/
+    TextView nameHospitalAdded;
+    /** TextView parameter that represents the street name text*/
+    TextView nameStreetAdded;
+    /** TextView parameter that represents the street number text*/
+    TextView streetNumberAdded;
+    /** TextView parameter that represents the postal code text*/
+    TextView CPAdded;
+    /** TextView parameter that represents the city text*/
+    TextView cityAdded;
+    /** TextView parameter that represents the email text*/
+    TextView emailAdded;
+    /** TextView parameter that represents the telephone text*/
+    TextView telephoneAdded;
+    /** TextView parameter that represents the description text*/
+    TextView descriptionAdded;
 
-    private String defName, defHospital, defStreet, defNumber, defCP, defCity, defEmail, defTelephone, defDescription;
-    private String edit_hospital, edit_street, edit_street_number, edit_CP, edit_city, edit_email, edit_telephone, edit_description;
+    /** String that defines the name*/
+    String defName;
+    /** String that defines the hospital*/
+    String defHospital;
+    /** String that defines the street*/
+    String defStreet;
+    /** String that defines the number*/
+    String defNumber;
+    /** String that defines the postal code*/
+    String defCP;
+    /** String that defines the city*/
+    String defCity;
+    /** String that defines the email*/
+    String defEmail;
+    /** String that defines the telephone*/
+    String defTelephone;
+    /** String that defines the description*/
+    String defDescription;
 
+    /** String that represents the hospital edited*/
+    private String edit_hospital;
+    /** String that represents the street edited*/
+    private String edit_street;
+    /** String that represents the street number edited*/
+    private String edit_street_number;
+    /** String that represents the postal code edited*/
+    private String edit_CP;
+    /** String that represents the city edited*/
+    private String edit_city;
+    /** String that represents the email edited*/
+    private String edit_email;
+    /** String that represents the telephone edited*/
+    private String edit_telephone;
+    /** String that represents the description edited*/
+    private String edit_description;
 
+    /** Object of the class SharedPreferences*/
     SharedPreferences myPrefs;
 
 
+    /** The URL of the server*/
     String serverURL = URLS.profile_url;
+    /** The URL edited*/
     String editUrl  = URLS.update_profile_url;
 
+    /** Object of the class userHospital*/
     UsuarioHospital userHospital;
 
+    /** Stores the current status of the app */
     private Context mContext;
 
 
+    /**
+     * Creates the display of orders connected with a producer.
+     * @param inflater object used to decompress other views.
+     * @param container the outside container which holds the display of orders.
+     * @param savedInstanceState saved data about the current app status used to create the window.
+     */
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         final View root = inflater.inflate(R.layout.fragment_notifications, container, false);
@@ -85,7 +164,6 @@ public class NotificationsFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                //nameEdited = root.findViewById(R.id.nameEdited);
                 nameHospitalEdited = root.findViewById(R.id.nameHospitalEdited);
                 nameStreetEdited = root.findViewById(R.id.nameStreetEdited);
                 streetNumberEdited = root.findViewById(R.id.streetNumberEdited);
@@ -95,7 +173,6 @@ public class NotificationsFragment extends Fragment {
                 telephoneEdited = root.findViewById(R.id.telephoneEdited);
                 descriptionEdited = root.findViewById(R.id.descriptionEdited);
 
-                //String nameEditedStr = nameEdited.getText().toString();
                 String nameHospitalEditedStr = nameHospitalEdited.getText().toString();
                 String nameStreetEditedStr = nameStreetEdited.getText().toString();
                 String streetNumberEditedStr = streetNumberEdited.getText().toString();
@@ -108,7 +185,6 @@ public class NotificationsFragment extends Fragment {
                 myPrefs = getActivity().getSharedPreferences("prefID", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = myPrefs.edit();
 
-                //editor.putString("name", nameEditedStr);
                 editor.putString("hospital", nameHospitalEditedStr);
                 editor.putString("street", nameStreetEditedStr);
                 editor.putString("street_number", streetNumberEditedStr);
@@ -119,7 +195,6 @@ public class NotificationsFragment extends Fragment {
                 editor.putString("description", descriptionEditedStr);
                 editor.apply();
 
-                //String name = myPrefs.getString("name", def);
                 edit_hospital = myPrefs.getString("hospital", defHospital);
                 edit_street = myPrefs.getString("street", defStreet);
                 edit_street_number = myPrefs.getString("street_number", defNumber);
@@ -133,18 +208,6 @@ public class NotificationsFragment extends Fragment {
                         fullEdit(emailEdited) && fullEdit(telephoneEdited); // && fullEdit(nameEdited);
 
                 if (allFilled) {
-                    /**
-                     * //nameAdded.setText(name);
-                     *                     nameHospitalAdded.setText(edit_hospital);
-                     *                     nameStreetAdded.setText(edit_street);
-                     *                     streetNumberAdded.setText(edit_street_number);
-                     *                     CPAdded.setText(edit_CP);
-                     *                     cityAdded.setText(edit_city);
-                     *                     emailAdded.setText(edit_email);
-                     *                     telephoneAdded.setText(edit_telephone);
-                     */
-
-                    //nameEdited.getText().clear();
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
@@ -176,7 +239,6 @@ public class NotificationsFragment extends Fragment {
                             });
                     builder.show();
 
-                    //Toast.makeText(getContext(), "Datos de perfil actualizados correctamente!", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(), "Fill in all the fields to continue!", Toast.LENGTH_LONG).show();
                 }
@@ -196,16 +258,24 @@ public class NotificationsFragment extends Fragment {
         return root;
     }
 
+    /**
+     * Boolean that determines whether a editText is empty or not
+     * @param editText EditText that is being analyzed
+     * @return true if it is empty, false otherwise.
+     */
     public static boolean fullEdit(EditText editText) {
         String empty = "";
         return !editText.getText().toString().trim().equals(empty);
     }
 
+    /**
+     * Makes a server call to obtain the information of the user.
+     * @param URL The url to the appropriate web service.
+     */
     private void makeUserRequest(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                //Toast.makeText(MainActivity.getContext(), response, Toast.LENGTH_SHORT).show();
                 try {
                     JSONArray array = new JSONArray(response);
 
@@ -240,7 +310,7 @@ public class NotificationsFragment extends Fragment {
 
                     myPrefs = getActivity().getSharedPreferences("prefID", Context.MODE_PRIVATE);
 
-                    nameAdded.setText(defName); //TODO change to defname
+                    nameAdded.setText(defName);
                     nameHospitalAdded.setText(defHospital);
                     nameStreetAdded.setText(defStreet);
                     streetNumberAdded.setText(defNumber);
@@ -273,18 +343,15 @@ public class NotificationsFragment extends Fragment {
             }
         };
 
-
-        /**
-         * if (mContext != null) {
-         *             Volley.newRequestQueue(mContext).add(stringRequest);
-         *         }
-         */
-
         requestInfoQueue= Volley.newRequestQueue(getContext());
         requestInfoQueue.add(stringRequest);
 
     }
 
+    /**
+     * Makes a server call to request the profile info
+     * @param URL The url to the appropriate web service.
+     */
     private void makeEditRequest (String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
             @Override
@@ -296,12 +363,12 @@ public class NotificationsFragment extends Fragment {
                         Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
                         editSuccess = true;
                     } else {
-                        Toast.makeText(MainActivity.getContext(), "No se pudo editar el usuario. Posible error de duplicidad", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.getContext(), "Could not edit the user. Possible duplicity error", Toast.LENGTH_SHORT).show();
                         editSuccess = false;
                     }
 
                 } catch (Exception e) {
-                    Toast.makeText(MainActivity.getContext(), "Estes es el catch", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.getContext(), "This is the catch", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -309,7 +376,6 @@ public class NotificationsFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(MainActivity.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -328,12 +394,16 @@ public class NotificationsFragment extends Fragment {
         requestEditQueue.add(stringRequest);
     }
 
+    /**
+     * Method that sets the address to a single string
+     * @param addressName the address name
+     * @param numAddress the address number
+     * @param zipCode the zip code string
+     * @param city the city string
+     * @return the address as a single string
+     */
     private String toStringAddress(String addressName, String numAddress, String zipCode, String city) {
         return addressName.toUpperCase() + "$" + numAddress + "$" + zipCode + "$" + city.toUpperCase();
-    }
-
-    private void logOut() {
-
     }
 }
             

@@ -130,6 +130,7 @@ public class NotificationsFragment extends Fragment {
     private Context mContext;
 
 
+
     /**
      * Creates the display of orders connected with a producer.
      * @param inflater object used to decompress other views.
