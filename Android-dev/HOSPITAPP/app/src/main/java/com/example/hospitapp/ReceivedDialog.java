@@ -1,5 +1,4 @@
 package com.example.hospitapp;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -15,7 +14,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -23,33 +21,55 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.hospitapp.ui.ListClassAdapter;
 import com.example.hospitapp.ui.ListSentAdapter;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
+/**
+ * Public class used to create the Dialog that allows the user to confirm the reception of one of its sent orders-
+ */
 public class ReceivedDialog extends AppCompatDialogFragment {
-
+    /**
+     * Private field used to store the orders that have been sent in a recycleView.
+     */
     private RecyclerView recyclerView;
+    /**
+     * Private field used to store the orders that have been sent in an ArrayList.
+     */
     private ArrayList<Order> listOfOrders;
-    private final String stateLinked = "LINKED";
+    /**
+     * RequestQueue used to make a call to the server to get and Update information.
+     */
     private RequestQueue requestQueue;
+    /**
+     * Used to get the situation of the app to display the messages.
+     */
     private Context mContext;
+    /**
+     * Button used to call to the server to update the information about a selected order, to confirm the reception of the order in the hospital.
+     */
     private Button markAsReceived;
+    /**
+     * EditText used to store the input of the user, it should store the id of one of the sent-orders.
+     */
     private EditText idInput;
+    /**
+     * String used to store in a string the id previously stored in the EditText.
+     */
     private String inputIdReceived;
-    private String fecha;
 
+    /**
+     * It creates the display of the pop-up (dialog)
+     * Allowing the user to confirm the reception of one of the sent-orders, made by a given user..
+     * @param savedInstanceState saved data about the current app status used to create the pop-up.
+     * @return the pop-up (Dialog).
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -85,6 +105,9 @@ public class ReceivedDialog extends AppCompatDialogFragment {
         return builder.create();
     }
 
+    /**
+     * Private method used to configure the button Received and to call the server with the necessary information to update the information of the database.
+     */
     private void markAsReceivedButton() {
         markAsReceived.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,10 +120,17 @@ public class ReceivedDialog extends AppCompatDialogFragment {
         });
     }
 
+    /**
+     * Private method to call the server to call the server to request a list of all the needed orders to fill the list of the needed orders for display.
+     */
     private void fillList() {
         makeListRequest(URLS.only_sent_url);
     }
 
+    /**
+     * method used to call to the server to get the list of all the Sent-orders present in the database, made by the given user.
+     * @param URL given URL to make the server call.
+     */
     private void makeListRequest (String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
@@ -148,18 +178,13 @@ public class ReceivedDialog extends AppCompatDialogFragment {
                 return parameters;
             }
         };
-
-
-        /**
-         * if (mContext != null) {
-         *             Volley.newRequestQueue(mContext).add(stringRequest);
-         *         }
-         */
-
         requestQueue= Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
     }
-
+    /**
+     * method used to call to the server update one of the orders of the user to confirm it's reception.
+     * @param URL given URL to make the server call.
+     */
     private void sendReceivedRequest(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
             @Override
@@ -181,7 +206,6 @@ public class ReceivedDialog extends AppCompatDialogFragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(MainActivity.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
             }
         }) {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -197,6 +221,11 @@ public class ReceivedDialog extends AppCompatDialogFragment {
         requestQueue=Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
     }
+
+    /**
+     * Private method used to get the date of the user's phone.
+     * @return String that represents the date.
+     */
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private String getDate () {
