@@ -18,9 +18,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.hospitapp.OrdersInformationDialog;
 import com.example.hospitapp.LoginActivity;
 import com.example.hospitapp.Order;
+import com.example.hospitapp.ProvidersDialog;
 import com.example.hospitapp.R;
 import com.example.hospitapp.URLS;
 import com.example.hospitapp.ui.ListAdaptor;
@@ -181,7 +181,7 @@ public class HomeFragment extends Fragment {
         providersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OrdersInformationDialog newDialog = new OrdersInformationDialog();
+                ProvidersDialog newDialog = new ProvidersDialog();
                 newDialog.show(getActivity().getSupportFragmentManager(), "Elegir Proveedor");
             }
         });

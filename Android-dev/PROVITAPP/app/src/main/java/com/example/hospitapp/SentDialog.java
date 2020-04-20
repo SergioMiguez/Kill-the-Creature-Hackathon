@@ -24,7 +24,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hospitapp.ui.ListSentAdapter;
-import com.example.hospitapp.ui.dashboard.DashboardFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,18 +34,46 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * Public class used to create the Dialog that allows the user to confirm an order has been dispatched.
+ */
 public class SentDialog  extends AppCompatDialogFragment{
 
+    /**
+     * Private field used to store the orders that have been manufactured in a recyclerView.
+     */
     private RecyclerView recyclerView;
+    /**
+     * Private field used to store the orders that have been manufactured in an ArrayList.
+     */
     private ArrayList<Order> listOfOrders;
+    /**
+     * RequestQueue used to make a call to the server to get and Update information.
+     */
     private RequestQueue requestQueue;
+    /**
+     * Used to get the situation of the app to display the messages.
+     */
     private Context mContext;
+    /**
+     * Button used to call to the server to update the information about a selected order, to confirm that the order has been sent to the hospital.
+     */
     private Button markAsSentButton;
+    /**
+     * EditText used to store the input of the user, it should store the id of one of the completed orders.
+     */
     private EditText idInput;
+    /**
+     * String used to store the id previously stored in the EditText.
+     */
     private String inputIdReceived;
-    private String fecha;
 
+    /**
+     * It creates the display of the pop-up (dialog)
+     * Allowing the user to confirm that a manufactured order has been sent to the appropriate hospital.
+     * @param savedInstanceState saved data about the current app status used to create the pop-up.
+     * @return the pop-up (Dialog).
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -82,23 +109,33 @@ public class SentDialog  extends AppCompatDialogFragment{
         return builder.create();
     }
 
+    /**
+     * Private method used to configure the button Order Sent and to call the server with the necessary information to update the information of the database.
+     */
     private void markAsSent() {
         markAsSentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 inputIdReceived = idInput.getText().toString();
                 if (!inputIdReceived.equals("")) {
-                    sendReceivedRequest(URLS.mark_sent_url);
+                    sendSentRequest(URLS.mark_sent_url);
                     fillList();
                 }
             }
         });
     }
 
+    /**
+     * Private method to call the server to request a list of all the orders to fill the list of the needed orders for display.
+     */
     private void fillList() {
         makeListRequest(URLS.display_connected_orders_url);
     }
 
+    /**
+     * method used to call to the server to get the list of all the completed orders present in the database, made by the given user.
+     * @param URL given URL to make the server call.
+     */
     private void makeListRequest (String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
@@ -158,19 +195,17 @@ public class SentDialog  extends AppCompatDialogFragment{
                 return parameters;
             }
         };
-
-
-        /**
-         * if (mContext != null) {
-         *             Volley.newRequestQueue(mContext).add(stringRequest);
-         *         }
-         */
+        
 
         requestQueue= Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
     }
 
-    private void sendReceivedRequest(String URL) {
+    /**
+     * method used to call to the server update one of the orders of the user to confirm that it has been sent.
+     * @param URL given URL to make the server call.
+     */
+    private void sendSentRequest(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -208,6 +243,10 @@ public class SentDialog  extends AppCompatDialogFragment{
         requestQueue.add(stringRequest);
     }
 
+    /**
+     * Private method used to get the date of the user's phone.
+     * @return String that represents the date.
+     */
     @RequiresApi(api = Build.VERSION_CODES.O)
     private String getDate () {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");

@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
      * It contains a BottomNavigationView where it is set the three Fragments of the Activity
      * and functions which determine how the Floating buttons react when being clicked
      * @param savedInstanceState is a parameter which contains information about the version the
-     *                           app will use to set the BottomNavigationView characteristics
+     * app will use to set the BottomNavigationView characteristics
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
