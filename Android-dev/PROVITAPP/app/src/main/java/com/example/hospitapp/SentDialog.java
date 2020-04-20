@@ -195,7 +195,7 @@ public class SentDialog  extends AppCompatDialogFragment{
                 return parameters;
             }
         };
-        
+
 
         requestQueue= Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);

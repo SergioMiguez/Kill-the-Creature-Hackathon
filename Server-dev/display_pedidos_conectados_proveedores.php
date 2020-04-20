@@ -1,38 +1,38 @@
 <?php
 include 'connexion.php';
+
 $usuario = $_POST['usuario'];
-$id_pedido =intval($_POST['id_pedido']);
+//$usuario = "test";
 
-//$usuario = "test1";
-//$id_pedido = 1;
+// Encontrar ID de proveedor a partir de nombre de usuario
+$queryProveedor = "SELECT id FROM proveedores WHERE usuario = '$usuario'";
 
-$queryHospital = "SELECT id FROM hospitales WHERE usuario = '$usuario'";
+$resultadoProveedor = $conexion ->query($queryProveedor);
 
-$resultadoHospital = $conexion ->query($queryHospital);
-
-if(mysqli_num_rows($resultadoHospital)){
-    $id_hospital = $resultadoHospital ->fetch_assoc()["id"];
-    //echo $id_hospital;
+if(mysqli_num_rows($resultadoProveedor)){
+    $id_proveedor = $resultadoProveedor ->fetch_assoc()["id"];
 }
 else{
     throw new Exception("FATAL ERROR: Hospital not in our database");
 }
 
+// Seleccionar pedidos conectados de un proveddor
+$query = "SELECT * FROM pedidos_conectados WHERE id_proveedor = '$id_proveedor'";
 
-$query = "SELECT * from pedidos_pendientes WHERE id ='$id_pedido' AND id_hospital ='$id_hospital'";
-$resultado = $conexion -> query($query);
+$resultadoFinal = $conexion -> query($query);
 
-while($fila = mysqli_fetch_assoc($resultado)){
+while($fila = mysqli_fetch_assoc($resultadoFinal)){
 
     $fila['nombre_objeto'] = helper($fila['id_objeto']);
     $product[] = array_map('utf8_encode',$fila);
 }
 
 echo json_encode($product);
+$conexion->close();
 
 // Encontrar el nombre de un objeto en base a su ID
 function helper($id){
-    include 'connexion.php';
+	include 'connexion.php';
 
     $queryObjetos = "SELECT nombre FROM objetos WHERE id = '$id'";
 
@@ -45,10 +45,8 @@ function helper($id){
     else{
         throw new Exception("Object not in our database");
 }
-$conexion -> close();
+$conexion->close();
 return $nombre_objeto;
 }
-$conexion -> close();
-
 
 ?>
