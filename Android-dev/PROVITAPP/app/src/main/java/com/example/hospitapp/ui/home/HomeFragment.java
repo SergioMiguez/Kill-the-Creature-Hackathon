@@ -37,21 +37,41 @@ import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
 
+    /**
+     * Private String used to store the state of the orders
+     */
     private final String state = "Pendientes";
+    /**
+     * Used to get the situation of the app to display the messages.
+     */
     private Context mContext;
-
+    /**
+     * RecyclerView used to store the not linked orders of a user.
+     */
     private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager mLayoutManager;
+    /**
+     * RecyclerView used to store the not linked orders of a user.
+     */
+    private ArrayList<Order> listOfOrders;
+    /**
+     * Button used to open the filterDialog.
+     */
     private Button filterButton;
 
-    private ArrayList<Order> listOfOrders;
-
+    /**
+     * Request to the server to get the list of all the not-linked orders of the user.
+     */
     RequestQueue requestQueue;
 
-
-
+    /**
+     * Creates the display and functionality of the Fragment using all the needed information.
+     * It allows the user to see the list of not-linked orders.
+     * @param inflater object used to decompress other views.
+     * @param container the outside container which holds the display of orders.
+     * @param savedInstanceState saved data about the current app status used to create the window.
+     * @return the display of the fragment.
+     */
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
 
@@ -76,11 +96,17 @@ public class HomeFragment extends Fragment {
     }
 
 
+    /**
+     * Method used to call the server to get the list of the not linked-orders.
+     */
     private void fillList() {
         makeListRequest(URLS.display_all_orders_url);
     }
 
-
+    /**
+     * Method that is used to make the actual call to the server, it adds all the collected orders to the ArrayList listOfOrders, and it allows the display of the recyclerView.
+     * @param URL given URL to make the server call.
+     */
     private void makeListRequest (String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
@@ -128,25 +154,23 @@ public class HomeFragment extends Fragment {
             }
         };
 
-        /**
-         *
-         *if (mContext != null) {
-         *Volley.newRequestQueue(mContext).add(stringRequest);
-         *}
-         */
-
         requestQueue= Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
 
     }
 
-
+    /**
+     * Method used to create a link between the context and the fragment
+     * @param context given context of the activity.
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         mContext = context;
     }
-
+    /**
+     * Method used to destroy the link between the fragment and the context
+     */
     @Override
     public void onDetach() {
         super.onDetach();
