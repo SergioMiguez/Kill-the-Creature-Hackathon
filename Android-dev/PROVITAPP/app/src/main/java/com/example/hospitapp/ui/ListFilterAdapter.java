@@ -81,7 +81,7 @@ public class ListFilterAdapter extends RecyclerView.Adapter<ListFilterAdapter.Or
             holder.textVolumeNumber.setText("" + listOfOrdersSent.get(position).getQuantity());
             holder.textFecha.setText(listOfOrdersSent.get(position).getDate());
             holder.textProveedorId.setText("" + listOfOrdersSent.get(position).getId_provider());
-            holder.textState.setText("SENT");
+            holder.textState.setText("PENDING");
             holder.textReferenceID.setText("" + listOfOrdersSent.get(position).getId());
         }
     }
