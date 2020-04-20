@@ -112,21 +112,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
-
-                /**         TODO ELIMINATE AT THE END           */
-                if (userName.equals("email") && (password.equals("pass"))) {
-                    Toast.makeText(getApplicationContext(), "Successful Login", Toast.LENGTH_SHORT).show();
-                    finish();
-                    Intent loadMenu = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(loadMenu);
-                }
             }
         }) {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("usuario", userName);
+                parameters.put("username", userName);
                 parameters.put("password", password);
                 return parameters;
             }
