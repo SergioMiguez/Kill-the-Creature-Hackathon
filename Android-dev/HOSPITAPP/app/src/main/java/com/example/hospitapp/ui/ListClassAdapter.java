@@ -57,7 +57,7 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
 
                 textObject = (TextView) itemView.findViewById(R.id.ObjectName);
                 textVolumeNumber = (TextView) itemView.findViewById(R.id.VolumeNumber);
-                textFecha = (TextView) itemView.findViewById(R.id.fechaNumber);
+                textFecha = (TextView) itemView.findViewById(R.id.dateNumber);
                 textState = (TextView) itemView.findViewById(R.id.State);
                 textProveedorId = (TextView) intemView.findViewById(R.id.proveedorNum);
                 textReferenceID = (TextView) itemView.findViewById(R.id.ReferenceIdNum);
