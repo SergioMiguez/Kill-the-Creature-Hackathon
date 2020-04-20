@@ -132,17 +132,6 @@ public class MainActivity extends AppCompatActivity {
         return mContext;
     }
 
-    public void openProveedores() {
-
-        //proveedoresButton = findViewById(R.id.buttonProveedor);
-        proveedoresButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                InfoPedidosDialog newDialog = new InfoPedidosDialog();
-                newDialog.show(getSupportFragmentManager(), "Elegir Proveedor");
-            }
-        });
-    }
 
     public void finalizeMain() {
         finish();

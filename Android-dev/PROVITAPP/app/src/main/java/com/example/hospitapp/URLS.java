@@ -33,10 +33,6 @@ public class URLS {
      */
     public static String show_materials_url = "http://35.246.98.126/matalbicho/show_materiales.php";
     /**
-     * Public constant (String) used to store the URL that will connect to the server to request a list of all the requests of different providers to make an order.
-     */
-    public static String show_potential_providers_url = "http://35.246.98.126/matalbicho/solicitudes_pedidos_con_proveedor.php";
-    /**
      * Public constant (String) used to store the URL that will connect to the server to link an order with one of the potential providers.
      */
     public static String connect_orders_url = "http://35.246.98.126/matalbicho/transition_home_complete.php";

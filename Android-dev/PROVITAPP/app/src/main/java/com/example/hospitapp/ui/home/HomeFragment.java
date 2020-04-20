@@ -20,7 +20,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hospitapp.FilterDialog;
-import com.example.hospitapp.InfoPedidosDialog;
 import com.example.hospitapp.LoginActivity;
 import com.example.hospitapp.Order;
 import com.example.hospitapp.R;
@@ -76,10 +75,6 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-    private void openInformationPedidoDialog(){
-        InfoPedidosDialog info = new InfoPedidosDialog();
-        info.show(getActivity().getSupportFragmentManager(), "Add Dialog");
-    }
 
     private void fillList() {
         makeListRequest(URLS.display_all_orders_url);
