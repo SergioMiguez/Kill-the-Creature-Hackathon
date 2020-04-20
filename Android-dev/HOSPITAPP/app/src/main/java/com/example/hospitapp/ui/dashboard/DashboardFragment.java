@@ -42,7 +42,7 @@ public class DashboardFragment extends Fragment {
     private ArrayList<Order> listOfOrders;
     /** The display used to show the list of orders connected with a producer */
     private RecyclerView recyclerView;
-    /** The constant used to indicate that an order has been lined with a producer */
+    /** The constant used to indicate that an order has been linked with a producer */
     private final String stateLinked = "LINKED";
     /** The constant used to indicate that an order has been received by the hospital */
     private final String stateCompleted = "RECEIVED";
