@@ -111,7 +111,7 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
 
             } else {
                 textProviderName = itemView.findViewById(R.id.ParticularName);
-                textProviderId = itemView.findViewById(R.id.providerNum);
+                textProviderId = itemView.findViewById(R.id.identificator);
 
             }
         }
