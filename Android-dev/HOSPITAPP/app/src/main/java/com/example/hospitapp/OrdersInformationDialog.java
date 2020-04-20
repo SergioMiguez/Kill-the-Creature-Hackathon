@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 /** Creates the display which allows the hospital to select the producer of a particular order. */
-public class InfoPedidosDialog extends AppCompatDialogFragment {
+public class OrdersInformationDialog extends AppCompatDialogFragment {
 
     /** The display used to show the list of producers available to fulfill a particular order.*/
     RecyclerView recyclerView;

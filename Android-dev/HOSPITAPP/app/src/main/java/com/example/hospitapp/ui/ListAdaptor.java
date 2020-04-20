@@ -15,7 +15,7 @@ import java.util.ArrayList;
 /**
  * ListAdaptor Class which set the Recycle View configuration for the HomeFragment List
  * It used a item as a model which is used repeatedly in which the information is substituted as a
- * way of improving performance in the creation fo list
+ * way of improving performance in the creation of list
  */
 public class ListAdaptor extends RecyclerView.Adapter<ListAdaptor.ListViewHolder> {
 
@@ -103,7 +103,7 @@ public class ListAdaptor extends RecyclerView.Adapter<ListAdaptor.ListViewHolder
     /**
      * Function where the information is replaced in the item model with the information received from the server's database
      *
-     * @param holder
+     * @param holder gets the children view which is used to connect the elements to the reference objects
      * @param position indicates the index in the ArrayList of order to get the information
      */
     @SuppressLint("SetTextI18n")
