@@ -43,7 +43,7 @@ public class ListCompletedAdapter  extends RecyclerView.Adapter<ListCompletedAda
 
             textObject = (TextView) itemView.findViewById(R.id.ObjectNameItem);
             textVolumeNumber = (TextView) itemView.findViewById(R.id.VolumeNumberItem);
-            textFecha = (TextView) itemView.findViewById(R.id.fechaNumberItem);
+            textFecha = (TextView) itemView.findViewById(R.id.dateNumberItem);
             textState = (TextView) itemView.findViewById(R.id.StateItem);
             textProveedorId = (TextView) itemView.findViewById(R.id.proveedorNumItem);
             textReferenceID = (TextView) itemView.findViewById(R.id.ReferenceIdNumItem);
