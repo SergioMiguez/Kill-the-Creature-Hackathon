@@ -176,9 +176,10 @@ public class HomeFragment extends Fragment {
         super.onDetach();
         mContext = null;
     }
-
+    /**
+     * Opens the FilterDialog through the button FilterButton.
+     */
     public void openFilter() {
-
         filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
