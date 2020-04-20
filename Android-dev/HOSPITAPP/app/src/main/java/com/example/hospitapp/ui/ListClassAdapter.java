@@ -38,10 +38,10 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
     /**
      * Constructor which sets the list of orders which will be displayed
      *
-     * @param listOfProviders ArrayList of orders to be displayed
+     * @param listOfOrders ArrayList of orders to be displayed
      */
-    public ListClassAdapter(ArrayList<Order> listOfProviders) {
-        this.listOfOrders = listOfProviders;
+    public ListClassAdapter(ArrayList<Order> listOfOrders) {
+        this.listOfOrders = listOfOrders;
     }
 
     /**

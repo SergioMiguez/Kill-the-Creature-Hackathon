@@ -168,7 +168,7 @@ public class MaterialsDialog extends AppCompatDialogFragment {
                 return parameters;
             }
         };
-        Volley.newRequestQueue(MainActivity.getContext());
+        requestQueue= Volley.newRequestQueue(MainActivity.getContext());
         requestQueue.add(stringRequest);
     }
     /**
