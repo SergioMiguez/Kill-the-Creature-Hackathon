@@ -202,18 +202,18 @@ public class MaterialsDialog extends AppCompatDialogFragment {
                     if (jsonResponse.getBoolean("success")){
                         Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(MainActivity.getContext(), "User couldn't be created. Possible duplication error.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.getContext(), "Material couldn't be created. Possible duplication error.", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (Exception e) {
-                    Toast.makeText(MainActivity.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.getContext(),"Material couldn't be created. Possible duplication error.", Toast.LENGTH_SHORT).show();
                 }
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.getContext(),"Error in connexion with the database", Toast.LENGTH_LONG).show();
             }
         }) {
             @Override

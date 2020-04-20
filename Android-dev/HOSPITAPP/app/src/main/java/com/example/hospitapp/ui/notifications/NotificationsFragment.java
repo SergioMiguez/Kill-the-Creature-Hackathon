@@ -156,7 +156,6 @@ public class NotificationsFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                //nameEdited = root.findViewById(R.id.nameEdited);
                 nameHospitalEdited = root.findViewById(R.id.nameHospitalEdited);
                 nameStreetEdited = root.findViewById(R.id.nameStreetEdited);
                 streetNumberEdited = root.findViewById(R.id.streetNumberEdited);
@@ -165,7 +164,6 @@ public class NotificationsFragment extends Fragment {
                 emailEdited = root.findViewById(R.id.emailEdited);
                 telephoneEdited = root.findViewById(R.id.telephoneEdited);
 
-                //String nameEditedStr = nameEdited.getText().toString();
                 String nameHospitalEditedStr = nameHospitalEdited.getText().toString();
                 String nameStreetEditedStr = nameStreetEdited.getText().toString();
                 String streetNumberEditedStr = streetNumberEdited.getText().toString();
@@ -177,7 +175,6 @@ public class NotificationsFragment extends Fragment {
                 myPrefs = getActivity().getSharedPreferences("prefID", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = myPrefs.edit();
 
-                //editor.putString("name", nameEditedStr);
                 editor.putString("hospital", nameHospitalEditedStr);
                 editor.putString("street", nameStreetEditedStr);
                 editor.putString("street_number", streetNumberEditedStr);

@@ -152,7 +152,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }
 
                 } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Error in the connexion with the database", Toast.LENGTH_SHORT).show();
                 }
 
             }

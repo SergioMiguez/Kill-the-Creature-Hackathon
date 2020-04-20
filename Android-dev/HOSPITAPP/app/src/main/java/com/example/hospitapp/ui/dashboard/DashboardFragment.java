@@ -162,7 +162,7 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (mContext != null) {
-                    Toast.makeText(mContext, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "Unable to connect to the database", Toast.LENGTH_SHORT).show();
                 }
 
             }

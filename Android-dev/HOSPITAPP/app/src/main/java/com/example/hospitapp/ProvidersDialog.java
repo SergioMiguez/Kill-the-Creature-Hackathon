@@ -213,15 +213,14 @@ public class ProvidersDialog extends AppCompatDialogFragment {
                     }
 
                 } catch (Exception e) {
-                    Toast.makeText(MainActivity.getContext(), "Unable to fulfil request", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.getContext(), "Unable to link order with provider check that the order end the request exist", Toast.LENGTH_SHORT).show();
                 }
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.getContext(), "Error in the connexion to the database", Toast.LENGTH_LONG).show();
             }
         }) {
             @Override

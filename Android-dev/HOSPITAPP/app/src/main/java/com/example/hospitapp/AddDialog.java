@@ -124,13 +124,13 @@ public class AddDialog extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        boolean nonEmptyOrder = //NotificationsFragment.fullEdit(objectInput) &&
+                        boolean nonEmptyOrder =
                                 NotificationsFragment.fullEdit(volumeInput);
 
                         if (nonEmptyOrder) {
                             object = objectInput.getSelectedItem().toString();
                             volumeNumber = volumeInput.getText().toString();
-                            // newAddress = addressInput.getText().toString();
+
 
                             if (!keepAddress.isChecked()) {
 
@@ -152,7 +152,7 @@ public class AddDialog extends AppCompatDialogFragment {
                                     email = emailEdited.getText().toString();
                                     telephone = telephoneEdited.getText().toString();
 
-                                    /*  TODO REVISAR SI LA DIRECCION ES CORRECTA, ES NECESARIO EL RESTO DE INFORMACION NO USADA*/
+
                                     newAddress = generateNewAdd(nameStreet, streetNumber, CP, city);
                                     makeServerCallNewAddress(URLS.new_order_with_new_address_url);
                                     dialog.dismiss();
@@ -198,8 +198,8 @@ public class AddDialog extends AppCompatDialogFragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.getContext(),"Error in the connexion to the database", Toast.LENGTH_LONG).show();
+
             }
         }) {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -245,7 +245,6 @@ public class AddDialog extends AppCompatDialogFragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(MainActivity.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
             }
         }) {
             @RequiresApi(api = Build.VERSION_CODES.O)
