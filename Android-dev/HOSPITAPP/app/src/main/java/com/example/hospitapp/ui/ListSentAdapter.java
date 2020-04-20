@@ -40,7 +40,7 @@ public class ListSentAdapter extends RecyclerView.Adapter<ListSentAdapter.OrderV
             super(itemView);
             textObject = (TextView) itemView.findViewById(R.id.ObjectName);
             textVolumeNumber = (TextView) itemView.findViewById(R.id.VolumeNumber);
-            textFecha = (TextView) itemView.findViewById(R.id.fechaNumber);
+            textFecha = (TextView) itemView.findViewById(R.id.dateNumber);
             textState = (TextView) itemView.findViewById(R.id.State);
             textProveedorId = (TextView) itemView.findViewById(R.id.proveedorNum);
             textReferenceID = (TextView) itemView.findViewById(R.id.ReferenceIdNum);
