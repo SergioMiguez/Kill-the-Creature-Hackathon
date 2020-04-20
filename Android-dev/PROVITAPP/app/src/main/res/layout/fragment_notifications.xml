@@ -265,7 +265,7 @@
 
         <TextView
             android:id="@+id/descriptionAdded"
-            android:layout_width="wrap_content"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="62dp"
