@@ -271,18 +271,18 @@ public class FilterDialog extends AppCompatDialogFragment {
                     if (jsonResponse.getBoolean("success")){
                         Toast.makeText(MainActivity.getContext(), "Success!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(MainActivity.getContext(), "Order not found", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.getContext(), "Unable to find the order", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (Exception e) {
-                    Toast.makeText(MainActivity.getContext(), "Order not found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.getContext(), "Unable to find the order", Toast.LENGTH_SHORT).show();
                 }
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.getContext(), "Error in the connexion", Toast.LENGTH_LONG).show();
             }
         }) {
             @RequiresApi(api = Build.VERSION_CODES.O)
