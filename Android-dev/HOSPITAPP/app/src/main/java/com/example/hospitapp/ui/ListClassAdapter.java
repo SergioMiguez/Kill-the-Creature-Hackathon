@@ -15,7 +15,7 @@ import com.example.hospitapp.R;
 import java.util.ArrayList;
 
 /**
- * ListAdaptor Class which set the Recycle View configuration for the HomeFragment, DashboardFragment
+ * ListClassAdaptor Class which set the Recycle View configuration for the HomeFragment, DashboardFragment
  * and OrdersInformationDialog Lists. It used a item as a model which is used repeatedly in which the
  * information is substituted as a way of improving performance in the creation of list
  */
@@ -106,7 +106,7 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
                 textVolumeNumber = this.itemView.findViewById(R.id.VolumeNumber);
                 textDate = this.itemView.findViewById(R.id.dateNumber);
                 textState = this.itemView.findViewById(R.id.State);
-                textProviderId = itemView.findViewById(R.id.proveedorNum);
+                textProviderId = itemView.findViewById(R.id.providerNum);
                 textReferenceID = this.itemView.findViewById(R.id.ReferenceIdNum);
 
             } else {
