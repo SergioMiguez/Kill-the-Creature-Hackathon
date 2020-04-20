@@ -35,20 +35,31 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
+/** Creates the display of orders connected with a producer */
 public class DashboardFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
+    /** The list of orders connected with a producer */
     private ArrayList<Order> listOfOrders;
+    /** The display used to show the list of orders connected with a producer */
     private RecyclerView recyclerView;
+    /** The constant used to indicate that an order has been lined with a producer */
     private final String stateLinked = "LINKED";
+    /** The constant used to indicate that an order has been received by the hospital */
     private final String stateCompleted = "RECEIVED";
+    /** Stores the current status of the app */
     private Context mContext;
+    /** Button used to mark a particular order as received. */
     private Button receivedButton;
-
+    /** The call tot the server */
     private RequestQueue requestQueue;
 
-
+    /**
+     * Creates the display of orders connected with a producer.
+     * @param inflater object used to decompress other views.
+     * @param container the outside container which holds the display of orders.
+     * @param savedInstanceState saved data about the current app status used to create the window.
+     * @return
+     */
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -71,6 +82,9 @@ public class DashboardFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Opens the dialogue used to mark an Order as received when the 'Received' button is pressed.
+     */
     private void openReceived() {
         receivedButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,25 +95,37 @@ public class DashboardFragment extends Fragment {
         });
     }
 
-
+    /**
+     * Creates a link between the fragment and the context passed.
+     * @param context the context of the app.
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         mContext = context;
     }
 
+    /**
+     * Destroys the link between the fragment and the context.
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         mContext = null;
     }
 
+    /**
+     * Calls the server to obtain the necessary data used to fill the list of linked orders.
+     */
     private void fillList() {
         makeListRequest(URLS.display_connected_orders_url);
     }
 
 
-
+    /**
+     * Makes a server call to obtain the orders placed by the hospital that have been connected with a producer.
+     * @param URL The url to the appropriate web service.
+     */
     private void makeListRequest (String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
