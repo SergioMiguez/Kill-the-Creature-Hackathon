@@ -50,7 +50,7 @@ public class DashboardFragment extends Fragment {
     private Context mContext;
     /** Button used to mark a particular order as received. */
     private Button receivedButton;
-    /** The call tot the server */
+    /** The call to the server */
     private RequestQueue requestQueue;
 
     /**
@@ -58,7 +58,7 @@ public class DashboardFragment extends Fragment {
      * @param inflater object used to decompress other views.
      * @param container the outside container which holds the display of orders.
      * @param savedInstanceState saved data about the current app status used to create the window.
-     * @return
+     * @return the display of orders connected with a producer.
      */
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

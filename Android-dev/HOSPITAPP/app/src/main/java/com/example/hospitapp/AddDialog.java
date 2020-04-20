@@ -41,30 +41,42 @@ import java.util.Objects;
 import java.util.zip.Inflater;
 /** Creates the display which allows the hospital to place a new order */
 public class AddDialog extends AppCompatDialogFragment {
-
+    /**The material being ordered*/
     private String object;
+    /**The quantity of material being ordered*/
     private String volumeNumber;
+    /**The default hospital address*/
     private Switch keepAddress;
+    /**A new address inputted by the user*/
     private String newAddress;
-
+    /**The drop down menu with the list of materials*/
     private Spinner objectInput;
+    /**The text box used to input the quantity of material being ordered*/
     private EditText volumeInput;
-
+    /**The list of materials*/
     private ArrayList<Material> listOfMaterials;
+    /**The list of material names*/
     private ArrayList<String> listOfMaterialName;
-
+    /**The new name of the hospital*/
     private EditText nameHospitalEdited;
+    /**The new name of the street*/
     private EditText nameStreetEdited;
+    /**The new postal code*/
     private EditText CPEdited;
+    /**The new building number*/
     private EditText streetNumberEdited;
+    /**The new city name*/
     private EditText cityEdited;
+    /**The new email*/
     private EditText emailEdited;
+    /**The new telephone number*/
     private EditText telephoneEdited;
-
+    /**The original hospital address data*/
     private String nameHospital, nameStreet, CP, streetNumber, city, email, telephone;
 
-
+    /**The success of the order placed*/
     private boolean orderSuccess;
+    /**The call to the server*/
     private RequestQueue requestQueue;
 
     /**
