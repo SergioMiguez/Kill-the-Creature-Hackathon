@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.arch.lifecycle.ViewModelProviders;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +27,7 @@ import com.example.hospitapp.LoginActivity;
 import com.example.hospitapp.MainActivity;
 import com.example.hospitapp.R;
 import com.example.hospitapp.URLS;
-import com.example.hospitapp.UsuarioHospital;
+import com.example.hospitapp.HospitalUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -124,7 +123,7 @@ public class NotificationsFragment extends Fragment {
     String editUrl  = URLS.update_profile_url;
 
     /** Object of the class userHospital*/
-    UsuarioHospital userHospital;
+    HospitalUser userHospital;
 
     /** Stores the current status of the app */
     private Context mContext;
@@ -275,7 +274,7 @@ public class NotificationsFragment extends Fragment {
 
                     String[] directionInfo = user.getString("direccion").split("\\Q$\\E");
 
-                    userHospital = new UsuarioHospital(
+                    userHospital = new HospitalUser(
                             user.getInt("id"),
                             user.getString("nombre"),
                             user.getString("usuario"),

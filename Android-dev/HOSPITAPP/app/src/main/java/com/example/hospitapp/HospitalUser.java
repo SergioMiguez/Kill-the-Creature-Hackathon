@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Public class, which represents the users of the app, each instance will store all the information regarding the id, username ,password and personal information of a Hospital.
  */
-public class UsuarioHospital implements Serializable {
+public class HospitalUser implements Serializable {
     /**
      * Field (int) used to store the reference of a given user in the database.
      */
@@ -60,7 +60,7 @@ public class UsuarioHospital implements Serializable {
      * @param zipCode Zip code of the user.
      * @param city name of the user's city.
      */
-    public UsuarioHospital(int id, String name, String username, String direction, String email, String phoneNumber, String numberAddress, String zipCode, String city) {
+    public HospitalUser(int id, String name, String username, String direction, String email, String phoneNumber, String numberAddress, String zipCode, String city) {
         this.id = id;
         this.name = name;
         this.username = username;
@@ -72,7 +72,7 @@ public class UsuarioHospital implements Serializable {
         this.city = city;
     }
 
-    /**         GETTER FUNCTIONS       */
+    /*         GETTER FUNCTIONS       */
     /**
      * Public function used to make available the name of the user.
      * @return the name of the user (String).
@@ -142,7 +142,7 @@ public class UsuarioHospital implements Serializable {
         return phoneNumber;
     }
 
-    /**         SETTER FUNCTIONS       */
+    /*        SETTER FUNCTIONS       */
     /**
      * Public function used to redefine the name of the user.
      */

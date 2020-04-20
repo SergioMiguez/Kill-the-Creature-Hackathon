@@ -5,19 +5,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.hospitapp.R;
-import com.example.hospitapp.UsuarioHospital;
 
-import java.util.ArrayList;
-import java.util.zip.Inflater;
 /** Class that is responsible for the handling of the user info*/
 public class InfoUsuario extends AppCompatActivity {
 

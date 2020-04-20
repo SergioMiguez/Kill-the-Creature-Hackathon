@@ -21,7 +21,7 @@ public class Material {
         this.materialName = materialName;
     }
 
-    /**         GETTER FUNCTIONS       */
+    /*         GETTER FUNCTIONS       */
     /**
      * Public function used to make available the id of the material.
      * @return the id of the material (int).
