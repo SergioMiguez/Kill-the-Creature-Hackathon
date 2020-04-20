@@ -72,7 +72,7 @@ public class AddDialog extends AppCompatDialogFragment {
      * It prompts the hospital for the material being ordered and the quantity of the material.
      * The hospital is allowed to send the order to their address or to a different one.
      * @param savedInstanceState saved data about the current app status used to create the pop-up.
-     * @return the pop-up display.
+     * @return the pop-up display used to place an order.
      */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

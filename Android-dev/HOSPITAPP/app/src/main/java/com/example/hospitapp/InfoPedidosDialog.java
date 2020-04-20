@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -30,31 +29,40 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
+/** Creates the display which allows the hospital to select the producer of a particular order. */
 public class InfoPedidosDialog extends AppCompatDialogFragment {
 
+    /** The display used to show the list of producers available to fulfill a particular order.*/
     RecyclerView recyclerView;
-    ArrayList<Order> listOfProveedores;
+    /** The list of producers available to fulfill a particular order.*/
+    ArrayList<Order> listOfProducers;
 
-
-    private TextView nameProviderInput;
-    private TextView nameBussinesInput;
-    private TextView emailInput;
-
+    /** The text box used to input the ID of the order you want to find a producer for. */
     private EditText idInput;
-    private EditText enlazarInput;
+    /** The text box used to input the ID of the producer you choose to fulfill an order. */
+    private EditText linkInput;
 
-    private Button buscarIdButton;
-    private Button enlazarButton;
+    /** The button clicked to store the data in {@link #idInput} */
+    private Button searchIdButton;
+    /** The button clicked to store the data in {@link #linkInput} */
+    private Button linkButton;
 
-    private String nameProvider;
-    private String nameBussiness;
-    private String email;
+    /** The ID of the order you want to find a producer for. */
     private String id;
-    private String idProveedor;
-
+    /** The ID of the producer you choose to fulfill an order. */
+    private String idProducer;
+    /** The call to the server. */
     private RequestQueue requestQueue;
 
+    /**
+     * Creates the pop-up display used to select the producer to manufacture an order.
+     * The user first inputs the id of the order of interest.
+     * Then, after clicking 'Search ID' the list of producers available to complete this order is displayed.
+     * Then the user can input the id of the producer chosen.
+     * Finally, the 'Link' button can be pressed to update the server with this new information.
+     * @param savedInstanceState saved data about the current app status used to create the pop-up.
+     * @return the pop-up display used to select the producer to manufacture an order.
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -62,17 +70,17 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.activity_proveedores, null, false);
-        buscarIdButton = view.findViewById(R.id.buscarButton);
-        enlazarButton = view.findViewById(R.id.enlazarButton);
+        searchIdButton = view.findViewById(R.id.buscarButton);
+        linkButton = view.findViewById(R.id.enlazarButton);
         idInput = view.findViewById(R.id.idInput);
-        enlazarInput = view.findViewById(R.id.enlazarInput);
+        linkInput = view.findViewById(R.id.enlazarInput);
 
-        listOfProveedores = new ArrayList<>();
+        listOfProducers = new ArrayList<>();
 
         recyclerView =  view.findViewById(R.id.recyclerProveedores);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        buscarIdButton.setOnClickListener(new View.OnClickListener() {
+        searchIdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (fullEdit(idInput)) {
@@ -82,17 +90,17 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
             }
         });
 
-        enlazarButton.setOnClickListener(new View.OnClickListener() {
+        linkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(fullEdit(enlazarInput)){
-                    idProveedor = enlazarInput.getText().toString();
+                if(fullEdit(linkInput)){
+                    idProducer = linkInput.getText().toString();
                     sendIdProveedor(URLS.connect_orders_url);
                 }
             }
         });
 
-        ListClassAdapter adapter = new ListClassAdapter(listOfProveedores);
+        ListClassAdapter adapter = new ListClassAdapter(listOfProducers);
 
         recyclerView.setAdapter(adapter);
 
@@ -114,12 +122,19 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
         return builder.create();
     }
 
+    /**
+     * Displays the list of providers available to complete an order.
+     */
     private void fillList() {
 
         /* TODO CAMBIAR EL URL AL QUE SEA CONVENIENTE */
         makeListRequest(URLS.show_potential_providers_url);
     }
 
+    /**
+     * Makes a server call to get the list of potential providers for a given order.
+     * @param URL The url to the appropriate web service.
+     */
     private void makeListRequest (String URL) {
         //Toast.makeText(MainActivity.getContext(), "entra dentro del request", Toast.LENGTH_SHORT).show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
@@ -131,7 +146,7 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
                         JSONObject order = array.getJSONObject(i);
 
 
-                        listOfProveedores.add(new Order(
+                        listOfProducers.add(new Order(
                                 order.getInt("id"),
                                 order.getInt("id_objeto"),
                                 order.getInt("cantidad"),
@@ -145,7 +160,7 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
 
                     }
 
-                    ListClassAdapter adapter = new ListClassAdapter(listOfProveedores);
+                    ListClassAdapter adapter = new ListClassAdapter(listOfProducers);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
@@ -173,12 +188,20 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
 
     }
 
+    /**
+     * Verifies that the user has filled a text box.
+     * @param editText the text box of interest.
+     * @return true if editText has data and false otherwise.
+     */
     private boolean fullEdit(EditText editText) {
         String empty = "";
         return !editText.getText().toString().trim().equals(empty);
     }
 
-
+    /**
+     * Updates the server with producer chosen to complete the order.
+     * @param URL The url to the appropriate web service.
+     */
     private void sendIdProveedor (String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
             @Override
@@ -207,7 +230,7 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
                 parameters.put("usuario", LoginActivity.userName);
-                parameters.put("id_proveedor", idProveedor);
+                parameters.put("id_proveedor", idProducer);
                 parameters.put("id", id);
                 return parameters;
             }
