@@ -111,7 +111,7 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
 
         } else {
             if (!listOfOrders.get(position).isSent() && !listOfOrders.get(position).isReceived()) {
-                holder.textObject.setText("" + listOfOrders.get(position).getId_object());
+                holder.textObject.setText("" + listOfOrders.get(position).getObject_name());
                 holder.textVolumeNumber.setText("" + listOfOrders.get(position).getQuantity());
                 holder.textFecha.setText(listOfOrders.get(position).getDate());
                 holder.textProveedorId.setText("" + listOfOrders.get(position).getId_provider());
@@ -121,7 +121,7 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
 
 
             if (listOfOrders.get(position).isSent() && !listOfOrders.get(position).isReceived()) {
-                holder.textObject.setText("" + listOfOrders.get(position).getId_object());
+                holder.textObject.setText("" + listOfOrders.get(position).getObject_name());
                 holder.textVolumeNumber.setText("" + listOfOrders.get(position).getQuantity());
                 holder.textFecha.setText(listOfOrders.get(position).getDate());
                 holder.textProveedorId.setText("" + listOfOrders.get(position).getId_provider());
@@ -131,7 +131,7 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
 
 
             if (listOfOrders.get(position).isSent() && listOfOrders.get(position).isReceived()) {
-                holder.textObject.setText("" + listOfOrders.get(position).getId_object());
+                holder.textObject.setText("" + listOfOrders.get(position).getObject_name());
                 holder.textVolumeNumber.setText("" + listOfOrders.get(position).getQuantity());
                 holder.textFecha.setText(listOfOrders.get(position).getDate());
                 holder.textProveedorId.setText("" + listOfOrders.get(position).getId_provider());
