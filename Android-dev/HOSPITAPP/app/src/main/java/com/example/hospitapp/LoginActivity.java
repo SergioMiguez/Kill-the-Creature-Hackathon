@@ -117,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("username", userName);
+                parameters.put("usuario", userName);
                 parameters.put("password", password);
                 return parameters;
             }

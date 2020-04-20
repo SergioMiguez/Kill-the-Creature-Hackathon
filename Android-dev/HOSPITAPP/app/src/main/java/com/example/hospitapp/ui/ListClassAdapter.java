@@ -106,12 +106,12 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Orde
                 textVolumeNumber = this.itemView.findViewById(R.id.VolumeNumber);
                 textDate = this.itemView.findViewById(R.id.dateNumber);
                 textState = this.itemView.findViewById(R.id.State);
-                textProviderId = itemView.findViewById(R.id.providerNum);
+                textProviderId = this.itemView.findViewById(R.id.providerNum);
                 textReferenceID = this.itemView.findViewById(R.id.ReferenceIdNum);
 
             } else {
                 textProviderName = itemView.findViewById(R.id.ParticularName);
-                textProviderId = itemView.findViewById(R.id.identificator);
+                textProviderId = itemView.findViewById(R.id.providerNum);
 
             }
         }
