@@ -121,7 +121,7 @@ public class ReceivedDialog extends AppCompatDialogFragment {
     }
 
     /**
-     * Private method to call the server to call the server to request a list of all the needed orders to fill the list of the needed orders for display.
+     * Private method to call the server to request a list of all the needed orders to fill the list of the needed orders for display.
      */
     private void fillList() {
         makeListRequest(URLS.only_sent_url);
@@ -226,7 +226,6 @@ public class ReceivedDialog extends AppCompatDialogFragment {
      * Private method used to get the date of the user's phone.
      * @return String that represents the date.
      */
-
     @RequiresApi(api = Build.VERSION_CODES.O)
     private String getDate () {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
