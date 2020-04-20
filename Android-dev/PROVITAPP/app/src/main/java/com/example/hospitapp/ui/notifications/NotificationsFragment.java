@@ -55,7 +55,6 @@ public class NotificationsFragment extends Fragment {
 
     SharedPreferences myPrefs;
 
-    String def = "ERROR";
 
     String serverURL = URLS.profile_url;
     String editUrl  = URLS.update_profile_url;
@@ -64,12 +63,9 @@ public class NotificationsFragment extends Fragment {
 
     private Context mContext;
 
-    private NotificationsViewModel notificationsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                ViewModelProviders.of(this).get(NotificationsViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_notifications, container, false);
 
         nameAdded = root.findViewById(R.id.nameAdded);
