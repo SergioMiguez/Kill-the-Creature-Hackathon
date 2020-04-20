@@ -181,7 +181,7 @@ public class InfoPedidosDialog extends AppCompatDialogFragment {
             }
         };
 
-       
+
         requestQueue=Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
 

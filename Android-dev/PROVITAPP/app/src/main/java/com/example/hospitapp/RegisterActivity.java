@@ -106,7 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if (registerNonNull) {
                     if (Fpsw.equals(Spsw)) {
-                        makeCallServerAddNewUser(URLS.proveedores_registry_url);
+                        makeCallServerAddNewUser(URLS.providers_registry_url);
                     } else {
                         Toast.makeText(getApplicationContext(), "The passwords are not equal", Toast.LENGTH_SHORT).show();
                     }
