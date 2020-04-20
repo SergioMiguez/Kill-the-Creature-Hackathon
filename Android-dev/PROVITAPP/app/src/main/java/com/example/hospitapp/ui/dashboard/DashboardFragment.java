@@ -36,21 +36,30 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
+/** Creates the display of orders which the producer has volunteered to fulfill. */
 public class DashboardFragment extends Fragment {
-
-    private DashboardViewModel dashboardViewModel;
+    /** The list of orders which the producer has volunteered to fulfill. */
     private ArrayList<Order> listOfOrders;
+    /** The display used to show the list of orders which the producer has volunteered to fulfill. */
     private RecyclerView recyclerView;
+    /** The constant used to indicate that an order has been linked with a producer */
     private final String stateLinked = "LINKED";
-    private final String stateCompleted = "RECEIVED";
+    /** Stores the current status of the app */
     private Context mContext;
+    /** Button used to mark a particular order as completed. */
     private Button completedButton;
+    /** Button used to mark a particular order as sent. */
     private Button sentButton;
-
+    /** The call to the server */
     private RequestQueue requestQueue;
 
-
+    /**
+     * Creates the display of orders which the producer has volunteered to fulfill.
+     * @param inflater object used to decompress other views.
+     * @param container the outside container which holds the display of orders.
+     * @param savedInstanceState saved data about the current app status used to create the window.
+     * @return the display of orders which the producer has volunteered to fulfill.
+     */
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -76,6 +85,9 @@ public class DashboardFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Opens the dialogue used to mark an Order as completed when the 'Completed' button is pressed.
+     */
     private void openCompleted() {
         completedButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +98,9 @@ public class DashboardFragment extends Fragment {
         });
     }
 
+    /**
+     * Opens the dialogue used to mark an Order as sent when the 'Sent' button is pressed.
+     */
     private void openSent() {
         sentButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,25 +113,37 @@ public class DashboardFragment extends Fragment {
 
 
 
-
+    /**
+     * Creates a link between the fragment and the context passed.
+     * @param context the context of the app.
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         mContext = context;
     }
 
+    /**
+     * Destroys the link between the fragment and the context.
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         mContext = null;
     }
 
+    /**
+     * Calls the server to obtain the necessary data used to fill the list of orders the producer is responsible for.
+     */
     public void fillList() {
         makeListRequest(URLS.display_connected_orders_url);
     }
 
 
-
+    /**
+     * Makes a server call to obtain the orders assigned to the producer.
+     * @param URL The url to the appropriate web service.
+     */
     private void makeListRequest (String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
