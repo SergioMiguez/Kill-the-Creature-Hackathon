@@ -35,18 +35,46 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * Public class used to create the Dialog that allows the user to confirm the completion of one of its linked orders-
+ */
 public class CompletedDialog extends AppCompatDialogFragment {
 
+    /**
+     * Private field used to store the orders that have been linked in a recycleView.
+     */
     private RecyclerView recyclerView;
+    /**
+     * Private field used to store the orders that have been linked in an ArrayList.
+     */
     private ArrayList<Order> listOfOrders;
+    /**
+     * RequestQueue used to make a call to the server to get and Update information.
+     */
     private RequestQueue requestQueue;
+    /**
+     * Used to get the situation of the app to display the messages.
+     */
     private Context mContext;
+    /**
+     * Button used to call to the server to update the information about a selected order, to confirm the completion of the order by the producer.
+     */
     private Button markAsCompletedButton;
+    /**
+     * EditText used to store the input of the user, it should store the id of one of the completed-orders.
+     */
     private EditText idInput;
+    /**
+     * String used to store the id previously stored in the EditText.
+     */
     private String inputIdReceived;
-    private String fecha;
 
+    /**
+     * It creates the display of the pop-up (dialog)
+     * Allowing the user to confirm the completion of the production of one of the orders.
+     * @param savedInstanceState saved data about the current app status used to create the pop-up.
+     * @return the pop-up (Dialog).
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -81,24 +109,33 @@ public class CompletedDialog extends AppCompatDialogFragment {
 
         return builder.create();
     }
-
+    /**
+     * Private method used to configure the button Completed and to call the server with the necessary information to update the information of the database.
+     */
     private void markAsCompleted() {
         markAsCompletedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 inputIdReceived = idInput.getText().toString();
                 if (!inputIdReceived.equals("")) {
-                    sendReceivedRequest(URLS.mark_completed_url);
+                    sendCompletedRequest(URLS.mark_completed_url);
                     fillList();
                 }
             }
         });
     }
 
+    /**
+     * Private method to call the server to call the server to request a list of all the linked orders.
+     */
     private void fillList() {
         makeListRequest(URLS.display_connected_orders_url);
     }
 
+    /**
+     * method used to call to the server to get the list of all the linked orders present in the database, made by the given user.
+     * @param URL given URL to make the server call.
+     */
     private void makeListRequest (String URL) {
         //Toast.makeText(MainActivity.getContext(), "entra dentro del request", Toast.LENGTH_SHORT).show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
@@ -155,13 +192,15 @@ public class CompletedDialog extends AppCompatDialogFragment {
             }
         };
 
-        /*  TODO CHECK IF CONTEXT WORKS  (MainActivity.getContext() */
         requestQueue=Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
 
     }
-
-    private void sendReceivedRequest(String URL) {
+    /**
+     * method used to call to the server update one of the orders of the user to confirm it's completion.
+     * @param URL given URL to make the server call.
+     */
+    private void sendCompletedRequest(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
