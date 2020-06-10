@@ -8,12 +8,41 @@
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerHome"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        >
 
-    </android.support.v7.widget.RecyclerView>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <Button
+                android:id="@+id/proveedorButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_proveedores"
+                android:textColor="@color/colorPrimary"
+                >
+
+            </Button>
+
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            >
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
 
 
 </FrameLayout>

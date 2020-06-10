@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/order_item"
+    >
+
+    <LinearLayout
+        android:id="@+id/ObjectNameLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        >
+
+        <TextView
+            android:id="@+id/ObjectName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nombre"
+            android:textSize="20sp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/State"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/state"
+            android:textSize="16sp"
+
+            android:layout_marginLeft="50dp"
+            >
+
+        </TextView>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/datelayout"
+        android:layout_below="@+id/ObjectNameLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        >
+
+        <TextView
+            android:id="@+id/fecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date"
+            android:textSize="16sp"
+
+            android:layout_marginLeft="30dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/dateNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date"
+            android:textSize="16sp"
+
+            android:layout_marginLeft="10dp"
+            >
+
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/VolumeNumberLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/datelayout"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        >
+
+        <TextView
+            android:id="@+id/textVN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unities"
+            android:textSize="16sp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/VolumeNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/numero_de_unidades"
+            android:textSize="16sp"
+            android:layout_marginRight="10dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/ReferenceIdText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/referenceid"
+            android:layout_marginStart="20dp"
+            android:textSize="16sp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/ReferenceIdNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/id"
+            android:textSize="16sp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/proveedorId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Provider:"
+            android:layout_marginStart="20dp"
+            android:textSize="16sp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/proveedorNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not assigned"
+            android:textSize="16sp"
+            android:layout_marginLeft="10dp"
+            >
+
+        </TextView>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/VolumeNumberLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        >
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonLayout"
+        android:layout_marginTop="10dp"
+        >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginBottom="20dp"
+            >
+
+        </TextView>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

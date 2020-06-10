@@ -3,7 +3,7 @@ include 'connexion.php';
 $nombre_del_objeto = $_POST['nombre_del_objeto'];
 $usuario = $_POST['usuario'];
 $fecha = $_POST['fecha'];
-$id_proveedor = 1;
+$id_proveedor = 0;
 $cantidad = intval($_POST['cantidad']);
 
 //$nombre_del_objeto = "Mascarilla";

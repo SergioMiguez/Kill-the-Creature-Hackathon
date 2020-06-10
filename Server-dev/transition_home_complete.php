@@ -77,7 +77,7 @@ else{
     throw new Exception("FATAL ERROR: Hospital not in our database");
 }
 
-$query1 = "INSERT INTO pedidos_conectados VALUES ('".$id."', '".$id_objeto."' , '".$cantidad."', '".$id_proveedor."', '".$id_hospital."', '".$fecha."', '".$direccion_envio."')";
+$query1 = "INSERT INTO pedidos_conectados (id, id_objeto, cantidad, id_proveedor, id_hospital, fecha, direccion_envio) VALUES ('".$id."', '".$id_objeto."' , '".$cantidad."', '".$id_proveedor."', '".$id_hospital."', '".$fecha."', '".$direccion_envio."')";
 
 $query2 = "DELETE FROM pedidos WHERE id = '$id'";
 

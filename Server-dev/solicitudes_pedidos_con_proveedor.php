@@ -3,8 +3,8 @@ include 'connexion.php';
 $usuario = $_POST['usuario'];
 $id_pedido =intval($_POST['id_pedido']);
 
-//$usuario = "test";
-//$id_pedido = 46;
+//$usuario = "test1";
+//$id_pedido = 1;
 
 $queryHospital = "SELECT id FROM hospitales WHERE usuario = '$usuario'";
 

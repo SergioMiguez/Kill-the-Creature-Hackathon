@@ -19,21 +19,34 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-
+/** Class that is responsible for handling the login activity.*/
 public class LoginActivity extends AppCompatActivity {
 
+    /** Field that represents the sign in button*/
     private Button singInButton;
+    /** Field that represents the register button*/
     private Button registerButton;
 
+    /** Field that represents the username text*/
     private TextView userNameInput;
+    /** Field that represents the password text*/
     private TextView passwordInput;
 
+    /** Field that represents the username string*/
     public static String userName;
+    /** Field that represents the password string*/
     private String password;
 
+    /** Boolean that represents whether the login was successful or not*/
     private boolean loginSuccess;
+    /** Object of the class RequestQueue*/
     private RequestQueue requestQueue;
 
+    /**
+     * Creates the window use to display useful information about how to use the app.
+     * It informs about the type of data displayed in each window as well as the functionality of each button.
+     * @param savedInstanceState saved data about the current app status used to create the window.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                 userName = userNameInput.getText().toString();
                 password = passwordInput.getText().toString();
 
-                makeCall("http://192.168.1.86:80/matalbicho/login.php");
+                makeCall(URLS.login_url);
 
             }
         });
@@ -71,6 +84,10 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Makes a server call to place an order with the input data using the login data.
+     * @param URL The url to the appropriate web service.
+     */
     private void makeCall (String URL){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,new Response.Listener<String>() {
             @Override
@@ -79,15 +96,15 @@ public class LoginActivity extends AppCompatActivity {
                     loginSuccess = !response.isEmpty();
 
                     if (loginSuccess) {
-                        Toast.makeText(getApplicationContext(), "Login Exitoso", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Successful Login", Toast.LENGTH_SHORT).show();
                         finish();
                         Intent loadMenu = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(loadMenu);
                     } else {
-                        Toast.makeText(getApplicationContext(), "Nombre de usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Incorrect username or password", Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Error in the connexion with the database", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -95,15 +112,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-                //Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
-
-                /**         TODO ELIMINATE AT THE END           */
-                if (userName.equals("email") && (password.equals("pass"))) {
-                    Toast.makeText(getApplicationContext(), "Login Exitoso", Toast.LENGTH_SHORT).show();
-                    finish();
-                    Intent loadMenu = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(loadMenu);
-                }
             }
         }) {
             @Override

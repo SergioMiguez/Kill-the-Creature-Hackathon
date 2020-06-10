@@ -1,0 +1,11 @@
+/Android-dev/HOSPITAPP/.gradle
+/Android-dev/HOSPITAPP/.idea
+/Android-dev/HOSPITAPP/app/build
+/Android-dev/PROVITAPP/.gradle
+/Android-dev/PROVITAPP/.idea
+/Android-dev/PROVITAPP/app/build
+/Android-dev/HOSPITAPP/*.iml
+/Android-dev/PROVITAPP/*.iml
+/Android-dev/PROVITAPP/local.properties
+/Android-dev/HOSPITAPP/local.properties
+/Android-dev/PROVITAPP/.idea/workspace.xml

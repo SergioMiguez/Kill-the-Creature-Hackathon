@@ -8,9 +8,10 @@
 
     <LinearLayout
         android:id="@+id/ObjectNameLayout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
         >
 
         <TextView
@@ -18,7 +19,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/nombre"
-            android:layout_marginLeft="40dp"
             android:textSize="20sp"
             >
 
@@ -28,7 +28,7 @@
             android:id="@+id/State"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Estado"
+            android:text="@string/state"
             android:textSize="16sp"
 
             android:layout_marginLeft="50dp"
@@ -36,11 +36,24 @@
 
         </TextView>
 
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/datelayout"
+        android:layout_below="@+id/ObjectNameLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        >
+
         <TextView
             android:id="@+id/fecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fecha"
+            android:text="@string/date"
             android:textSize="16sp"
 
             android:layout_marginLeft="30dp"
@@ -49,34 +62,33 @@
         </TextView>
 
         <TextView
-            android:id="@+id/fechaNumber"
+            android:id="@+id/dateNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fecha"
+            android:text="@string/date"
             android:textSize="16sp"
 
             android:layout_marginLeft="10dp"
             >
 
         </TextView>
-
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/VolumeNumberLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ObjectNameLayout"
+        android:layout_below="@+id/datelayout"
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
+        android:layout_marginTop="5dp"
         >
 
         <TextView
             android:id="@+id/textVN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Unidades:"
-            android:layout_marginTop="20dp"
+            android:text="@string/unities"
             android:textSize="16sp"
             >
 
@@ -87,7 +99,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/numero_de_unidades"
-            android:layout_marginTop="20dp"
             android:textSize="16sp"
             android:layout_marginRight="10dp"
             >
@@ -99,7 +110,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/referenceid"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
             android:textSize="16sp"
             >
@@ -111,7 +121,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/id"
-            android:layout_marginTop="20dp"
             android:textSize="16sp"
             >
 
@@ -121,8 +130,7 @@
             android:id="@+id/proveedorId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Proveedor:"
-            android:layout_marginTop="20dp"
+            android:text="Provider:"
             android:layout_marginStart="20dp"
             android:textSize="16sp"
             >
@@ -130,12 +138,12 @@
         </TextView>
 
         <TextView
-            android:id="@+id/proveedorNum"
+            android:id="@+id/providerNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/id"
-            android:layout_marginTop="20dp"
+            android:text="Not assigned"
             android:textSize="16sp"
+            android:layout_marginLeft="10dp"
             >
 
         </TextView>

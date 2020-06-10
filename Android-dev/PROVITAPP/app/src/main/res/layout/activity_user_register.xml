@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:ignore="ScrollViewCount">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:id="@+id/registerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            tools:ignore="MissingConstraints"
+            >
+
+            <TextView
+                android:id="@+id/welcome_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/userRegister"
+                android:textSize="24sp"
+                android:textColor="@color/colorPrimary"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="32dp"
+                >
+
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:id="@+id/name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/userPrompt"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                >
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/nameRegistered"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/userHintRegister"
+                android:layout_marginLeft="20dp"
+                >
+
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/PasswordLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:id="@+id/password-text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="19dp"
+                android:text="@string/registerPassword"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                >
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/passwordRegistered"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/passwordFirstRegister"
+                android:inputType="textPassword"
+                >
+
+            </EditText>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/repeatpswLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            >
+
+            <EditText
+                android:id="@+id/checkPasswordRegistered"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/passwordSecondRegister"
+                android:inputType="textPassword"
+                >
+
+            </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/emailLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:id="@+id/email_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/emailRegisterPrompt"
+                android:textStyle="bold"
+                android:layout_marginRight="19dp"
+                android:textSize="18sp"
+                >
+
+            </TextView>
+
+
+            <EditText
+                android:id="@+id/emailRegistered"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                >
+
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/addressLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:id="@+id/direction_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/addressRegister"
+                android:textStyle="bold"
+                android:layout_marginRight="19dp"
+                android:textSize="18sp">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/nameHospitalRegistered"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/nameRegisterHint"
+                >
+
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/num_address_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal">
+
+            <EditText
+                android:id="@+id/nameStreetRegistered"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:hint="@string/addressRegisterHint">
+
+            </EditText>
+
+            <EditText
+                android:id="@+id/numberStreetRegistered"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/numberRegisterHint"
+                android:inputType="number">
+
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/zip_city_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <EditText
+                android:id="@+id/CPRegistered"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/postalRegisterHint"
+                android:layout_marginRight="110dp"
+                android:inputType="number"
+                >
+
+            </EditText>
+
+            <EditText
+                android:id="@+id/cityRegistered"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/cityRegisterHint"
+                >
+
+            </EditText>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/telephoneLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:id="@+id/telephone_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/telephoneRegisterPrompt"
+                android:textStyle="bold"
+                android:layout_marginRight="19dp"
+                android:textSize="18sp"
+                >
+
+            </TextView>
+
+
+            <EditText
+                android:id="@+id/telephoneRegistered"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                >
+
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/infoLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_marginTop="10dp"
+                >
+
+            <TextView
+                android:id="@+id/info-text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="19dp"
+                android:text="Description:"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                >
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/infoRegistered"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:hint="Tell us about yourself"
+                android:justificationMode="inter_word"
+                >
+
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <Button
+                android:id="@+id/saveUserBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/registerProfileRegisterBtn"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edit_telephoneAdded"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/singInButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/signinRegisterBtn"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginLeft="50dp"
+                >
+
+            </Button>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

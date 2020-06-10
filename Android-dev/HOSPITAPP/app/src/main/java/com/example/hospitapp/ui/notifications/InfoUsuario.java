@@ -1,49 +1,56 @@
 package com.example.hospitapp.ui.notifications;
 
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.hospitapp.MainActivity;
 import com.example.hospitapp.R;
-import com.example.hospitapp.UsuarioHospital;
 
-import java.util.ArrayList;
-import java.util.zip.Inflater;
-
+/** Class that is responsible for the handling of the user info*/
 public class InfoUsuario extends AppCompatActivity {
 
+    /** EditText parameter that is responsible for the name input*/
     EditText nameEdited;
+    /** EditText parameter that is responsible for the hospital name input*/
     EditText nameHospitalEdited;
+    /** EditText parameter that is responsible for the street name input*/
     EditText nameStreetEdited;
+    /** EditText parameter that is responsible for the street number input*/
     EditText streetNumberEdited;
+    /** EditText parameter that is responsible for the postal code input*/
     EditText CPEdited;
+    /** EditText parameter that is responsible for the city input*/
     EditText cityEdited;
+    /** EditText parameter that is responsible for the email input*/
     EditText emailEdited;
+    /** EditText parameter that is responsible for the telephone input*/
     EditText telephoneEdited;
 
+    /** TextView parameter that represents the name text*/
     TextView nameAdded;
+    /** TextView parameter that represents the hospital name text*/
     TextView nameHospitalAdded;
+    /** TextView parameter that represents the street name text*/
     TextView nameStreetAdded;
+    /** TextView parameter that represents the street number text*/
     TextView streetNumberAdded;
+    /** TextView parameter that represents the postal code text*/
     TextView CPAdded;
+    /** TextView parameter that represents the city text*/
     TextView cityAdded;
+    /** TextView parameter that represents the email text*/
     TextView emailAdded;
+    /** TextView parameter that represents the telephone text*/
     TextView telephoneAdded;
 
+    /** Object of the class SharedPreferences*/
     SharedPreferences myPrefs;
 
     String def = "nada";

@@ -21,8 +21,9 @@
             android:id="@+id/welcome_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Regístrese"
+            android:text="@string/userRegister"
             android:textSize="24sp"
+            android:textColor="@color/colorPrimary"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="32dp"
             >
@@ -43,7 +44,8 @@
             android:id="@+id/name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Usuario:"
+            android:text="@string/userPrompt"
+            android:textStyle="bold"
             android:textSize="18sp"
             >
 
@@ -53,7 +55,7 @@
             android:id="@+id/nameRegistered"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:hint="Nombre de usuario"
+            android:hint="@string/userHintRegister"
             android:layout_marginLeft="20dp"
             >
 
@@ -74,7 +76,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="19dp"
-            android:text="Contraseña:"
+            android:text="@string/registerPassword"
+            android:textStyle="bold"
             android:textSize="18sp"
             >
 
@@ -84,8 +87,8 @@
             android:id="@+id/passwordRegistered"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:hint="Introduzca su contraseña"
-
+            android:hint="@string/passwordFirstRegister"
+            android:inputType="textPassword"
             >
 
         </EditText>
@@ -104,7 +107,8 @@
             android:id="@+id/checkPasswordRegistered"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:hint="Repetir contraseña"
+            android:hint="@string/passwordSecondRegister"
+            android:inputType="textPassword"
             >
 
         </EditText>
@@ -122,7 +126,8 @@
             android:id="@+id/email_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email:"
+            android:text="@string/emailRegisterPrompt"
+            android:textStyle="bold"
             android:layout_marginRight="19dp"
             android:textSize="18sp"
             >
@@ -134,6 +139,7 @@
             android:id="@+id/emailRegistered"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
             >
 
         </EditText>
@@ -152,7 +158,8 @@
             android:id="@+id/direction_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dirección:"
+            android:text="@string/addressRegister"
+            android:textStyle="bold"
             android:layout_marginRight="19dp"
             android:textSize="18sp">
 
@@ -162,7 +169,7 @@
             android:id="@+id/nameHospitalRegistered"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:hint="Nombre de hospital"
+            android:hint="@string/nameRegisterHint"
             >
 
         </EditText>
@@ -173,17 +180,15 @@
         android:id="@+id/num_address_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        >
+        android:gravity="center_horizontal">
 
         <EditText
             android:id="@+id/nameStreetRegistered"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:hint="Introduzca la calle del hospital"
-            >
+            android:layout_marginRight="50dp"
+            android:hint="@string/addressRegisterHint">
 
         </EditText>
 
@@ -191,8 +196,8 @@
             android:id="@+id/numberStreetRegistered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Número"
-            >
+            android:hint="@string/numberRegisterHint"
+            android:inputType="number">
 
         </EditText>
 
@@ -210,8 +215,9 @@
             android:id="@+id/CPRegistered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Código postal"
-            android:layout_marginRight="57dp"
+            android:hint="@string/postalRegisterHint"
+            android:layout_marginRight="110dp"
+            android:inputType="number"
             >
 
         </EditText>
@@ -220,7 +226,7 @@
             android:id="@+id/cityRegistered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Ciudad o provincia"
+            android:hint="@string/cityRegisterHint"
             >
 
         </EditText>
@@ -241,7 +247,8 @@
             android:id="@+id/telephone_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Teléfono:"
+            android:text="@string/telephoneRegisterPrompt"
+            android:textStyle="bold"
             android:layout_marginRight="19dp"
             android:textSize="18sp"
             >
@@ -253,7 +260,7 @@
             android:id="@+id/telephoneRegistered"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-
+            android:inputType="number"
             >
 
         </EditText>
@@ -272,7 +279,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="Registrar Perfil "
+            android:text="@string/registerProfileRegisterBtn"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -284,7 +292,8 @@
             android:id="@+id/singInButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign in"
+            android:text="@string/signinRegisterBtn"
+            android:textColor="@color/colorPrimary"
             android:layout_marginLeft="50dp"
             >
 
